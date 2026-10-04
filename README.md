@@ -4,16 +4,12 @@ Structured data for D&D 5th edition (2014) spells, with mechanics reimplemented 
 
 ## Contents
 
-- `spells/cantrip/`: the 24 SRD cantrips, one JSON file each.
-- `spells/level-1/`: the 49 first-level spells on the SRD 5.1 list, one JSON file each.
-- `spells/level-2/`: the 53 level 2 spells I recalled from the SRD 5.1 list, one JSON file each (list not verified against the SRD).
-- `spells/level-3/`: the 43 level 3 spells I recalled from the SRD 5.1 list, one JSON file each (list not verified against the SRD).
-- `docs/creating-a-spell.md`: original-wording summary of the 2014 DMG spell creation guidance (unverified against the book).
-- `docs/spell-point-buy.md`: point-buy system (cantrip 25, level 1 100, level 2 150, level 3 250) with rules, price and refund tables, and scorecards.
-- `docs/spell-scaling-analysis.md`: how the budget scales across cantrips and levels 1 to 3, the calibration, and a stress test of the rules.
-- `docs/revision-log.md`: what the logic passes found and changed, and how level 3 was added.
-- `tools/`: `pointbuy.py` is the calculator (`fit`, `report`, `score`, `calc`, `stress`, `check`). Prices are in `pricing.py`, per-spell builds in `builds.py`. Data in `data/`, examples in `examples/`.
+- `spells/cantrip/`: 24 cantrips, one JSON file each.
+- `spells/level-1/`: 49 first-level spells, one JSON file each.
+- `spells/level-2/`: 53 level 2 spells, one JSON file each.
+- `spells/level-3/`: 43 level 3 spells, one JSON file each.
+- `archive/point-buy-v1/`: the first attempt at a point-buy system (tools, calibration data, docs, examples). Archived, not in use.
+
+Spell lists and text were written from memory of the SRD 5.1 and are not checked against the books. The level 2 and 3 lists may be incomplete.
 
 Fields: name, level, school, casting_time, range, components, material, duration, concentration, ritual, classes, description, at_higher_levels, source.
-
-Notes: Hideous Laughter is listed under its short name (the full name is Tasha's Hideous Laughter). Non-SRD first-level spells are not included.
