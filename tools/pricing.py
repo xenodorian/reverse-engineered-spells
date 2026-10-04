@@ -12,6 +12,7 @@ CAL_PATH = os.path.join(ROOT, "data", "calibration.json")
 EXP = 0.4                       # convexity: price grows with magnitude^(1+EXP)
 CANTRIP_CEIL = 49               # a cantrip's effects must total less than the L1 floor
 LIMIT_CAP = 0.5                 # limit refunds may not exceed this share of the effect cost
+MODE_SHARE = 0.25               # a spell with several modes pays full price for the best one and this share of each other
 UPCAST_SHARE = 0.5              # an upcast increment costs this share of buying it outright
 UPCAST_MAX = 1.0                # increase per slot level, as a share of the base amount (damage, healing, temp HP)
 UPCAST_TARGETS = 1              # extra targets per slot level
@@ -64,6 +65,10 @@ ITEMS = {
     "enhance":        _i("Advantage on one ability's checks plus a perk", 40, "buff", 2),
     "resize":         _i("Grow or shrink a creature with combat benefits", 55, "buff", 2),
     "stealth_aura":   _i("+10 Stealth and untrackable for a group", 60, "buff", 2),
+    # custom effects: you choose the base points by comparing with the items in the tables
+    "custom_util":     _i("Custom utility effect (base points you choose)", 1, "util", 0, "base points"),
+    "custom_buff":     _i("Custom buff or debuff (base points you choose)", 1, "buff", 0, "base points"),
+    "custom_cond":     _i("Custom condition or control (base points you choose)", 1, "cond", 0, "base points"),
     # conditions and control
     "cond_prone":      _i("Prone", 10, "cond", 1),
     "cond_charmed":    _i("Charmed", 31, "cond", 1),
@@ -283,6 +288,9 @@ FLOORS = {1: 50, 2: 100, 3: 150}   # a spell of this level must have effects tot
 CAPS = {}
 CONTROL_CAP = {0: 0, 1: 999, 2: 999, 3: 999}
 
+ENFORCE_CAPS = False            # observed maxima are reference data. rebuild.py turns this on to show why it is off
+OBSERVED = {"caps": {}, "control_cap": {}}
+
 def load_calibration(path=CAL_PATH):
     global BUDGETS, CAPS, CONTROL_CAP
     cal = DEFAULTS
@@ -291,8 +299,11 @@ def load_calibration(path=CAL_PATH):
     MULT.update(cal["mult"])
     BUDGETS = {int(k): v for k, v in cal["budgets"].items()}
     FLOORS.clear(); FLOORS.update({int(k): v for k, v in cal.get("floors", DEFAULTS["floors"]).items()})
-    CAPS = {k: {int(l): v for l, v in d.items()} for k, d in cal["caps"].items()}
-    CONTROL_CAP = {int(k): v for k, v in cal["control_cap"].items()}
+    obs = cal.get("observed_maxima", {"caps": cal.get("caps", {}), "control_cap": cal.get("control_cap", {})})
+    OBSERVED["caps"] = {k: {int(l): v for l, v in d.items()} for k, d in obs["caps"].items()}
+    OBSERVED["control_cap"] = {int(k): v for k, v in obs["control_cap"].items()}
+    CAPS = OBSERVED["caps"] if ENFORCE_CAPS else {}
+    CONTROL_CAP = OBSERVED["control_cap"] if ENFORCE_CAPS else {0: 10**6, 1: 10**6, 2: 10**6, 3: 10**6}
 load_calibration()
 
 def floor(level):
@@ -375,6 +386,15 @@ def score(spec, enforce=True):
     effect_total = 0
     control_total = 0
     extra_targets = 0
+    lines = list(spec["lines"])
+    alt_modes = []
+    modes = spec.get("modes")
+    if modes:
+        sums = [sum(price(i, q) for i, q in m if i in ITEMS) for m in modes]
+        best = max(range(len(modes)), key=lambda k: sums[k])
+        lines += list(modes[best])
+        alt_modes = [m for k, m in enumerate(modes) if k != best]
+    spec = dict(spec, lines=lines)
     if enforce:
         seen = [i for i, q in spec["lines"]]
         dup = sorted({i for i in seen if seen.count(i) > 1})
@@ -405,6 +425,18 @@ def score(spec, enforce=True):
             add("Limit", LIMITS[item][0], LIMITS[item][1] * MULT["limit"])
         else:
             raise KeyError(item)
+    for m in alt_modes:
+        for item, q in m:
+            if item not in ITEMS:
+                raise KeyError(item)
+            label, base, unit, ref, cat, tier = ITEMS[item]
+            if enforce and tier > level:
+                raise ValueError(f"{item} is a level {tier} effect and cannot be used in a level {level} spell")
+            cost = price(item, q) * MODE_SHARE
+            qs = "" if unit == "flat" else f" x{q:g}"
+            if cat in EFFECT_CATS:
+                effect_total += cost
+            add("Effect", f"Alternate mode: {label}{qs}", cost)
     pt_total, pt_control = per_target_share(spec)
     if extra_targets:
         if pt_total <= 0:

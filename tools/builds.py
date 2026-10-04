@@ -208,3 +208,17 @@ UPCAST = {
 
 # Spells whose damaging part reaches farther than the listed range (Produce Flame is Self, but hurls 30 ft).
 PRICE_RANGE = {"produce-flame": "30 feet"}
+
+# Multi-mode rebuilds, used by tools/rebuild.py to test the mode rule on spells that let the caster choose
+# an option at casting time. slug -> (shared lines, [lines for each mode]). These replace the spell's lines.
+MODES = {
+ "alter-self": ([], [[("custom_util", 30)], [("util_disguise", 1)], [("custom_buff", 35)]]),
+ "bestow-curse": ([("lim_save_negates", 1)], [[("custom_cond", 40)], [("custom_cond", 55)], [("custom_cond", 60)], [("dmg_rider", 4.5)]]),
+ "enhance-ability": ([], [[("custom_buff", 24)] for _ in range(6)]),
+ "glyph-of-warding": ([("util_glyph", 1), ("lim_trigger", 1)], [[("dmg", 22.5), ("rel_save_half", 1), ("area_radius20", 1)], [("custom_util", 70)]]),
+ "create-or-destroy-water": ([("lim_no_combat", 1)], [[("util_create_water", 1)], [("custom_util", 13)]]),
+ "plant-growth": ([], [[("difficult_terrain", 1), ("util_plant", 1), ("area_radius30", 1)], [("custom_util", 30)]]),
+ "detect-thoughts": ([("lim_dm", 1)], [[("util_thoughts", 1)], [("custom_util", 40)]]),
+ "blindness-deafness": ([("lim_repeat_save", 1)], [[("cond_blinded", 1)], [("custom_cond", 12)]]),
+ "calm-emotions": ([("area_radius20", 1), ("lim_willing", 1)], [[("util_calm", 1)], [("custom_cond", 35)]]),
+}

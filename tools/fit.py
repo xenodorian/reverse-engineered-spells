@@ -124,7 +124,7 @@ def run(spells):
     print(f"budgets {budgets}, floors {dict(P.FLOORS)}, over budget: {over or 'none'}")
     print("mean", {l: round(st.mean(v), 1) for l, v in after.items()}, "max", {l: round(max(v), 1) for l, v in after.items()})
     cal = {"mult": {c: round(P.MULT[c], 3) for c in P.CATS}, "budgets": {str(k): v for k, v in budgets.items()},
-           "floors": {str(k): v for k, v in P.FLOORS.items()}, "caps": observed_caps(spells), "control_cap": control_caps(spells),
+           "floors": {str(k): v for k, v in P.FLOORS.items()}, "observed_maxima": {"caps": observed_caps(spells), "control_cap": control_caps(spells)},
            "fit": {"objective": round(obj, 1),
                    "mean_before": {str(k): round(st.mean(v), 1) for k, v in before.items()},
                    "mean_after": {str(k): round(st.mean(v), 1) for k, v in after.items()},
@@ -132,4 +132,4 @@ def run(spells):
                    "max_after": {str(k): round(max(v), 1) for k, v in after.items()}}}
     json.dump(cal, open(P.CAL_PATH, "w"), indent=2); open(P.CAL_PATH, "a").write("\n")
     print(json.dumps(cal["mult"]))
-    print("control cap", cal["control_cap"])
+    print("observed control maxima", cal["observed_maxima"]["control_cap"])
