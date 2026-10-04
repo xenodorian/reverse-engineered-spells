@@ -1,0 +1,22 @@
+{
+  "name": "Grease",
+  "level": 1,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A bit of pork rind or butter",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "Slick grease covers a 10-foot square and makes it difficult terrain. Creatures there when it appears, or that enter or end their turn there, make a Dexterity save or fall prone.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

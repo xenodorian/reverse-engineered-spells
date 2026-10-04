@@ -1,0 +1,23 @@
+{
+  "name": "Shield of Faith",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 bonus action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small parchment with holy text",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin"
+  ],
+  "description": "A glowing field gives a creature +2 AC for the duration.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

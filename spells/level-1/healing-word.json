@@ -1,0 +1,22 @@
+{
+  "name": "Healing Word",
+  "level": 1,
+  "school": "Evocation",
+  "casting_time": "1 bonus action",
+  "range": "60 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid"
+  ],
+  "description": "A creature you can see regains 1d4 plus your spellcasting modifier hit points. It has no effect on undead or constructs.",
+  "at_higher_levels": "Healing rises by 1d4 per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

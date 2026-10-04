@@ -1,0 +1,23 @@
+{
+  "name": "Bane",
+  "level": 1,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A drop of blood",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric"
+  ],
+  "description": "Up to three creatures make a Charisma save or subtract 1d4 from attack rolls and saving throws while the spell lasts.",
+  "at_higher_levels": "Target one additional creature per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Sanctuary",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 bonus action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small silver mirror",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "A creature is warded. Anyone targeting it with an attack or harmful spell must first pass a Wisdom save or choose a new target. It ends if the warded creature attacks or casts a spell that affects an enemy.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

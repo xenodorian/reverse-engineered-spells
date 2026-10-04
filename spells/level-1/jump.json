@@ -1,0 +1,25 @@
+{
+  "name": "Jump",
+  "level": 1,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A grasshopper's hind leg",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Ranger",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "The touched creature's jump distance triples for the duration.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

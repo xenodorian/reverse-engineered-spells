@@ -1,0 +1,24 @@
+{
+  "name": "Unseen Servant",
+  "level": 1,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A piece of string and a bit of wood",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Create an invisible, mindless force that does simple tasks on your command, such as fetching and cleaning. It cannot attack, carries up to 30 pounds, and dies at 1 hit point.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

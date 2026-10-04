@@ -1,0 +1,23 @@
+{
+  "name": "Purify Food and Drink",
+  "level": 1,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Paladin"
+  ],
+  "description": "Remove poison and disease from all nonmagical food and drink in a 5-foot-radius sphere.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

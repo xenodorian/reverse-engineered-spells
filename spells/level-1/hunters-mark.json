@@ -1,0 +1,20 @@
+{
+  "name": "Hunter's Mark",
+  "level": 1,
+  "school": "Divination",
+  "casting_time": "1 bonus action",
+  "range": "90 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Ranger"
+  ],
+  "description": "Mark a creature. You deal an extra 1d6 damage with weapon attacks against it and have advantage on checks to find it. If it drops to 0 hit points, you can move the mark to a new creature as a bonus action.",
+  "at_higher_levels": "Duration extends to 8 hours at slot level 3 or 4, and 24 hours at level 5 or higher (concentration).",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

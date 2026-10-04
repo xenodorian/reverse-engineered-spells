@@ -1,0 +1,23 @@
+{
+  "name": "Alarm",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 minute",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A tiny bell and a piece of silver wire",
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Ranger",
+    "Wizard"
+  ],
+  "description": "Ward a door, window, or area up to a 20-foot cube. When a Tiny or larger creature you did not name as safe enters it, you get a mental ping or an audible chime.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

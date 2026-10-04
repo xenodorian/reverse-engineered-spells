@@ -1,0 +1,24 @@
+{
+  "name": "Thunderwave",
+  "level": 1,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Self (15-foot cube)",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Creatures in a 15-foot cube make a Constitution save, taking 2d8 thunder damage and being pushed 10 feet on a failure, or half damage and no push on a success. Unsecured objects are pushed too, and the boom is audible 300 feet away.",
+  "at_higher_levels": "Damage rises by 1d8 per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

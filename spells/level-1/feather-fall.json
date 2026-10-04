@@ -1,0 +1,23 @@
+{
+  "name": "Feather Fall",
+  "level": 1,
+  "school": "Transmutation",
+  "casting_time": "1 reaction, when you or a creature within range falls",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "M"
+  ],
+  "material": "A small feather or piece of down",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Up to five falling creatures slow to 60 feet per round and take no falling damage if they land before the spell ends.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

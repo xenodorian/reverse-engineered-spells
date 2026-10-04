@@ -1,0 +1,25 @@
+{
+  "name": "Cure Wounds",
+  "level": 1,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Paladin",
+    "Ranger"
+  ],
+  "description": "A creature you touch regains 1d8 plus your spellcasting modifier hit points. It has no effect on undead or constructs.",
+  "at_higher_levels": "Healing rises by 1d8 per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

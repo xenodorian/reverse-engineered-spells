@@ -1,0 +1,27 @@
+{
+  "name": "Detect Magic",
+  "level": 1,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Paladin",
+    "Ranger",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Sense magic within 30 feet. As an action you can see a faint aura on a visible magical creature or object and learn its school. Thick barriers block it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

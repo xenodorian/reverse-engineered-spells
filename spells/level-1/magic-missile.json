@@ -1,0 +1,22 @@
+{
+  "name": "Magic Missile",
+  "level": 1,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Create three darts that each hit automatically for 1d4 plus 1 force damage. You can aim them at one or several targets.",
+  "at_higher_levels": "One more dart per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Mage Armor",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A piece of cured leather",
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A willing creature not wearing armor has a base AC of 13 plus its Dexterity modifier. It ends if the target dons armor.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

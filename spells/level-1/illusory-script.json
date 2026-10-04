@@ -1,0 +1,23 @@
+{
+  "name": "Illusory Script",
+  "level": 1,
+  "school": "Illusion",
+  "casting_time": "1 minute",
+  "range": "Touch",
+  "components": [
+    "S",
+    "M"
+  ],
+  "material": "Lead-based ink worth at least 10 gp",
+  "duration": "10 days",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Write on parchment or similar material so only chosen readers can read it. Others see unreadable or false text. Dispel magic can remove it, and true seeing reads it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Shield",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 reaction, when you are hit by an attack or targeted by magic missile",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 round",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Gain +5 AC until the start of your next turn, including against the triggering attack, and take no damage from magic missile.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

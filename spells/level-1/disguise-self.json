@@ -1,0 +1,23 @@
+{
+  "name": "Disguise Self",
+  "level": 1,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Change your appearance, including clothing and gear, within the same general body shape and up to a foot of height difference. Touch reveals the illusion, and an Investigation check against your spell save DC can see through it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

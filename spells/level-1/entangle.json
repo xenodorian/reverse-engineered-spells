@@ -1,0 +1,21 @@
+{
+  "name": "Entangle",
+  "level": 1,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "90 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "Grasping plants fill a 20-foot square and make it difficult terrain. Creatures there make a Strength save or become restrained. A restrained creature can use its action for a Strength check against your save DC to escape.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

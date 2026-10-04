@@ -1,0 +1,24 @@
+{
+  "name": "Animal Friendship",
+  "level": 1,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A morsel of food",
+  "duration": "24 hours",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "One beast with Intelligence 3 or lower makes a Wisdom save or becomes charmed for the duration. It ends if you or your allies harm it.",
+  "at_higher_levels": "Target one additional beast per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

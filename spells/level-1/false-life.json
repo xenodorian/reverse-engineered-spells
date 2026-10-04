@@ -1,0 +1,23 @@
+{
+  "name": "False Life",
+  "level": 1,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small amount of alcohol or distilled spirits",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Gain 1d4 plus 4 temporary hit points for the duration.",
+  "at_higher_levels": "Gain 5 more temporary hit points per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

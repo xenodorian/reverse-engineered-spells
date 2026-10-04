@@ -1,0 +1,24 @@
+{
+  "name": "Silent Image",
+  "level": 1,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A bit of fleece",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Create a visual illusion of an object, creature, or phenomenon within a 15-foot cube. It has no sound, smell, or other sense. You can move it as an action. Physical interaction reveals it, as does an Investigation check against your save DC.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

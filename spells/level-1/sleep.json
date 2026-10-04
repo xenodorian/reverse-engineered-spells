@@ -1,0 +1,24 @@
+{
+  "name": "Sleep",
+  "level": 1,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "90 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of fine sand, rose petals, or a cricket",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Roll 5d8. Starting with the lowest-HP creatures in a 20-foot radius, each creature whose HP is at or below the remaining total falls unconscious until the spell ends, it takes damage, or someone wakes it. Undead and creatures immune to charm are unaffected.",
+  "at_higher_levels": "Roll 2d8 more per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

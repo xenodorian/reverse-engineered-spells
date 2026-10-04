@@ -1,0 +1,23 @@
+{
+  "name": "Color Spray",
+  "level": 1,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Self (15-foot cone)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of red, yellow, and blue powder or sand",
+  "duration": "1 round",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Roll 6d10. Starting with the lowest-HP creatures in a 15-foot cone, each creature whose HP is at or below the remaining total is blinded until the end of your next turn, then the total is reduced by its HP. Unconscious and sightless creatures are skipped.",
+  "at_higher_levels": "Roll 2d10 more per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

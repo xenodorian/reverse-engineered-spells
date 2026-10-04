@@ -1,0 +1,25 @@
+{
+  "name": "Charm Person",
+  "level": 1,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "One humanoid makes a Wisdom save, with advantage if you or your allies are fighting it. On a failure it is charmed and regards you as a friendly acquaintance. It knows it was charmed when the spell ends.",
+  "at_higher_levels": "Target one additional humanoid per slot level above 1, all within 30 feet of each other.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

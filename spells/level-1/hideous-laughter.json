@@ -1,0 +1,23 @@
+{
+  "name": "Hideous Laughter",
+  "level": 1,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Tiny tarts and a feather waved in the air",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Wizard"
+  ],
+  "description": "A creature with Intelligence 5 or higher makes a Wisdom save or falls prone, incapacitated, and laughing. It repeats the save at the end of each of its turns, and with advantage if it took damage.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

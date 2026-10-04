@@ -1,0 +1,24 @@
+{
+  "name": "Witch Bolt",
+  "level": 1,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A twig from a tree struck by lightning",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Make a ranged spell attack. On a hit the target takes 1d12 lightning damage, and a beam links you to it. Each turn you can use your action to deal 1d12 lightning damage automatically while it stays in range.",
+  "at_higher_levels": "Initial damage rises by 1d12 per slot level above 1.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

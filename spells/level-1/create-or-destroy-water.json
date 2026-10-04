@@ -1,0 +1,23 @@
+{
+  "name": "Create or Destroy Water",
+  "level": 1,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A drop of water to create, or a few grains of sand to destroy",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid"
+  ],
+  "description": "Create up to 10 gallons of clean water in an open container or as rain in a 30-foot cube, or destroy up to 10 gallons of water or fog in a 30-foot cube.",
+  "at_higher_levels": "Create or destroy 10 more gallons per slot level above 1; the cube grows by 5 feet per level.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

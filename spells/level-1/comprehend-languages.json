@@ -1,0 +1,25 @@
+{
+  "name": "Comprehend Languages",
+  "level": 1,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of soot and salt",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "You understand any spoken language you hear and any written language you touch while reading. It does not reveal secret messages or decode magic.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Identify",
+  "level": 1,
+  "school": "Divination",
+  "casting_time": "1 minute",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pearl worth at least 100 gp and an owl feather",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Wizard"
+  ],
+  "description": "Learn a touched magic item's properties and how to use them, whether it needs attunement, and its charges. Or learn which spells are affecting a creature you touch.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

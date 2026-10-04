@@ -1,0 +1,22 @@
+{
+  "name": "Find Familiar",
+  "level": 1,
+  "school": "Conjuration",
+  "casting_time": "1 hour",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "10 gp of charcoal, incense, and herbs burned in a brass brazier",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "Gain a spirit in the form of a small animal that acts independently, obeys your commands, and lets you see through its eyes and speak telepathically within 100 feet. It cannot attack, but can deliver touch spells. You can dismiss it to a pocket dimension and recall it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

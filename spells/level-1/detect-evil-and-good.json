@@ -1,0 +1,22 @@
+{
+  "name": "Detect Evil and Good",
+  "level": 1,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin"
+  ],
+  "description": "Sense aberrations, celestials, elementals, fey, fiends, and undead within 30 feet, and know their type and direction. You also sense places or objects that have been consecrated or desecrated. Thick barriers block it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}

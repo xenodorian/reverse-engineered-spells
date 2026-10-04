@@ -1,0 +1,25 @@
+{
+  "name": "Protection from Evil and Good",
+  "level": 1,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Holy water or powdered silver and iron",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A willing creature is protected from aberrations, celestials, elementals, fey, fiends, and undead. They have disadvantage on attacks against it, cannot charm, frighten, or possess it, and it can end such effects with a new save.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 1 list), text reimplemented"
+}
