@@ -1,0 +1,24 @@
+{
+  "name": "Poison Spray",
+  "level": 0,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "One creature makes a Constitution save or takes 1d12 poison damage.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

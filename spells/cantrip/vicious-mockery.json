@@ -1,0 +1,20 @@
+{
+  "name": "Vicious Mockery",
+  "level": 0,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard"
+  ],
+  "description": "Hurl an insult laced with magic. The target makes a Wisdom save or takes 1d4 psychic damage and has disadvantage on its next attack roll before the end of its next turn.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

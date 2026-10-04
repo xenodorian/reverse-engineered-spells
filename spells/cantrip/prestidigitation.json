@@ -1,0 +1,24 @@
+{
+  "name": "Prestidigitation",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Perform minor magical tricks, such as small sensory effects, lighting or snuffing a flame, cleaning or soiling an item, chilling or warming food, or making a small mark.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Guidance",
+  "level": 0,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid"
+  ],
+  "description": "A willing creature can add 1d4 to one ability check of its choice before the spell ends.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Mage Hand",
+  "level": 0,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A spectral hand can manipulate objects, open doors, and carry up to 10 pounds. You can move it 30 feet each time you use your action to control it. It cannot attack.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

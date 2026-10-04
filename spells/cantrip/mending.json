@@ -1,0 +1,26 @@
+{
+  "name": "Mending",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 minute",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Two lodestones",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Repair a single break or tear in an object, up to 1 foot in any dimension. It cannot restore magic items.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

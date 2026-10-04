@@ -1,0 +1,21 @@
+{
+  "name": "Druidcraft",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "Perform a small nature trick, such as sensing tomorrow's weather, making a bloom open, creating a harmless sensory effect, or lighting or snuffing a small flame.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

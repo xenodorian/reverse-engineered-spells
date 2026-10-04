@@ -1,0 +1,22 @@
+{
+  "name": "Acid Splash",
+  "level": 0,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Hurl acid at one creature, or two creatures within 5 feet of each other. Each makes a Dexterity save or takes 1d6 acid damage.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Produce Flame",
+  "level": 0,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "A flame in your hand sheds bright light in a 10-foot radius. You can hurl it at a target within 30 feet with a ranged spell attack for 1d8 fire damage, which ends the spell.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

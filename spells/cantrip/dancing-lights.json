@@ -1,0 +1,24 @@
+{
+  "name": "Dancing Lights",
+  "level": 0,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A bit of phosphorus or wychwood, or a glowworm",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Create up to four torch-sized lights that you can move up to 60 feet as a bonus action. Each sheds dim light.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

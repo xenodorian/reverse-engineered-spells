@@ -1,0 +1,21 @@
+{
+  "name": "Spare the Dying",
+  "level": 0,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "A living creature at 0 hit points becomes stable. It has no effect on undead or constructs.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

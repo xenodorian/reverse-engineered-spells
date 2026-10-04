@@ -1,0 +1,24 @@
+{
+  "name": "Minor Illusion",
+  "level": 0,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "S",
+    "M"
+  ],
+  "material": "A bit of fleece",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Create a sound, or an image of an object no larger than a 5-foot cube. Physical interaction reveals it, as does an Investigation check against your save DC.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

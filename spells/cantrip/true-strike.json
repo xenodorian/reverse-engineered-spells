@@ -1,0 +1,23 @@
+{
+  "name": "True Strike",
+  "level": 0,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "S"
+  ],
+  "material": null,
+  "duration": "1 round",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Gain insight into a creature's defenses. You have advantage on your first attack roll against it on your next turn.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

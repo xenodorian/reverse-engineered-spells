@@ -1,0 +1,22 @@
+{
+  "name": "Fire Bolt",
+  "level": 0,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Make a ranged spell attack. On a hit the target takes 1d10 fire damage. An unattended flammable object ignites.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

@@ -1,0 +1,24 @@
+{
+  "name": "Message",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A short piece of copper wire",
+  "duration": "1 round",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Whisper a message to a creature in range that only it can hear and answer in a whisper. It can pass around corners and through thin barriers.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

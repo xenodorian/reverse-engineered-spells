@@ -1,0 +1,24 @@
+{
+  "name": "Light",
+  "level": 0,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "M"
+  ],
+  "material": "A firefly or phosphorescent moss",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "An object you touch sheds bright light in a 20-foot radius and dim light 20 feet beyond. A hostile creature holding it can resist with a Dexterity save.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

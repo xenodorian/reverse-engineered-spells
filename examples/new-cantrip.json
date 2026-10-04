@@ -1,12 +1,12 @@
 {
-  "name": "Ember Lash",
+  "name": "Frost Prick",
+  "level": 0,
   "casting_time": "1 action",
-  "range": "60 feet",
+  "range": "30 feet",
   "duration": "1 round",
   "components": [
     "V",
-    "S",
-    "M"
+    "S"
   ],
   "material_gp": 0,
   "consumed": false,
@@ -16,15 +16,14 @@
   "class_count": 2,
   "lines": [
     [
-      "dmg",
-      9
+      "c_dmg",
+      3.5
     ],
     [
       "rel_attack"
     ],
     [
-      "advantage_next"
+      "c_slow10"
     ]
-  ],
-  "level": 1
+  ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "Shillelagh",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 bonus action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Mistletoe, a shamrock leaf, and a club or quarterstaff",
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "A club or quarterstaff you hold becomes magical, uses your spellcasting ability for attacks and damage, and deals 1d8 damage.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

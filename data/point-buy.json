@@ -1,310 +1,511 @@
 {
-  "budget": 100,
+  "budgets": {
+    "cantrip": 25,
+    "level_1": 100
+  },
+  "level_1_effect_floor": 50,
+  "cantrip_effect_ceiling": 49,
+  "limit_refund_cap_share": 0.5,
   "effects": {
     "dmg": {
       "label": "Damage dealt",
       "points": 5,
-      "unit": "per avg damage"
+      "unit": "per avg damage",
+      "tier": "level_1"
     },
     "dmg_rider": {
       "label": "Extra damage on each weapon hit",
       "points": 16,
-      "unit": "per avg damage"
+      "unit": "per avg damage",
+      "tier": "level_1"
     },
     "dmg_recurring": {
       "label": "Repeat damage on later turns",
       "points": 5,
-      "unit": "per avg damage"
+      "unit": "per avg damage",
+      "tier": "level_1"
     },
     "heal": {
       "label": "Hit points restored (modifier assumed +3)",
       "points": 5,
-      "unit": "per avg HP"
+      "unit": "per avg HP",
+      "tier": "level_1"
     },
     "temp_hp": {
       "label": "Temporary hit points",
       "points": 4,
-      "unit": "per HP"
+      "unit": "per HP",
+      "tier": "level_1"
     },
     "temp_hp_recurring": {
       "label": "Temporary hit points renewed each turn",
       "points": 8,
-      "unit": "per HP per turn"
+      "unit": "per HP per turn",
+      "tier": "level_1"
     },
     "rel_attack": {
       "label": "Delivered by attack roll",
       "points": 0,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "shared"
     },
     "rel_save_half": {
       "label": "Delivered by save, half on success",
       "points": 5,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "rel_auto": {
       "label": "Hits automatically",
       "points": 12,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "no_save": {
       "label": "Condition with no save or roll",
       "points": 15,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "ac_bonus": {
       "label": "Armor Class bonus",
       "points": 16,
-      "unit": "per +1 AC"
+      "unit": "per +1 AC",
+      "tier": "level_1"
     },
     "die_bonus": {
       "label": "d4 bonus to attacks and saves",
       "points": 34,
-      "unit": "per target"
+      "unit": "per target",
+      "tier": "level_1"
     },
     "advantage_vs_target": {
       "label": "Attacks against target have advantage",
       "points": 29,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "advantage_next": {
       "label": "Advantage on one next attack",
       "points": 21,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "protect_types": {
       "label": "Disadvantage vs six creature types plus charm and fear immunity",
       "points": 47,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "immune_frightened": {
       "label": "Immune to frightened",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "speed_bonus": {
       "label": "Walking speed bonus",
       "points": 2,
-      "unit": "per foot"
+      "unit": "per foot",
+      "tier": "level_1"
     },
     "extra_dash": {
       "label": "Dash as bonus action each turn",
       "points": 34,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "jump_triple": {
       "label": "Triple jump distance",
       "points": 8,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "fall_immunity": {
       "label": "Negate falling damage and slow fall",
       "points": 16,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "magic_missile_immune": {
       "label": "Immune to one named spell",
       "points": 5,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_prone": {
       "label": "Prone",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_charmed": {
       "label": "Charmed",
       "points": 31,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_frightened": {
       "label": "Frightened",
       "points": 31,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_blinded": {
       "label": "Blinded",
       "points": 31,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_restrained": {
       "label": "Restrained",
       "points": 36,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_incapacitated": {
       "label": "Incapacitated",
       "points": 42,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_unconscious": {
       "label": "Unconscious",
       "points": 52,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "cond_command": {
       "label": "Forced to obey a one word order",
       "points": 29,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "forced_move": {
       "label": "Forced movement up to 10 ft",
       "points": 5,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "difficult_terrain": {
       "label": "Difficult terrain",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "heavy_obscure": {
       "label": "Heavily obscured area",
       "points": 26,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_outline": {
       "label": "Outlines target, negates invisibility",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_ignite": {
       "label": "Ignites loose flammables",
       "points": 3,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "shared"
     },
     "util_detect": {
       "label": "Sense a category within 30 ft",
       "points": 26,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_detect_aura": {
       "label": "Learn aura or school of what you sense",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_lore": {
       "label": "Reveal properties or lore",
       "points": 21,
-      "unit": "per item"
+      "unit": "per item",
+      "tier": "level_1"
     },
     "util_language": {
       "label": "Understand any language",
       "points": 26,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_speak": {
       "label": "Speak with a creature type",
       "points": 23,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_create_water": {
       "label": "Create or destroy water",
       "points": 13,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_purify": {
       "label": "Purify food and drink",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_food": {
       "label": "Day of food",
       "points": 13,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_alarm": {
       "label": "Alert when an area is entered",
       "points": 18,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_ward": {
       "label": "Ward that redirects attackers",
       "points": 47,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_illusion_image": {
       "label": "Create a visual illusion",
       "points": 47,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_disguise": {
       "label": "Change your appearance",
       "points": 47,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_script": {
       "label": "Hidden writing",
       "points": 26,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_servant": {
       "label": "Invisible helper that does chores",
       "points": 42,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_familiar": {
       "label": "Summon a loyal scout and helper",
       "points": 73,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_mark_track": {
       "label": "Advantage to track a marked target",
       "points": 8,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "util_mark_move": {
       "label": "Move effect to a new target",
       "points": 5,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "persist": {
       "label": "Effect lasts until dismissed",
       "points": 21,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "target_extra": {
       "label": "Each additional target",
       "points": 10,
-      "unit": "per target"
+      "unit": "per target",
+      "tier": "shared"
     },
     "split_targets": {
       "label": "Split effect among several targets",
       "points": 10,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
+    },
+    "area_cube5": {
+      "label": "5 ft cube",
+      "points": 4,
+      "unit": "flat",
+      "tier": "shared"
     },
     "area_square10": {
       "label": "10 ft square",
       "points": 13,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_square20": {
       "label": "20 ft square",
       "points": 23,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_cone15": {
       "label": "15 ft cone",
       "points": 18,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_cube15": {
       "label": "15 ft cube",
       "points": 18,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_cube20": {
       "label": "20 ft cube",
       "points": 23,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_radius20": {
       "label": "20 ft radius",
       "points": 26,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
     },
     "area_radius30": {
       "label": "30 ft radius",
       "points": 31,
-      "unit": "flat"
+      "unit": "flat",
+      "tier": "level_1"
+    }
+  },
+  "cantrip_effects": {
+    "c_dmg": {
+      "label": "Cantrip damage (average 6.5 or less)",
+      "points": 3,
+      "unit": "per avg damage",
+      "cap": 6.5
+    },
+    "c_slow10": {
+      "label": "Target speed reduced 10 ft until your next turn",
+      "points": 6,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_no_heal": {
+      "label": "Target cannot regain HP until your next turn",
+      "points": 3,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_no_reactions": {
+      "label": "Target cannot take reactions until its next turn",
+      "points": 8,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_disadv_next": {
+      "label": "Target has disadvantage on its next attack roll",
+      "points": 8,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_adv_self": {
+      "label": "Advantage on your next attack against one target",
+      "points": 10,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_ignore_cover": {
+      "label": "Target gets no cover bonus to the save",
+      "points": 3,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_d4_check": {
+      "label": "d4 on one ability check",
+      "points": 14,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_d4_save": {
+      "label": "d4 on one saving throw",
+      "points": 14,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_light": {
+      "label": "Create light",
+      "points": 4,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_lights4": {
+      "label": "Four movable lights",
+      "points": 12,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_hand": {
+      "label": "Spectral hand, 10 lb, 30 ft",
+      "points": 14,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_mend": {
+      "label": "Repair one small break",
+      "points": 12,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_message": {
+      "label": "Whispered message to one creature",
+      "points": 8,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_illusion_min": {
+      "label": "Small image or sound",
+      "points": 14,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_trick": {
+      "label": "Several minor magical tricks",
+      "points": 10,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_nature": {
+      "label": "Minor nature effects",
+      "points": 14,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_wonder": {
+      "label": "Minor wonders",
+      "points": 10,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_stabilize": {
+      "label": "Stabilize a dying creature",
+      "points": 12,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_weapon": {
+      "label": "Enchant a club or staff (spell modifier, d8, magical)",
+      "points": 18,
+      "unit": "flat",
+      "cap": null
+    },
+    "c_throw": {
+      "label": "Hurl the effect 30 ft",
+      "points": 3,
+      "unit": "flat",
+      "cap": null
     }
   },
   "limits": {
@@ -408,6 +609,14 @@
       "label": "Loud, reveals your position",
       "points": -2
     },
+    "lim_cosmetic": {
+      "label": "Cosmetic or trivial effects only",
+      "points": -6
+    },
+    "lim_expend": {
+      "label": "Effect ends when used",
+      "points": -8
+    },
     "lim_range_break": {
       "label": "Breaks if the target leaves range",
       "points": -2
@@ -442,7 +651,8 @@
   },
   "concentration": -10,
   "ritual": 5,
-  "scaling": 5,
+  "scaling_level_1": 5,
+  "scaling_cantrip": 3,
   "components": {
     "V": -2,
     "S": -2,

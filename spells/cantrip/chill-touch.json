@@ -1,0 +1,23 @@
+{
+  "name": "Chill Touch",
+  "level": 0,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 round",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Make a ranged spell attack. On a hit the target takes 1d8 necrotic damage and cannot regain hit points until the start of your next turn. An undead target also has disadvantage on attacks against you until then.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Shocking Grasp",
+  "level": 0,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Make a melee spell attack, with advantage if the target wears metal armor. On a hit the target takes 1d8 lightning damage and cannot take reactions until its next turn.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

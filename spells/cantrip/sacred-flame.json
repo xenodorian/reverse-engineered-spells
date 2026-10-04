@@ -1,0 +1,21 @@
+{
+  "name": "Sacred Flame",
+  "level": 0,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Radiance falls on a creature you can see. It makes a Dexterity save or takes 1d8 radiant damage. Cover gives it no bonus.",
+  "at_higher_levels": "Damage dice increase at character levels 5, 11, and 17.",
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

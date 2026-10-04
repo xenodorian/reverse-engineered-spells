@@ -1,0 +1,23 @@
+{
+  "name": "Resistance",
+  "level": 0,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A miniature cloak",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid"
+  ],
+  "description": "A willing creature can add 1d4 to one saving throw of its choice before the spell ends.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

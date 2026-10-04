@@ -1,0 +1,20 @@
+{
+  "name": "Thaumaturgy",
+  "level": 0,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Produce a minor wonder, such as a booming voice, flickering flames, harmless tremors, an altered eye color, or a door or window that slams.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 cantrip list), text reimplemented"
+}

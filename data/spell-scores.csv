@@ -1,50 +1,74 @@
-spell,net_cost,points_left,concentration,components,classes
-Guiding Bolt,99,1,False,VS,1
-Bless,98,2,True,VSM,2
-Bane,97,3,True,VSM,2
-Hunter's Mark,95.0,5.0,True,V,1
-Sleep,90,10,False,VSM,3
-Shield,86,14,False,VS,2
-Magic Missile,81.5,18.5,False,VS,2
-Inflict Wounds,79.5,20.5,False,VS,1
-Burning Hands,77.5,22.5,False,VS,2
-Detect Magic,74,26,True,VS,7
-Fog Cloud,73,27,True,VS,4
-Thunderwave,72,28,False,VS,4
-Find Familiar,69,31,False,VSM,1
-Feather Fall,68,32,False,VM,3
-Hellish Rebuke,66,34,False,VS,1
-Faerie Fire,63,37,True,V,2
-Entangle,62,38,True,VS,1
-Mage Armor,61,39,False,VSM,2
-Alarm,58,42,False,VSM,2
-Detect Poison and Disease,58,42,True,VSM,4
-Silent Image,58,42,True,VSM,3
-Disguise Self,57,43,False,VS,3
-Unseen Servant,55,45,False,VSM,3
-Detect Evil and Good,54,46,True,VS,2
-Witch Bolt,54.0,46.0,True,VSM,3
-Color Spray,53,47,False,VSM,2
-Sanctuary,49,51,False,VSM,1
-Animal Friendship,48,52,False,VSM,3
-Goodberry,45,55,False,VSM,2
-Illusory Script,45,55,False,SM,3
-False Life,44.0,56.0,False,VSM,2
-Charm Person,43,57,False,VS,5
-Protection from Evil and Good,43,57,True,VSM,4
-Expeditious Retreat,42,58,True,VS,3
-Shield of Faith,42,58,True,VSM,2
-Comprehend Languages,40,60,False,VSM,4
-Divine Favor,40.0,60.0,True,VS,1
-Longstrider,40,60,False,VSM,4
-Healing Word,39.5,60.5,False,V,3
-Grease,37,63,False,VSM,1
-Cure Wounds,36.5,63.5,False,VS,5
-Hideous Laughter,34,66,True,VSM,2
-Command,32,68,False,V,2
-Heroism,30,70,True,VS,2
-Create or Destroy Water,29,71,False,VSM,2
-Speak with Animals,28,72,False,VS,3
-Identify,13,87,False,VSM,2
-Jump,11,89,False,VSM,4
-Purify Food and Drink,5,95,False,VS,3
+spell,level,net_cost,budget,points_left,effect_total,concentration,components,classes
+Prestidigitation,0,25.0,25,0.0,10,False,VS,4
+Shillelagh,0,25,25,0,18,False,VSM,1
+Chill Touch,0,24.5,25,0.5,16.5,False,VS,3
+Fire Bolt,0,24.5,25,0.5,19.5,False,VS,2
+Produce Flame,0,23.5,25,1.5,20.5,False,VS,1
+Mage Hand,0,23,25,2,14,False,VS,4
+Ray of Frost,0,21.5,25,3.5,19.5,False,VS,2
+Light,0,21,25,4,4,False,VM,4
+Minor Illusion,0,20,25,5,18,False,SM,4
+Eldritch Blast,0,19.5,25,5.5,16.5,False,VS,1
+Acid Splash,0,18.5,25,6.5,20.5,False,VS,2
+Shocking Grasp,0,18.5,25,6.5,21.5,False,VS,2
+Poison Spray,0,16.5,25,8.5,19.5,False,VS,4
+Vicious Mockery,0,13.5,25,11.5,15.5,False,V,1
+Sacred Flame,0,12.5,25,12.5,16.5,False,VS,1
+Thaumaturgy,0,12.0,25,13.0,10,False,V,1
+Dancing Lights,0,11,25,14,12,True,VSM,3
+Message,0,10,25,15,8,False,VSM,3
+Guidance,0,5,25,20,14,True,VS,2
+Spare the Dying,0,4,25,21,12,False,VS,1
+True Strike,0,4,25,21,10,True,S,4
+Druidcraft,0,3,25,22,14,False,VS,1
+Resistance,0,2,25,23,14,True,VSM,2
+Mending,0,1,25,24,12,False,VSM,5
+Guiding Bolt,1,99,100,1,91,False,VS,1
+Bless,1,98,100,2,102,True,VSM,2
+Bane,1,97,100,3,102,True,VSM,2
+Hunter's Mark,1,95.0,100,5.0,69.0,True,V,1
+Sleep,1,90,100,10,93,False,VSM,3
+Shield,1,86,100,14,85,False,VS,2
+Magic Missile,1,81.5,100,18.5,74.5,False,VS,2
+Inflict Wounds,1,79.5,100,20.5,82.5,False,VS,1
+Burning Hands,1,77.5,100,22.5,78.5,False,VS,2
+Detect Magic,1,74,100,26,67,True,VS,7
+Fog Cloud,1,73,100,27,52,True,VS,4
+Thunderwave,1,72,100,28,73,False,VS,4
+Longstrider,1,70,100,30,20,False,VSM,4
+Find Familiar,1,69,100,31,94,False,VSM,1
+Illusory Script,1,69,100,31,26,False,SM,3
+False Life,1,68.0,100,32.0,26.0,False,VSM,2
+Feather Fall,1,68,100,32,56,False,VM,3
+Alarm,1,67,100,33,41,False,VSM,2
+Animal Friendship,1,67,100,33,31,False,VSM,3
+Hellish Rebuke,1,66,100,34,60,False,VS,1
+Comprehend Languages,1,64,100,36,26,False,VSM,4
+Faerie Fire,1,63,100,37,62,True,V,2
+Mage Armor,1,63,100,37,48,False,VSM,2
+Unseen Servant,1,63,100,37,42,False,VSM,3
+Charm Person,1,62,100,38,31,False,VS,5
+Entangle,1,62,100,38,69,True,VS,1
+Healing Word,1,62.0,100,38.0,27.5,False,V,3
+Disguise Self,1,60,100,40,47,False,VS,3
+Shield of Faith,1,60,100,40,32,True,VSM,2
+Detect Poison and Disease,1,58,100,42,57,True,VSM,4
+Expeditious Retreat,1,58,100,42,34,True,VS,3
+Silent Image,1,58,100,42,65,True,VSM,3
+Speak with Animals,1,55,100,45,23,False,VS,3
+Detect Evil and Good,1,54,100,46,57,True,VS,2
+Grease,1,54,100,46,33,False,VSM,1
+Witch Bolt,1,54.0,100,46.0,65.0,True,VSM,3
+Color Spray,1,53,100,47,64,False,VSM,2
+Command,1,53,100,47,29,False,V,2
+Jump,1,53,100,47,8,False,VSM,4
+Sanctuary,1,52,100,48,47,False,VSM,1
+Divine Favor,1,50.0,100,50.0,40.0,True,VS,1
+Cure Wounds,1,49.0,100,51.0,37.5,False,VS,5
+Heroism,1,46,100,54,34,True,VS,2
+Protection from Evil and Good,1,46,100,54,47,True,VSM,4
+Goodberry,1,45,100,55,63,False,VSM,2
+Purify Food and Drink,1,45,100,55,10,False,VS,3
+Create or Destroy Water,1,43,100,57,36,False,VSM,2
+Hideous Laughter,1,34,100,66,52,True,VSM,2
+Identify,1,21,100,79,42,False,VSM,2
