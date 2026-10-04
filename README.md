@@ -8,4 +8,4 @@ Structured data for D&D 5th edition (2014) spells, with mechanics reimplemented 
 
 Fields: name, level, school, casting_time, range, components, material, duration, concentration, ritual, classes, description, at_higher_levels, source.
 
-Notes: Hideous Laughter is Tasha's in the 2014 PHB lineage but is included in the SRD list. Non-SRD first-level spells are not included.
+Notes: Hideous Laughter is listed under its short name (the full name is Tasha's Hideous Laughter). Non-SRD first-level spells are not included.
