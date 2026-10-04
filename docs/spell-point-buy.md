@@ -60,9 +60,9 @@ Counted from the spell files, and used to set the refund sizes below.
 | Instantaneous duration | 11 of 24 | 12 of 49 |
 | Average classes per spell | 2.4 | 2.6 |
 | Spells on exactly one class list | 8 of 24 | 9 of 49 |
-| Average net cost, concentration spells | 6 | 64 |
+| Average net cost, concentration spells | 6 | 65 |
 | Average net cost, other spells | 17 | 63 |
-| Average net cost, spells with a material | 13 | 61 |
+| Average net cost, spells with a material | 13 | 62 |
 | Average net cost, spells with no material | 16 | 66 |
 
 Takeaways: nearly every spell has a verbal component, most have a somatic one, and about half have a material. Materials are common, so a mundane material refunds little. Gold-cost materials are rare (3 level 1 spells, no cantrips), so they refund heavily. Spells with materials do not score higher than spells without in this set, so the data does not by itself show that materials mark stronger spells. The larger refund for gold-cost materials follows the design rule that costly components limit power, not a trend in these files. Concentration spells are the long-duration ones, so the concentration refund offsets part of the duration cost. Cantrips never use rituals and rarely use concentration. About half of damage cantrips scale with character level, which is why scaling has its own cantrip price.
@@ -118,7 +118,7 @@ These are level 1 only, except the items marked shared, which cantrips may also 
 | Frightened | 31 | flat | no |
 | Blinded | 31 | flat | no |
 | Restrained | 36 | flat | no |
-| Incapacitated | 42 | flat | no |
+| Incapacitated | 72 | flat | no |
 | Unconscious | 52 | flat | no |
 | Forced to obey a one word order | 29 | flat | no |
 | Forced movement up to 10 ft | 5 | flat | no |
@@ -422,6 +422,7 @@ Concentration refunds 10 points. Use it only if the spell lasts a minute or more
 | Animal Friendship | 67 | 33 | 31 |  | VSM | 3 |
 | Hellish Rebuke | 66 | 34 | 60 |  | VS | 1 |
 | Comprehend Languages | 64 | 36 | 26 |  | VSM | 4 |
+| Hideous Laughter | 64 | 36 | 82 | yes | VSM | 2 |
 | Faerie Fire | 63 | 37 | 62 | yes | V | 2 |
 | Mage Armor | 63 | 37 | 48 |  | VSM | 2 |
 | Unseen Servant | 63 | 37 | 42 |  | VSM | 3 |
@@ -448,7 +449,6 @@ Concentration refunds 10 points. Use it only if the spell lasts a minute or more
 | Goodberry | 45 | 55 | 63 |  | VSM | 2 |
 | Purify Food and Drink | 45 | 55 | 10 |  | VS | 3 |
 | Create or Destroy Water | 43 | 57 | 36 |  | VSM | 2 |
-| Hideous Laughter | 34 | 66 | 52 | yes | VSM | 2 |
 | Identify | 21 | 79 | 42 |  | VSM | 2 |
 
 Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>`, for example `score fire-bolt`. The same data is in `data/spell-scores.csv` and `data/point-buy.json`.
@@ -456,7 +456,7 @@ Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>
 ## Known limits of this model
 
 - Damage is valued by average roll. It does not model how monsters resist or how often a save fails.
-- Hard control effects (Hideous Laughter scores 34, Sleep 90) may be priced unevenly. This is my judgment, not tested at a table. Adjust the condition costs if your group disagrees.
+- Hard control effects may be priced unevenly. Incapacitated (72) now costs more than unconscious (52) because Hideous Laughter has no hit point pool and a target that takes damage gets advantage on its repeat save, while Sleep is capped by a pool and ends on damage. That is my judgment, not tested at a table. Adjust the condition costs if your group disagrees.
 - The 50 point floor applies to a spell's whole effect package, not to each item. A single level 1 effect item can cost less than 50 as long as the spell's effects total 50 or more. If you wanted every individual item priced at 50 or more, the level 1 budget would need to rise.
 - Cantrip scaling is flat priced. A cantrip that scales much harder than the standard dice steps should pay extra.
 - Spell level beyond 1 is not modeled.

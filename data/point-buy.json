@@ -165,7 +165,7 @@
     },
     "cond_incapacitated": {
       "label": "Incapacitated",
-      "points": 42,
+      "points": 72,
       "unit": "flat",
       "tier": "level_1"
     },

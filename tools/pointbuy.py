@@ -49,7 +49,7 @@ EFFECTS = {
     "cond_frightened": ("Frightened", 31, "flat"),
     "cond_blinded":    ("Blinded", 31, "flat"),
     "cond_restrained": ("Restrained", 36, "flat"),
-    "cond_incapacitated": ("Incapacitated", 42, "flat"),
+    "cond_incapacitated": ("Incapacitated", 72, "flat"),
     "cond_unconscious": ("Unconscious", 52, "flat"),
     "cond_command":    ("Forced to obey a one word order", 29, "flat"),
     "forced_move":     ("Forced movement up to 10 ft", 5, "flat"),

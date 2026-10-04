@@ -180,7 +180,7 @@ def write(sp):
     A("Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>`, for example `score fire-bolt`. The same data is in `data/spell-scores.csv` and `data/point-buy.json`.\n")
     A("## Known limits of this model\n")
     A("- Damage is valued by average roll. It does not model how monsters resist or how often a save fails.")
-    A("- Hard control effects (Hideous Laughter scores 34, Sleep 90) may be priced unevenly. This is my judgment, not tested at a table. Adjust the condition costs if your group disagrees.")
+    A("- Hard control effects may be priced unevenly. Incapacitated (72) now costs more than unconscious (52) because Hideous Laughter has no hit point pool and a target that takes damage gets advantage on its repeat save, while Sleep is capped by a pool and ends on damage. That is my judgment, not tested at a table. Adjust the condition costs if your group disagrees.")
     A("- The 50 point floor applies to a spell's whole effect package, not to each item. A single level 1 effect item can cost less than 50 as long as the spell's effects total 50 or more. If you wanted every individual item priced at 50 or more, the level 1 budget would need to rise.")
     A("- Cantrip scaling is flat priced. A cantrip that scales much harder than the standard dice steps should pay extra.")
     A("- Spell level beyond 1 is not modeled.")
