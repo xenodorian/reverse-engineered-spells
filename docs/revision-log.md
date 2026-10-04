@@ -23,9 +23,9 @@ Smaller changes made so every spell stayed legal after the above: cantrip damage
 ### Result
 
 - All 126 spells are legal under every rule. Mean net cost is 17.7 for cantrips, 74.7 for level 1, and 120.2 for level 2. The strongest spells sit at their budget: Fire Bolt 24.5 of 25, Sleep 99.7 of 100, and the top level 2 spell at 150.
-- Cantrips now span 8 to 25. Before, nine of them were over 25 or squeezed against it.
+- Cantrips span 8 to 25. Pricing Produce Flame's 30 ft throw and scaling by damage would have pushed some over 25, so the weak-effect duration rule keeps them in budget.
 - Scaling every damage and healing line together, the median spell can grow about 5% with all rules on, and the worst about 55% to 85%. With only the budget enforced the worst grew about 3 to 4 times. Detail is in `docs/spell-scaling-analysis.md`.
-- The level 2 budget stays at 150. The calibrated ratio moved only slightly.
+- The level 2 budget stays at 150. The calibrated level 2 to level 1 ratio moved from 1.54 to 1.61, which still rounds to 150.
 
 ### Left alone, on purpose
 
