@@ -14,8 +14,7 @@
   "concentration": false,
   "ritual": false,
   "classes": [
-    "Cleric",
-    "Paladin"
+    "Cleric"
   ],
   "description": "A willing creature gains +1 AC, +1 to saves, and resistance to all damage. Whenever it takes damage, you take the same amount. It ends if you move too far away.",
   "at_higher_levels": null,

@@ -67,3 +67,31 @@ Added 43 level 3 spells from memory of the SRD 5.1 list (`spells/level-3/`), abo
 - Level 3 is the least checked level. Its builds were written once.
 - At level 3, 35 of 43 spells rise to the floor of 150, so the weak end of the level is floor-driven. The budget is not, because it follows the strongest spell.
 - The budgets follow the strongest spell, so one mispriced standout (Conjure Animals and Glyph of Warding are the top two at 228 and 227) moves a budget by a step of 25.
+
+## Sanity check pass
+
+Numbers in the sections above describe the state at the time of each pass. The current numbers are in `docs/spell-scaling-analysis.md`.
+
+### What was checked
+
+- **Logic checks:** 29 of 29 pass.
+- **Reproducibility:** Re-running the fit and the report from a clean state changed no committed file.
+- **Hand recomputation:** I rebuilt Fire Bolt and Hold Person by hand from the calibration file. They came out 0.1 and 0.2 points off the calculator (24.9 against 25.0, 138.4 against 138.6). The gap is rounding: each line is rounded to one decimal before the total is added, so a total can drift by a few tenths. The displayed lines always sum to the displayed total.
+- **Counts:** 24 cantrips, 49 level 1, 53 level 2, 43 level 3. No duplicate names. All 169 scores are within budget.
+- **Examples:** All three example files still run and stay within budget.
+- **Spell data review:** I reviewed every spell's concentration, ritual, casting time, and class list against my recollection of the 2014 books. This is a memory check, not a check against the books.
+- **Random builds:** 3,000 random legal builds at each of levels 1 to 3 (see below).
+
+### Errors found and fixed
+
+| Error | Fix |
+|---|---|
+| Prayer of Healing and Warding Bond listed Paladin as a class. As I recall, Paladin gets neither | Both are now Cleric only. The class-list refund changed by a fraction of a point and the budgets did not move |
+| `calc` crashed with a stack trace on an unknown item name, and `score` on an unknown spell | Both now print a one-line message |
+| The builder guide said to set the level to 0, 1, or 2, and had a stray double space | Corrected |
+
+### Found and left alone
+
+- **Random builds can slightly out-do the existing spells.** Among random legal builds, the highest effect total was 100, 150, and 248 at levels 1, 2, and 3. The strongest existing spells reach 94, 128, and 209. A builder can therefore beat the best existing spell's effect power by about 6%, 17%, and 19%, and its gross cost (effects, delivery, and duration before refunds) by about 15%, 15%, and 6%. The cause is the effect ceiling, which equals the budget. Lowering the ceiling to about 90% of the budget would close most of the gap. I did not change it, because that would change a rule you have already seen.
+- **The class lists are from memory.** I am least sure of the lists for spells I know less well. Treat every class list as unverified.
+- **The spell lists may be incomplete.** The SRD level 2 and 3 lists were recalled, so a few real SRD spells may be missing.

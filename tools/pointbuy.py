@@ -54,7 +54,10 @@ def main():
     if not a:
         print(__doc__); return
     if a[0] == "score" and len(a) == 2:
-        sp = load_spells()[a[1]]
+        spells = load_spells()
+        if a[1] not in spells:
+            print(f"No spell file named {a[1]!r}. Use the file name without .json, for example fire-bolt."); sys.exit(1)
+        sp = spells[a[1]]
         rows, t = P.score(sp[1], enforce=False); print(fmt(rows, t, sp[0]["name"], sp[1]))
     elif a[0] == "calc" and len(a) == 2:
         spec = json.load(open(a[1])); spec.setdefault("lines", [])
@@ -65,6 +68,8 @@ def main():
             rows, t = P.score(spec)
         except ValueError as e:
             print(f"Rejected: {e}"); sys.exit(1)
+        except KeyError as e:
+            print(f"Unknown or missing entry {e}. Item and limit names are in data/point-buy.json."); sys.exit(1)
         print(fmt(rows, t, spec.get("name", "New spell"), spec))
     elif a[0] == "fit":
         import fit; fit.run(load_spells())

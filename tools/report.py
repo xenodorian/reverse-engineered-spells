@@ -89,7 +89,7 @@ def write(sp):
     A = L.append
     A("# Spell Point Buy\n")
     A(f"A point budget system for building cantrips and spells of levels 1 to 3. A cantrip gets **{B[0]} points**, a 1st-level spell **{B[1]}**, a 2nd-level spell **{B[2]}**, and a 3rd-level spell **{B[3]}**. Effects, range, and duration cost points. Components and limits give points back. A spell is legal if it passes every rule below and its net cost is at or under its budget.\n")
-    A("> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`, with the 43 level 3 spells held out and measured.  They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why the budgets are 150 and 250 at levels 2 and 3, and how the curve was chosen, is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.\n")
+    A("> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`, with the 43 level 3 spells held out and measured. They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why the budgets are 150 and 250 at levels 2 and 3, and how the curve was chosen, is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.\n")
     A("## Budgets and clearances\n")
     A(tbl(["Level", "Budget", "Effects must total", "Magnitude caps", "Strong conditions total at most"], [
         ["Cantrip", B[0], f"{P.CANTRIP_CEIL} or less", "yes", "no strong conditions"],
@@ -121,7 +121,7 @@ def write(sp):
     A("5. **Add components.** Components are refunds. Material components with a gold cost refund the most.")
     A("6. **Add limits.** Each caveat that really constrains the spell refunds points, up to the cap. Do not claim a limit that never matters.")
     A("7. **Add up.** Net cost = effects + delivery + duration - refunds. Stay at or below budget, then playtest.\n")
-    A("Skip the arithmetic with the calculator: `python tools/pointbuy.py calc examples/new-spell.json`. Set `\"level\"` to 0, 1, or 2. Write quantities as the second value in a line, and an optional `\"upcast\": [\"dmg\", 3.5]`.\n")
+    A("Skip the arithmetic with the calculator: `python tools/pointbuy.py calc examples/new-spell.json`. Set `\"level\"` to 0, 1, 2, or 3. Write quantities as the second value in a line, and an optional `\"upcast\": [\"dmg\", 3.5]`.\n")
     A("### Reading a score\n")
     brows = []
     for lv, nm in ((0, "Cantrip"), (1, "Level 1"), (2, "Level 2"), (3, "Level 3")):

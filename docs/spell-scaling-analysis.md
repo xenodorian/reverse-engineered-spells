@@ -55,14 +55,14 @@ Mean points per spell, by dimension, using the calibrated prices.
 | Buffs | 1.9 | 7.9 | 11.1 | 17.1 | 2.18 |
 | Conditions | 1.3 | 8.0 | 7.7 | 11.5 | 1.44 |
 | Utility | 5.7 | 15.3 | 26.6 | 51.0 | 3.34 |
-| Targets and area | 0.3 | 6.5 | 4.9 | 7.5 | 1.15 |
+| Targets and area | 0.3 | 6.5 | 4.9 | 7.4 | 1.14 |
 | Effect floor top-up | 0.0 | 10.0 | 37.3 | 48.8 | 4.87 |
 | Duration | 4.4 | 14.0 | 18.8 | 16.2 | 1.16 |
 | Range | 3.8 | 2.8 | 3.0 | 4.1 | 1.49 |
 | Casting time | 0.2 | 1.2 | 0.3 | -0.4 | -0.38 |
-| Refunds (components, limits, concentration, class lists) | -5.7 | -8.3 | -9.1 | -9.4 | 1.13 |
+| Refunds (components, limits, concentration, class lists) | -5.7 | -8.3 | -9.2 | -9.4 | 1.13 |
 | Ritual and scaling charges | 1.7 | 4.8 | 4.1 | 5.0 | 1.04 |
-| **Net cost** | **17.3** | **73.6** | **118.3** | **172.2** | **2.34** |
+| **Net cost** | **17.3** | **73.6** | **118.2** | **172.2** | **2.34** |
 
 Read the last column as the growth in each dimension from level 1 to level 3. Anything near the net ratio grows with the budget. Anything well above it is where higher levels put their extra power. Anything below it is a dimension that should not be allowed to grow as fast.
 
@@ -73,8 +73,8 @@ An effect floor adds points to any spell whose effects fall short of it. The lev
 | Floors applied | Cantrip mean | Level 1 mean | Level 2 mean | Level 3 mean | L2 / L1 | L3 / L1 |
 |---|---|---|---|---|---|---|
 | No floors at all | 17.3 | 62.7 | 80.6 | 123.4 | 1.29 | 1.97 |
-| Level 1 floor only (50) | 17.3 | 73.6 | 80.6 | 123.4 | 1.10 | 1.68 |
-| All floors, as adopted (50, 100, 150) | 17.3 | 73.6 | 118.3 | 172.2 | 1.61 | 2.34 |
+| Level 1 floor only (50) | 17.3 | 73.6 | 80.6 | 123.4 | 1.09 | 1.68 |
+| All floors, as adopted (50, 100, 150) | 17.3 | 73.6 | 118.2 | 172.2 | 1.61 | 2.34 |
 
 The strongest spell at each level, with no floors, costs 100, 144, and 228. With the floors it is 100, 146, and 228. The budgets follow the strongest spell, so the floors barely move them. The floors do set where the weak end of each level sits: the cheapest level 3 spell costs 146 with floors and 56 without.
 
@@ -101,7 +101,7 @@ Each category of price is multiplied by a factor chosen so that cantrips and lev
 | Ritual and scaling charges | 1.19 |
 | Class list availability | 0.57 |
 
-With these prices the mean net cost is 17.3, 73.6, 118.3, and 172.2 for cantrips and levels 1, 2, and 3, with standard deviations of 5.1, 14.2, 13.7, and 19.2.
+With these prices the mean net cost is 17.3, 73.6, 118.2, and 172.2 for cantrips and levels 1, 2, and 3, with standard deviations of 5.1, 14.2, 13.7, and 19.2.
 
 **What calibration cannot do.** Spells of one level are not equally strong, and my build for each spell is a judgment. The fit narrows the spread. It does not remove it. The level 1 mean is 74 and the median 74, not 100, because the budget is a ceiling set by the strongest spells (Detect Magic 100, Sleep 100, Shield 100) and utility spells sit well under it.
 
@@ -162,7 +162,7 @@ A floor is the lowest effect total a spell of that level may have. A ceiling is 
 |---|---|---|---|---|---|---|---|
 | Cantrip | 25 | none | 49 | 4 | 19 | 8 | 25 |
 | Level 1 | 100 | 50 | 100 | 50 | 94 | 40 | 100 |
-| Level 2 | 150 | 100 | 150 | 100 | 128 | 85 | 146 |
+| Level 2 | 150 | 100 | 150 | 100 | 127 | 85 | 146 |
 | Level 3 | 250 | 150 | 250 | 150 | 209 | 146 | 228 |
 
 The cantrip to level 1 gap is the one you asked for: level 1 effects start at 50, cantrip effects stop at 49. From level 2 up each floor is the previous budget (100, 150) and each ceiling is that level's own budget. Adjacent levels therefore meet exactly at a budget with no overlap: level 1 effects top out at 100 and level 2 effects start at 100. Item tiers and magnitude caps add a second layer of separation, which the stress test checks below.
@@ -174,11 +174,11 @@ For every spell the test raises one lever until the spell stops being legal. Lev
 | Level | One magnitude, budget only (median / worst) | One magnitude, all rules | All magnitudes together, budget only | All magnitudes together, all rules | Max extra targets, budget only | Max extra targets, all rules |
 |---|---|---|---|---|---|---|
 | Cantrip | x1.19 / x2.20 | x1.00 / x1.80 | x1.20 / x2.25 | x1.05 / x1.85 | 3 | 1 |
-| Level 1 | x1.72 / x3.30 | x1.00 / x2.08 | x1.62 / x3.90 | x1.00 / x1.50 | 23 | 4 |
+| Level 1 | x1.72 / x3.30 | x1.00 / x2.08 | x1.62 / x4.05 | x1.00 / x1.50 | 23 | 4 |
 | Level 2 | x1.81 / x3.20 | x1.26 / x1.93 | x1.60 / x3.25 | x1.05 / x1.60 | 35 | 5 |
-| Level 3 | x1.36 / x3.36 | x1.11 / x1.63 | x1.20 / x3.40 | x1.00 / x1.35 | 40 | 5 |
+| Level 3 | x1.36 / x3.36 | x1.11 / x1.63 | x1.20 / x3.40 | x1.00 / x1.35 | 41 | 5 |
 
-"All magnitudes together" raises every damage, healing, and temporary HP line of a spell by the same factor, which is the realistic way to try to make a spell much stronger. With every rule on, the median spell can grow about 5% and the worst about 85%. With only the budget, the worst grew 3.9 times.
+"All magnitudes together" raises every damage, healing, and temporary HP line of a spell by the same factor, which is the realistic way to try to make a spell much stronger. With every rule on, the median spell can grow about 5% and the worst about 85%. With only the budget, the worst grew 4.0 times.
 
 Largest single-line growth under all rules:
 

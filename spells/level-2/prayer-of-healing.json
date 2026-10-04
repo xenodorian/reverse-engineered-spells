@@ -12,8 +12,7 @@
   "concentration": false,
   "ritual": false,
   "classes": [
-    "Cleric",
-    "Paladin"
+    "Cleric"
   ],
   "description": "Up to six creatures regain 2d8 plus your spellcasting modifier hit points. No effect on undead or constructs.",
   "at_higher_levels": "Healing rises by 1d8 per slot level above 2.",

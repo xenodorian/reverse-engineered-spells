@@ -56,7 +56,7 @@ Hellish Rebuke,1,70.6,100,29.4,51.3,False,VS,1
 Expeditious Retreat,1,69.5,100,30.5,50.0,True,VS,3
 Speak with Animals,1,66.9,100,33.1,50.0,False,VS,3
 Entangle,1,65.5,100,34.5,58.0,True,VS,1
-Healing Word,1,64.6,100,35.4,50.0,False,V,3
+Healing Word,1,64.5,100,35.5,50.0,False,V,3
 Command,1,64.4,100,35.6,50.0,False,V,2
 Witch Bolt,1,64.1,100,35.9,50.1,True,VSM,3
 Grease,1,61.4,100,38.6,50.0,False,VSM,1
@@ -67,11 +67,11 @@ Protection from Evil and Good,1,59.0,100,41.0,50.0,True,VSM,4
 Thunderwave,1,58.6,100,41.4,53.8,False,VS,4
 Jump,1,58.1,100,41.9,50.0,False,VSM,4
 Heroism,1,57.9,100,42.1,50.0,True,VS,2
-Cure Wounds,1,55.4,100,44.6,50.0,False,VS,5
+Cure Wounds,1,55.3,100,44.7,50.0,False,VS,5
 Purify Food and Drink,1,51.9,100,48.1,50.0,False,VS,3
 Color Spray,1,51.8,100,48.2,52.3,False,VSM,2
 Create or Destroy Water,1,51.4,100,48.6,50.0,False,VSM,2
-Goodberry,1,40.4,100,59.6,49.9,False,VSM,2
+Goodberry,1,40.5,100,59.5,50.0,False,VSM,2
 Animal Messenger,2,146.3,150,3.7,100.0,False,VSM,3
 Scorching Ray,2,143.7,150,6.3,123.2,False,VS,2
 Gentle Repose,2,141.2,150,8.8,100.0,False,VSM,2
@@ -86,7 +86,7 @@ Silence,2,130.0,150,20.0,104.0,True,VS,3
 Arcanist's Magic Aura,2,129.2,150,20.8,100.0,False,VSM,1
 Enhance Ability,2,128.4,150,21.6,100.0,True,VSM,4
 Darkvision,2,128.2,150,21.8,100.0,False,VSM,4
-Prayer of Healing,2,128.0,150,22.0,127.6,False,V,2
+Prayer of Healing,2,126.0,150,24.0,126.9,False,V,1
 Spiritual Weapon,2,124.6,150,25.4,100.1,False,VS,1
 Moonbeam,2,124.3,150,25.7,103.7,True,VSM,1
 Protection from Poison,2,124.2,150,25.8,100.0,False,VS,4
@@ -116,8 +116,8 @@ Enlarge/Reduce,2,106.7,150,43.3,100.0,True,VSM,4
 Ray of Enfeeblement,2,106.5,150,43.5,100.0,True,VS,2
 Misty Step,2,106.2,150,43.8,100.0,False,V,3
 Blur,2,105.0,150,45.0,100.0,True,V,2
-Warding Bond,2,104.2,150,45.8,100.0,False,VSM,2
 Crown of Madness,2,103.8,150,46.2,100.0,True,VS,4
+Warding Bond,2,103.0,150,47.0,100.0,False,VSM,1
 Find Traps,2,102.6,150,47.4,100.0,False,VS,3
 Gust of Wind,2,102.2,150,47.8,100.0,True,VSM,3
 Detect Thoughts,2,100.2,150,49.8,100.0,True,VSM,3
@@ -151,7 +151,7 @@ Sending,3,165.7,250,84.3,150.0,False,VSM,3
 Gaseous Form,3,165.1,250,84.9,150.0,True,VSM,3
 Bestow Curse,3,165.0,250,85.0,150.0,True,VS,3
 Speak with Plants,3,163.9,250,86.1,150.0,False,VS,3
-Mass Healing Word,3,163.4,250,86.6,150.0,False,V,1
+Mass Healing Word,3,163.3,250,86.7,150.0,False,V,1
 Sleet Storm,3,162.3,250,87.7,150.0,True,VSM,3
 Speak with Dead,3,161.4,250,88.6,150.0,False,VSM,2
 Wind Wall,3,161.1,250,88.9,150.0,True,VSM,2

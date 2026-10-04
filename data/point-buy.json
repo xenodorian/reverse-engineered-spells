@@ -20,7 +20,7 @@
   "convexity_exponent": 0.4,
   "category_multipliers": {
     "dmg": 0.841,
-    "heal": 0.783,
+    "heal": 0.779,
     "buff": 0.893,
     "cond": 1.0,
     "util": 1.38,
@@ -233,7 +233,7 @@
       "convex_reference": 7.5,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 29.36
+      "price_at_reference": 29.21
     },
     "temp_hp": {
       "label": "Temporary hit points",
@@ -242,7 +242,7 @@
       "convex_reference": 6.5,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 20.36
+      "price_at_reference": 20.25
     },
     "temp_hp_recurring": {
       "label": "Temporary hit points renewed each turn",
@@ -251,7 +251,7 @@
       "convex_reference": null,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 6.26
+      "price_at_reference": 6.23
     },
     "ac_bonus": {
       "label": "Armor Class bonus",

@@ -2,7 +2,7 @@
 
 A point budget system for building cantrips and spells of levels 1 to 3. A cantrip gets **25 points**, a 1st-level spell **100**, a 2nd-level spell **150**, and a 3rd-level spell **250**. Effects, range, and duration cost points. Components and limits give points back. A spell is legal if it passes every rule below and its net cost is at or under its budget.
 
-> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`, with the 43 level 3 spells held out and measured.  They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why the budgets are 150 and 250 at levels 2 and 3, and how the curve was chosen, is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.
+> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`, with the 43 level 3 spells held out and measured. They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why the budgets are 150 and 250 at levels 2 and 3, and how the curve was chosen, is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.
 
 ## Budgets and clearances
 
@@ -44,7 +44,7 @@ A point budget system for building cantrips and spells of levels 1 to 3. A cantr
 6. **Add limits.** Each caveat that really constrains the spell refunds points, up to the cap. Do not claim a limit that never matters.
 7. **Add up.** Net cost = effects + delivery + duration - refunds. Stay at or below budget, then playtest.
 
-Skip the arithmetic with the calculator: `python tools/pointbuy.py calc examples/new-spell.json`. Set `"level"` to 0, 1, or 2. Write quantities as the second value in a line, and an optional `"upcast": ["dmg", 3.5]`.
+Skip the arithmetic with the calculator: `python tools/pointbuy.py calc examples/new-spell.json`. Set `"level"` to 0, 1, 2, or 3. Write quantities as the second value in a line, and an optional `"upcast": ["dmg", 3.5]`.
 
 ### Reading a score
 
@@ -85,10 +85,10 @@ Counted from the spell files, and used to set the refund sizes below.
 | Cast time of a minute or more | 1 of 24 | 4 of 49 | 3 of 53 | 6 of 43 |
 | Instantaneous duration | 11 of 24 | 12 of 49 | 10 of 53 | 10 of 43 |
 | Average classes per spell | 2.4 | 2.6 | 2.6 | 2.9 |
-| Spells on exactly one class list | 8 of 24 | 9 of 49 | 8 of 53 | 5 of 43 |
+| Spells on exactly one class list | 8 of 24 | 9 of 49 | 10 of 53 | 5 of 43 |
 | Average net cost, concentration spells | 13 | 75 | 117 | 169 |
-| Average net cost, other spells | 18 | 73 | 120 | 174 |
-| Average net cost, spells with a material | 17 | 74 | 120 | 173 |
+| Average net cost, other spells | 18 | 73 | 119 | 174 |
+| Average net cost, spells with a material | 17 | 74 | 119 | 173 |
 | Average net cost, spells with no material | 18 | 74 | 116 | 171 |
 
 Takeaways: nearly every spell has a verbal component, most have a somatic one, and about half have a material. Materials are common, so a mundane material refunds little. Gold-cost materials are rare and start at level 1, so they refund heavily. Spells with materials do not score higher than spells without in this set, so the data does not by itself show that materials mark stronger spells. The larger refund for gold-cost materials follows the design rule that costly components limit power, not a trend in these files. Concentration spells are the long-duration ones, so the concentration refund offsets part of the duration cost.
@@ -115,9 +115,9 @@ Prices are base price times a calibrated category multiplier. "Points" is the pr
 
 | Item | Points | Unit | Available from |
 |---|---|---|---|
-| Hit points restored (modifier assumed +3) | 29.4 | per avg HP (at 7.5) | Level 1+ |
-| Temporary hit points | 20.4 | per HP (at 6.5) | Level 1+ |
-| Temporary hit points renewed each turn | 6.3 | per HP per turn | Level 1+ |
+| Hit points restored (modifier assumed +3) | 29.2 | per avg HP (at 7.5) | Level 1+ |
+| Temporary hit points | 20.3 | per HP (at 6.5) | Level 1+ |
+| Temporary hit points renewed each turn | 6.2 | per HP per turn | Level 1+ |
 
 ### Buffs and debuffs
 
@@ -305,12 +305,12 @@ Price for an amount `q` is `base x q x (q / reference)^0.4 x category multiplier
 
 | Average damage | Level 1 or 2 damage price | Healing price at the same amount |
 |---|---|---|
-| 4.5 | 13.5 | 14.4 |
-| 7 | 25 | 26.7 |
-| 10.5 | 44.2 | 47 |
-| 14 | 66 | 70.4 |
-| 16.5 | 83.1 | 88.5 |
-| 21 | 116.5 | 124.1 |
+| 4.5 | 13.5 | 14.3 |
+| 7 | 25 | 26.5 |
+| 10.5 | 44.2 | 46.8 |
+| 14 | 66 | 70 |
+| 16.5 | 83.1 | 88.1 |
+| 21 | 116.5 | 123.5 |
 
 Cantrip damage (`c_dmg`) uses its own lower base and is capped at an average of 6.5.
 
@@ -569,7 +569,7 @@ Use concentration only if the spell lasts a minute or more.
 | Expeditious Retreat | 69.5 | 30.5 | 50 | yes | VS | 3 |
 | Speak with Animals | 66.9 | 33.1 | 50 |  | VS | 3 |
 | Entangle | 65.5 | 34.5 | 58 | yes | VS | 1 |
-| Healing Word | 64.6 | 35.4 | 50 |  | V | 3 |
+| Healing Word | 64.5 | 35.5 | 50 |  | V | 3 |
 | Command | 64.4 | 35.6 | 50 |  | V | 2 |
 | Witch Bolt | 64.1 | 35.9 | 50.1 | yes | VSM | 3 |
 | Grease | 61.4 | 38.6 | 50 |  | VSM | 1 |
@@ -580,11 +580,11 @@ Use concentration only if the spell lasts a minute or more.
 | Thunderwave | 58.6 | 41.4 | 53.8 |  | VS | 4 |
 | Jump | 58.1 | 41.9 | 50 |  | VSM | 4 |
 | Heroism | 57.9 | 42.1 | 50 | yes | VS | 2 |
-| Cure Wounds | 55.4 | 44.6 | 50 |  | VS | 5 |
+| Cure Wounds | 55.3 | 44.7 | 50 |  | VS | 5 |
 | Purify Food and Drink | 51.9 | 48.1 | 50 |  | VS | 3 |
 | Color Spray | 51.8 | 48.2 | 52.3 |  | VSM | 2 |
 | Create or Destroy Water | 51.4 | 48.6 | 50 |  | VSM | 2 |
-| Goodberry | 40.4 | 59.6 | 49.9 |  | VSM | 2 |
+| Goodberry | 40.5 | 59.5 | 50 |  | VSM | 2 |
 
 ## Scorecard: 53 level 2 spells
 
@@ -604,7 +604,7 @@ Use concentration only if the spell lasts a minute or more.
 | Arcanist's Magic Aura | 129.2 | 20.8 | 100 |  | VSM | 1 |
 | Enhance Ability | 128.4 | 21.6 | 100 | yes | VSM | 4 |
 | Darkvision | 128.2 | 21.8 | 100 |  | VSM | 4 |
-| Prayer of Healing | 128 | 22 | 127.6 |  | V | 2 |
+| Prayer of Healing | 126 | 24 | 126.9 |  | V | 1 |
 | Spiritual Weapon | 124.6 | 25.4 | 100.1 |  | VS | 1 |
 | Moonbeam | 124.3 | 25.7 | 103.7 | yes | VSM | 1 |
 | Protection from Poison | 124.2 | 25.8 | 100 |  | VS | 4 |
@@ -634,8 +634,8 @@ Use concentration only if the spell lasts a minute or more.
 | Ray of Enfeeblement | 106.5 | 43.5 | 100 | yes | VS | 2 |
 | Misty Step | 106.2 | 43.8 | 100 |  | V | 3 |
 | Blur | 105 | 45 | 100 | yes | V | 2 |
-| Warding Bond | 104.2 | 45.8 | 100 |  | VSM | 2 |
 | Crown of Madness | 103.8 | 46.2 | 100 | yes | VS | 4 |
+| Warding Bond | 103 | 47 | 100 |  | VSM | 1 |
 | Find Traps | 102.6 | 47.4 | 100 |  | VS | 3 |
 | Gust of Wind | 102.2 | 47.8 | 100 | yes | VSM | 3 |
 | Detect Thoughts | 100.2 | 49.8 | 100 | yes | VSM | 3 |
@@ -674,7 +674,7 @@ Use concentration only if the spell lasts a minute or more.
 | Gaseous Form | 165.1 | 84.9 | 150 | yes | VSM | 3 |
 | Bestow Curse | 165 | 85 | 150 | yes | VS | 3 |
 | Speak with Plants | 163.9 | 86.1 | 150 |  | VS | 3 |
-| Mass Healing Word | 163.4 | 86.6 | 150 |  | V | 1 |
+| Mass Healing Word | 163.3 | 86.7 | 150 |  | V | 1 |
 | Sleet Storm | 162.3 | 87.7 | 150 | yes | VSM | 3 |
 | Speak with Dead | 161.4 | 88.6 | 150 |  | VSM | 2 |
 | Wind Wall | 161.1 | 88.9 | 150 | yes | VSM | 2 |
