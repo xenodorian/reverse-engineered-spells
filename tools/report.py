@@ -16,7 +16,7 @@ GROUPS = [
  ("Damage and delivery", ["dmg", "dmg_recurring", "dmg_rider", "zone_damage", "miss_half", "rel_attack", "rel_save_half", "rel_auto", "c_dmg"]),
  ("Healing", ["heal", "temp_hp", "temp_hp_recurring"]),
  ("Buffs and debuffs", ["ac_bonus", "die_bonus", "advantage_vs_target", "advantage_next", "protect_types", "immune_frightened", "speed_bonus", "extra_dash", "jump_triple", "fall_immunity", "magic_missile_immune", "blur", "invisible", "mirror", "teleport", "magic_weapon", "ward_bond", "enhance", "resize", "stealth_aura", "c_adv_self", "c_d4_check", "c_d4_save", "c_weapon"]),
- ("Conditions and control", ["cond_prone", "cond_charmed", "cond_frightened", "cond_blinded", "cond_restrained", "cond_incapacitated", "cond_unconscious", "cond_command", "cond_paralyzed", "cond_enfeeble", "cond_suggestion", "cond_crown", "no_save", "forced_move", "difficult_terrain", "heavy_obscure", "util_outline", "util_ignite", "util_wind", "util_hidden", "c_slow10", "c_no_heal", "c_no_reactions", "c_disadv_next", "c_ignore_cover"]),
+ ("Conditions and control", ["cond_prone", "cond_charmed", "cond_frightened", "cond_blinded", "cond_restrained", "cond_incapacitated", "cond_asleep", "cond_command", "cond_paralyzed", "cond_enfeeble", "cond_suggestion", "cond_crown", "no_save", "forced_move", "difficult_terrain", "heavy_obscure", "util_outline", "util_ignite", "util_wind", "util_hidden", "c_slow10", "c_no_heal", "c_no_reactions", "c_disadv_next", "c_ignore_cover"]),
  ("Utility", [i for i, v in P.ITEMS.items() if v[4] == "util"]),
  ("Targets and area", [i for i, v in P.ITEMS.items() if v[4] == "area"]),
 ]
@@ -107,12 +107,17 @@ def write(sp):
         ["Effect floor", f"A level 1 spell's effects must total at least {P.L1_FLOOR}. A level 2 spell's must total at least {P.L2_FLOOR}. A smaller total is topped up with a floor line, so anything a level 1 spell does costs {P.L1_FLOOR} or more at its strength, and anything level 2 costs at least a whole level 1 budget."],
         ["Effect ceiling", f"Cantrip effects must total {P.CANTRIP_CEIL} or less. Level 1 effects must total {P.L2_FLOOR - 1} or less. The calculator rejects anything above, because it would be the next level's strength."],
         ["Items by level", "Each item has a minimum level, shown in the tables. A spell can only use items at or below its level."],
-        ["Magnitude caps", "Damage, healing, temporary HP, extra targets, AC, and other scalable items cannot exceed the highest value used at that level in the existing spells, carried up from lower levels. This stops a spell from buying more damage than any spell of its level has."],
-        ["Control cap", "Strong conditions (charmed, blinded, restrained, paralyzed, and so on) together cannot cost more than the cap for the level."],
-        ["Convex price", f"Damage, healing, extra targets, and AC rise faster than linearly. Price is proportional to amount to the power {1 + P.EXP:.1f}, so doubling an amount more than doubles its price."],
-        ["Flat items", "A flat item can be taken once. No stacking."],
+        ["Magnitude caps", "Damage, healing, temporary HP, extra targets, AC, and other scalable items cannot exceed the highest value used at that level in the existing spells, carried up from lower levels. Damage has separate caps for touch spells, for spells that split across targets, and for cantrips that add a rider, because those get more or less damage than a plain ranged hit."],
+        ["Control cap", "Strong conditions (charmed, blinded, restrained, paralyzed, and so on) together cannot cost more than the cap for the level. Extra targets count toward it."],
+        ["Extra targets", "Each extra target costs a share of every per-target line the spell already pays for: damage 70%, strong conditions 60%, buffs 50%, utility 50% (only if the spell has no area), healing 25%. A spell with nothing per-target cannot take extra targets, and area spells already hit everyone inside."],
+        ["Convex price", f"Damage, healing, and AC rise faster than linearly. Price is proportional to amount to the power {1 + P.EXP:.1f}, so doubling an amount more than doubles its price."],
+        ["Area price", "Price follows the square root of the footprint in square feet, so a larger area never costs less."],
+        ["Duration and weak effects", f"A cantrip whose effects total under {P.DURATION_REF} pays between half and all of the duration price, in proportion. A one-hour light is not worth the same as a one-hour invisibility. Level 1 and 2 spells always pay in full because their effects start at the floor."],
+        ["No duplicates", "List each item and each limit once. Flat items are taken once. Use the quantity for per-unit items."],
         ["Limit refund cap", f"Refunds from limits cannot exceed {int(P.LIMIT_CAP * 100)}% of the effect cost."],
-        ["Upcasting", f"List the increase per slot level. It costs {int(P.UPCAST_SHARE * 100)}% of buying that increase outright. Extra targets rise by at most {P.UPCAST_TARGETS} per slot level. A damage, healing, or temporary HP increase cannot exceed the base amount per slot level. Scaling in other ways pays a flat charge."]]))
+        ["Upcasting", f"List the increase per slot level. It costs {int(P.UPCAST_SHARE * 100)}% of buying that increase outright, and an extra target costs {int(P.UPCAST_SHARE * 100)}% of what a base extra target costs. Extra targets rise by at most {P.UPCAST_TARGETS} per slot level. A damage, healing, or temporary HP increase cannot exceed the base amount per slot level. Scaling in other ways pays a flat charge."],
+        ["Cantrip scaling", f"A damage cantrip that scales with character level pays {int(P.CANTRIP_SCALE_SHARE * 100)}% of its damage price, so scaling a d10 costs more than scaling a d4."],
+        ["Reach beyond the listed range", "A spell that is Self but throws or fires something farther pays for the farther range (Produce Flame hurls 30 feet)."]]))
     A("\n## How to build a spell in seven steps\n")
     A("1. **Pick the level.** Budgets are cantrip 25, level 1 100, level 2 %d." % B[2])
     A("2. **Pick the effect.** Add the costs from the tables. Multiply per-unit items by their quantity. Check the caps, the control cap, and the floor or ceiling.")
@@ -147,7 +152,7 @@ def write(sp):
     A("Prices are base price times a calibrated category multiplier. \"Points\" is the price of one use. Items marked with a reference amount use the convex curve, and the price shown is at that reference amount. Use the curve table below for other amounts.\n")
     for gname, ids in GROUPS:
         A(f"### {gname}\n")
-        A(tbl(["Item", "Points", "Unit", "Available from"], [[P.ITEMS[i][0], g(eff(i)), unit_text(i), TIERS[P.ITEMS[i][5]]] for i in ids]))
+        A(tbl(["Item", "Points", "Unit", "Available from"], [[P.ITEMS[i][0], g(eff(i)) if i != "target_extra" else "see rules", unit_text(i), TIERS[P.ITEMS[i][5]]] for i in ids]))
         A("")
     A("### Convex price curves\n")
     A("Price for an amount `q` is `base x q x (q / reference)^0.4 x category multiplier`.\n")
@@ -162,8 +167,8 @@ def write(sp):
     A("### Duration\n")
     A(tbl(["Duration", "Points"], [[k, g(v * P.MULT["dur"])] for k, v in P.DURATION.items()]))
     A("\n### Other costs\n")
-    A(tbl(["Item", "Points"], [["Ritual casting (cast without a slot)", g(P.RITUAL * P.MULT["extra"])], ["Flat upcast charge, cantrip scaling with character level", g(P.SCALING[0] * P.MULT["extra"])], ["Flat upcast charge, level 1", g(P.SCALING[1] * P.MULT["extra"])], ["Flat upcast charge, level 2", g(P.SCALING[2] * P.MULT["extra"])]]))
-    A("\nCantrip scaling is scored at the base tier only. Extra dice at levels 5, 11, and 17 are covered by the flat charge. Listed upcast increases (see the rules) replace the flat charge.\n")
+    A(tbl(["Item", "Points"], [["Ritual casting (cast without a slot)", g(P.RITUAL * P.MULT["extra"])], ["Flat upcast charge, level 1 (no listed increase)", g(P.SCALING[1] * P.MULT["extra"])], ["Flat upcast charge, level 2 (no listed increase)", g(P.SCALING[2] * P.MULT["extra"])]]))
+    A("\nCantrips are scored at the base tier only. Extra dice at levels 5, 11, and 17 are covered by the cantrip scaling share. Listed upcast increases (see the rules) replace the flat charge.\n")
     A("## Refund tables (points you get back)\n")
     A("### Components\n")
     A(tbl(["Component", "Refund"], [["Verbal", g(P.COMP["V"] * P.MULT["comp"])], ["Somatic", g(P.COMP["S"] * P.MULT["comp"])], ["Material, no stated cost", g(P.COMP["M"] * P.MULT["comp"])]]))
@@ -195,6 +200,7 @@ def write(sp):
     A("- Typical level 1 spells score in the 70s, not 100. The budget is a ceiling set by the strongest spells. See `docs/spell-scaling-analysis.md`.")
     A("- Hard control effects are priced by my judgment of how much a lost turn is worth. Not tested at a table. Adjust the condition costs if your group disagrees.")
     A("- A few level 2 spells (Web, Barkskin, Blindness/Deafness, Aid) pass as level 1 spells under these rules. See the stress test in the analysis.")
+    A("- Run `python tools/pointbuy.py check` after any change. It runs the logic checks and the exploit probes and exits non-zero on a failure.")
     A("- A limit only refunds points if it matters. DMs should reject a limit that never comes up.")
     A("- Utility spells score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version.")
     A("- Levels 3 to 9 are not modeled.\n")

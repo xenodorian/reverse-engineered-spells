@@ -6,6 +6,7 @@ Usage:
   python tools/pointbuy.py report            rewrite the docs and data files
   python tools/pointbuy.py score <slug>      itemized score for one spell, e.g. magic-missile
   python tools/pointbuy.py calc <file.json>  itemized score for a new spell (see examples/)
+  python tools/pointbuy.py check             run the logic checks
   python tools/pointbuy.py stress            try to inflate every spell and show what the rules allow
 
 Positive numbers cost points. Negative numbers refund points.
@@ -32,7 +33,7 @@ def load_spells():
                 "components": s["components"], "material_gp": gp, "consumed": cons,
                 "concentration": s["concentration"], "ritual": s["ritual"],
                 "scaling": bool(s["at_higher_levels"]), "class_count": len(s["classes"]), "lines": lines,
-                "upcast": B.UPCAST.get(slug)})
+                "upcast": B.UPCAST.get(slug), **({"price_range": B.PRICE_RANGE[slug]} if slug in B.PRICE_RANGE else {})})
     return out
 
 def budget(spec):
@@ -69,6 +70,8 @@ def main():
         import fit; fit.run(load_spells())
     elif a[0] == "report":
         import report; report.write(load_spells())
+    elif a[0] == "check":
+        import check; res = check.run(load_spells()); sys.exit(0 if all(r[1] for r in res) else 1)
     elif a[0] == "stress":
         import stress; stress.run(load_spells())
     else:

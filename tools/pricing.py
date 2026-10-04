@@ -4,7 +4,7 @@ Price of an item = base price x category multiplier. Multipliers, level budgets,
 magnitude caps come from data/calibration.json, which tools/fit.py writes. Without that file,
 every multiplier is 1 and the L2 values are placeholders.
 """
-import json, os
+import json, math, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAL_PATH = os.path.join(ROOT, "data", "calibration.json")
@@ -16,12 +16,18 @@ LIMIT_CAP = 0.5                 # limit refunds may not exceed this share of the
 UPCAST_SHARE = 0.5              # an upcast increment costs this share of buying it outright
 UPCAST_MAX = 1.0                # increase per slot level, as a share of the base amount (damage, healing, temp HP)
 UPCAST_TARGETS = 1              # extra targets per slot level
+DURATION_REF = 40               # effects at or above this pay full duration price; weaker effects pay down to half
+CANTRIP_SCALE_SHARE = 0.40      # a damage cantrip pays this share of its damage price for scaling with level
 EFFECT_CATS = {"dmg", "heal", "buff", "cond", "util", "area"}
 
 # id: (label, base price, unit, convex reference or None, category, tier)
 # tier 0 = usable by cantrips and above, 1 = level 1 and above, 2 = level 2 and above
 def _i(label, base, cat, tier, unit="flat", ref=None):
     return (label, base, unit, ref, cat, tier)
+
+def _area(label, sqft, tier):
+    """Area price follows the square root of the footprint, so a bigger area never costs less."""
+    return (label, round(0.9 * math.sqrt(sqft), 1), "flat", None, "area", tier)
 
 ITEMS = {
     # damage and delivery
@@ -33,7 +39,7 @@ ITEMS = {
     "rel_attack":     _i("Delivered by attack roll", 0, "dmg", 0),
     "rel_save_half":  _i("Delivered by save, half on success", 5, "dmg", 1),
     "rel_auto":       _i("Hits automatically", 12, "dmg", 1),
-    "c_dmg":          _i("Cantrip damage (average 6.5 or less)", 2.7, "dmg", 0, "per avg damage", 5.5),
+    "c_dmg":          _i("Cantrip damage (average 6.5 or less)", 2.4, "dmg", 0, "per avg damage", 5.5),
     # healing
     "heal":           _i("Hit points restored (modifier assumed +3)", 5, "heal", 1, "per avg HP", 7.5),
     "temp_hp":        _i("Temporary hit points", 4, "heal", 1, "per HP", 6.5),
@@ -66,7 +72,7 @@ ITEMS = {
     "cond_blinded":    _i("Blinded", 31, "cond", 1),
     "cond_restrained": _i("Restrained", 36, "cond", 1),
     "cond_incapacitated": _i("Incapacitated", 72, "cond", 1),
-    "cond_unconscious": _i("Unconscious", 48, "cond", 1),
+    "cond_asleep":     _i("Asleep (wakes on damage or a shake)", 48, "cond", 1),
     "cond_command":    _i("Forced to obey a one word order", 29, "cond", 1),
     "cond_paralyzed":  _i("Paralyzed", 95, "cond", 2),
     "cond_enfeeble":   _i("Strength weapon damage halved", 40, "cond", 2),
@@ -96,8 +102,8 @@ ITEMS = {
     "util_script":     _i("Hidden writing", 26, "util", 1),
     "util_servant":    _i("Invisible helper that does chores", 42, "util", 1),
     "util_familiar":   _i("Summon a loyal scout and helper", 52, "util", 1),
-    "util_mark_track": _i("Advantage to track a marked target", 8, "util", 1),
-    "util_mark_move":  _i("Move effect to a new target", 5, "util", 1),
+    "util_mark_track": _i("Advantage to track a marked target", 6, "util", 1),
+    "util_mark_move":  _i("Move effect to a new target", 3, "util", 1),
     "persist":         _i("Effect lasts until dismissed", 16, "util", 1),
     "util_alter_self": _i("Reshape your body: gills, new face, or claws", 55, "util", 2),
     "util_messenger":  _i("Tiny beast carries a message", 30, "util", 2),
@@ -144,26 +150,31 @@ ITEMS = {
     "c_wonder":        _i("Minor wonders", 10, "util", 0),
     "c_stabilize":     _i("Stabilize a dying creature", 12, "util", 0),
     "c_weapon":        _i("Enchant a club or staff (spell modifier, d8, magical)", 13, "buff", 0),
-    "c_throw":         _i("Hurl the effect 30 ft", 2, "util", 0),
     # targets and areas
-    "target_extra":    _i("Each additional target", 10, "area", 0, "per extra target", 2),
+    "target_extra":    _i("Each additional target (a share of the per-target effects)", 0, "area", 0, "per extra target"),
     "split_targets":   _i("Split effect among several targets", 10, "area", 1),
-    "area_cube5":      _i("5 ft cube", 4, "area", 0),
-    "area_radius5":    _i("5 ft radius", 8, "area", 2),
-    "area_square10":   _i("10 ft square", 13, "area", 1),
-    "area_radius10":   _i("10 ft radius", 20, "area", 2),
-    "area_cone15":     _i("15 ft cone", 18, "area", 1),
-    "area_cube15":     _i("15 ft cube", 18, "area", 1),
-    "area_radius15":   _i("15 ft radius", 28, "area", 2),
-    "area_square20":   _i("20 ft square", 23, "area", 1),
-    "area_cube20":     _i("20 ft cube", 23, "area", 1),
-    "area_radius20":   _i("20 ft radius", 26, "area", 1),
-    "area_radius30":   _i("30 ft radius", 31, "area", 1),
-    "area_line60":     _i("60 ft line", 30, "area", 2),
+    "area_cube5":      _area("5 ft cube", 25, 0),
+    "area_radius5":    _area("5 ft radius", 79, 2),
+    "area_square10":   _area("10 ft square", 100, 1),
+    "area_cone15":     _area("15 ft cone", 112, 1),
+    "area_cube15":     _area("15 ft cube", 225, 1),
+    "area_radius10":   _area("10 ft radius", 314, 2),
+    "area_square20":   _area("20 ft square", 400, 1),
+    "area_cube20":     _area("20 ft cube", 400, 1),
+    "area_line60":     _area("60 ft line", 600, 2),
+    "area_radius15":   _area("15 ft radius", 707, 2),
+    "area_radius20":   _area("20 ft radius", 1257, 1),
+    "area_radius30":   _area("30 ft radius", 2827, 1),
 }
+# Extra targets cost a share of what the spell already charges per target. The share depends on the
+# kind of effect: an extra enemy hit by damage or control is worth more than an extra ally healed.
+TARGET_SHARE = {"dmg": 0.7, "heal": 0.25, "buff": 0.5, "cond": 0.6, "util": 0.5}  # util counts only when the spell has no area
+C_RIDERS = {"c_slow10", "c_no_heal", "c_no_reactions", "c_disadv_next", "c_ignore_cover"}
+NOT_PER_TARGET = {"difficult_terrain", "heavy_obscure", "util_outline", "util_ignite", "util_wind", "util_hidden"}
+
 # Items counted toward the control cap (strong conditions).
 CONTROL = {"cond_prone", "cond_charmed", "cond_frightened", "cond_blinded", "cond_restrained",
-           "cond_incapacitated", "cond_unconscious", "cond_command", "cond_paralyzed",
+           "cond_incapacitated", "cond_asleep", "cond_command", "cond_paralyzed",
            "cond_enfeeble", "cond_suggestion", "cond_crown"}
 
 # id: (label, refund)   Refunds from limits are negative.
@@ -271,6 +282,34 @@ def gp_refund(gp, consumed):
         if gp <= cap:
             return v * (CONSUMED_MULT if consumed else 1) * MULT["comp"]
 
+def cap_key(item, spec):
+    """Damage caps are tracked separately for spells that split across targets and for touch spells,
+    because a touch attack gets more damage than a ranged one (Inflict Wounds against Guiding Bolt)."""
+    if item == "dmg":
+        if any(i == "split_targets" for i, v in spec["lines"]):
+            return "dmg_split"
+        if spec["range"] == "Touch":
+            return "dmg_touch"
+    if item == "c_dmg" and any(i in C_RIDERS for i, v in spec["lines"]):
+        return "c_dmg_rider"      # a cantrip that adds a rider gets less damage
+    return item
+
+def per_target_share(spec):
+    """Price of one extra target: a share of every per-target line the spell already pays for."""
+    total = 0.0
+    control = 0.0
+    has_area = any(i in ITEMS and ITEMS[i][4] == "area" and i not in ("target_extra", "split_targets") for i, v in spec["lines"])
+    for item, q in spec["lines"]:
+        if item in ITEMS and item != "target_extra" and item not in NOT_PER_TARGET:
+            cat = ITEMS[item][4]
+            if cat == "util" and has_area:
+                continue
+            if cat in TARGET_SHARE:
+                total += price(item, q) * TARGET_SHARE[cat]
+                if item in CONTROL:
+                    control += price(item, q) * TARGET_SHARE[cat]
+    return total, control
+
 def score(spec, enforce=True):
     """Returns (rows, total). rows are (type, label, points). With enforce=False the cap and tier
     checks are skipped, which tools/fit.py uses while measuring the existing spells."""
@@ -280,6 +319,12 @@ def score(spec, enforce=True):
         rows.append((cat, label, round(pts, 1)))
     effect_total = 0
     control_total = 0
+    extra_targets = 0
+    if enforce:
+        seen = [i for i, q in spec["lines"]]
+        dup = sorted({i for i in seen if seen.count(i) > 1})
+        if dup:
+            raise ValueError(f"{', '.join(dup)} listed more than once. Use the quantity instead, or take a flat item once")
     for item, q in spec["lines"]:
         if item in ITEMS:
             label, base, unit, ref, cat, tier = ITEMS[item]
@@ -288,10 +333,12 @@ def score(spec, enforce=True):
                     raise ValueError(f"{item} is a level {tier} effect and cannot be used in a level {level} spell")
                 if unit == "flat" and q != 1:
                     raise ValueError(f"{item} is a flat item and can be taken once")
-                split = item == "dmg" and any(i == "split_targets" for i, v in spec["lines"])
-                cp = cap_for("dmg_split" if split else item, level)
+                cp = cap_for(cap_key(item, spec), level)
                 if cp is not None and q > cp + 1e-9:
                     raise ValueError(f"{item} is capped at {cp:g} for level {level} spells (you asked for {q:g})")
+            if item == "target_extra":
+                extra_targets += q
+                continue
             cost = price(item, q)
             qs = "" if unit == "flat" else f" x{q:g}"
             if cat in EFFECT_CATS:
@@ -303,6 +350,18 @@ def score(spec, enforce=True):
             add("Limit", LIMITS[item][0], LIMITS[item][1] * MULT["limit"])
         else:
             raise KeyError(item)
+    pt_total, pt_control = per_target_share(spec)
+    if extra_targets:
+        if pt_total <= 0:
+            raise ValueError("extra targets need a per-target effect to extend (area spells already hit everyone inside)")
+        if enforce:
+            cp = cap_for("target_extra", level)
+            if cp is not None and extra_targets > cp + 1e-9:
+                raise ValueError(f"target_extra is capped at {cp:g} for level {level} spells (you asked for {extra_targets:g})")
+        cost = pt_total * extra_targets
+        effect_total += cost
+        control_total += pt_control * extra_targets
+        add("Effect", f"Additional targets x{extra_targets:g}", cost)
     if enforce and control_total > CONTROL_CAP[level] + 1e-9:
         raise ValueError(f"control effects total {control_total:.0f}, over the level {level} control cap of {CONTROL_CAP[level]:g}")
     fl = floor(level)
@@ -315,16 +374,21 @@ def score(spec, enforce=True):
     cap = -LIMIT_CAP * effect_total
     if limit_sum < cap:
         add("Cap", f"Limit refunds capped at {int(LIMIT_CAP * 100)}% of effect cost", cap - limit_sum)
-    r = spec["range"].split(" (")[0]
-    add("Delivery", f"Range: {spec['range']}", RANGE[r] * MULT["range"])
+    priced = spec.get("price_range", spec["range"])
+    r = priced.split(" (")[0]
+    label = f"Range: {spec['range']}" + (f", attack reaches {priced}" if priced != spec["range"] else "")
+    add("Delivery", label, RANGE[r] * MULT["range"])
     add("Delivery", f"Casting time: {spec['casting_time'].split(',')[0]}", lookup(CASTING, spec["casting_time"]) * MULT["cast"])
-    add("Duration", f"Duration: {spec['duration']}", DURATION[spec["duration"]] * MULT["dur"])
+    dur_factor = 0.5 + 0.5 * min(1.0, effect_total / DURATION_REF)
+    dlabel = f"Duration: {spec['duration']}" + (f" (x{dur_factor:.2f} for a weak effect)" if dur_factor < 0.995 else "")
+    add("Duration", dlabel, DURATION[spec["duration"]] * MULT["dur"] * dur_factor)
     if spec["concentration"]:
         add("Refund", "Concentration", CONC * MULT["conc"])
     if spec["ritual"]:
         add("Delivery", "Ritual casting", RITUAL * MULT["extra"])
     if spec["scaling"]:
         up = spec.get("upcast")
+        cdmg = sum(price(i, q) for i, q in spec["lines"] if i == "c_dmg")
         if up and level >= 1:
             item, inc = up
             base_q = sum(q for i, q in spec["lines"] if i == item)
@@ -337,7 +401,13 @@ def score(spec, enforce=True):
                         raise ValueError(f"upcast increase {inc:g} is over {int(UPCAST_MAX * 100)}% of the base {base_q:g} per slot level")
                 else:
                     raise ValueError(f"{item} cannot be an upcast increase")
-            add("Delivery", f"Upcasting: +{inc:g} {ITEMS[item][0].lower()} per slot level", price(item, inc) * UPCAST_SHARE * MULT["extra"])
+            if item == "target_extra":
+                cost = pt_total * inc * UPCAST_SHARE * MULT["extra"]
+                add("Delivery", f"Upcasting: +{inc:g} target per slot level", cost)
+            else:
+                add("Delivery", f"Upcasting: +{inc:g} {ITEMS[item][0].lower()} per slot level", price(item, inc) * UPCAST_SHARE * MULT["extra"])
+        elif level == 0 and cdmg:
+            add("Delivery", "Scales with character level", CANTRIP_SCALE_SHARE * cdmg * MULT["extra"])
         else:
             add("Delivery", "Scales with level" if level == 0 else "Scales with higher slots", SCALING[level] * MULT["extra"])
     for c in spec["components"]:

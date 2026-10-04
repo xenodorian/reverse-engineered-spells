@@ -10,7 +10,8 @@ Structured data for D&D 5th edition (2014) spells, with mechanics reimplemented 
 - `docs/creating-a-spell.md`: original-wording summary of the 2014 DMG spell creation guidance (unverified against the book).
 - `docs/spell-point-buy.md`: point-buy system (cantrip 25, level 1 100, level 2 150) with rules, price and refund tables, and scorecards.
 - `docs/spell-scaling-analysis.md`: how the budget scales across cantrips, level 1, and level 2, the calibration, and a stress test of the rules.
-- `tools/`: `pointbuy.py` is the calculator (`fit`, `report`, `score`, `calc`, `stress`). Prices are in `pricing.py`, per-spell builds in `builds.py`. Data in `data/`, examples in `examples/`.
+- `docs/revision-log.md`: what the second logic pass found and changed.
+- `tools/`: `pointbuy.py` is the calculator (`fit`, `report`, `score`, `calc`, `stress`, `check`). Prices are in `pricing.py`, per-spell builds in `builds.py`. Data in `data/`, examples in `examples/`.
 
 Fields: name, level, school, casting_time, range, components, material, duration, concentration, ritual, classes, description, at_higher_levels, source.
 

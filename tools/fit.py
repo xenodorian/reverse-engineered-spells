@@ -74,7 +74,7 @@ def observed_caps(spells):
         for item, q in spec["lines"]:
             lab, base, unit, ref, cat, tier = P.ITEMS.get(item, (0, 0, "flat", None, 0, 0))
             if item in P.ITEMS and unit != "flat" and item not in P.CONTROL:
-                key = "dmg_split" if item == "dmg" and any(i == "split_targets" for i, v in spec["lines"]) else item
+                key = P.cap_key(item, spec)
                 d = seen.setdefault(key, {})
                 d[spec["level"]] = max(d.get(spec["level"], 0), q)
     caps = {}

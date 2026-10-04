@@ -25,15 +25,15 @@ def linfit(xs, ys):
 
 def group_sums(spec):
     """Mean contributions by dimension for one spell, in points."""
+    rows, t = P.score(spec, enforce=False)
     d = {c: 0.0 for c in ("dmg", "heal", "buff", "cond", "util", "area")}
     for item, q in spec["lines"]:
         if item in P.ITEMS:
             d[P.ITEMS[item][4]] += P.price(item, q)
     eff = sum(d.values())
-    rows, t = P.score(spec, enforce=False)
     top = sum(r[2] for r in rows if r[0] == "Floor")
     d["floor top-up"] = top
-    d["duration"] = P.DURATION[spec["duration"]] * P.MULT["dur"]
+    d["duration"] = next(r[2] for r in rows if r[0] == "Duration")
     d["range"] = P.RANGE[spec["range"].split(" (")[0]] * P.MULT["range"]
     d["casting"] = P.lookup(P.CASTING, spec["casting_time"]) * P.MULT["cast"]
     d["refunds"] = sum(r[2] for r in rows if r[0] in ("Refund", "Limit", "Cap", "Availability"))
@@ -211,22 +211,26 @@ def write(sp, base_mult=None):
     A(f"\nThe cantrip to level 1 gap is the one you asked for: level 1 effects start at {P.L1_FLOOR}, cantrip effects stop at {P.CANTRIP_CEIL}. I applied the same idea one step up. A level 2 spell's effects must total at least {P.L2_FLOOR}, which is the whole level 1 budget, and level 1 effects stop at {P.L2_FLOOR - 1}. The floor top-up is why the cheapest level 2 spells ({', '.join(n for t, n in sorted((P.score(spec)[1], sn['name']) for sn, spec in sp.values() if spec['level'] == 2)[:2])}) still cost {min(nets[2]):.0f} or more.\n")
     A("## 6. Stress test: can a player inflate an existing spell?\n")
     r = stress.compute(sp)
-    A("For every spell the test raises one lever until the spell stops being legal. Lever one raises damage, healing, or temporary HP. Lever two adds targets. Each is run with only the budget enforced and with every rule enforced.\n")
+    A("For every spell the test raises one lever until the spell stops being legal. Lever one raises the main damage, healing, or temporary HP line. Lever two raises every such line together. Lever three adds targets. Lever four re-files the spell one level lower. Each is run with only the budget enforced and with every rule enforced.\n")
     rows = []
     for lvl, name in ((0, "Cantrip"), (1, "Level 1"), (2, "Level 2")):
         mg = [x for x in r["mag"] if x[1] == lvl]
         rb = [x[4] / x[3] for x in mg]; rr = [x[5] / x[3] for x in mg]
+        al = [x for x in r["all"] if x[1] == lvl]
         tg = [x for x in r["tgt"] if x[1] == lvl]
         tb = [x[3] - x[2] for x in tg]; tr = [x[4] - x[2] for x in tg]
-        rows.append([name, len(mg), f"x{st.median(rb):.2f}", f"x{max(rb):.2f}", f"x{st.median(rr):.2f}", f"x{max(rr):.2f}", f"{max(tb)}", f"{max(tr)}"])
-    A(tbl(["Level", "Spells with a magnitude", "Median growth, budget only", "Worst, budget only", "Median growth, all rules", "Worst, all rules", "Max extra targets, budget only", "Max extra targets, all rules"], rows))
+        rows.append([name, f"x{st.median(rb):.2f} / x{max(rb):.2f}", f"x{st.median(rr):.2f} / x{max(rr):.2f}",
+                     f"x{st.median(x[2] for x in al):.2f} / x{max(x[2] for x in al):.2f}", f"x{st.median(x[3] for x in al):.2f} / x{max(x[3] for x in al):.2f}",
+                     f"{max(tb)}", f"{max(tr)}"])
+    A(tbl(["Level", "One magnitude, budget only (median / worst)", "One magnitude, all rules", "All magnitudes together, budget only", "All magnitudes together, all rules", "Max extra targets, budget only", "Max extra targets, all rules"], rows))
+    A("\n\"All magnitudes together\" raises every damage, healing, and temporary HP line of a spell by the same factor, which is the realistic way to try to make a spell much stronger. With every rule on, the median spell can grow only about 5% and the worst about 55% to 85%. With only the budget, the worst grew almost four times.\n")
     worst = sorted(((x[5] / x[3], x) for x in r["mag"]), reverse=True)[:5]
     A("\nLargest growth under all rules:\n")
     A(tbl(["Spell", "Level", "Lever", "Original", "Most the rules allow"], [[x[0], x[1], x[2], n1(x[3]), n1(x[5])] for g, x in worst]))
     A("\nThe rules cut the worst case but do not remove it. A spell with a small number (Vicious Mockery's d4, Healing Word's d4 plus modifier) can still climb to the strongest value that exists at its level. That is the design: no spell can beat the top of its own level, even if it can get close. Raising the cap would mean accepting stronger spells at that level.\n")
     from collections import Counter
     hop = {1: Counter(x[2] for x in r["hop"] if x[1] == 1), 2: Counter(x[2] for x in r["hop"] if x[1] == 2)}
-    A("Lever three re-files each spell one level lower and records which rule stops it:\n")
+    A("Lever four re-files each spell one level lower and records which rule stops it:\n")
     kinds = ["effect tier", "magnitude cap", "control cap", "effect ceiling", "budget", "allowed"]
     A(tbl(["Filed as", "Spells"] + kinds, [["Level 1 spell as a cantrip", sum(hop[1].values())] + [hop[1].get(k, 0) for k in kinds], ["Level 2 spell as level 1", sum(hop[2].values())] + [hop[2].get(k, 0) for k in kinds]]))
     allowed = [x[0] for x in r["hop"] if x[1] == 2 and x[2] == "allowed"]
@@ -237,9 +241,12 @@ def write(sp, base_mult=None):
         ["Effect floor", f"level 1: {P.L1_FLOOR}. level 2: {P.L2_FLOOR}"],
         ["Effect ceiling", f"cantrip: {P.CANTRIP_CEIL}. level 1: {P.L2_FLOOR - 1}"],
         ["Items by level", "Each item has a minimum level. A level 1 spell cannot use a level 2 item."],
-        ["Magnitude caps", "Damage, healing, temporary HP, targets, AC, and similar items cannot exceed the highest value seen at that level, carried up from lower levels. Damage from a spell that splits across targets has its own cap."],
+        ["Magnitude caps", "Damage, healing, temporary HP, targets, AC, and similar items cannot exceed the highest value seen at that level, carried up from lower levels. Damage has separate caps for touch spells, for spells that split across targets, and for cantrips that add a rider."],
+        ["Extra targets", "Each extra target costs a share of the spell's per-target lines (damage 70%, control 60%, buffs 50%, healing 25%) and counts toward the control cap."],
+        ["Weak effects pay less for duration", f"A cantrip with effects under {P.DURATION_REF} points pays between half and all of the duration price."],
+        ["Area price", "Follows the square root of the footprint."],
         ["Control cap", f"Strong conditions together cost at most {cal['control_cap']['1']} at level 1 and {cal['control_cap']['2']} at level 2. Cantrips have none."],
-        ["Flat items", "Taken once. No stacking."],
+        ["Flat items and duplicates", "Taken once. Each item and limit is listed once."],
         ["Convex price", f"Price grows with magnitude to the power {1 + P.EXP:.1f}, so doubling damage more than doubles the price."],
         ["Limit refunds", f"Capped at {int(P.LIMIT_CAP * 100)}% of the effect cost."],
         ["Upcasting", f"Each increase per slot level costs {int(P.UPCAST_SHARE * 100)}% of buying it outright. Targets rise by at most {P.UPCAST_TARGETS} per slot level. A damage or healing increase cannot exceed the base amount per slot level."]]))

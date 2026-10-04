@@ -3,6 +3,7 @@
 Lever 1: raise the spell's main magnitude (damage, healing, or temporary HP).
 Lever 2: add extra targets.
 Lever 3: re-file the spell one level lower and see which rule blocks it.
+Lever 4: scale every damage, healing, and temporary HP line together (the realistic way to "make it much stronger").
 Each lever is run twice: with only the budget enforced, and with every rule enforced.
 """
 import copy, statistics as st
@@ -47,6 +48,21 @@ def max_targets(spec, enforce):
         n += 1
     return cur, n
 
+ALL_MAGN = ("dmg", "dmg_recurring", "dmg_rider", "zone_damage", "c_dmg", "heal", "temp_hp", "temp_hp_recurring")
+
+def max_all(spec, enforce):
+    if not any(i in ALL_MAGN for i, v in spec["lines"]):
+        return None
+    def scaled(f):
+        s = copy.deepcopy(spec)
+        s["lines"] = [(i, round(v * f * 2) / 2 if i in ALL_MAGN else v) for i, v in spec["lines"]]
+        s["upcast"] = spec.get("upcast")
+        return s
+    f = 1.0
+    while f < 6 and _legal(scaled(f + 0.05), enforce):
+        f += 0.05
+    return round(f, 2)
+
 def block_reason(spec, new_level):
     s = copy.deepcopy(spec); s["level"] = new_level
     try:
@@ -62,7 +78,7 @@ def block_reason(spec, new_level):
     return "budget" if t > P.BUDGETS[new_level] else "allowed"
 
 def compute(spells):
-    out = {"mag": [], "tgt": [], "hop": []}
+    out = {"mag": [], "tgt": [], "hop": [], "all": []}
     for k, (s, spec) in spells.items():
         item = next((i for i in MAIN if any(x == i for x, v in spec["lines"])), None)
         if item:
@@ -72,6 +88,9 @@ def compute(spells):
         t0, tb = max_targets(spec, False)
         _, tr = max_targets(spec, True)
         out["tgt"].append((s["name"], spec["level"], t0, tb, tr))
+        fb = max_all(spec, False)
+        if fb:
+            out["all"].append((s["name"], spec["level"], fb, max_all(spec, True)))
         if spec["level"] >= 1:
             out["hop"].append((s["name"], spec["level"], block_reason(spec, spec["level"] - 1)))
     return out
@@ -84,6 +103,9 @@ def run(spells):
             rb = [x[4] / x[3] for x in m]; rr = [x[5] / x[3] for x in m]
             print(f"level {lvl}: {len(m)} magnitude spells. Max growth, budget only: median x{st.median(rb):.2f}, worst x{max(rb):.2f}. With rules: median x{st.median(rr):.2f}, worst x{max(rr):.2f}")
         t = [x for x in r["tgt"] if x[1] == lvl]
+        a = [x for x in r["all"] if x[1] == lvl]
+        if a:
+            print(f"level {lvl}: all magnitudes scaled together ({len(a)} spells), budget only: median x{st.median(x[2] for x in a):.2f}, worst x{max(x[2] for x in a):.2f}. With rules: median x{st.median(x[3] for x in a):.2f}, worst x{max(x[3] for x in a):.2f}")
         tb = [x[3] - x[2] for x in t]; tr = [x[4] - x[2] for x in t]
         print(f"level {lvl}: extra targets possible, budget only: median {st.median(tb):g}, max {max(tb)}. With rules: median {st.median(tr):g}, max {max(tr)}")
     from collections import Counter

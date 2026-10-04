@@ -4,8 +4,8 @@ the spell file. Format: slug -> (lines, material_gp, consumed)."""
 B = {
  "alarm": ([("util_alarm",1),("area_cube20",1),("lim_no_combat",1)],0,False),
  "animal-friendship": ([("cond_charmed",1),("lim_type",1),("lim_end_on_harm",1)],0,False),
- "bane": ([("die_bonus",3),("lim_save_negates",1)],0,False),
- "bless": ([("die_bonus",3),("lim_willing",1)],0,False),
+ "bane": ([("die_bonus",1),("target_extra",2),("lim_save_negates",1)],0,False),
+ "bless": ([("die_bonus",1),("target_extra",2),("lim_willing",1)],0,False),
  "burning-hands": ([("dmg",10.5),("rel_save_half",1),("area_cone15",1),("util_ignite",1)],0,False),
  "charm-person": ([("cond_charmed",1),("lim_type",1),("lim_aware",1),("lim_save_adv",1)],0,False),
  "color-spray": ([("cond_blinded",1),("area_cone15",1),("no_save",1),("lim_hp_pool",1)],0,False),
@@ -46,7 +46,7 @@ B = {
  "shield": ([("ac_bonus",5),("magic_missile_immune",1),("lim_trigger",1)],0,False),
  "shield-of-faith": ([("ac_bonus",2)],0,False),
  "silent-image": ([("util_illusion_image",1),("area_cube15",1),("lim_physical_reveal",1),("lim_sensory",1)],0,False),
- "sleep": ([("cond_unconscious",1),("area_radius20",1),("no_save",1),("lim_hp_pool",1),("lim_wake_on_damage",1)],0,False),
+ "sleep": ([("cond_asleep",1),("area_radius20",1),("no_save",1),("lim_hp_pool",1)],0,False),
  "speak-with-animals": ([("util_speak",1),("lim_dm",1),("lim_no_combat",1)],0,False),
  "thunderwave": ([("dmg",9),("rel_save_half",1),("area_cube15",1),("forced_move",1),("lim_loud",1)],0,False),
  "unseen-servant": ([("util_servant",1),("lim_fragile",1),("lim_no_combat",1)],0,False),
@@ -156,3 +156,6 @@ UPCAST = {
  "moonbeam": ("dmg", 5.5), "prayer-of-healing": ("heal", 4.5), "scorching-ray": ("dmg", 7),
  "shatter": ("dmg", 4.5), "spiritual-weapon": ("dmg", 2.25),
 }
+
+# Spells whose damaging part reaches farther than the listed range (Produce Flame is Self, but hurls 30 ft).
+PRICE_RANGE = {"produce-flame": "30 feet"}
