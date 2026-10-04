@@ -7,10 +7,11 @@ Usage:
   python tools/pointbuy.py score <slug>      itemized score for one spell, e.g. magic-missile
   python tools/pointbuy.py calc <file.json>  itemized score for a new spell (see examples/)
   python tools/pointbuy.py check             run the logic checks
-  python tools/pointbuy.py stress            try to inflate every spell and show what the rules allow
+  python tools/pointbuy.py exploit           what one budget can buy, and the best random builds
+  python tools/pointbuy.py rebuild           write docs/canon-rebuild-test.md
 
 Positive numbers cost points. Negative numbers refund points.
-Budgets: cantrip 25, level 1 100, levels 2 and 3 from data/calibration.json.
+Budgets: cantrip 25, level 1 100, level 2 150, level 3 250. There are no caps, item levels, or floors.
 """
 import glob, json, os, sys
 
@@ -77,8 +78,10 @@ def main():
         import report; report.write(load_spells())
     elif a[0] == "check":
         import check; res = check.run(load_spells()); sys.exit(0 if all(r[1] for r in res) else 1)
-    elif a[0] == "stress":
-        import stress; stress.run(load_spells())
+    elif a[0] == "exploit":
+        import exploit; exploit.run(load_spells())
+    elif a[0] == "rebuild":
+        import rebuild; rebuild.run(load_spells())
     else:
         print(__doc__)
 

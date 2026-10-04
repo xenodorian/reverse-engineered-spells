@@ -1,163 +1,290 @@
 {
   "mult": {
-    "dmg": 0.841,
-    "heal": 0.779,
-    "buff": 0.893,
-    "cond": 1.0,
-    "util": 1.38,
-    "area": 0.666,
-    "range": 1.118,
-    "cast": 1.048,
-    "dur": 1.2,
-    "comp": 0.574,
-    "limit": 0.507,
-    "conc": 0.483,
-    "extra": 1.193,
-    "avail": 0.574
+    "dmg": 1.3761,
+    "heal": 1.7303,
+    "buff": 1.7928,
+    "cond": 1.2512,
+    "util": 1.0,
+    "area": 1.1547,
+    "range": 1.1791,
+    "cast": 3.8745,
+    "dur": 1.141,
+    "comp": 0.5,
+    "limit": 0.6249,
+    "conc": 0.643,
+    "extra": 1.0,
+    "avail": 0.9422
   },
+  "exp": 0.0,
   "budgets": {
     "0": 25,
     "1": 100,
     "2": 150,
     "3": 250
   },
-  "floors": {
-    "1": 50,
-    "2": 100,
-    "3": 150
-  },
-  "observed_maxima": {
-    "caps": {
-      "c_dmg": {
-        "0": 6.5,
-        "1": 6.5,
-        "2": 6.5,
-        "3": 6.5
-      },
-      "target_extra": {
-        "0": 1,
-        "1": 4,
-        "2": 5,
-        "3": 5
-      },
-      "c_dmg_rider": {
-        "0": 4.5,
-        "1": 4.5,
-        "2": 4.5,
-        "3": 4.5
-      },
-      "die_bonus": {
-        "1": 1,
-        "2": 1,
-        "3": 1
-      },
-      "dmg_area": {
-        "1": 10.5,
-        "2": 13.5,
-        "3": 28
-      },
-      "heal": {
-        "1": 7.5,
-        "2": 12,
-        "3": 12
-      },
-      "dmg_rider": {
-        "1": 3.5,
-        "2": 3.5,
-        "3": 3.5
-      },
-      "temp_hp": {
-        "1": 6.5,
-        "2": 6.5,
-        "3": 6.5
-      },
-      "dmg": {
-        "1": 14,
-        "2": 14,
-        "3": 14
-      },
-      "heal_fast": {
-        "1": 5.5,
-        "2": 5.5,
-        "3": 5.5
-      },
-      "dmg_fast": {
-        "1": 11,
-        "2": 11,
-        "3": 11
-      },
-      "temp_hp_recurring": {
-        "1": 3,
-        "2": 3,
-        "3": 3
-      },
-      "util_lore": {
-        "1": 2,
-        "2": 2,
-        "3": 2
-      },
-      "dmg_touch": {
-        "1": 16.5,
-        "2": 16.5,
-        "3": 16.5
-      },
-      "speed_bonus": {
-        "1": 10,
-        "2": 10,
-        "3": 10
-      },
-      "ac_bonus": {
-        "1": 5,
-        "2": 5,
-        "3": 5
-      },
-      "dmg_split": {
-        "1": 10.5,
-        "2": 21,
-        "3": 21
-      },
-      "dmg_recurring": {
-        "1": 6.5,
-        "2": 11,
-        "3": 16.5
-      },
-      "zone_damage": {
-        "2": 5,
-        "3": 5
-      }
-    },
-    "control_cap": {
-      "0": 0,
-      "1": 82,
-      "2": 95,
-      "3": 95
-    }
+  "item_base": {
+    "heavy_obscure": 46.459,
+    "util_create_water": 81.75,
+    "miss_half": 29.614,
+    "fall_immunity": 9.12,
+    "util_food_water": 252.55,
+    "util_hidden": 13.093,
+    "immune_frightened": 16.435,
+    "util_ward": 63.35,
+    "util_summon_animals": 196.95,
+    "cond_terror": 180.501,
+    "cond_asleep": 31.689,
+    "util_major_image": 186.45,
+    "c_disadv_next": 12.907,
+    "util_lock": 83.15,
+    "c_stabilize": 25.55,
+    "no_save": 17.22,
+    "cond_curse": 196.565,
+    "util_mouth": 90.95,
+    "util_script": 76.95,
+    "util_lifesteal": 107.85,
+    "c_trick": 20.65,
+    "c_no_reactions": 8.192,
+    "dmg_rider": 13.768,
+    "util_truth": 87.45,
+    "util_speak": 83.75,
+    "c_d4_check": 13.917,
+    "cond_restrained": 60.94,
+    "cond_enfeeble": 112.329,
+    "util_steed": 217.65,
+    "util_locate": 134.25,
+    "util_alter_self": 123.15,
+    "haste": 146.668,
+    "util_darkvision": 105.55,
+    "cond_suggestion": 93.387,
+    "cond_crown": 116.325,
+    "protect_types": 50.451,
+    "cond_charm_incap": 152.369,
+    "util_food": 64.65,
+    "util_silence": 75.05,
+    "util_lore": 62.025,
+    "util_detect_aura": 22.55,
+    "mirror": 74.826,
+    "cond_command": 75.325,
+    "cond_slow": 149.811,
+    "c_light": 7.363,
+    "util_servant": 72.55,
+    "util_scry": 259.25,
+    "util_cure": 148.45,
+    "beacon": 100.596,
+    "c_illusion_min": 17.904,
+    "c_nature": 25.55,
+    "c_wonder": 23.1,
+    "circle": 129.823,
+    "util_augury": 188.25,
+    "util_climb": 128.15,
+    "group10": 53.706,
+    "util_repose": 89.95,
+    "cond_paralyzed": 112.968,
+    "util_darkness": 97.75,
+    "cond_blinded": 77.363,
+    "util_thoughts": 149.75,
+    "advantage_vs_target": 30.65,
+    "ward_bond": 81.296,
+    "temp_hp": 7.298,
+    "zone_damage": 7.856,
+    "cond_charmed": 59.98,
+    "c_hand": 21.55,
+    "util_levitate": 126.85,
+    "util_glyph": 15.45,
+    "speed_bonus": 4.203,
+    "util_sending": 203.35,
+    "util_knock": 148.35,
+    "extra_dash": 32.323,
+    "fly": 128.931,
+    "util_detect": 85.45,
+    "util_tongues": 185.85,
+    "forced_move": 18.989,
+    "magic_weapon": 42.754,
+    "cond_halfspeed": 8.591,
+    "blink": 124.748,
+    "util_messenger": 97.05,
+    "util_speak_dead": 219.75,
+    "stealth_aura": 39.072,
+    "util_outline": 10.569,
+    "util_flame": 85.85,
+    "util_nondetect": 203.95,
+    "util_find_traps": 142.75,
+    "c_d4_save": 14.14,
+    "c_adv_self": 13.638,
+    "util_daylight": 169.95,
+    "util_water_breathing": 61.15,
+    "util_rope": 124.25,
+    "temp_hp_recurring": 13.148,
+    "util_speak_plants": 212.75,
+    "util_plant": 157.85,
+    "c_no_heal": 5.714,
+    "resize": 76.89,
+    "util_mark_track": 3.05,
+    "util_disguise": 79.45,
+    "util_alarm": 60.35,
+    "c_message": 22.45,
+    "blur": 79.344,
+    "util_enthrall": 129.15,
+    "feign": 100.763,
+    "util_magic_aura": 107.15,
+    "util_mark_move": 1.525,
+    "die_bonus": 26.773,
+    "cond_retch": 107.214,
+    "c_slow10": 6.993,
+    "util_illusion_image": 74.55,
+    "util_wind_wall": 194.45,
+    "util_counter": 147.25,
+    "c_ignore_cover": 7.792,
+    "resist_energy": 114.652,
+    "util_calm": 100.95,
+    "util_locate_life": 151.55,
+    "util_summon_undead": 297.85,
+    "magic_missile_immune": 0.1,
+    "util_wind": 43.537,
+    "c_weapon": 9.064,
+    "advantage_next": 0.42,
+    "cond_prone": 21.778,
+    "util_uncurse": 247.45,
+    "gas_form": 119.337,
+    "enhance": 68.356,
+    "teleport": 57.591,
+    "cond_incapacitated": 71.065,
+    "util_dispel": 216.75,
+    "util_language": 74.05,
+    "util_see_invis": 115.75,
+    "c_mend": 28.95,
+    "util_shelter": 202.15,
+    "util_water_walk": 61.55,
+    "util_poison_prot": 110.75,
+    "invisible": 72.539,
+    "jump_triple": 49.67,
+    "meld": 94.237,
+    "util_revive": 300.85,
+    "util_familiar": 131.85,
+    "c_lights4": 22.55,
+    "util_purify": 97.15
   },
   "fit": {
-    "objective": 48164.5,
-    "mean_before": {
-      "0": 11.0,
-      "1": 64.2,
-      "2": 107.8,
-      "3": 162.2
+    "objective": 0.03823,
+    "target_fraction": 0.97,
+    "generic_spells": 25,
+    "generic_by_level": {
+      "0": 4,
+      "1": 9,
+      "2": 8,
+      "3": 4
     },
-    "mean_after": {
-      "0": 17.3,
-      "1": 73.6,
-      "2": 118.2,
-      "3": 172.2
+    "held_out_implied_budget": {
+      "2": 155.3,
+      "3": 243.7
     },
-    "sd_after": {
-      "0": 5.1,
-      "1": 14.2,
-      "2": 13.7,
-      "3": 19.2
+    "held_out_by_exponent": {
+      "0.0": {
+        "2": 155.3,
+        "3": 243.7
+      },
+      "0.4": {
+        "2": 154.4,
+        "3": 332.0
+      },
+      "0.8": {
+        "2": 170.4,
+        "3": 429.7
+      },
+      "1.2": {
+        "2": 159.0,
+        "3": 502.5
+      }
     },
-    "max_after": {
-      "0": 25.0,
-      "1": 100.0,
-      "2": 146.3,
-      "3": 228.3
+    "generic_ratio": {
+      "acid-splash": 0.788,
+      "eldritch-blast": 0.772,
+      "fire-bolt": 0.94,
+      "poison-spray": 0.844,
+      "burning-hands": 0.9,
+      "cure-wounds": 0.617,
+      "healing-word": 0.804,
+      "hellish-rebuke": 1.177,
+      "inflict-wounds": 1.077,
+      "mage-armor": 1.088,
+      "magic-missile": 1.057,
+      "shield-of-faith": 1.008,
+      "witch-bolt": 0.863,
+      "barkskin": 0.689,
+      "flaming-sphere": 0.779,
+      "heat-metal": 0.903,
+      "moonbeam": 1.188,
+      "prayer-of-healing": 1.223,
+      "scorching-ray": 1.095,
+      "shatter": 0.8,
+      "spiritual-weapon": 1.113,
+      "call-lightning": 1.102,
+      "fireball": 1.013,
+      "lightning-bolt": 0.852,
+      "mass-healing-word": 0.738
+    },
+    "item_implied": {
+      "heavy_obscure": [
+        27.21,
+        56.62,
+        46.46
+      ],
+      "no_save": [
+        24.54,
+        9.9
+      ],
+      "dmg_rider": [
+        19.4,
+        8.13
+      ],
+      "cond_restrained": [
+        47.83,
+        74.05
+      ],
+      "c_light": [
+        20.15,
+        7.36,
+        0.06
+      ],
+      "group10": [
+        45.86,
+        61.55
+      ],
+      "cond_blinded": [
+        50.71,
+        104.02
+      ],
+      "temp_hp": [
+        6.87,
+        7.73
+      ],
+      "cond_charmed": [
+        56.78,
+        63.18
+      ],
+      "util_detect": [
+        90.85,
+        58.63,
+        85.45
+      ],
+      "forced_move": [
+        12.59,
+        25.39
+      ],
+      "die_bonus": [
+        26.86,
+        26.69
+      ],
+      "util_wind": [
+        60.94,
+        26.13
+      ],
+      "cond_prone": [
+        51.19,
+        9.87,
+        21.78
+      ]
     }
   }
 }

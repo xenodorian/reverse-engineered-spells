@@ -13,9 +13,9 @@ B = {
  "comprehend-languages": ([("util_language",1),("lim_no_combat",1)],0,False),
  "create-or-destroy-water": ([("util_create_water",1),("area_cube20",1),("lim_no_combat",1)],0,False),
  "cure-wounds": ([("heal",7.5),("lim_exclude",1)],0,False),
- "detect-evil-and-good": ([("util_detect",1),("area_radius30",1),("lim_barrier",1)],0,False),
- "detect-magic": ([("util_detect",1),("util_detect_aura",1),("area_radius30",1),("lim_barrier",1)],0,False),
- "detect-poison-and-disease": ([("util_detect",1),("area_radius30",1),("lim_barrier",1)],0,False),
+ "detect-evil-and-good": ([("util_detect",1),("lim_barrier",1)],0,False),
+ "detect-magic": ([("util_detect",1),("util_detect_aura",1),("lim_barrier",1)],0,False),
+ "detect-poison-and-disease": ([("util_detect",1),("lim_barrier",1)],0,False),
  "disguise-self": ([("util_disguise",1),("lim_physical_reveal",1)],0,False),
  "divine-favor": ([("dmg_rider",2.5)],0,False),
  "entangle": ([("cond_restrained",1),("area_square20",1),("difficult_terrain",1),("lim_escape_check",1)],0,False),
@@ -211,14 +211,15 @@ PRICE_RANGE = {"produce-flame": "30 feet"}
 
 # Multi-mode rebuilds, used by tools/rebuild.py to test the mode rule on spells that let the caster choose
 # an option at casting time. slug -> (shared lines, [lines for each mode]). These replace the spell's lines.
+# A third value in a line scales a canon effect: ("util_disguise", 1, 0.5) is half the strength.
 MODES = {
- "alter-self": ([], [[("custom_util", 30)], [("util_disguise", 1)], [("custom_buff", 35)]]),
- "bestow-curse": ([("lim_save_negates", 1)], [[("custom_cond", 40)], [("custom_cond", 55)], [("custom_cond", 60)], [("dmg_rider", 4.5)]]),
- "enhance-ability": ([], [[("custom_buff", 24)] for _ in range(6)]),
- "glyph-of-warding": ([("util_glyph", 1), ("lim_trigger", 1)], [[("dmg", 22.5), ("rel_save_half", 1), ("area_radius20", 1)], [("custom_util", 70)]]),
- "create-or-destroy-water": ([("lim_no_combat", 1)], [[("util_create_water", 1)], [("custom_util", 13)]]),
- "plant-growth": ([], [[("difficult_terrain", 1), ("util_plant", 1), ("area_radius30", 1)], [("custom_util", 30)]]),
- "detect-thoughts": ([("lim_dm", 1)], [[("util_thoughts", 1)], [("custom_util", 40)]]),
- "blindness-deafness": ([("lim_repeat_save", 1)], [[("cond_blinded", 1)], [("custom_cond", 12)]]),
- "calm-emotions": ([("area_radius20", 1), ("lim_willing", 1)], [[("util_calm", 1)], [("custom_cond", 35)]]),
+ "alter-self": ([], [[("util_water_breathing", 1, 0.8)], [("util_disguise", 1)], [("c_weapon", 1, 2.0)]]),
+ "bestow-curse": ([("lim_save_negates", 1)], [[("cond_prone", 1, 3.0)], [("cond_blinded", 1, 1.5)], [("cond_incapacitated", 1, 0.7)], [("dmg_rider", 4.5)]]),
+ "enhance-ability": ([], [[("die_bonus", 1, 0.8)] for _ in range(6)]),
+ "glyph-of-warding": ([("util_glyph", 1), ("lim_trigger", 1)], [[("dmg", 22.5), ("rel_save_half", 1), ("area_radius20", 1)], [("util_dispel", 1, 0.6)]]),
+ "create-or-destroy-water": ([("lim_no_combat", 1)], [[("util_create_water", 1)], [("util_create_water", 1, 0.8)]]),
+ "plant-growth": ([], [[("difficult_terrain", 1), ("util_plant", 1), ("area_radius30", 1)], [("util_food_water", 1, 0.5)]]),
+ "detect-thoughts": ([("lim_dm", 1)], [[("util_thoughts", 1)], [("util_thoughts", 1, 0.8)]]),
+ "blindness-deafness": ([("lim_repeat_save", 1)], [[("cond_blinded", 1)], [("cond_blinded", 1, 0.4)]]),
+ "calm-emotions": ([("area_radius20", 1), ("lim_willing", 1)], [[("util_calm", 1)], [("cond_charmed", 1, 0.9)]]),
 }

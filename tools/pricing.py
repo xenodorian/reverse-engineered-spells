@@ -1,23 +1,23 @@
 """Pricing tables and scoring for the spell point-buy system.
 
-Price of an item = base price x category multiplier. Multipliers, level budgets, floors, and
-magnitude caps come from data/calibration.json, which tools/fit.py writes. Without that file,
-every multiplier is 1 and the L2 values are placeholders.
+Price of an item = base price x category multiplier x a convex shape for amounts. Multipliers, the
+convexity exponent, per-effect prices for single-use items, and the level budgets come from
+data/calibration.json, which tools/fit.py writes.
+
+There are no caps, item levels, floors, or ceilings. A spell is limited only by what its parts cost
+against the budget for its level. Only a spell's base-slot power is priced. Upcasting and cantrip
+scaling are not part of the cost.
 """
 import json, math, os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAL_PATH = os.path.join(ROOT, "data", "calibration.json")
 
-EXP = 0.4                       # convexity: price grows with magnitude^(1+EXP)
-CANTRIP_CEIL = 49               # a cantrip's effects must total less than the L1 floor
-LIMIT_CAP = 0.5                 # limit refunds may not exceed this share of the effect cost
+EXP = 0.4                       # convexity: price grows with magnitude^(1+EXP). fit.py fits it
+REFUND_CAP = 0.40               # all refunds together (limits, components, concentration, class lists, slow casting) may not exceed this share of the effect cost. Canon spells at level 1 and up: median 18%, 95th percentile 37%
+LEVEL_SCALE = True              # delivery, refunds, and limits are priced as a share of the level budget, so they grow with level
 MODE_SHARE = 0.25               # a spell with several modes pays full price for the best one and this share of each other
-UPCAST_SHARE = 0.5              # an upcast increment costs this share of buying it outright
-UPCAST_MAX = 1.0                # increase per slot level, as a share of the base amount (damage, healing, temp HP)
-UPCAST_TARGETS = 1              # extra targets per slot level
 DURATION_REF = 40               # effects at or above this pay full duration price; weaker effects pay down to half
-CANTRIP_SCALE_SHARE = 0.40      # a damage cantrip pays this share of its damage price for scaling with level
 EFFECT_CATS = {"dmg", "heal", "buff", "cond", "util", "area"}
 
 # id: (label, base price, unit, convex reference or None, category, tier)
@@ -65,10 +65,6 @@ ITEMS = {
     "enhance":        _i("Advantage on one ability's checks plus a perk", 40, "buff", 2),
     "resize":         _i("Grow or shrink a creature with combat benefits", 55, "buff", 2),
     "stealth_aura":   _i("+10 Stealth and untrackable for a group", 60, "buff", 2),
-    # custom effects: you choose the base points by comparing with the items in the tables
-    "custom_util":     _i("Custom utility effect (base points you choose)", 1, "util", 0, "base points"),
-    "custom_buff":     _i("Custom buff or debuff (base points you choose)", 1, "buff", 0, "base points"),
-    "custom_cond":     _i("Custom condition or control (base points you choose)", 1, "cond", 0, "base points"),
     # conditions and control
     "cond_prone":      _i("Prone", 10, "cond", 1),
     "cond_charmed":    _i("Charmed", 31, "cond", 1),
@@ -267,7 +263,6 @@ DURATION = {"Instantaneous": 0, "1 round": 3, "1 minute": 10, "10 minutes": 16, 
             "8 hours": 28, "24 hours": 32, "10 days": 36, "Until dispelled": 40}
 CONC = -10
 RITUAL = 5
-SCALING = {0: 3, 1: 5, 2: 8, 3: 11}
 COMP = {"V": -2, "S": -2, "M": -3}
 GP_TIERS = [(10, -8), (50, -12), (100, -18), (250, -22), (10**9, -26)]
 CONSUMED_MULT = 1.5
@@ -275,61 +270,34 @@ CLASS_AVAIL = [(1, -4), (3, -2), (5, 0), (99, 3)]
 
 # multiplier groups: item categories plus the delivery and refund groups
 CATS = ["dmg", "heal", "buff", "cond", "util", "area", "range", "cast", "dur", "comp", "limit", "conc", "extra", "avail"]
-DEFAULTS = {
-    "mult": {c: 1.0 for c in CATS},
-    "budgets": {"0": 25, "1": 100, "2": 150, "3": 200},
-    "floors": {"1": 50, "2": 100, "3": 150},
-    "caps": {},
-    "control_cap": {"0": 0, "1": 999, "2": 999, "3": 999},
-}
+DEFAULTS = {"mult": {c: 1.0 for c in CATS}, "exp": 0.4, "budgets": {"0": 25, "1": 100, "2": 150, "3": 250}, "item_base": {}}
 MULT = dict(DEFAULTS["mult"])
-BUDGETS = {0: 25, 1: 100, 2: 150, 3: 200}
-FLOORS = {1: 50, 2: 100, 3: 150}   # a spell of this level must have effects totalling at least this
-CAPS = {}
-CONTROL_CAP = {0: 0, 1: 999, 2: 999, 3: 999}
-
-ENFORCE_CAPS = False            # observed maxima are reference data. rebuild.py turns this on to show why it is off
-OBSERVED = {"caps": {}, "control_cap": {}}
+BUDGETS = {0: 25, 1: 100, 2: 150, 3: 250}
+ITEM_BASE = {}                  # fitted base prices for items that only one spell uses
 
 def load_calibration(path=CAL_PATH):
-    global BUDGETS, CAPS, CONTROL_CAP
+    global EXP, BUDGETS
     cal = DEFAULTS
     if os.path.exists(path):
         cal = json.load(open(path))
     MULT.update(cal["mult"])
+    EXP = cal.get("exp", 0.4)
     BUDGETS = {int(k): v for k, v in cal["budgets"].items()}
-    FLOORS.clear(); FLOORS.update({int(k): v for k, v in cal.get("floors", DEFAULTS["floors"]).items()})
-    obs = cal.get("observed_maxima", {"caps": cal.get("caps", {}), "control_cap": cal.get("control_cap", {})})
-    OBSERVED["caps"] = {k: {int(l): v for l, v in d.items()} for k, d in obs["caps"].items()}
-    OBSERVED["control_cap"] = {int(k): v for k, v in obs["control_cap"].items()}
-    CAPS = OBSERVED["caps"] if ENFORCE_CAPS else {}
-    CONTROL_CAP = OBSERVED["control_cap"] if ENFORCE_CAPS else {0: 10**6, 1: 10**6, 2: 10**6, 3: 10**6}
+    ITEM_BASE.clear(); ITEM_BASE.update(cal.get("item_base", {}))
 load_calibration()
 
-def floor(level):
-    return FLOORS.get(level, 0)
-
-def ceiling(level):
-    """Cantrip effects stay under the level 1 floor. From level 1 up, effects cannot exceed the budget."""
-    if level == 0:
-        return CANTRIP_CEIL
-    return BUDGETS[level]
+def base_of(item):
+    return ITEM_BASE.get(item, ITEMS[item][1])
 
 def price(item, q=1):
     label, base, unit, ref, cat, tier = ITEMS[item]
+    base = base_of(item)
     m = MULT[cat]
     if ref:
         return base * q * (q / ref) ** EXP * m
     if unit == "flat":
         return base * m
     return base * q * m
-
-def cap_for(item, level):
-    d = CAPS.get(item)
-    if not d:
-        return None
-    ok = [l for l in d if l <= level]
-    return d[max(ok)] if ok else None
 
 def lookup(prefixes, text):
     for k, v in prefixes:
@@ -342,171 +310,112 @@ def gp_refund(gp, consumed):
         if gp <= cap:
             return v * (CONSUMED_MULT if consumed else 1) * MULT["comp"]
 
-def cap_key(item, spec):
-    """Damage caps are tracked separately for spells that split across targets, area spells, and touch spells,
-    because each gets a different amount of damage than a plain ranged hit (Inflict Wounds against Guiding Bolt).
-    Spells cast as a bonus action or reaction get their own, lower caps for damage and healing."""
-    key = item
-    if item == "dmg":
-        if any(i == "split_targets" for i, v in spec["lines"]):
-            key = "dmg_split"
-        elif any(i in ITEMS and ITEMS[i][4] == "area" and i not in ("target_extra", "split_targets") for i, v in spec["lines"]):
-            key = "dmg_area"
-        elif spec["range"] == "Touch":
-            key = "dmg_touch"
-    if item == "c_dmg" and any(i in C_RIDERS for i, v in spec["lines"]):
-        key = "c_dmg_rider"      # a cantrip that adds a rider gets less damage
-    if item in ("dmg", "heal", "temp_hp") and spec["casting_time"].startswith(("1 bonus action", "1 reaction")):
-        key += "_fast"
-    return key
+def eprice(entry):
+    """Price of a line (item, quantity) or (item, quantity, scale). A scale below 1 prices a weaker version of
+    an effect, for example Dispel Magic that only ends spells of 1st level or lower."""
+    item, q = entry[0], entry[1]
+    return price(item, q) * (entry[2] if len(entry) > 2 else 1.0)
 
 def per_target_share(spec):
     """Price of one extra target: a share of every per-target line the spell already pays for."""
     total = 0.0
-    control = 0.0
     has_area = any(i in ITEMS and ITEMS[i][4] == "area" and i not in ("target_extra", "split_targets") for i, v in spec["lines"])
-    for item, q in spec["lines"]:
+    for entry in spec["lines"]:
+        item = entry[0]
         if item in ITEMS and item != "target_extra" and item not in NOT_PER_TARGET:
             cat = ITEMS[item][4]
             if cat == "util" and has_area:
                 continue
             if cat in TARGET_SHARE:
-                total += price(item, q) * TARGET_SHARE[cat]
-                if item in CONTROL:
-                    control += price(item, q) * TARGET_SHARE[cat]
-    return total, control
+                total += eprice(entry) * TARGET_SHARE[cat]
+    return total
 
 def score(spec, enforce=True):
-    """Returns (rows, total). rows are (type, label, points). With enforce=False the cap and tier
-    checks are skipped, which tools/fit.py uses while measuring the existing spells."""
+    """Returns (rows, total). rows are (type, label, points). A spell is only limited by its price: this
+    raises an error for an unknown name or a limit listed twice, and for nothing else.
+    Only the spell's base-slot power is priced. A listed upcast or cantrip scaling adds nothing."""
     level = spec.get("level", 1)
     rows = []
     def add(cat, label, pts):
         rows.append((cat, label, round(pts, 1)))
     effect_total = 0
-    control_total = 0
     extra_targets = 0
     lines = list(spec["lines"])
     alt_modes = []
     modes = spec.get("modes")
     if modes:
-        sums = [sum(price(i, q) for i, q in m if i in ITEMS) for m in modes]
+        sums = [sum(eprice(e) for e in m if e[0] in ITEMS) for m in modes]
         best = max(range(len(modes)), key=lambda k: sums[k])
         lines += list(modes[best])
         alt_modes = [m for k, m in enumerate(modes) if k != best]
     spec = dict(spec, lines=lines)
-    if enforce:
-        seen = [i for i, q in spec["lines"]]
-        dup = sorted({i for i in seen if seen.count(i) > 1})
-        if dup:
-            raise ValueError(f"{', '.join(dup)} listed more than once. Use the quantity instead, or take a flat item once")
-    for item, q in spec["lines"]:
+    seen = [e[0] for e in lines if e[0] in LIMITS]
+    dup = sorted({i for i in seen if seen.count(i) > 1})
+    if dup:
+        raise ValueError(f"limit {', '.join(dup)} claimed more than once")
+    for entry in lines:
+        item, q = entry[0], entry[1]
         if item in ITEMS:
             label, base, unit, ref, cat, tier = ITEMS[item]
-            if enforce:
-                if tier > level:
-                    raise ValueError(f"{item} is a level {tier} effect and cannot be used in a level {level} spell")
-                if unit == "flat" and q != 1:
-                    raise ValueError(f"{item} is a flat item and can be taken once")
-                cp = cap_for(cap_key(item, spec), level)
-                if cp is not None and q > cp + 1e-9:
-                    raise ValueError(f"{item} is capped at {cp:g} for level {level} spells (you asked for {q:g})")
             if item == "target_extra":
                 extra_targets += q
                 continue
-            cost = price(item, q)
-            qs = "" if unit == "flat" else f" x{q:g}"
+            cost = eprice(entry)
+            qs = ("" if unit == "flat" else f" x{q:g}") + (f" at {entry[2]:.0%} strength" if len(entry) > 2 and entry[2] != 1 else "")
             if cat in EFFECT_CATS:
                 effect_total += cost
-            if item in CONTROL:
-                control_total += cost
             add("Effect", label + qs, cost)
         elif item in LIMITS:
             add("Limit", LIMITS[item][0], LIMITS[item][1] * MULT["limit"])
         else:
             raise KeyError(item)
     for m in alt_modes:
-        for item, q in m:
+        for entry in m:
+            item, q = entry[0], entry[1]
             if item not in ITEMS:
                 raise KeyError(item)
             label, base, unit, ref, cat, tier = ITEMS[item]
-            if enforce and tier > level:
-                raise ValueError(f"{item} is a level {tier} effect and cannot be used in a level {level} spell")
-            cost = price(item, q) * MODE_SHARE
-            qs = "" if unit == "flat" else f" x{q:g}"
+            cost = eprice(entry) * MODE_SHARE
+            qs = ("" if unit == "flat" else f" x{q:g}") + (f" at {entry[2]:.0%} strength" if len(entry) > 2 and entry[2] != 1 else "")
             if cat in EFFECT_CATS:
                 effect_total += cost
             add("Effect", f"Alternate mode: {label}{qs}", cost)
-    pt_total, pt_control = per_target_share(spec)
     if extra_targets:
-        if pt_total <= 0:
+        cost = per_target_share(spec) * extra_targets
+        if cost <= 0:
             raise ValueError("extra targets need a per-target effect to extend (area spells already hit everyone inside)")
-        if enforce:
-            cp = cap_for("target_extra", level)
-            if cp is not None and extra_targets > cp + 1e-9:
-                raise ValueError(f"target_extra is capped at {cp:g} for level {level} spells (you asked for {extra_targets:g})")
-        cost = pt_total * extra_targets
         effect_total += cost
-        control_total += pt_control * extra_targets
         add("Effect", f"Additional targets x{extra_targets:g}", cost)
-    if enforce and control_total > CONTROL_CAP[level] + 1e-9:
-        raise ValueError(f"control effects total {control_total:.0f}, over the level {level} control cap of {CONTROL_CAP[level]:g}")
-    fl = floor(level)
-    if fl and effect_total < fl:
-        add("Floor", f"Level {level} effect floor (effects must total {fl})", fl - effect_total)
-        effect_total = fl
-    if enforce and effect_total > ceiling(level):
-        raise ValueError(f"effects total {effect_total:g}, which is level {level + 1} strength (ceiling {ceiling(level):g})")
-    limit_sum = sum(r[2] for r in rows if r[0] == "Limit")
-    cap = -LIMIT_CAP * effect_total
-    if limit_sum < cap:
-        add("Cap", f"Limit refunds capped at {int(LIMIT_CAP * 100)}% of effect cost", cap - limit_sum)
+    ls = LEVEL_SCALE and BUDGETS.get(level, 100) / 100.0 or 1.0   # everything that is not an effect scales with the level budget
+    for r_i, r in enumerate(rows):
+        if r[0] == "Limit":
+            rows[r_i] = (r[0], r[1], round(r[2] * ls, 1))
     priced = spec.get("price_range", spec["range"])
     r = priced.split(" (")[0]
     label = f"Range: {spec['range']}" + (f", attack reaches {priced}" if priced != spec["range"] else "")
-    add("Delivery", label, RANGE[r] * MULT["range"])
-    add("Delivery", f"Casting time: {spec['casting_time'].split(',')[0]}", lookup(CASTING, spec["casting_time"]) * MULT["cast"])
+    add("Delivery", label, RANGE[r] * MULT["range"] * ls)
+    add("Delivery", f"Casting time: {spec['casting_time'].split(',')[0]}", lookup(CASTING, spec["casting_time"]) * MULT["cast"] * ls)
     dur_factor = 0.5 + 0.5 * min(1.0, effect_total / DURATION_REF)
     dlabel = f"Duration: {spec['duration']}" + (f" (x{dur_factor:.2f} for a weak effect)" if dur_factor < 0.995 else "")
-    add("Duration", dlabel, DURATION[spec["duration"]] * MULT["dur"] * dur_factor)
+    add("Duration", dlabel, DURATION[spec["duration"]] * MULT["dur"] * dur_factor * ls)
     if spec["concentration"]:
-        add("Refund", "Concentration", CONC * MULT["conc"])
+        add("Refund", "Concentration", CONC * MULT["conc"] * ls)
     if spec["ritual"]:
-        add("Delivery", "Ritual casting", RITUAL * MULT["extra"])
-    if spec["scaling"]:
-        up = spec.get("upcast")
-        cdmg = sum(price(i, q) for i, q in spec["lines"] if i == "c_dmg")
-        if up and level >= 1:
-            item, inc = up
-            base_q = sum(q for i, q in spec["lines"] if i == item)
-            if enforce:
-                if item == "target_extra":
-                    if inc > UPCAST_TARGETS + 1e-9:
-                        raise ValueError(f"upcasting may add at most {UPCAST_TARGETS} target per slot level")
-                elif item in ("dmg", "dmg_recurring", "heal", "temp_hp"):
-                    if base_q and inc > UPCAST_MAX * base_q + 1e-9:
-                        raise ValueError(f"upcast increase {inc:g} is over {int(UPCAST_MAX * 100)}% of the base {base_q:g} per slot level")
-                else:
-                    raise ValueError(f"{item} cannot be an upcast increase")
-            if item == "target_extra":
-                cost = pt_total * inc * UPCAST_SHARE * MULT["extra"]
-                add("Delivery", f"Upcasting: +{inc:g} target per slot level", cost)
-            else:
-                add("Delivery", f"Upcasting: +{inc:g} {ITEMS[item][0].lower()} per slot level", price(item, inc) * UPCAST_SHARE * MULT["extra"])
-        elif level == 0 and cdmg:
-            add("Delivery", "Scales with character level", CANTRIP_SCALE_SHARE * cdmg * MULT["extra"])
-        else:
-            add("Delivery", "Scales with level" if level == 0 else "Scales with higher slots", SCALING[level] * MULT["extra"])
+        add("Delivery", "Ritual casting", RITUAL * MULT["extra"] * ls)
     for c in spec["components"]:
         if c == "M":
             gp = spec.get("material_gp", 0)
             if gp:
                 tag = ", consumed" if spec.get("consumed") else ""
-                add("Refund", f"Material worth {gp} gp{tag}", gp_refund(gp, spec.get("consumed")))
+                add("Refund", f"Material worth {gp} gp{tag}", gp_refund(gp, spec.get("consumed")) * ls)
             else:
-                add("Refund", "Material component (no cost)", COMP["M"] * MULT["comp"])
+                add("Refund", "Material component (no cost)", COMP["M"] * MULT["comp"] * ls)
         else:
-            add("Refund", f"{c} component", COMP[c] * MULT["comp"])
+            add("Refund", f"{c} component", COMP[c] * MULT["comp"] * ls)
     n = spec["class_count"]
-    add("Availability", f"On {n} class list{'s' if n != 1 else ''}", next(v for k, v in CLASS_AVAIL if n <= k) * MULT["avail"])
+    add("Availability", f"On {n} class list{'s' if n != 1 else ''}", next(v for k, v in CLASS_AVAIL if n <= k) * MULT["avail"] * ls)
+    neg = -sum(r[2] for r in rows if r[2] < 0)
+    cap = REFUND_CAP * effect_total
+    if neg > cap:
+        add("Cap", f"Refunds capped at {int(REFUND_CAP * 100)}% of effect cost", neg - cap)
     return rows, round(sum(r[2] for r in rows), 1)
