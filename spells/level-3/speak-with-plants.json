@@ -1,0 +1,23 @@
+{
+  "name": "Speak with Plants",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Self (30-foot radius)",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "Plants within 30 feet can talk to you. You can ask about events nearby and ask them to move aside or clear difficult terrain.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

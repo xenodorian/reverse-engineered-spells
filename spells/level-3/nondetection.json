@@ -1,0 +1,24 @@
+{
+  "name": "Nondetection",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of diamond dust worth 25 gp, consumed",
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Ranger",
+    "Wizard"
+  ],
+  "description": "A creature or object is hidden from divination magic and scrying sensors.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

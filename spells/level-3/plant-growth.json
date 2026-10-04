@@ -1,0 +1,23 @@
+{
+  "name": "Plant Growth",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "150 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "Plants in a 100-foot radius become a thicket. Movement through it costs four times as much. Alternatively, enrich the land for a year.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

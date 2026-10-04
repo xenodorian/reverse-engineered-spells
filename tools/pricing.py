@@ -10,7 +10,6 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAL_PATH = os.path.join(ROOT, "data", "calibration.json")
 
 EXP = 0.4                       # convexity: price grows with magnitude^(1+EXP)
-L1_FLOOR = 50                   # a level 1 spell's effects must total at least this
 CANTRIP_CEIL = 49               # a cantrip's effects must total less than the L1 floor
 LIMIT_CAP = 0.5                 # limit refunds may not exceed this share of the effect cost
 UPCAST_SHARE = 0.5              # an upcast increment costs this share of buying it outright
@@ -130,6 +129,46 @@ ITEMS = {
     "util_climb":      _i("Climb walls and ceilings", 30, "util", 2),
     "util_silence":    _i("Zone with no sound", 60, "util", 2),
     "util_truth":      _i("Creatures cannot speak lies", 50, "util", 2),
+    # level 3 effects
+    "cond_slow":       _i("Slowed: half speed, -2 AC and Dex saves, no reactions, one action", 55, "cond", 3),
+    "cond_terror":     _i("Frightened, drops what it holds, must flee", 90, "cond", 3),
+    "cond_charm_incap": _i("Charmed, incapacitated, speed 0", 90, "cond", 3),
+    "cond_curse":      _i("Cursed: disadvantage, lost actions, or extra damage", 75, "cond", 3),
+    "cond_retch":      _i("Spends its action retching", 60, "cond", 3),
+    "cond_halfspeed":  _i("Speed halved", 25, "cond", 3),
+    "haste":           _i("Doubled speed, +2 AC, advantage on Dex saves, extra action", 140, "buff", 3),
+    "fly":             _i("Fly speed 60 ft", 95, "buff", 3),
+    "blink":           _i("Vanish to the Ethereal Plane on half of turns", 90, "buff", 3),
+    "gas_form":        _i("Gaseous form: flies, resists nonmagical damage, cannot attack", 80, "buff", 3),
+    "feign":           _i("Appear dead and resist damage", 60, "buff", 3),
+    "meld":            _i("Merge into stone and hide", 70, "buff", 3),
+    "resist_energy":   _i("Resistance to one damage type", 70, "buff", 3),
+    "beacon":          _i("Advantage on Wisdom and death saves, maximum healing received", 70, "buff", 3),
+    "circle":          _i("Barrier that keeps out six creature types", 90, "buff", 3),
+    "group10":         _i("Applies to up to ten willing creatures", 30, "buff", 3),
+    "util_summon_undead": _i("Raise a skeleton or zombie that obeys you", 110, "util", 3),
+    "util_summon_animals": _i("Summon fey spirits as beasts that fight for you", 140, "util", 3),
+    "util_scry":       _i("See and hear a distant place", 90, "util", 3),
+    "util_counter":    _i("Stop a spell as it is cast", 100, "util", 3),
+    "util_food_water": _i("Food and water for fifteen creatures", 60, "util", 3),
+    "util_daylight":   _i("Bright daylight over a wide area", 70, "util", 3),
+    "util_dispel":     _i("End a spell on a target", 100, "util", 3),
+    "util_glyph":      _i("Hidden rune that triggers on a condition", 40, "util", 3),
+    "util_shelter":    _i("Sealed dome shelter for hours", 80, "util", 3),
+    "util_major_image": _i("Illusion with sound, smell, and temperature", 70, "util", 3),
+    "util_nondetect":  _i("Hide from divination and scrying", 50, "util", 3),
+    "util_steed":      _i("Summon a fast riding steed", 70, "util", 3),
+    "util_plant":      _i("Overgrow plants into a thicket", 25, "util", 3),
+    "util_uncurse":    _i("End a curse or attunement to a cursed item", 70, "util", 3),
+    "util_revive":     _i("Return a recently dead creature to life", 140, "util", 3),
+    "util_sending":    _i("Send a short message to anyone you know", 60, "util", 3),
+    "util_speak_dead": _i("A corpse answers five questions", 60, "util", 3),
+    "util_speak_plants": _i("Talk with plants and command them", 40, "util", 3),
+    "util_tongues":    _i("Understand and speak any language", 60, "util", 3),
+    "util_lifesteal":  _i("Regain half the damage dealt", 30, "util", 3),
+    "util_water_breathing": _i("Breathe underwater", 40, "util", 3),
+    "util_water_walk": _i("Walk on liquid surfaces", 30, "util", 3),
+    "util_wind_wall":  _i("Wall of wind that stops missiles, gas, and flyers", 55, "util", 3),
     # cantrip-scale effects
     "c_slow10":        _i("Target speed reduced 10 ft until your next turn", 6, "cond", 0),
     "c_no_heal":       _i("Target cannot regain HP until your next turn", 3, "cond", 0),
@@ -165,6 +204,11 @@ ITEMS = {
     "area_radius15":   _area("15 ft radius", 707, 2),
     "area_radius20":   _area("20 ft radius", 1257, 1),
     "area_radius30":   _area("30 ft radius", 2827, 1),
+    "area_cone30":     _area("30 ft cone", 450, 3),
+    "area_line100":    _area("100 ft line", 500, 3),
+    "area_cube30":     _area("30 ft cube", 900, 3),
+    "area_cube40":     _area("40 ft cube", 1600, 3),
+    "area_radius40":   _area("40 ft radius", 5027, 3),
 }
 # Extra targets cost a share of what the spell already charges per target. The share depends on the
 # kind of effect: an extra enemy hit by damage or control is worth more than an extra ally healed.
@@ -175,7 +219,8 @@ NOT_PER_TARGET = {"difficult_terrain", "heavy_obscure", "util_outline", "util_ig
 # Items counted toward the control cap (strong conditions).
 CONTROL = {"cond_prone", "cond_charmed", "cond_frightened", "cond_blinded", "cond_restrained",
            "cond_incapacitated", "cond_asleep", "cond_command", "cond_paralyzed",
-           "cond_enfeeble", "cond_suggestion", "cond_crown"}
+           "cond_enfeeble", "cond_suggestion", "cond_crown", "cond_slow", "cond_terror", "cond_charm_incap",
+           "cond_curse", "cond_retch", "cond_halfspeed"}
 
 # id: (label, refund)   Refunds from limits are negative.
 LIMITS = {
@@ -208,15 +253,16 @@ LIMITS = {
     "lim_expend":         ("Effect ends when used", -8),
     "lim_range_break":    ("Breaks if the target leaves range", -2),
     "lim_shared_damage":  ("You take the damage the target takes", -14),
+    "lim_backlash":       ("Target suffers when the spell ends", -15),
 }
 
 CASTING = [("1 action", 0), ("1 bonus action", 8), ("1 reaction", 10), ("1 minute", -4), ("10 minutes", -8), ("1 hour", -12)]
-RANGE = {"Self": 0, "Touch": 0, "10 feet": 2, "30 feet": 3, "60 feet": 5, "90 feet": 7, "120 feet": 8, "150 feet": 9}
+RANGE = {"Self": 0, "Touch": 0, "10 feet": 2, "30 feet": 3, "60 feet": 5, "90 feet": 7, "120 feet": 8, "150 feet": 9, "1 mile": 14, "Unlimited": 18}
 DURATION = {"Instantaneous": 0, "1 round": 3, "1 minute": 10, "10 minutes": 16, "1 hour": 22,
             "8 hours": 28, "24 hours": 32, "10 days": 36, "Until dispelled": 40}
 CONC = -10
 RITUAL = 5
-SCALING = {0: 3, 1: 5, 2: 8}
+SCALING = {0: 3, 1: 5, 2: 8, 3: 11}
 COMP = {"V": -2, "S": -2, "M": -3}
 GP_TIERS = [(10, -8), (50, -12), (100, -18), (250, -22), (10**9, -26)]
 CONSUMED_MULT = 1.5
@@ -226,34 +272,37 @@ CLASS_AVAIL = [(1, -4), (3, -2), (5, 0), (99, 3)]
 CATS = ["dmg", "heal", "buff", "cond", "util", "area", "range", "cast", "dur", "comp", "limit", "conc", "extra", "avail"]
 DEFAULTS = {
     "mult": {c: 1.0 for c in CATS},
-    "budgets": {"0": 25, "1": 100, "2": 200},
-    "l2_floor": 100,
+    "budgets": {"0": 25, "1": 100, "2": 150, "3": 200},
+    "floors": {"1": 50, "2": 100, "3": 150},
     "caps": {},
-    "control_cap": {"0": 0, "1": 999, "2": 999},
+    "control_cap": {"0": 0, "1": 999, "2": 999, "3": 999},
 }
 MULT = dict(DEFAULTS["mult"])
-BUDGETS = {0: 25, 1: 100, 2: 200}
-L2_FLOOR = 100
+BUDGETS = {0: 25, 1: 100, 2: 150, 3: 200}
+FLOORS = {1: 50, 2: 100, 3: 150}   # a spell of this level must have effects totalling at least this
 CAPS = {}
-CONTROL_CAP = {0: 0, 1: 999, 2: 999}
+CONTROL_CAP = {0: 0, 1: 999, 2: 999, 3: 999}
 
 def load_calibration(path=CAL_PATH):
-    global BUDGETS, L2_FLOOR, CAPS, CONTROL_CAP
+    global BUDGETS, CAPS, CONTROL_CAP
     cal = DEFAULTS
     if os.path.exists(path):
         cal = json.load(open(path))
     MULT.update(cal["mult"])
     BUDGETS = {int(k): v for k, v in cal["budgets"].items()}
-    L2_FLOOR = cal["l2_floor"]
+    FLOORS.clear(); FLOORS.update({int(k): v for k, v in cal.get("floors", DEFAULTS["floors"]).items()})
     CAPS = {k: {int(l): v for l, v in d.items()} for k, d in cal["caps"].items()}
     CONTROL_CAP = {int(k): v for k, v in cal["control_cap"].items()}
 load_calibration()
 
 def floor(level):
-    return {0: 0, 1: L1_FLOOR, 2: L2_FLOOR}[level]
+    return FLOORS.get(level, 0)
 
 def ceiling(level):
-    return {0: CANTRIP_CEIL, 1: L2_FLOOR - 1, 2: 10**9}[level]
+    """Cantrip effects stay under the level 1 floor. From level 1 up, effects cannot exceed the budget."""
+    if level == 0:
+        return CANTRIP_CEIL
+    return BUDGETS[level]
 
 def price(item, q=1):
     label, base, unit, ref, cat, tier = ITEMS[item]
@@ -283,16 +332,22 @@ def gp_refund(gp, consumed):
             return v * (CONSUMED_MULT if consumed else 1) * MULT["comp"]
 
 def cap_key(item, spec):
-    """Damage caps are tracked separately for spells that split across targets and for touch spells,
-    because a touch attack gets more damage than a ranged one (Inflict Wounds against Guiding Bolt)."""
+    """Damage caps are tracked separately for spells that split across targets, area spells, and touch spells,
+    because each gets a different amount of damage than a plain ranged hit (Inflict Wounds against Guiding Bolt).
+    Spells cast as a bonus action or reaction get their own, lower caps for damage and healing."""
+    key = item
     if item == "dmg":
         if any(i == "split_targets" for i, v in spec["lines"]):
-            return "dmg_split"
-        if spec["range"] == "Touch":
-            return "dmg_touch"
+            key = "dmg_split"
+        elif any(i in ITEMS and ITEMS[i][4] == "area" and i not in ("target_extra", "split_targets") for i, v in spec["lines"]):
+            key = "dmg_area"
+        elif spec["range"] == "Touch":
+            key = "dmg_touch"
     if item == "c_dmg" and any(i in C_RIDERS for i, v in spec["lines"]):
-        return "c_dmg_rider"      # a cantrip that adds a rider gets less damage
-    return item
+        key = "c_dmg_rider"      # a cantrip that adds a rider gets less damage
+    if item in ("dmg", "heal", "temp_hp") and spec["casting_time"].startswith(("1 bonus action", "1 reaction")):
+        key += "_fast"
+    return key
 
 def per_target_share(spec):
     """Price of one extra target: a share of every per-target line the spell already pays for."""

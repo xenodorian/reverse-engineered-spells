@@ -1,0 +1,25 @@
+{
+  "name": "Protection from Energy",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Ranger",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A willing creature gains resistance to acid, cold, fire, lightning, or thunder damage, your choice.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

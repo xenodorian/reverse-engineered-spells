@@ -1,0 +1,24 @@
+{
+  "name": "Sending",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Unlimited",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A short piece of fine copper wire",
+  "duration": "1 round",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "Send a message of up to 25 words to a creature you know. It hears it and can answer at once. The message crosses any distance, but not planes.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

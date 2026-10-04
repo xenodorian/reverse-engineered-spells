@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Spell point-buy calculator for cantrips, level 1, and level 2 spells.
+"""Spell point-buy calculator for cantrips and level 1, 2, and 3 spells.
 
 Usage:
   python tools/pointbuy.py fit               recalibrate prices and write data/calibration.json
@@ -10,7 +10,7 @@ Usage:
   python tools/pointbuy.py stress            try to inflate every spell and show what the rules allow
 
 Positive numbers cost points. Negative numbers refund points.
-Budgets: cantrip 25, level 1 100, level 2 from data/calibration.json.
+Budgets: cantrip 25, level 1 100, levels 2 and 3 from data/calibration.json.
 """
 import glob, json, os, sys
 
@@ -19,7 +19,7 @@ import pricing as P
 import builds as B
 
 ROOT = P.ROOT
-FOLDERS = (("cantrip", B.BC), ("level-1", B.B), ("level-2", B.B2))
+FOLDERS = (("cantrip", B.BC), ("level-1", B.B), ("level-2", B.B2), ("level-3", B.B3))
 
 def load_spells():
     out = {}

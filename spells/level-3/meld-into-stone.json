@@ -1,0 +1,22 @@
+{
+  "name": "Meld into Stone",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Cleric",
+    "Druid"
+  ],
+  "description": "You and your gear merge into a stone object big enough to hold you. You can see and hear outside, and you take damage if the stone is damaged.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

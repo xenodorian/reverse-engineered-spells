@@ -1,0 +1,24 @@
+{
+  "name": "Fly",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A wing feather from any bird",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A willing creature gains a flying speed of 60 feet. If the spell ends in the air, it falls.",
+  "at_higher_levels": "Target one more creature per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

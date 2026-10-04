@@ -1,0 +1,23 @@
+{
+  "name": "Revivify",
+  "level": 3,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Diamonds worth 300 gp, consumed",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin"
+  ],
+  "description": "A creature that died within the last minute returns to life with 1 hit point. It cannot restore missing body parts.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

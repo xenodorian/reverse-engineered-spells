@@ -1,0 +1,25 @@
+{
+  "name": "Daylight",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Paladin",
+    "Ranger",
+    "Sorcerer"
+  ],
+  "description": "A 60-foot-radius sphere of bright light, with dim light 60 feet beyond. It ends magical darkness of 3rd level or lower.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Tongues",
+  "level": 3,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "M"
+  ],
+  "material": "A small clay model of a ziggurat",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A creature understands any spoken language it hears and can be understood by any creature that knows a language.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

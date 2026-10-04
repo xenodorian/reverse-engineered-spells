@@ -1,0 +1,24 @@
+{
+  "name": "Hypnotic Pattern",
+  "level": 3,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "S",
+    "M"
+  ],
+  "material": "A glowing stick of incense or a vial of phosphorescent material",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A swirl of colors fills a 30-foot cube. Creatures that see it make a Wisdom save or are charmed, incapacitated, and stop moving. It ends for a creature that takes damage or is shaken.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

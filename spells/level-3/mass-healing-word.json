@@ -1,0 +1,20 @@
+{
+  "name": "Mass Healing Word",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 bonus action",
+  "range": "60 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Up to six creatures regain 1d4 plus your spellcasting modifier hit points. No effect on undead or constructs.",
+  "at_higher_levels": "Healing rises by 1d4 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

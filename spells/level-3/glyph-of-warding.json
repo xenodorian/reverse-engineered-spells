@@ -1,0 +1,24 @@
+{
+  "name": "Glyph of Warding",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 hour",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Incense and powdered diamond worth at least 200 gp, consumed",
+  "duration": "Until dispelled",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "Inscribe a hidden glyph on a surface or object. When it triggers it either explodes for 5d8 damage in a 20-foot radius or releases a stored spell of 3rd level or lower.",
+  "at_higher_levels": "Explosion damage rises by 1d8 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

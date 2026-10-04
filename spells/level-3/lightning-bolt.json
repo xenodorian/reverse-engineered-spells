@@ -1,0 +1,23 @@
+{
+  "name": "Lightning Bolt",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Self (100-foot line)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Fur and a rod of amber, crystal, or glass",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A 100-foot line, 5 feet wide. Creatures make a Dexterity save, taking 8d6 lightning damage on a failure or half on a success. Loose flammables ignite.",
+  "at_higher_levels": "Damage rises by 1d6 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

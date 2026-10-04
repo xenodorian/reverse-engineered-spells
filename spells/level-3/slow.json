@@ -1,0 +1,23 @@
+{
+  "name": "Slow",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A drop of molasses",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Up to six creatures in a 40-foot cube make a Wisdom save or are slowed: half speed, -2 AC and Dexterity saves, no reactions, and one action or bonus action each turn. They repeat the save each turn.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

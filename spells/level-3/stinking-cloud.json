@@ -1,0 +1,24 @@
+{
+  "name": "Stinking Cloud",
+  "level": 3,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "90 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A rotten egg or several skunk cabbage leaves",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A 20-foot-radius cloud heavily obscures its area. A creature that starts its turn there makes a Constitution save or spends its action retching.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

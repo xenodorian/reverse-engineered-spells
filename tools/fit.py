@@ -12,12 +12,12 @@ import pricing as P
 
 TARGET = {0: 20.0, 1: 95.0}
 FIT_CATS = list(P.CATS)
-BUDGET_CHECK = {0: 25.0, 1: 100.0}
+BUDGET_CHECK = {0: 25.0, 1: 100.0, 2: 10**6, 3: 10**6}
 LAMBDA = 20.0        # pull toward the hand-set base prices; keeps every multiplier sane
 OVER = 12.0          # extra weight for cantrips and level 1 spells over budget or over the effect ceiling
 
 def nets(spells):
-    out = {0: [], 1: [], 2: []}
+    out = {0: [], 1: [], 2: [], 3: []}
     for k, (s, spec) in spells.items():
         out[spec["level"]].append(P.score(spec, enforce=False)[1])
     return out
@@ -27,7 +27,7 @@ def excess_effects(spells):
     tot = 0.0
     for k, (s, spec) in spells.items():
         lvl = spec["level"]
-        if lvl < 2:
+        if lvl < 3:
             rows, t = P.score(spec, enforce=False)
             e = sum(r[2] for r in rows if r[0] in ("Effect", "Floor"))
             tot += max(0.0, e - P.ceiling(lvl)) ** 2
@@ -35,15 +35,16 @@ def excess_effects(spells):
 
 def objective(spells):
     n = nets(spells)
-    t2 = st.mean(n[2])
     total = 0.0
     for lvl, vals in n.items():
-        tgt = TARGET.get(lvl, t2)
+        if lvl == 3:
+            continue            # level 3 is held out: it does not pull on the prices
+        tgt = TARGET.get(lvl, st.mean(vals))
         for v in vals:
             d = v - tgt
-            total += (OVER if (lvl < 2 and v > BUDGET_CHECK[lvl]) else 1.0) * d * d
+            total += (OVER if v > BUDGET_CHECK[lvl] else 1.0) * d * d
     total += OVER * excess_effects(spells)
-    total += LAMBDA * len(spells) * sum(math.log(P.MULT[c]) ** 2 for c in FIT_CATS)
+    total += LAMBDA * sum(1 for v in spells.values() if v[1]['level'] < 3) * sum(math.log(P.MULT[c]) ** 2 for c in FIT_CATS)
     return total
 
 def descend(spells, rounds=60):
@@ -81,7 +82,7 @@ def observed_caps(spells):
     for item, d in seen.items():
         run = 0
         caps[item] = {}
-        for lvl in (0, 1, 2):
+        for lvl in (0, 1, 2, 3):
             if lvl in d:
                 run = max(run, d[lvl])
                 caps[item][str(lvl)] = run
@@ -90,32 +91,45 @@ def observed_caps(spells):
     return caps
 
 def control_caps(spells):
-    mx = {0: 0.0, 1: 0.0, 2: 0.0}
+    mx = {0: 0.0, 1: 0.0, 2: 0.0, 3: 0.0}
     for k, (s, spec) in spells.items():
         tot = sum(P.price(i, q) for i, q in spec["lines"] if i in P.CONTROL)
         mx[spec["level"]] = max(mx[spec["level"]], tot)
-    mx[2] = max(mx[2], mx[1])
+    mx[2] = max(mx[2], mx[1]); mx[3] = max(mx[3], mx[2])
     return {str(k): math.ceil(v) for k, v in mx.items()}
 
+def cover(vals):
+    """Smallest multiple of 25 that covers the strongest spell."""
+    return int(math.ceil(max(vals) / 25.0 - 1e-9)) * 25
+
 def run(spells):
-    before = nets(spells)
+    """Prices are fitted to cantrips, level 1, and level 2 (levels 0 and 1 against fixed targets, level 2 for
+    spread only). Level 3 is held out: it is priced with those prices and its budget is measured, not fitted.
+    Budget for level 2 or 3 = smallest multiple of 25 covering the strongest spell at that level.
+    Floors: level 1 is 50 (half of 100). From level 2 up the floor is the previous level's budget."""
     P.MULT.update({c: 1.0 for c in P.CATS})
+    P.FLOORS.clear(); P.FLOORS.update({1: 50, 2: 100, 3: 150})
+    P.BUDGETS.update({0: 25, 1: 100, 2: 150, 3: 10**6})
+    BUDGET_CHECK.update({0: 25.0, 1: 100.0, 2: 150.0, 3: 10**6})   # the level 2 budget of 150 is held from the earlier study
+    before = nets(spells)
     obj = descend(spells)
+    n = nets(spells)
+    b2 = cover(n[2])      # confirms 150 still covers the strongest level 2 spell
+    P.BUDGETS.update({2: b2}); P.FLOORS.update({3: b2})
+    n = nets(spells)
+    budgets = {0: 25, 1: 100, 2: b2, 3: cover(n[3])}
+    P.BUDGETS.update(budgets)
     after = nets(spells)
-    m1, m2 = st.mean(after[1]), st.mean(after[2])
-    b2 = int(round(100 * m2 / m1 / 25.0)) * 25
-    # level 2 effect floor: just above the largest level 1 effect total, rounded up to 5
-    l1_eff = []
-    for k, (s, spec) in spells.items():
-        if spec["level"] == 1:
-            rows, t = P.score(spec, enforce=False)
-            l1_eff.append(sum(r[2] for r in rows if r[0] in ("Effect", "Floor") and True))
-    cal = {"mult": {c: round(P.MULT[c], 3) for c in P.CATS}, "budgets": {"0": 25, "1": 100, "2": b2},
-           "l2_floor": P.L2_FLOOR, "caps": observed_caps(spells), "control_cap": control_caps(spells),
+    over = {l: round(max(v), 1) for l, v in after.items() if max(v) > budgets[l] + 1e-9}
+    print(f"budgets {budgets}, floors {dict(P.FLOORS)}, over budget: {over or 'none'}")
+    print("mean", {l: round(st.mean(v), 1) for l, v in after.items()}, "max", {l: round(max(v), 1) for l, v in after.items()})
+    cal = {"mult": {c: round(P.MULT[c], 3) for c in P.CATS}, "budgets": {str(k): v for k, v in budgets.items()},
+           "floors": {str(k): v for k, v in P.FLOORS.items()}, "caps": observed_caps(spells), "control_cap": control_caps(spells),
            "fit": {"objective": round(obj, 1),
                    "mean_before": {str(k): round(st.mean(v), 1) for k, v in before.items()},
                    "mean_after": {str(k): round(st.mean(v), 1) for k, v in after.items()},
-                   "sd_after": {str(k): round(st.pstdev(v), 1) for k, v in after.items()}}}
+                   "sd_after": {str(k): round(st.pstdev(v), 1) for k, v in after.items()},
+                   "max_after": {str(k): round(max(v), 1) for k, v in after.items()}}}
     json.dump(cal, open(P.CAL_PATH, "w"), indent=2); open(P.CAL_PATH, "a").write("\n")
     print(json.dumps(cal["mult"]))
-    print(cal["fit"]); print("budgets", cal["budgets"], "control cap", cal["control_cap"])
+    print("control cap", cal["control_cap"])

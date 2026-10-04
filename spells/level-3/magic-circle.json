@@ -1,0 +1,25 @@
+{
+  "name": "Magic Circle",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 minute",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Holy water or powdered silver and iron worth at least 100 gp, consumed",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A 10-foot-radius cylinder keeps out one kind of creature: celestials, elementals, fey, fiends, or undead. They cannot enter, and those inside are protected from them.",
+  "at_higher_levels": "The duration rises by one hour per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

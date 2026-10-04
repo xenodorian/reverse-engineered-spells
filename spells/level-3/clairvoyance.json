@@ -1,0 +1,25 @@
+{
+  "name": "Clairvoyance",
+  "level": 3,
+  "school": "Divination",
+  "casting_time": "10 minutes",
+  "range": "1 mile",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A jeweled horn or a glass eye worth at least 100 gp",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Create an invisible sensor at a place you know. You can see or hear through it and switch between the two.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

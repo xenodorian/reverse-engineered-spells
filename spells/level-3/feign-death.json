@@ -1,0 +1,25 @@
+{
+  "name": "Feign Death",
+  "level": 3,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of graveyard dirt",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Wizard"
+  ],
+  "description": "A willing creature appears dead, is blinded and incapacitated, and has resistance to all damage except psychic. It is immune to disease and poison effects.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

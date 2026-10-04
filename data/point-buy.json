@@ -2,106 +2,142 @@
   "budgets": {
     "cantrip": 25,
     "level_1": 100,
-    "level_2": 150
+    "level_2": 150,
+    "level_3": 250
   },
   "effect_floor": {
     "level_1": 50,
-    "level_2": 100
+    "level_2": 100,
+    "level_3": 150
   },
   "effect_ceiling": {
     "cantrip": 49,
-    "level_1": 99
+    "level_1": 100,
+    "level_2": 150,
+    "level_3": 250
   },
   "limit_refund_cap_share": 0.5,
   "convexity_exponent": 0.4,
   "category_multipliers": {
-    "dmg": 0.833,
-    "heal": 0.78,
+    "dmg": 0.841,
+    "heal": 0.783,
     "buff": 0.893,
     "cond": 1.0,
-    "util": 1.379,
-    "area": 0.62,
-    "range": 0.994,
-    "cast": 0.953,
-    "dur": 1.286,
-    "comp": 0.375,
-    "limit": 0.508,
-    "conc": 0.495,
-    "extra": 1.207,
-    "avail": 0.624
+    "util": 1.38,
+    "area": 0.666,
+    "range": 1.118,
+    "cast": 1.048,
+    "dur": 1.2,
+    "comp": 0.574,
+    "limit": 0.507,
+    "conc": 0.483,
+    "extra": 1.193,
+    "avail": 0.574
   },
   "magnitude_caps": {
     "c_dmg": {
       "0": 6.5,
       "1": 6.5,
-      "2": 6.5
+      "2": 6.5,
+      "3": 6.5
     },
     "target_extra": {
       "0": 1,
       "1": 4,
-      "2": 5
+      "2": 5,
+      "3": 5
     },
     "c_dmg_rider": {
       "0": 4.5,
       "1": 4.5,
-      "2": 4.5
+      "2": 4.5,
+      "3": 4.5
     },
     "die_bonus": {
       "1": 1,
-      "2": 1
+      "2": 1,
+      "3": 1
     },
-    "dmg": {
-      "1": 14,
-      "2": 14
+    "dmg_area": {
+      "1": 10.5,
+      "2": 13.5,
+      "3": 28
     },
     "heal": {
       "1": 7.5,
-      "2": 12
+      "2": 12,
+      "3": 12
     },
     "dmg_rider": {
       "1": 3.5,
-      "2": 3.5
+      "2": 3.5,
+      "3": 3.5
     },
     "temp_hp": {
       "1": 6.5,
-      "2": 6.5
+      "2": 6.5,
+      "3": 6.5
+    },
+    "dmg": {
+      "1": 14,
+      "2": 14,
+      "3": 14
+    },
+    "heal_fast": {
+      "1": 5.5,
+      "2": 5.5,
+      "3": 5.5
+    },
+    "dmg_fast": {
+      "1": 11,
+      "2": 11,
+      "3": 11
     },
     "temp_hp_recurring": {
       "1": 3,
-      "2": 3
+      "2": 3,
+      "3": 3
     },
     "util_lore": {
       "1": 2,
-      "2": 2
+      "2": 2,
+      "3": 2
     },
     "dmg_touch": {
       "1": 16.5,
-      "2": 16.5
+      "2": 16.5,
+      "3": 16.5
     },
     "speed_bonus": {
       "1": 10,
-      "2": 10
+      "2": 10,
+      "3": 10
     },
     "ac_bonus": {
       "1": 5,
-      "2": 5
+      "2": 5,
+      "3": 5
     },
     "dmg_split": {
       "1": 10.5,
-      "2": 21
+      "2": 21,
+      "3": 21
     },
     "dmg_recurring": {
       "1": 6.5,
-      "2": 11
+      "2": 11,
+      "3": 16.5
     },
     "zone_damage": {
-      "2": 5
+      "2": 5,
+      "3": 5
     }
   },
   "control_cap": {
     "0": 0,
     "1": 82,
-    "2": 95
+    "2": 95,
+    "3": 95
   },
   "upcast": {
     "share_of_outright_price": 0.5,
@@ -116,7 +152,7 @@
       "convex_reference": 10.5,
       "category": "dmg",
       "min_level": 1,
-      "price_at_reference": 43.73
+      "price_at_reference": 44.15
     },
     "dmg_recurring": {
       "label": "Repeat damage on later turns",
@@ -125,7 +161,7 @@
       "convex_reference": 10.5,
       "category": "dmg",
       "min_level": 1,
-      "price_at_reference": 43.73
+      "price_at_reference": 44.15
     },
     "dmg_rider": {
       "label": "Extra damage on each weapon hit",
@@ -134,7 +170,7 @@
       "convex_reference": 3.5,
       "category": "dmg",
       "min_level": 1,
-      "price_at_reference": 46.65
+      "price_at_reference": 47.1
     },
     "zone_damage": {
       "label": "Damage for each 5 ft moved in the area",
@@ -143,7 +179,7 @@
       "convex_reference": 5,
       "category": "dmg",
       "min_level": 2,
-      "price_at_reference": 24.99
+      "price_at_reference": 25.23
     },
     "miss_half": {
       "label": "Half damage on a miss",
@@ -152,7 +188,7 @@
       "convex_reference": null,
       "category": "dmg",
       "min_level": 2,
-      "price_at_reference": 6.66
+      "price_at_reference": 6.73
     },
     "rel_attack": {
       "label": "Delivered by attack roll",
@@ -170,7 +206,7 @@
       "convex_reference": null,
       "category": "dmg",
       "min_level": 1,
-      "price_at_reference": 4.17
+      "price_at_reference": 4.21
     },
     "rel_auto": {
       "label": "Hits automatically",
@@ -179,7 +215,7 @@
       "convex_reference": null,
       "category": "dmg",
       "min_level": 1,
-      "price_at_reference": 10.0
+      "price_at_reference": 10.09
     },
     "c_dmg": {
       "label": "Cantrip damage (average 6.5 or less)",
@@ -188,7 +224,7 @@
       "convex_reference": 5.5,
       "category": "dmg",
       "min_level": 0,
-      "price_at_reference": 11.0
+      "price_at_reference": 11.1
     },
     "heal": {
       "label": "Hit points restored (modifier assumed +3)",
@@ -197,7 +233,7 @@
       "convex_reference": 7.5,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 29.25
+      "price_at_reference": 29.36
     },
     "temp_hp": {
       "label": "Temporary hit points",
@@ -206,7 +242,7 @@
       "convex_reference": 6.5,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 20.28
+      "price_at_reference": 20.36
     },
     "temp_hp_recurring": {
       "label": "Temporary hit points renewed each turn",
@@ -215,7 +251,7 @@
       "convex_reference": null,
       "category": "heal",
       "min_level": 1,
-      "price_at_reference": 6.24
+      "price_at_reference": 6.26
     },
     "ac_bonus": {
       "label": "Armor Class bonus",
@@ -584,7 +620,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_detect_aura": {
       "label": "Learn aura or school of what you sense",
@@ -593,7 +629,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 13.79
+      "price_at_reference": 13.8
     },
     "util_lore": {
       "label": "Reveal properties or lore",
@@ -602,7 +638,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 45.51
+      "price_at_reference": 45.54
     },
     "util_language": {
       "label": "Understand any language",
@@ -611,7 +647,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_speak": {
       "label": "Speak with a creature type",
@@ -620,7 +656,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 31.72
+      "price_at_reference": 31.74
     },
     "util_create_water": {
       "label": "Create or destroy water",
@@ -629,7 +665,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 17.93
+      "price_at_reference": 17.94
     },
     "util_purify": {
       "label": "Purify food and drink",
@@ -638,7 +674,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 13.79
+      "price_at_reference": 13.8
     },
     "util_food": {
       "label": "Day of food",
@@ -647,7 +683,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 17.93
+      "price_at_reference": 17.94
     },
     "util_alarm": {
       "label": "Alert when an area is entered",
@@ -656,7 +692,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 24.82
+      "price_at_reference": 24.84
     },
     "util_ward": {
       "label": "Ward that redirects attackers",
@@ -665,7 +701,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 64.81
+      "price_at_reference": 64.86
     },
     "util_illusion_image": {
       "label": "Create a visual illusion",
@@ -674,7 +710,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 64.81
+      "price_at_reference": 64.86
     },
     "util_disguise": {
       "label": "Change your appearance",
@@ -683,7 +719,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 64.81
+      "price_at_reference": 64.86
     },
     "util_script": {
       "label": "Hidden writing",
@@ -692,7 +728,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_servant": {
       "label": "Invisible helper that does chores",
@@ -701,7 +737,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 57.92
+      "price_at_reference": 57.96
     },
     "util_familiar": {
       "label": "Summon a loyal scout and helper",
@@ -710,7 +746,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 71.71
+      "price_at_reference": 71.76
     },
     "util_mark_track": {
       "label": "Advantage to track a marked target",
@@ -719,7 +755,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 8.27
+      "price_at_reference": 8.28
     },
     "util_mark_move": {
       "label": "Move effect to a new target",
@@ -737,7 +773,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 1,
-      "price_at_reference": 22.06
+      "price_at_reference": 22.08
     },
     "util_alter_self": {
       "label": "Reshape your body: gills, new face, or claws",
@@ -746,7 +782,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 75.84
+      "price_at_reference": 75.9
     },
     "util_messenger": {
       "label": "Tiny beast carries a message",
@@ -755,7 +791,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_lock": {
       "label": "Magically lock a door or container",
@@ -764,7 +800,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_magic_aura": {
       "label": "Falsify what detection magic reads",
@@ -773,7 +809,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_augury": {
       "label": "Learn weal or woe of a plan",
@@ -782,7 +818,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_calm": {
       "label": "Suppress charm and fear or pacify hostility",
@@ -791,7 +827,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 82.74
+      "price_at_reference": 82.8
     },
     "util_flame": {
       "label": "Permanent heatless flame",
@@ -800,7 +836,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 16.55
+      "price_at_reference": 16.56
     },
     "util_darkness": {
       "label": "Magical darkness",
@@ -809,7 +845,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 62.05
+      "price_at_reference": 62.1
     },
     "util_darkvision": {
       "label": "Darkvision 60 ft",
@@ -818,7 +854,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_thoughts": {
       "label": "Read surface thoughts or probe a mind",
@@ -827,7 +863,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 68.95
+      "price_at_reference": 69.0
     },
     "util_enthrall": {
       "label": "Hold attention, others unnoticed",
@@ -836,7 +872,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_find_traps": {
       "label": "Sense traps in sight",
@@ -845,7 +881,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_repose": {
       "label": "Preserve a corpse",
@@ -854,7 +890,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 35.85
+      "price_at_reference": 35.88
     },
     "util_knock": {
       "label": "Open a lock or bar",
@@ -863,7 +899,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_cure": {
       "label": "End a disease or a condition",
@@ -872,7 +908,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 68.95
+      "price_at_reference": 69.0
     },
     "util_levitate": {
       "label": "Float a creature or object 20 ft",
@@ -881,7 +917,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 55.16
+      "price_at_reference": 55.2
     },
     "util_locate_life": {
       "label": "Locate nearby animals or plants",
@@ -890,7 +926,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_locate": {
       "label": "Locate a familiar or named object",
@@ -899,7 +935,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 55.16
+      "price_at_reference": 55.2
     },
     "util_mouth": {
       "label": "Stored spoken message with a trigger",
@@ -908,7 +944,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_poison_prot": {
       "label": "Neutralize poison, advantage and resistance",
@@ -917,7 +953,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 55.16
+      "price_at_reference": 55.2
     },
     "util_rope": {
       "label": "Hidden extradimensional refuge for eight",
@@ -926,7 +962,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 96.53
+      "price_at_reference": 96.6
     },
     "util_see_invis": {
       "label": "See invisible and ethereal",
@@ -935,7 +971,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 68.95
+      "price_at_reference": 69.0
     },
     "util_climb": {
       "label": "Climb walls and ceilings",
@@ -944,7 +980,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 41.37
+      "price_at_reference": 41.4
     },
     "util_silence": {
       "label": "Zone with no sound",
@@ -953,7 +989,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 82.74
+      "price_at_reference": 82.8
     },
     "util_truth": {
       "label": "Creatures cannot speak lies",
@@ -962,7 +998,358 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 2,
-      "price_at_reference": 68.95
+      "price_at_reference": 69.0
+    },
+    "cond_slow": {
+      "label": "Slowed: half speed, -2 AC and Dex saves, no reactions, one action",
+      "base_price": 55,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 55.0
+    },
+    "cond_terror": {
+      "label": "Frightened, drops what it holds, must flee",
+      "base_price": 90,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 90.0
+    },
+    "cond_charm_incap": {
+      "label": "Charmed, incapacitated, speed 0",
+      "base_price": 90,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 90.0
+    },
+    "cond_curse": {
+      "label": "Cursed: disadvantage, lost actions, or extra damage",
+      "base_price": 75,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 75.0
+    },
+    "cond_retch": {
+      "label": "Spends its action retching",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 60.0
+    },
+    "cond_halfspeed": {
+      "label": "Speed halved",
+      "base_price": 25,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "cond",
+      "min_level": 3,
+      "price_at_reference": 25.0
+    },
+    "haste": {
+      "label": "Doubled speed, +2 AC, advantage on Dex saves, extra action",
+      "base_price": 140,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 125.02
+    },
+    "fly": {
+      "label": "Fly speed 60 ft",
+      "base_price": 95,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 84.84
+    },
+    "blink": {
+      "label": "Vanish to the Ethereal Plane on half of turns",
+      "base_price": 90,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 80.37
+    },
+    "gas_form": {
+      "label": "Gaseous form: flies, resists nonmagical damage, cannot attack",
+      "base_price": 80,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 71.44
+    },
+    "feign": {
+      "label": "Appear dead and resist damage",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 53.58
+    },
+    "meld": {
+      "label": "Merge into stone and hide",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 62.51
+    },
+    "resist_energy": {
+      "label": "Resistance to one damage type",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 62.51
+    },
+    "beacon": {
+      "label": "Advantage on Wisdom and death saves, maximum healing received",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 62.51
+    },
+    "circle": {
+      "label": "Barrier that keeps out six creature types",
+      "base_price": 90,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 80.37
+    },
+    "group10": {
+      "label": "Applies to up to ten willing creatures",
+      "base_price": 30,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "buff",
+      "min_level": 3,
+      "price_at_reference": 26.79
+    },
+    "util_summon_undead": {
+      "label": "Raise a skeleton or zombie that obeys you",
+      "base_price": 110,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 151.8
+    },
+    "util_summon_animals": {
+      "label": "Summon fey spirits as beasts that fight for you",
+      "base_price": 140,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 193.2
+    },
+    "util_scry": {
+      "label": "See and hear a distant place",
+      "base_price": 90,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 124.2
+    },
+    "util_counter": {
+      "label": "Stop a spell as it is cast",
+      "base_price": 100,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 138.0
+    },
+    "util_food_water": {
+      "label": "Food and water for fifteen creatures",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 82.8
+    },
+    "util_daylight": {
+      "label": "Bright daylight over a wide area",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 96.6
+    },
+    "util_dispel": {
+      "label": "End a spell on a target",
+      "base_price": 100,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 138.0
+    },
+    "util_glyph": {
+      "label": "Hidden rune that triggers on a condition",
+      "base_price": 40,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 55.2
+    },
+    "util_shelter": {
+      "label": "Sealed dome shelter for hours",
+      "base_price": 80,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 110.4
+    },
+    "util_major_image": {
+      "label": "Illusion with sound, smell, and temperature",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 96.6
+    },
+    "util_nondetect": {
+      "label": "Hide from divination and scrying",
+      "base_price": 50,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 69.0
+    },
+    "util_steed": {
+      "label": "Summon a fast riding steed",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 96.6
+    },
+    "util_plant": {
+      "label": "Overgrow plants into a thicket",
+      "base_price": 25,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 34.5
+    },
+    "util_uncurse": {
+      "label": "End a curse or attunement to a cursed item",
+      "base_price": 70,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 96.6
+    },
+    "util_revive": {
+      "label": "Return a recently dead creature to life",
+      "base_price": 140,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 193.2
+    },
+    "util_sending": {
+      "label": "Send a short message to anyone you know",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 82.8
+    },
+    "util_speak_dead": {
+      "label": "A corpse answers five questions",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 82.8
+    },
+    "util_speak_plants": {
+      "label": "Talk with plants and command them",
+      "base_price": 40,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 55.2
+    },
+    "util_tongues": {
+      "label": "Understand and speak any language",
+      "base_price": 60,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 82.8
+    },
+    "util_lifesteal": {
+      "label": "Regain half the damage dealt",
+      "base_price": 30,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 41.4
+    },
+    "util_water_breathing": {
+      "label": "Breathe underwater",
+      "base_price": 40,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 55.2
+    },
+    "util_water_walk": {
+      "label": "Walk on liquid surfaces",
+      "base_price": 30,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 41.4
+    },
+    "util_wind_wall": {
+      "label": "Wall of wind that stops missiles, gas, and flyers",
+      "base_price": 55,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "util",
+      "min_level": 3,
+      "price_at_reference": 75.9
     },
     "c_slow10": {
       "label": "Target speed reduced 10 ft until your next turn",
@@ -1052,7 +1439,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 16.55
+      "price_at_reference": 16.56
     },
     "c_hand": {
       "label": "Spectral hand, 10 lb, 30 ft",
@@ -1061,7 +1448,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 13.79
+      "price_at_reference": 13.8
     },
     "c_mend": {
       "label": "Repair one small break",
@@ -1070,7 +1457,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 16.55
+      "price_at_reference": 16.56
     },
     "c_message": {
       "label": "Whispered message to one creature",
@@ -1079,7 +1466,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 11.03
+      "price_at_reference": 11.04
     },
     "c_illusion_min": {
       "label": "Small image or sound",
@@ -1088,7 +1475,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 13.79
+      "price_at_reference": 13.8
     },
     "c_trick": {
       "label": "Several minor magical tricks",
@@ -1097,7 +1484,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 6.89
+      "price_at_reference": 6.9
     },
     "c_nature": {
       "label": "Minor nature effects",
@@ -1106,7 +1493,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 19.31
+      "price_at_reference": 19.32
     },
     "c_wonder": {
       "label": "Minor wonders",
@@ -1115,7 +1502,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 13.79
+      "price_at_reference": 13.8
     },
     "c_stabilize": {
       "label": "Stabilize a dying creature",
@@ -1124,7 +1511,7 @@
       "convex_reference": null,
       "category": "util",
       "min_level": 0,
-      "price_at_reference": 16.55
+      "price_at_reference": 16.56
     },
     "c_weapon": {
       "label": "Enchant a club or staff (spell modifier, d8, magical)",
@@ -1151,7 +1538,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 6.2
+      "price_at_reference": 6.66
     },
     "area_cube5": {
       "label": "5 ft cube",
@@ -1160,7 +1547,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 0,
-      "price_at_reference": 2.79
+      "price_at_reference": 3.0
     },
     "area_radius5": {
       "label": "5 ft radius",
@@ -1169,7 +1556,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 2,
-      "price_at_reference": 4.96
+      "price_at_reference": 5.33
     },
     "area_square10": {
       "label": "10 ft square",
@@ -1178,7 +1565,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 5.58
+      "price_at_reference": 5.99
     },
     "area_cone15": {
       "label": "15 ft cone",
@@ -1187,7 +1574,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 5.89
+      "price_at_reference": 6.33
     },
     "area_cube15": {
       "label": "15 ft cube",
@@ -1196,7 +1583,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 8.37
+      "price_at_reference": 8.99
     },
     "area_radius10": {
       "label": "10 ft radius",
@@ -1205,7 +1592,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 2,
-      "price_at_reference": 9.86
+      "price_at_reference": 10.59
     },
     "area_square20": {
       "label": "20 ft square",
@@ -1214,7 +1601,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 11.16
+      "price_at_reference": 11.99
     },
     "area_cube20": {
       "label": "20 ft cube",
@@ -1223,7 +1610,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 11.16
+      "price_at_reference": 11.99
     },
     "area_line60": {
       "label": "60 ft line",
@@ -1232,7 +1619,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 2,
-      "price_at_reference": 13.64
+      "price_at_reference": 14.65
     },
     "area_radius15": {
       "label": "15 ft radius",
@@ -1241,7 +1628,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 2,
-      "price_at_reference": 14.82
+      "price_at_reference": 15.92
     },
     "area_radius20": {
       "label": "20 ft radius",
@@ -1250,7 +1637,7 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 19.78
+      "price_at_reference": 21.25
     },
     "area_radius30": {
       "label": "30 ft radius",
@@ -1259,7 +1646,52 @@
       "convex_reference": null,
       "category": "area",
       "min_level": 1,
-      "price_at_reference": 29.7
+      "price_at_reference": 31.9
+    },
+    "area_cone30": {
+      "label": "30 ft cone",
+      "base_price": 19.1,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "area",
+      "min_level": 3,
+      "price_at_reference": 12.72
+    },
+    "area_line100": {
+      "label": "100 ft line",
+      "base_price": 20.1,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "area",
+      "min_level": 3,
+      "price_at_reference": 13.39
+    },
+    "area_cube30": {
+      "label": "30 ft cube",
+      "base_price": 27.0,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "area",
+      "min_level": 3,
+      "price_at_reference": 17.98
+    },
+    "area_cube40": {
+      "label": "40 ft cube",
+      "base_price": 36.0,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "area",
+      "min_level": 3,
+      "price_at_reference": 23.98
+    },
+    "area_radius40": {
+      "label": "40 ft radius",
+      "base_price": 63.8,
+      "unit": "flat",
+      "convex_reference": null,
+      "category": "area",
+      "min_level": 3,
+      "price_at_reference": 42.49
     }
   },
   "limits": {
@@ -1271,12 +1703,12 @@
     "lim_type": {
       "label": "Restricted to a creature type or trait",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_exclude": {
       "label": "Excludes a creature type (undead, constructs, low Int)",
       "base_refund": -2,
-      "refund": -1.02
+      "refund": -1.01
     },
     "lim_end_on_harm": {
       "label": "Ends if you or allies harm the target",
@@ -1291,12 +1723,12 @@
     "lim_wake_on_damage": {
       "label": "Ends on damage or a shake",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_repeat_save": {
       "label": "Target repeats the save",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_save_adv": {
       "label": "Target gets advantage on the save in some cases",
@@ -1311,12 +1743,12 @@
     "lim_escape_check": {
       "label": "Target can use an action to escape",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_hp_pool": {
       "label": "Effect capped by a hit point pool",
       "base_refund": -10,
-      "refund": -5.08
+      "refund": -5.07
     },
     "lim_harmless_only": {
       "label": "Target refuses harmful orders",
@@ -1326,7 +1758,7 @@
     "lim_trigger": {
       "label": "Narrow reaction trigger",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_fragile": {
       "label": "Effect is easy to kill or dispel",
@@ -1341,17 +1773,17 @@
     "lim_slow_heal": {
       "label": "Benefit delivered one piece at a time",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_no_combat": {
       "label": "No direct combat use",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_physical_reveal": {
       "label": "Revealed by touch or an Investigation check",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_armor": {
       "label": "Ends if armor is worn",
@@ -1386,12 +1818,12 @@
     "lim_loud": {
       "label": "Loud, reveals your position",
       "base_refund": -2,
-      "refund": -1.02
+      "refund": -1.01
     },
     "lim_cosmetic": {
       "label": "Cosmetic or trivial effects only",
       "base_refund": -6,
-      "refund": -3.05
+      "refund": -3.04
     },
     "lim_expend": {
       "label": "Effect ends when used",
@@ -1401,86 +1833,94 @@
     "lim_range_break": {
       "label": "Breaks if the target leaves range",
       "base_refund": -2,
-      "refund": -1.02
+      "refund": -1.01
     },
     "lim_shared_damage": {
       "label": "You take the damage the target takes",
       "base_refund": -14,
-      "refund": -7.11
+      "refund": -7.1
+    },
+    "lim_backlash": {
+      "label": "Target suffers when the spell ends",
+      "base_refund": -15,
+      "refund": -7.61
     }
   },
   "casting_time": {
     "1 action": 0.0,
-    "1 bonus action": 7.62,
-    "1 reaction": 9.53,
-    "1 minute": -3.81,
-    "10 minutes": -7.62,
-    "1 hour": -11.44
+    "1 bonus action": 8.38,
+    "1 reaction": 10.48,
+    "1 minute": -4.19,
+    "10 minutes": -8.38,
+    "1 hour": -12.58
   },
   "range": {
     "Self": 0.0,
     "Touch": 0.0,
-    "10 feet": 1.99,
-    "30 feet": 2.98,
-    "60 feet": 4.97,
-    "90 feet": 6.96,
-    "120 feet": 7.95,
-    "150 feet": 8.95
+    "10 feet": 2.24,
+    "30 feet": 3.35,
+    "60 feet": 5.59,
+    "90 feet": 7.83,
+    "120 feet": 8.94,
+    "150 feet": 10.06,
+    "1 mile": 15.65,
+    "Unlimited": 20.12
   },
   "duration": {
     "Instantaneous": 0.0,
-    "1 round": 3.86,
-    "1 minute": 12.86,
-    "10 minutes": 20.58,
-    "1 hour": 28.29,
-    "8 hours": 36.01,
-    "24 hours": 41.15,
-    "10 days": 46.3,
-    "Until dispelled": 51.44
+    "1 round": 3.6,
+    "1 minute": 12.0,
+    "10 minutes": 19.2,
+    "1 hour": 26.4,
+    "8 hours": 33.6,
+    "24 hours": 38.4,
+    "10 days": 43.2,
+    "Until dispelled": 48.0
   },
-  "concentration": -4.95,
-  "ritual": 6.04,
+  "concentration": -4.83,
+  "ritual": 5.96,
   "scaling_flat": {
-    "0": 3.62,
-    "1": 6.04,
-    "2": 9.66
+    "0": 3.58,
+    "1": 5.96,
+    "2": 9.54,
+    "3": 13.12
   },
   "components": {
-    "V": -0.75,
-    "S": -0.75,
-    "M": -1.12
+    "V": -1.15,
+    "S": -1.15,
+    "M": -1.72
   },
   "material_gp_tiers": [
     {
       "max_gp": 10,
-      "refund": -3.0
+      "refund": -4.59
     },
     {
       "max_gp": 50,
-      "refund": -4.5
+      "refund": -6.89
     },
     {
       "max_gp": 100,
-      "refund": -6.75
+      "refund": -10.33
     },
     {
       "max_gp": 250,
-      "refund": -8.25
+      "refund": -12.63
     },
     {
       "max_gp": 1000000000,
-      "refund": -9.75
+      "refund": -14.92
     }
   ],
   "consumed_multiplier": 1.5,
   "class_availability": [
     {
       "max_classes": 1,
-      "points": -2.5
+      "points": -2.3
     },
     {
       "max_classes": 3,
-      "points": -1.25
+      "points": -1.15
     },
     {
       "max_classes": 5,
@@ -1488,7 +1928,7 @@
     },
     {
       "max_classes": 99,
-      "points": 1.87
+      "points": 1.72
     }
   ]
 }

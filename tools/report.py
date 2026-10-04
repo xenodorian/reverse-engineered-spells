@@ -12,15 +12,9 @@ def g(x):
     s = f"{x:.1f}".rstrip("0").rstrip(".")
     return "0" if s in ("-0", "") else s
 
-GROUPS = [
- ("Damage and delivery", ["dmg", "dmg_recurring", "dmg_rider", "zone_damage", "miss_half", "rel_attack", "rel_save_half", "rel_auto", "c_dmg"]),
- ("Healing", ["heal", "temp_hp", "temp_hp_recurring"]),
- ("Buffs and debuffs", ["ac_bonus", "die_bonus", "advantage_vs_target", "advantage_next", "protect_types", "immune_frightened", "speed_bonus", "extra_dash", "jump_triple", "fall_immunity", "magic_missile_immune", "blur", "invisible", "mirror", "teleport", "magic_weapon", "ward_bond", "enhance", "resize", "stealth_aura", "c_adv_self", "c_d4_check", "c_d4_save", "c_weapon"]),
- ("Conditions and control", ["cond_prone", "cond_charmed", "cond_frightened", "cond_blinded", "cond_restrained", "cond_incapacitated", "cond_asleep", "cond_command", "cond_paralyzed", "cond_enfeeble", "cond_suggestion", "cond_crown", "no_save", "forced_move", "difficult_terrain", "heavy_obscure", "util_outline", "util_ignite", "util_wind", "util_hidden", "c_slow10", "c_no_heal", "c_no_reactions", "c_disadv_next", "c_ignore_cover"]),
- ("Utility", [i for i, v in P.ITEMS.items() if v[4] == "util"]),
- ("Targets and area", [i for i, v in P.ITEMS.items() if v[4] == "area"]),
-]
-TIERS = {0: "Cantrip+", 1: "Level 1+", 2: "Level 2+"}
+GROUP_TITLES = [("dmg", "Damage and delivery"), ("heal", "Healing"), ("buff", "Buffs and debuffs"), ("cond", "Conditions and control"), ("util", "Utility"), ("area", "Targets and area")]
+GROUPS = [(title, [i for i, v in sorted(P.ITEMS.items(), key=lambda kv: (kv[1][5], kv[0])) if v[4] == cat]) for cat, title in GROUP_TITLES]
+TIERS = {0: "Cantrip+", 1: "Level 1+", 2: "Level 2+", 3: "Level 3+"}
 
 def eff(item):
     label, base, unit, ref, cat, tier = P.ITEMS[item]
@@ -63,14 +57,14 @@ def write(sp):
         e = sum(r[2] for r in rows if r[0] in ("Effect", "Floor"))
         scored.append((t, s["name"], k, s, rows, spec["level"], e))
     scored.sort(key=lambda x: (x[5], -x[0], x[1]))
-    by = {lv: [x for x in scored if x[5] == lv] for lv in (0, 1, 2)}
+    by = {lv: [x for x in scored if x[5] == lv] for lv in (0, 1, 2, 3)}
     B = P.BUDGETS
     cal = json.load(open(P.CAL_PATH))
     os.makedirs(os.path.join(P.ROOT, "data"), exist_ok=True)
     with open(os.path.join(P.ROOT, "data", "point-buy.json"), "w") as f:
-        json.dump({"budgets": {"cantrip": B[0], "level_1": B[1], "level_2": B[2]},
-            "effect_floor": {"level_1": P.L1_FLOOR, "level_2": P.L2_FLOOR},
-            "effect_ceiling": {"cantrip": P.CANTRIP_CEIL, "level_1": P.L2_FLOOR - 1},
+        json.dump({"budgets": {"cantrip": B[0], "level_1": B[1], "level_2": B[2], "level_3": B[3]},
+            "effect_floor": {"level_1": P.floor(1), "level_2": P.floor(2), "level_3": P.floor(3)},
+            "effect_ceiling": {"cantrip": P.CANTRIP_CEIL, "level_1": P.ceiling(1), "level_2": P.ceiling(2), "level_3": P.ceiling(3)},
             "limit_refund_cap_share": P.LIMIT_CAP, "convexity_exponent": P.EXP,
             "category_multipliers": cal["mult"], "magnitude_caps": cal["caps"], "control_cap": cal["control_cap"],
             "upcast": {"share_of_outright_price": P.UPCAST_SHARE, "max_extra_targets_per_level": P.UPCAST_TARGETS, "max_increase_share_of_base": P.UPCAST_MAX},
@@ -94,20 +88,21 @@ def write(sp):
     L = []
     A = L.append
     A("# Spell Point Buy\n")
-    A(f"A point budget system for building cantrips, 1st-level spells, and 2nd-level spells. A cantrip gets **{B[0]} points**, a 1st-level spell **{B[1]}**, and a 2nd-level spell **{B[2]}**. Effects, range, and duration cost points. Components and limits give points back. A spell is legal if it passes every rule below and its net cost is at or under its budget.\n")
-    A("> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`. They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why level 2 is 150 and how the curve was chosen is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.\n")
+    A(f"A point budget system for building cantrips and spells of levels 1 to 3. A cantrip gets **{B[0]} points**, a 1st-level spell **{B[1]}**, a 2nd-level spell **{B[2]}**, and a 3rd-level spell **{B[3]}**. Effects, range, and duration cost points. Components and limits give points back. A spell is legal if it passes every rule below and its net cost is at or under its budget.\n")
+    A("> This is a homebrew tool. Prices are my own design, calibrated against the 24 cantrips, 49 level 1 spells, and 53 level 2 spells in `spells/`, with the 43 level 3 spells held out and measured.  They are not official. The spell files were written from memory and are not checked against the books, and the DMG guidance in `docs/creating-a-spell.md` is also from memory. Why the budgets are 150 and 250 at levels 2 and 3, and how the curve was chosen, is in `docs/spell-scaling-analysis.md`. Playtest before trusting any score.\n")
     A("## Budgets and clearances\n")
     A(tbl(["Level", "Budget", "Effects must total", "Magnitude caps", "Strong conditions total at most"], [
         ["Cantrip", B[0], f"{P.CANTRIP_CEIL} or less", "yes", "no strong conditions"],
-        ["Level 1", B[1], f"{P.L1_FLOOR} to {P.L2_FLOOR - 1}", "yes", cal["control_cap"]["1"]],
-        ["Level 2", B[2], f"{P.L2_FLOOR} or more", "yes", cal["control_cap"]["2"]]]))
+        ["Level 1", B[1], f"{P.floor(1)} to {P.ceiling(1)}", "yes", cal["control_cap"]["1"]],
+        ["Level 2", B[2], f"{P.floor(2)} to {P.ceiling(2)}", "yes", cal["control_cap"]["2"]],
+        ["Level 3", B[3], f"{P.floor(3)} to {P.ceiling(3)}", "yes", cal["control_cap"]["3"]]]))
     A("\n\"Effects\" means the capability lines only: damage, healing, buffs, conditions, utility, targets, and area. Range, casting time, duration, and refunds are not counted.\n")
     A("## Rules\n")
     A(tbl(["Rule", "What it does"], [
-        ["Effect floor", f"A level 1 spell's effects must total at least {P.L1_FLOOR}. A level 2 spell's must total at least {P.L2_FLOOR}. A smaller total is topped up with a floor line, so anything a level 1 spell does costs {P.L1_FLOOR} or more at its strength, and anything level 2 costs at least a whole level 1 budget."],
-        ["Effect ceiling", f"Cantrip effects must total {P.CANTRIP_CEIL} or less. Level 1 effects must total {P.L2_FLOOR - 1} or less. The calculator rejects anything above, because it would be the next level's strength."],
+        ["Effect floor", f"A level 1 spell's effects must total at least {P.floor(1)}, level 2 at least {P.floor(2)}, level 3 at least {P.floor(3)}. A smaller total is topped up with a floor line, so anything a level 1 spell does costs {P.floor(1)} or more at its strength, and each later floor equals the previous level's whole budget."],
+        ["Effect ceiling", f"Cantrip effects must total {P.CANTRIP_CEIL} or less, just under the level 1 floor. From level 1 up, effects cannot exceed the level's budget."],
         ["Items by level", "Each item has a minimum level, shown in the tables. A spell can only use items at or below its level."],
-        ["Magnitude caps", "Damage, healing, temporary HP, extra targets, AC, and other scalable items cannot exceed the highest value used at that level in the existing spells, carried up from lower levels. Damage has separate caps for touch spells, for spells that split across targets, and for cantrips that add a rider, because those get more or less damage than a plain ranged hit."],
+        ["Magnitude caps", "Damage, healing, temporary HP, extra targets, AC, and other scalable items cannot exceed the highest value used at that level in the existing spells, carried up from lower levels. Damage has separate caps for touch spells, area spells, spells that split across targets, and cantrips that add a rider, because those get more or less damage than a plain ranged hit. Spells cast as a bonus action or reaction have their own lower caps for damage and healing."],
         ["Control cap", "Strong conditions (charmed, blinded, restrained, paralyzed, and so on) together cannot cost more than the cap for the level. Extra targets count toward it."],
         ["Extra targets", "Each extra target costs a share of every per-target line the spell already pays for: damage 70%, strong conditions 60%, buffs 50%, utility 50% (only if the spell has no area), healing 25%. A spell with nothing per-target cannot take extra targets, and area spells already hit everyone inside."],
         ["Convex price", f"Damage, healing, and AC rise faster than linearly. Price is proportional to amount to the power {1 + P.EXP:.1f}, so doubling an amount more than doubles its price."],
@@ -119,7 +114,7 @@ def write(sp):
         ["Cantrip scaling", f"A damage cantrip that scales with character level pays {int(P.CANTRIP_SCALE_SHARE * 100)}% of its damage price, so scaling a d10 costs more than scaling a d4."],
         ["Reach beyond the listed range", "A spell that is Self but throws or fires something farther pays for the farther range (Produce Flame hurls 30 feet)."]]))
     A("\n## How to build a spell in seven steps\n")
-    A("1. **Pick the level.** Budgets are cantrip 25, level 1 100, level 2 %d." % B[2])
+    A("1. **Pick the level.** Budgets are cantrip %d, level 1 %d, level 2 %d, level 3 %d." % (B[0], B[1], B[2], B[3]))
     A("2. **Pick the effect.** Add the costs from the tables. Multiply per-unit items by their quantity. Check the caps, the control cap, and the floor or ceiling.")
     A("3. **Pick delivery.** Add range, casting time, and duration. Add area or extra target costs.")
     A("4. **Add upcasting** if the spell scales.")
@@ -128,25 +123,21 @@ def write(sp):
     A("7. **Add up.** Net cost = effects + delivery + duration - refunds. Stay at or below budget, then playtest.\n")
     A("Skip the arithmetic with the calculator: `python tools/pointbuy.py calc examples/new-spell.json`. Set `\"level\"` to 0, 1, or 2. Write quantities as the second value in a line, and an optional `\"upcast\": [\"dmg\", 3.5]`.\n")
     A("### Reading a score\n")
-    A(tbl(["Tier", "Net cost", "Meaning"], [
-        ["Cantrip", f"Over {B[0]}", "Over budget."],
-        ["Cantrip", "20 to 25", "Strong cantrip. Reliable damage or a flexible effect."],
-        ["Cantrip", "Under 20", "Minor or niche. Room to add range or a rider."],
-        ["Level 1", f"Over {B[1]}", "Over budget."],
-        ["Level 1", "90 to 100", "Premium. Among the best first-level spells."],
-        ["Level 1", "60 to 89", "Standard. Solid, reliable spells."],
-        ["Level 1", "Under 60", "Utility or situational. Headroom to spend on range, duration, or targets."],
-        ["Level 2", f"Over {B[2]}", "Over budget."],
-        ["Level 2", "130 to 150", "Premium."],
-        ["Level 2", "105 to 129", "Standard."],
-        ["Level 2", "Under 105", "Utility or situational."]]))
+    brows = []
+    for lv, nm in ((0, "Cantrip"), (1, "Level 1"), (2, "Level 2"), (3, "Level 3")):
+        b = B[lv]
+        brows += [[nm, f"Over {b}", "Over budget."],
+                  [nm, f"{round(b * 0.9)} to {b}", "Premium. Among the strongest spells of the level."],
+                  [nm, f"{round(b * 0.6)} to {round(b * 0.9) - 1}", "Standard."],
+                  [nm, f"Under {round(b * 0.6)}", "Utility or situational. Headroom to spend on range, duration, or targets."]]
+    A(tbl(["Tier", "Net cost", "Meaning"], brows))
     A("\n## What the existing spells show\n")
     A("Counted from the spell files, and used to set the refund sizes below.\n")
     cols = []
-    for lv in (0, 1, 2):
+    for lv in (0, 1, 2, 3):
         S = [x[3] for x in by[lv]]; nets = [x[0] for x in by[lv]]
         cols.append(patterns_one(S, nets))
-    A(tbl(["Pattern", "Cantrips (%d)" % len(by[0]), "Level 1 (%d)" % len(by[1]), "Level 2 (%d)" % len(by[2])], [[PATTERN_LABELS[i]] + [cols[l][i] for l in range(3)] for i in range(len(PATTERN_LABELS))]))
+    A(tbl(["Pattern", "Cantrips (%d)" % len(by[0]), "Level 1 (%d)" % len(by[1]), "Level 2 (%d)" % len(by[2]), "Level 3 (%d)" % len(by[3])], [[PATTERN_LABELS[i]] + [cols[l][i] for l in range(4)] for i in range(len(PATTERN_LABELS))]))
     A("\nTakeaways: nearly every spell has a verbal component, most have a somatic one, and about half have a material. Materials are common, so a mundane material refunds little. Gold-cost materials are rare and start at level 1, so they refund heavily. Spells with materials do not score higher than spells without in this set, so the data does not by itself show that materials mark stronger spells. The larger refund for gold-cost materials follows the design rule that costly components limit power, not a trend in these files. Concentration spells are the long-duration ones, so the concentration refund offsets part of the duration cost.\n")
     A("## Price tables (points you spend)\n")
     A("Prices are base price times a calibrated category multiplier. \"Points\" is the price of one use. Items marked with a reference amount use the convex curve, and the price shown is at that reference amount. Use the curve table below for other amounts.\n")
@@ -167,7 +158,7 @@ def write(sp):
     A("### Duration\n")
     A(tbl(["Duration", "Points"], [[k, g(v * P.MULT["dur"])] for k, v in P.DURATION.items()]))
     A("\n### Other costs\n")
-    A(tbl(["Item", "Points"], [["Ritual casting (cast without a slot)", g(P.RITUAL * P.MULT["extra"])], ["Flat upcast charge, level 1 (no listed increase)", g(P.SCALING[1] * P.MULT["extra"])], ["Flat upcast charge, level 2 (no listed increase)", g(P.SCALING[2] * P.MULT["extra"])]]))
+    A(tbl(["Item", "Points"], [["Ritual casting (cast without a slot)", g(P.RITUAL * P.MULT["extra"])], ["Flat upcast charge, level 1 (no listed increase)", g(P.SCALING[1] * P.MULT["extra"])], ["Flat upcast charge, level 2 (no listed increase)", g(P.SCALING[2] * P.MULT["extra"])], ["Flat upcast charge, level 3 (no listed increase)", g(P.SCALING[3] * P.MULT["extra"])]]))
     A("\nCantrips are scored at the base tier only. Extra dice at levels 5, 11, and 17 are covered by the cantrip scaling share. Listed upcast increases (see the rules) replace the flat charge.\n")
     A("## Refund tables (points you get back)\n")
     A("### Components\n")
@@ -184,12 +175,12 @@ def write(sp):
     A(tbl(["Item", "Points"], [["Concentration", g(P.CONC * P.MULT["conc"])], ["On 1 class list", g(P.CLASS_AVAIL[0][1] * P.MULT["avail"])], ["On 2 or 3 class lists", g(P.CLASS_AVAIL[1][1] * P.MULT["avail"])], ["On 4 or 5 class lists", g(P.CLASS_AVAIL[2][1] * P.MULT["avail"])], ["On 6 or more class lists", "+" + g(P.CLASS_AVAIL[3][1] * P.MULT["avail"])]]))
     A("\nUse concentration only if the spell lasts a minute or more.\n")
     A("## Worked examples\n")
-    for key in ("fire-bolt", "magic-missile", "hold-person"):
+    for key in ("fire-bolt", "magic-missile", "hold-person", "fireball"):
         s, spec = sp[key]; rows, t = P.score(spec)
         A(f"### {s['name']}: {t:g} of {B[spec['level']]} points\n")
         A(tbl(["Type", "Item", "Points"], [[c, l, f"{p:+g}"] for c, l, p in rows]))
         A("")
-    for title, lv in (("Scorecard: 24 cantrips", 0), ("Scorecard: 49 level 1 spells", 1), ("Scorecard: 53 level 2 spells", 2)):
+    for title, lv in (("Scorecard: 24 cantrips", 0), ("Scorecard: 49 level 1 spells", 1), ("Scorecard: 53 level 2 spells", 2), ("Scorecard: 43 level 3 spells", 3)):
         A(f"## {title}\n")
         A(tbl(["Spell", "Net cost", "Left", "Effects", "Conc.", "Comp.", "Classes"],
               [[n, f"{t:g}", f"{B[lv] - t:g}", f"{e:g}", "yes" if s["concentration"] else "", "".join(s["components"]), len(s["classes"])] for t, n, k, s, rows, _, e in by[lv]]))
@@ -197,12 +188,13 @@ def write(sp):
     A("Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>`, for example `score fire-bolt`. The same data is in `data/spell-scores.csv` and `data/point-buy.json`. Recalibrate after any change to prices or builds with `python tools/pointbuy.py fit`, then `report`.\n")
     A("## Known limits of this model\n")
     A("- Damage is valued by average roll. It does not model how monsters resist or how often a save fails.")
-    A("- Typical level 1 spells score in the 70s, not 100. The budget is a ceiling set by the strongest spells. See `docs/spell-scaling-analysis.md`.")
+    A("- Typical spells score well under their budget. The budget is a ceiling set by the strongest spell at each level. See `docs/spell-scaling-analysis.md`.")
     A("- Hard control effects are priced by my judgment of how much a lost turn is worth. Not tested at a table. Adjust the condition costs if your group disagrees.")
-    A("- A few level 2 spells (Web, Barkskin, Blindness/Deafness, Aid) pass as level 1 spells under these rules. See the stress test in the analysis.")
+    A("- A few level 2 and level 3 spells pass as one level lower under these rules. The stress test in the analysis lists them.")
+    A("- The level 3 budget is measured from 43 spells that were written once and have had no second pass. It is the least checked number here.")
     A("- Run `python tools/pointbuy.py check` after any change. It runs the logic checks and the exploit probes and exits non-zero on a failure.")
     A("- A limit only refunds points if it matters. DMs should reject a limit that never comes up.")
     A("- Utility spells score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version.")
-    A("- Levels 3 to 9 are not modeled.\n")
+    A("- Levels 4 to 9 are not modeled.\n")
     open(os.path.join(P.ROOT, "docs", "spell-point-buy.md"), "w").write("\n".join(L) + "\n")
     open(os.path.join(P.ROOT, "docs", "spell-scaling-analysis.md"), "w").write("\n".join(analysis.write(sp)) + "\n")

@@ -1,127 +1,170 @@
 spell,level,net_cost,budget,points_left,effect_total,concentration,components,classes
-Dancing Lights,0,24.7,25,0.3,16.5,True,VSM,3
-Produce Flame,0,24.7,25,0.3,12.4,False,VS,1
-Fire Bolt,0,24.5,25,0.5,14.0,False,VS,2
-Mage Hand,0,23.8,25,1.2,13.8,False,VS,4
-Chill Touch,0,23.0,25,2.0,11.3,False,VS,3
-Minor Illusion,0,22.3,25,2.7,16.6,False,SM,4
-Shillelagh,0,22.3,25,2.7,11.6,False,VSM,1
-Prestidigitation,0,20.5,25,4.5,6.9,False,VS,4
-Ray of Frost,0,20.5,25,4.5,14.3,False,VS,2
-Eldritch Blast,0,20.2,25,4.8,11.0,False,VS,1
-Thaumaturgy,0,19.1,25,5.9,13.8,False,V,1
-Poison Spray,0,19.0,25,6.0,13.9,False,VS,4
-Light,0,17.8,25,7.2,4.1,False,VM,4
-Message,0,17.6,25,7.4,11.0,False,VSM,3
-Shocking Grasp,0,17.5,25,7.5,16.3,False,VS,2
+Fire Bolt,0,25.0,25,0.0,14.1,False,VS,2
+Dancing Lights,0,24.2,25,0.8,16.6,True,VSM,3
+Produce Flame,0,23.9,25,1.1,12.5,False,VS,1
+Chill Touch,0,23.3,25,1.7,11.4,False,VS,3
+Mage Hand,0,23.1,25,1.9,13.8,False,VS,4
+Shillelagh,0,21.5,25,3.5,11.6,False,VSM,1
+Minor Illusion,0,21.4,25,3.6,16.8,False,SM,4
+Eldritch Blast,0,20.8,25,4.2,11.1,False,VS,1
+Ray of Frost,0,20.7,25,4.3,14.4,False,VS,2
+Prestidigitation,0,19.0,25,6.0,6.9,False,VS,4
+Thaumaturgy,0,18.9,25,6.1,13.8,False,V,1
+Poison Spray,0,18.7,25,6.3,14.0,False,VS,4
+Message,0,17.2,25,7.8,11.0,False,VSM,3
+Shocking Grasp,0,17.1,25,7.9,16.4,False,VS,2
+Light,0,15.9,25,9.1,4.1,False,VM,4
 Druidcraft,0,15.2,25,9.8,19.3,False,VS,1
-Sacred Flame,0,14.2,25,10.8,11.3,False,VS,1
-Vicious Mockery,0,13.1,25,11.9,11.6,False,V,1
-Acid Splash,0,12.9,25,12.1,9.9,False,VS,2
-Spare the Dying,0,12.4,25,12.6,16.5,False,VS,1
-Guidance,0,11.6,25,13.4,12.5,True,VS,2
-Resistance,0,10.5,25,14.5,12.5,True,VSM,2
-Mending,0,10.0,25,15.0,16.5,False,VSM,5
-True Strike,0,8.5,25,16.5,8.9,True,S,4
-Detect Magic,1,99.8,100,0.2,79.4,True,VS,7
-Shield,1,99.7,100,0.3,92.1,False,VS,2
-Sleep,1,99.7,100,0.3,82.8,False,VSM,3
-Hunter's Mark,1,99.6,100,0.4,59.0,True,V,1
-Guiding Bolt,1,97.7,100,2.3,84.2,False,VS,1
-Animal Friendship,1,94.4,100,5.6,50.0,False,VSM,3
-Illusory Script,1,90.5,100,9.5,50.0,False,SM,3
-Inflict Wounds,1,88.9,100,11.1,82.3,False,VS,1
-Unseen Servant,1,88.3,100,11.7,57.9,False,VSM,3
-Disguise Self,1,87.3,100,12.7,64.8,False,VS,3
-Fog Cloud,1,85.7,100,14.3,50.0,True,VS,4
-Silent Image,1,85.4,100,14.6,73.2,True,VSM,3
-Alarm,1,84.3,100,15.7,50.0,False,VSM,2
-Charm Person,1,83.9,100,16.1,50.0,False,VS,5
-Detect Poison and Disease,1,83.0,100,17.0,65.6,True,VSM,4
-Hideous Laughter,1,83.0,100,17.0,82.0,True,VSM,2
-False Life,1,82.9,100,17.1,50.0,False,VSM,2
-Find Familiar,1,81.8,100,18.2,93.8,False,VSM,1
-Longstrider,1,81.0,100,19.0,50.0,False,VSM,4
-Identify,1,80.6,100,19.4,91.0,False,VSM,2
-Mage Armor,1,79.1,100,20.9,50.0,False,VSM,2
-Sanctuary,1,79.0,100,21.0,64.8,False,VSM,1
-Comprehend Languages,1,78.6,100,21.4,50.0,False,VSM,4
-Detect Evil and Good,1,76.9,100,23.1,65.6,True,VS,2
-Bless,1,75.5,100,24.5,60.8,True,VSM,2
-Bane,1,75.0,100,25.0,60.8,True,VSM,2
-Shield of Faith,1,74.3,100,25.7,50.0,True,VSM,2
-Feather Fall,1,71.3,100,28.7,50.0,False,VM,3
-Magic Missile,1,70.8,100,29.2,59.9,False,VS,2
-Expeditious Retreat,1,70.4,100,29.6,50.0,True,VS,3
-Hellish Rebuke,1,69.0,100,31.0,50.9,False,VS,1
-Speak with Animals,1,68.8,100,31.2,50.0,False,VS,3
-Witch Bolt,1,65.3,100,34.7,49.9,True,VSM,3
-Entangle,1,65.0,100,35.0,57.2,True,VS,1
+Sacred Flame,0,14.5,25,10.5,11.4,False,VS,1
+Vicious Mockery,0,13.7,25,11.3,11.7,False,V,1
+Acid Splash,0,13.1,25,11.9,10.0,False,VS,2
+Spare the Dying,0,12.1,25,12.9,16.6,False,VS,1
+Guidance,0,10.8,25,14.2,12.5,True,VS,2
+Resistance,0,9.1,25,15.9,12.5,True,VSM,2
+True Strike,0,8.6,25,16.4,8.9,True,S,4
+Mending,0,8.5,25,16.5,16.6,False,VSM,5
+Detect Magic,1,100.0,100,0.0,81.6,True,VS,7
+Hunter's Mark,1,99.9,100,0.1,59.5,True,V,1
+Shield,1,99.9,100,0.1,92.1,False,VS,2
+Sleep,1,99.9,100,0.1,84.2,False,VSM,3
+Guiding Bolt,1,98.5,100,1.5,84.8,False,VS,1
+Animal Friendship,1,90.8,100,9.2,50.0,False,VSM,3
+Inflict Wounds,1,89.3,100,10.7,83.1,False,VS,1
+Unseen Servant,1,86.0,100,14.0,58.0,False,VSM,3
+Illusory Script,1,85.2,100,14.8,50.0,False,SM,3
+Disguise Self,1,85.0,100,15.0,64.9,False,VS,3
+Silent Image,1,84.4,100,15.6,73.9,True,VSM,3
+Fog Cloud,1,84.3,100,15.7,50.0,True,VS,4
+Detect Poison and Disease,1,82.8,100,17.2,67.8,True,VSM,4
+Charm Person,1,81.7,100,18.3,50.0,False,VS,5
+Hideous Laughter,1,81.6,100,18.4,82.0,True,VSM,2
+Alarm,1,80.8,100,19.2,50.0,False,VSM,2
+False Life,1,79.8,100,20.2,50.0,False,VSM,2
+Sanctuary,1,78.4,100,21.6,64.9,False,VSM,1
+Find Familiar,1,78.1,100,21.9,93.9,False,VSM,1
+Longstrider,1,77.8,100,22.2,50.0,False,VSM,4
+Detect Evil and Good,1,77.4,100,22.6,67.8,True,VS,2
+Identify,1,76.3,100,23.7,91.1,False,VSM,2
+Mage Armor,1,75.6,100,24.4,50.0,False,VSM,2
+Comprehend Languages,1,75.5,100,24.5,50.0,False,VSM,4
+Bless,1,74.0,100,26.0,60.8,True,VSM,2
+Bane,1,73.5,100,26.5,60.8,True,VSM,2
+Shield of Faith,1,73.4,100,26.6,50.0,True,VSM,2
+Magic Missile,1,72.3,100,27.7,61.0,False,VS,2
+Feather Fall,1,71.2,100,28.8,50.0,False,VM,3
+Hellish Rebuke,1,70.6,100,29.4,51.3,False,VS,1
+Expeditious Retreat,1,69.5,100,30.5,50.0,True,VS,3
+Speak with Animals,1,66.9,100,33.1,50.0,False,VS,3
+Entangle,1,65.5,100,34.5,58.0,True,VS,1
+Healing Word,1,64.6,100,35.4,50.0,False,V,3
 Command,1,64.4,100,35.6,50.0,False,V,2
-Healing Word,1,63.4,100,36.6,50.0,False,V,3
-Grease,1,62.7,100,37.3,50.0,False,VSM,1
-Divine Favor,1,61.4,100,38.6,50.0,True,VS,1
-Protection from Evil and Good,1,61.4,100,38.6,50.0,True,VSM,4
-Faerie Fire,1,60.9,100,39.1,50.0,True,V,2
-Jump,1,60.2,100,39.8,50.0,False,VSM,4
-Burning Hands,1,59.7,100,40.3,56.8,False,VS,2
-Heroism,1,59.1,100,40.9,50.0,True,VS,2
-Thunderwave,1,58.3,100,41.7,52.8,False,VS,4
-Cure Wounds,1,56.0,100,44.0,50.0,False,VS,5
-Color Spray,1,52.8,100,47.2,51.9,False,VSM,2
-Purify Food and Drink,1,52.2,100,47.8,50.0,False,VS,3
-Create or Destroy Water,1,52.1,100,47.9,50.0,False,VSM,2
-Goodberry,1,41.6,100,58.4,50.0,False,VSM,2
-Animal Messenger,2,150.0,150,0.0,100.0,False,VSM,3
-Magic Mouth,2,146.4,150,3.6,100.1,False,VSM,2
-Gentle Repose,2,145.4,150,4.6,100.0,False,VSM,2
-Aid,2,143.5,150,6.5,99.9,False,VSM,2
-Invisibility,2,143.4,150,6.6,100.0,True,VSM,4
-Scorching Ray,2,141.8,150,8.2,121.6,False,VS,2
-Arcane Lock,2,140.6,150,9.4,100.1,False,VSM,1
-Hold Person,2,140.5,150,9.5,100.0,True,VSM,6
-Continual Flame,2,138.8,150,11.2,100.0,False,VSM,2
-Magic Weapon,2,137.8,150,12.2,100.0,True,VS,2
-Arcanist's Magic Aura,2,133.0,150,17.0,100.0,False,VSM,1
-Darkvision,2,131.8,150,18.2,100.0,False,VSM,4
-Enhance Ability,2,131.4,150,18.6,100.0,True,VSM,4
-Silence,2,129.3,150,20.7,102.5,True,VS,3
-Prayer of Healing,2,128.1,150,21.9,127.1,False,V,2
-Protection from Poison,2,126.7,150,23.3,100.0,False,VS,4
-Suggestion,2,126.0,150,24.0,100.0,True,VM,4
-Spiritual Weapon,2,124.5,150,25.5,100.0,False,VS,1
-See Invisibility,2,124.4,150,25.6,100.0,False,VSM,3
-Moonbeam,2,124.0,150,26.0,102.6,True,VSM,1
-Blindness/Deafness,2,123.3,150,26.7,100.0,False,V,4
-Zone of Truth,2,122.8,150,27.2,100.0,False,VS,3
-Spike Growth,2,120.6,150,29.4,100.0,True,VSM,2
-Alter Self,2,120.5,150,29.5,100.0,True,VS,2
-Rope Trick,2,120.1,150,29.9,100.0,False,VSM,1
-Flame Blade,2,120.0,150,30.0,99.9,True,VSM,1
-Pass without Trace,2,119.4,150,30.6,100.0,True,VSM,2
-Web,2,119.4,150,30.6,100.0,True,VSM,2
-Barkskin,2,117.9,150,32.1,100.0,True,VSM,2
-Spider Climb,2,117.9,150,32.1,100.0,True,VSM,3
-Darkness,2,117.5,150,32.5,100.0,True,VM,3
-Levitate,2,116.7,150,33.3,100.0,True,VSM,2
-Flaming Sphere,2,114.8,150,35.2,100.1,True,VSM,2
-Enthrall,2,113.1,150,36.9,100.0,False,VS,2
-Locate Object,2,111.8,150,38.2,100.0,True,VSM,6
-Acid Arrow,2,111.1,150,38.9,100.0,False,VSM,1
-Calm Emotions,2,111.1,150,38.9,102.5,True,VS,2
-Mirror Image,2,110.1,150,39.9,100.0,False,VS,3
-Warding Bond,2,110.1,150,39.9,100.0,False,VSM,2
-Heat Metal,2,109.9,150,40.1,99.9,True,VSM,2
-Shatter,2,109.5,150,40.5,100.1,False,VSM,4
-Enlarge/Reduce,2,108.2,150,41.8,100.0,True,VSM,4
-Ray of Enfeeblement,2,107.1,150,42.9,100.0,True,VS,2
-Blur,2,105.9,150,44.1,100.0,True,V,2
-Misty Step,2,105.6,150,44.4,100.0,False,V,3
-Crown of Madness,2,104.2,150,45.8,100.0,True,VS,4
-Gust of Wind,2,104.0,150,46.0,100.0,True,VSM,3
-Find Traps,2,102.2,150,47.8,100.0,False,VS,3
-Detect Thoughts,2,102.0,150,48.0,100.0,True,VSM,3
-Locate Animals or Plants,2,99.1,150,50.9,100.0,False,VSM,3
-Knock,2,99.0,150,51.0,100.0,False,V,3
-Lesser Restoration,2,98.4,150,51.6,100.0,False,VS,5
-Augury,2,88.6,150,61.4,100.0,False,VSM,1
+Witch Bolt,1,64.1,100,35.9,50.1,True,VSM,3
+Grease,1,61.4,100,38.6,50.0,False,VSM,1
+Divine Favor,1,61.1,100,38.9,50.0,True,VS,1
+Faerie Fire,1,60.6,100,39.4,50.0,True,V,2
+Burning Hands,1,60.1,100,39.9,57.7,False,VS,2
+Protection from Evil and Good,1,59.0,100,41.0,50.0,True,VSM,4
+Thunderwave,1,58.6,100,41.4,53.8,False,VS,4
+Jump,1,58.1,100,41.9,50.0,False,VSM,4
+Heroism,1,57.9,100,42.1,50.0,True,VS,2
+Cure Wounds,1,55.4,100,44.6,50.0,False,VS,5
+Purify Food and Drink,1,51.9,100,48.1,50.0,False,VS,3
+Color Spray,1,51.8,100,48.2,52.3,False,VSM,2
+Create or Destroy Water,1,51.4,100,48.6,50.0,False,VSM,2
+Goodberry,1,40.4,100,59.6,49.9,False,VSM,2
+Animal Messenger,2,146.3,150,3.7,100.0,False,VSM,3
+Scorching Ray,2,143.7,150,6.3,123.2,False,VS,2
+Gentle Repose,2,141.2,150,8.8,100.0,False,VSM,2
+Aid,2,140.4,150,9.6,100.0,False,VSM,2
+Invisibility,2,140.2,150,9.8,100.0,True,VSM,4
+Magic Mouth,2,140.0,150,10.0,100.0,False,VSM,2
+Hold Person,2,138.6,150,11.4,100.0,True,VSM,6
+Magic Weapon,2,136.2,150,13.8,100.0,True,VS,2
+Arcane Lock,2,133.2,150,16.8,100.0,False,VSM,1
+Continual Flame,2,131.5,150,18.5,100.1,False,VSM,2
+Silence,2,130.0,150,20.0,104.0,True,VS,3
+Arcanist's Magic Aura,2,129.2,150,20.8,100.0,False,VSM,1
+Enhance Ability,2,128.4,150,21.6,100.0,True,VSM,4
+Darkvision,2,128.2,150,21.8,100.0,False,VSM,4
+Prayer of Healing,2,128.0,150,22.0,127.6,False,V,2
+Spiritual Weapon,2,124.6,150,25.4,100.1,False,VS,1
+Moonbeam,2,124.3,150,25.7,103.7,True,VSM,1
+Protection from Poison,2,124.2,150,25.8,100.0,False,VS,4
+Suggestion,2,123.3,150,26.7,100.0,True,VM,4
+Blindness/Deafness,2,122.4,150,27.6,100.0,False,V,4
+Zone of Truth,2,121.5,150,28.5,100.0,False,VS,3
+See Invisibility,2,121.4,150,28.6,100.0,False,VSM,3
+Spike Growth,2,119.4,150,30.6,99.9,True,VSM,2
+Flame Blade,2,118.8,150,31.2,100.1,True,VSM,1
+Alter Self,2,118.3,150,31.7,100.0,True,VS,2
+Rope Trick,2,117.2,150,32.8,100.0,False,VSM,1
+Web,2,117.2,150,32.8,100.0,True,VSM,2
+Pass without Trace,2,116.6,150,33.4,100.0,True,VSM,2
+Darkness,2,116.1,150,33.9,100.0,True,VM,3
+Barkskin,2,115.1,150,34.9,100.0,True,VSM,2
+Spider Climb,2,115.1,150,34.9,100.0,True,VSM,3
+Levitate,2,115.0,150,35.0,100.0,True,VSM,2
+Flaming Sphere,2,113.4,150,36.6,99.9,True,VSM,2
+Enthrall,2,112.3,150,37.7,100.0,False,VS,2
+Calm Emotions,2,112.0,150,38.0,104.0,True,VS,2
+Acid Arrow,2,110.8,150,39.2,99.9,False,VSM,1
+Locate Object,2,109.2,150,40.8,100.0,True,VSM,6
+Heat Metal,2,108.7,150,41.3,100.0,True,VSM,2
+Mirror Image,2,108.7,150,41.3,100.0,False,VS,3
+Shatter,2,108.7,150,41.3,100.0,False,VSM,4
+Enlarge/Reduce,2,106.7,150,43.3,100.0,True,VSM,4
+Ray of Enfeeblement,2,106.5,150,43.5,100.0,True,VS,2
+Misty Step,2,106.2,150,43.8,100.0,False,V,3
+Blur,2,105.0,150,45.0,100.0,True,V,2
+Warding Bond,2,104.2,150,45.8,100.0,False,VSM,2
+Crown of Madness,2,103.8,150,46.2,100.0,True,VS,4
+Find Traps,2,102.6,150,47.4,100.0,False,VS,3
+Gust of Wind,2,102.2,150,47.8,100.0,True,VSM,3
+Detect Thoughts,2,100.2,150,49.8,100.0,True,VSM,3
+Knock,2,99.4,150,50.6,100.0,False,V,3
+Locate Animals or Plants,2,98.0,150,52.0,100.0,False,VSM,3
+Lesser Restoration,2,97.8,150,52.2,100.0,False,VS,5
+Augury,2,85.4,150,64.6,100.0,False,VSM,1
+Conjure Animals,3,228.2,250,21.8,193.2,True,VS,2
+Glyph of Warding,3,227.1,250,22.9,208.9,False,VSM,3
+Fireball,3,213.5,250,36.5,202.7,False,VSM,2
+Call Lightning,3,203.2,250,46.8,175.7,True,VS,1
+Lightning Bolt,3,195.6,250,54.4,194.9,False,VSM,2
+Water Breathing,3,192.4,250,57.6,150.0,False,VSM,4
+Phantom Steed,3,188.2,250,61.8,150.0,False,VS,1
+Spirit Guardians,3,186.9,250,63.1,170.7,True,VSM,1
+Meld into Stone,3,183.3,250,66.7,150.0,False,VS,2
+Fly,3,183.2,250,66.8,150.0,True,VSM,3
+Leomund's Tiny Hut,3,180.4,250,69.6,150.0,False,VSM,2
+Water Walk,3,180.4,250,69.6,150.0,False,VSM,4
+Daylight,3,179.8,250,70.2,150.0,False,VS,5
+Major Image,3,179.5,250,70.5,150.0,True,VSM,4
+Feign Death,3,177.0,250,73.0,150.0,False,VSM,4
+Counterspell,3,174.0,250,76.0,150.0,False,S,3
+Tongues,3,173.6,250,76.4,150.0,False,VM,5
+Dispel Magic,3,171.5,250,78.5,150.0,False,VS,7
+Magic Circle,3,169.8,250,80.2,150.0,False,VSM,4
+Protection from Energy,3,167.9,250,82.1,150.0,True,VS,5
+Revivify,3,167.5,250,82.5,193.2,False,VSM,2
+Nondetection,3,167.0,250,83.0,150.0,False,VSM,3
+Sending,3,165.7,250,84.3,150.0,False,VSM,3
+Gaseous Form,3,165.1,250,84.9,150.0,True,VSM,3
+Bestow Curse,3,165.0,250,85.0,150.0,True,VS,3
+Speak with Plants,3,163.9,250,86.1,150.0,False,VS,3
+Mass Healing Word,3,163.4,250,86.6,150.0,False,V,1
+Sleet Storm,3,162.3,250,87.7,150.0,True,VSM,3
+Speak with Dead,3,161.4,250,88.6,150.0,False,VSM,2
+Wind Wall,3,161.1,250,88.9,150.0,True,VSM,2
+Hypnotic Pattern,3,160.3,250,89.7,150.0,True,SM,4
+Blink,3,158.7,250,91.3,150.0,False,VS,2
+Slow,3,158.1,250,91.9,150.0,True,VSM,2
+Stinking Cloud,3,158.0,250,92.0,150.0,True,VSM,3
+Plant Growth,3,156.8,250,93.2,150.0,False,VS,3
+Clairvoyance,3,156.2,250,93.8,150.0,True,VSM,4
+Beacon of Hope,3,156.1,250,93.9,150.0,True,VS,1
+Vampiric Touch,3,155.6,250,94.4,150.1,True,VS,2
+Animate Dead,3,154.9,250,95.1,151.8,False,VSM,2
+Fear,3,150.3,250,99.7,150.0,True,VSM,4
+Remove Curse,3,147.8,250,102.2,150.0,False,VS,4
+Create Food and Water,3,147.1,250,102.9,150.0,False,VS,2
+Haste,3,146.5,250,103.5,150.0,True,VSM,2

@@ -141,6 +141,53 @@ B2 = {
  "zone-of-truth": ([("util_truth",1),("area_radius15",1)],0,False),
 }
 
+# Level 3 builds.
+B3 = {
+ "animate-dead": ([("util_summon_undead",1),("lim_type",1)],0,False),
+ "beacon-of-hope": ([("beacon",1),("area_radius30",1)],0,False),
+ "bestow-curse": ([("cond_curse",1),("lim_save_negates",1)],0,False),
+ "blink": ([("blink",1)],0,False),
+ "call-lightning": ([("dmg",16.5),("rel_save_half",1),("dmg_recurring",16.5),("area_radius5",1),("lim_dm",1)],0,False),
+ "clairvoyance": ([("util_scry",1),("lim_no_combat",1)],100,False),
+ "conjure-animals": ([("util_summon_animals",1),("lim_dm",1)],0,False),
+ "counterspell": ([("util_counter",1),("lim_trigger",1)],0,False),
+ "create-food-and-water": ([("util_food_water",1),("lim_no_combat",1)],0,False),
+ "daylight": ([("util_daylight",1)],0,False),
+ "dispel-magic": ([("util_dispel",1)],0,False),
+ "fear": ([("cond_terror",1),("area_cone30",1),("lim_repeat_save",1)],0,False),
+ "feign-death": ([("feign",1),("lim_willing",1)],0,False),
+ "fireball": ([("dmg",28),("rel_save_half",1),("area_radius20",1),("util_ignite",1)],0,False),
+ "fly": ([("fly",1),("lim_willing",1)],0,False),
+ "gaseous-form": ([("gas_form",1),("lim_willing",1)],0,False),
+ "glyph-of-warding": ([("util_glyph",1),("dmg",22.5),("rel_save_half",1),("area_radius20",1),("lim_trigger",1)],200,True),
+ "haste": ([("haste",1),("lim_willing",1),("lim_backlash",1)],0,False),
+ "hypnotic-pattern": ([("cond_charm_incap",1),("area_cube30",1),("lim_wake_on_damage",1)],0,False),
+ "leomunds-tiny-hut": ([("util_shelter",1)],0,False),
+ "lightning-bolt": ([("dmg",28),("rel_save_half",1),("area_line100",1),("util_ignite",1)],0,False),
+ "magic-circle": ([("circle",1),("area_radius10",1)],100,True),
+ "major-image": ([("util_major_image",1),("area_cube20",1),("lim_physical_reveal",1)],0,False),
+ "mass-healing-word": ([("heal",5.5),("target_extra",5),("lim_exclude",1)],0,False),
+ "meld-into-stone": ([("meld",1),("lim_no_combat",1)],0,False),
+ "nondetection": ([("util_nondetect",1),("lim_no_combat",1)],25,True),
+ "phantom-steed": ([("util_steed",1),("lim_fragile",1)],0,False),
+ "plant-growth": ([("difficult_terrain",1),("util_plant",1),("area_radius30",1)],0,False),
+ "protection-from-energy": ([("resist_energy",1),("lim_willing",1)],0,False),
+ "remove-curse": ([("util_uncurse",1)],0,False),
+ "revivify": ([("util_revive",1)],300,True),
+ "sending": ([("util_sending",1),("lim_no_combat",1)],0,False),
+ "sleet-storm": ([("heavy_obscure",1),("difficult_terrain",1),("cond_prone",1),("util_wind",1),("area_radius40",1)],0,False),
+ "slow": ([("cond_slow",1),("area_cube40",1),("lim_repeat_save",1)],0,False),
+ "speak-with-dead": ([("util_speak_dead",1),("lim_no_combat",1),("lim_dm",1)],0,False),
+ "speak-with-plants": ([("util_speak_plants",1),("lim_dm",1)],0,False),
+ "spirit-guardians": ([("dmg",13.5),("rel_save_half",1),("dmg_recurring",13.5),("area_radius15",1),("cond_halfspeed",1)],0,False),
+ "stinking-cloud": ([("cond_retch",1),("heavy_obscure",1),("area_radius20",1),("lim_fragile",1)],0,False),
+ "tongues": ([("util_tongues",1)],0,False),
+ "vampiric-touch": ([("dmg",10.5),("rel_attack",1),("dmg_recurring",10.5),("util_lifesteal",1),("lim_maintain_action",1)],0,False),
+ "water-breathing": ([("util_water_breathing",1),("group10",1),("lim_willing",1)],0,False),
+ "water-walk": ([("util_water_walk",1),("group10",1),("lim_willing",1)],0,False),
+ "wind-wall": ([("util_wind_wall",1),("area_line60",1)],0,False),
+}
+
 # Upcasting. slug -> (item, increase per slot level). A step every two levels counts as half.
 # Spells that scale in some other way (duration, radius, HP pools) are left out and pay a flat charge.
 UPCAST = {
@@ -155,6 +202,8 @@ UPCAST = {
  "heat-metal": ("dmg", 4.5), "hold-person": ("target_extra", 1), "invisibility": ("target_extra", 1),
  "moonbeam": ("dmg", 5.5), "prayer-of-healing": ("heal", 4.5), "scorching-ray": ("dmg", 7),
  "shatter": ("dmg", 4.5), "spiritual-weapon": ("dmg", 2.25),
+ "call-lightning": ("dmg", 5.5), "fireball": ("dmg", 3.5), "lightning-bolt": ("dmg", 3.5), "fly": ("target_extra", 1),
+ "glyph-of-warding": ("dmg", 4.5), "mass-healing-word": ("heal", 2.5), "spirit-guardians": ("dmg", 4.5), "vampiric-touch": ("dmg", 3.5),
 }
 
 # Spells whose damaging part reaches farther than the listed range (Produce Flame is Self, but hurls 30 ft).

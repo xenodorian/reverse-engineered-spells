@@ -1,0 +1,23 @@
+{
+  "name": "Speak with Dead",
+  "level": 3,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Burning incense",
+  "duration": "10 minutes",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric"
+  ],
+  "description": "A corpse with a mouth answers up to five questions, but only with what it knew in life and only in languages it knew.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

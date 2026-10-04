@@ -35,3 +35,35 @@ Smaller changes made so every spell stayed legal after the above: cantrip damage
 - Refunds do not scale with level, so they matter less at level 2.
 - `cond_frightened` and `lim_wake_on_damage` are unused by any spell. They stay as options for builders.
 - Casting time is a weak lever. A 10-minute cast refunds only about 10 points. Out-of-combat spells such as Prayer of Healing rely on healing being priced low (25% per extra target) instead.
+
+## Level 3 pass
+
+Added 43 level 3 spells from memory of the SRD 5.1 list (`spells/level-3/`), about 40 new level 3 items, and a level 3 budget.
+
+### What was done
+
+- **Level 3 was held out.** Prices are fitted to cantrips, level 1, and level 2 only. The 43 level 3 spells are priced with those prices and the budget is read off the strongest one. The result is 250, with the strongest spell at 228.
+- **Level 2 stays at 150.** The fit now holds it there as a constraint and confirms 150 still covers the strongest level 2 spell (146).
+- **Floors.** Level 1 stays at 50. Level 2 stays at 100 and level 3 is 150, each equal to the previous level's budget.
+- **Ceiling.** From level 1 up, a spell's effects cannot exceed its own level's budget. Before, level 1 was capped at 99 (just under the level 2 floor) and level 2 had no ceiling. Adjacent levels now meet exactly at a budget.
+- **Caps.** Damage caps now also have an area key (Fireball and Lightning Bolt set 28 at level 3 without letting a single target reach 28) and a fast-cast key for bonus action and reaction spells. A touch spell that explodes in an area (Glyph of Warding) is classed as area, not touch.
+- **Prices fixed on the way.** Slow was priced above paralyzed, then above incapacitated. It is now between asleep and incapacitated. Added an ordering check for it.
+
+### Things I tried and dropped
+
+- **Fitting level 3 into the price fit.** It dragged the damage multiplier from 0.83 down to about 0.45, because Fireball is an outlier among level 3 spells, which cheapened level 1 damage.
+- **Floors at half of each level's budget with budgets set by the strongest spell.** The numbers shrank on every pass, because lower floors gave lower costs, which gave lower budgets, which gave lower floors. The loop has no fixed point above zero.
+- **Fitting only cantrips and level 1.** Healing is used by only three level 1 spells, so its price ran off to nearly double. Level 2 spread keeps it in check.
+
+### Result
+
+- Budgets are 25, 100, 150, 250 for cantrips and levels 1, 2, 3. They match the recalled DMG table at all three measured levels (ratios 1.5 and 2.5 against level 1). The earlier placeholder of 200 for level 3 would have left 4 level 3 spells over budget.
+- All 169 spells are legal under every rule and all 29 logic checks pass.
+- Scaling every damage and healing line together, the median spell can grow about 0% to 5% with all rules on, and the worst about 35% to 85% depending on level. With only the budget enforced, the worst grew about 3 to 4 times.
+- One level 3 spell (Mass Healing Word) and four level 2 spells can still be filed one level lower. The analysis lists them.
+
+### Open
+
+- Level 3 is the least checked level. Its builds were written once.
+- At level 3, 35 of 43 spells rise to the floor of 150, so the weak end of the level is floor-driven. The budget is not, because it follows the strongest spell.
+- The budgets follow the strongest spell, so one mispriced standout (Conjure Animals and Glyph of Warding are the top two at 228 and 227) moves a budget by a step of 25.

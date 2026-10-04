@@ -1,0 +1,23 @@
+{
+  "name": "Wind Wall",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A tiny fan and a feather of exotic origin",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Ranger"
+  ],
+  "description": "A wall of strong wind, up to 50 feet long and 15 feet high. It stops fog and gas, deflects missiles, and creatures passing through make a Strength save or are pushed and take bludgeoning damage.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Animate Dead",
+  "level": 3,
+  "school": "Necromancy",
+  "casting_time": "1 minute",
+  "range": "10 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A drop of blood, a piece of flesh, and a pinch of bone dust",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "Raise a skeleton or zombie from bones or a corpse. It obeys your commands for 24 hours, after which you must recast to keep control.",
+  "at_higher_levels": "Animate or reassert control over two more undead per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

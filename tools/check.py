@@ -4,8 +4,8 @@ import pricing as P
 
 AREA_SQFT = {"area_cube5": 25, "area_radius5": 79, "area_square10": 100, "area_cone15": 112, "area_cube15": 225,
              "area_radius10": 314, "area_square20": 400, "area_cube20": 400, "area_line60": 600, "area_radius15": 707,
-             "area_radius20": 1257, "area_radius30": 2827}
-SEVERITY = ["cond_prone", "cond_blinded", "cond_restrained", "cond_asleep", "cond_incapacitated", "cond_paralyzed"]
+             "area_radius20": 1257, "area_radius30": 2827, "area_cone30": 450, "area_line100": 500, "area_cube30": 900, "area_cube40": 1600, "area_radius40": 5027}
+SEVERITY = ["cond_prone", "cond_blinded", "cond_restrained", "cond_asleep", "cond_slow", "cond_incapacitated", "cond_charm_incap", "cond_paralyzed"]
 
 def run(spells):
     results = []
@@ -23,19 +23,21 @@ def run(spells):
             bad.append(f"{s['name']}: {e}")
     check("Every spell is legal under every rule", not bad, "; ".join(bad[:5]))
 
-    # 2. clearance bands
-    eff = {0: [], 1: [], 2: []}
-    nets = {0: [], 1: [], 2: []}
+    # 2. effect floors and ceilings, budget growth
+    eff = {l: [] for l in range(4)}
+    nets = {l: [] for l in range(4)}
     for k, (s, spec) in spells.items():
         rows, t = P.score(spec)
         eff[spec["level"]].append(sum(r[2] for r in rows if r[0] in ("Effect", "Floor")))
         nets[spec["level"]].append(t)
-    check("Cantrip effects stay under the level 1 floor", max(eff[0]) < P.L1_FLOOR, f"max {max(eff[0]):.1f}")
-    check("Level 1 effects sit between the floors", min(eff[1]) >= P.L1_FLOOR - 0.2 and max(eff[1]) < P.L2_FLOOR, f"{min(eff[1]):.1f} to {max(eff[1]):.1f}")
-    check("Level 2 effects are at or above the level 2 floor", min(eff[2]) >= P.L2_FLOOR - 0.2, f"min {min(eff[2]):.1f}")
-    check("Budgets rise with level", P.BUDGETS[0] < P.BUDGETS[1] < P.BUDGETS[2])
+    check("Cantrip effects stay under the level 1 floor", max(eff[0]) < P.floor(1), f"max {max(eff[0]):.1f}")
+    for lvl in (1, 2, 3):
+        check(f"Level {lvl} effects sit between the floor ({P.floor(lvl)}) and the ceiling ({P.ceiling(lvl)})",
+              min(eff[lvl]) >= P.floor(lvl) - 0.2 and max(eff[lvl]) <= P.ceiling(lvl) + 0.2, f"{min(eff[lvl]):.1f} to {max(eff[lvl]):.1f}")
+    check("Floors: level 1 is half its budget, later levels equal the previous budget", P.floor(1) == P.BUDGETS[1] / 2 and all(P.floor(l) == P.BUDGETS[l - 1] for l in (2, 3)))
+    check("Budgets rise with level", P.BUDGETS[0] < P.BUDGETS[1] < P.BUDGETS[2] < P.BUDGETS[3])
     mean = {l: sum(v) / len(v) for l, v in nets.items()}
-    check("Mean net cost rises with level", mean[0] < mean[1] < mean[2], f"{mean[0]:.1f}, {mean[1]:.1f}, {mean[2]:.1f}")
+    check("Mean net cost rises with level", mean[0] < mean[1] < mean[2] < mean[3], ", ".join(f"{mean[l]:.1f}" for l in range(4)))
 
     # 3. price ordering
     cond = [P.price(c) for c in SEVERITY]

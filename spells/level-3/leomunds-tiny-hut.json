@@ -1,0 +1,23 @@
+{
+  "name": "Leomund's Tiny Hut",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 minute",
+  "range": "Self (10-foot radius)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small crystal bead",
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Wizard"
+  ],
+  "description": "A 10-foot dome of force shelters up to nine creatures. Spells and creatures outside cannot pass. The inside is comfortable and lit as you choose.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Fireball",
+  "level": 3,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "150 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A tiny ball of bat guano and sulfur",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A bright streak bursts into a 20-foot radius explosion. Creatures make a Dexterity save, taking 8d6 fire damage on a failure or half on a success. Loose flammables ignite.",
+  "at_higher_levels": "Damage rises by 1d6 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

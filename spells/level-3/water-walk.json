@@ -1,0 +1,25 @@
+{
+  "name": "Water Walk",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A piece of cork",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Ranger",
+    "Sorcerer"
+  ],
+  "description": "Up to ten willing creatures can walk on water, ice, mud, and other liquids as if solid ground.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

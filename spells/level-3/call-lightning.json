@@ -1,0 +1,21 @@
+{
+  "name": "Call Lightning",
+  "level": 3,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "A storm cloud forms overhead. Each turn you can call down a bolt on a point you see, dealing 3d10 lightning damage in a 5-foot radius (Dexterity save for half). Needs open sky.",
+  "at_higher_levels": "Damage rises by 1d10 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Spirit Guardians",
+  "level": 3,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "Self (15-foot radius)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A holy symbol",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Spirits surround you. Enemies in the area have half speed and make a Wisdom save when they enter it or start their turn there, taking 3d8 damage on a failure or half on a success.",
+  "at_higher_levels": "Damage rises by 1d8 per slot level above 3.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

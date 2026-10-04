@@ -1,0 +1,25 @@
+{
+  "name": "Water Breathing",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A short reed or piece of straw",
+  "duration": "24 hours",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Druid",
+    "Ranger",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Up to ten willing creatures can breathe underwater for the duration.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

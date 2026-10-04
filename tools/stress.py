@@ -97,7 +97,7 @@ def compute(spells):
 
 def run(spells):
     r = compute(spells)
-    for lvl in (0, 1, 2):
+    for lvl in (0, 1, 2, 3):
         m = [x for x in r["mag"] if x[1] == lvl]
         if m:
             rb = [x[4] / x[3] for x in m]; rr = [x[5] / x[3] for x in m]
@@ -109,6 +109,6 @@ def run(spells):
         tb = [x[3] - x[2] for x in t]; tr = [x[4] - x[2] for x in t]
         print(f"level {lvl}: extra targets possible, budget only: median {st.median(tb):g}, max {max(tb)}. With rules: median {st.median(tr):g}, max {max(tr)}")
     from collections import Counter
-    for lvl in (1, 2):
+    for lvl in (1, 2, 3):
         c = Counter(x[2] for x in r["hop"] if x[1] == lvl)
         print(f"level {lvl} spells filed one level lower: {dict(c)}")

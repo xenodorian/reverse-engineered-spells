@@ -1,0 +1,22 @@
+{
+  "name": "Counterspell",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 reaction, when you see a creature within 60 feet casting a spell",
+  "range": "60 feet",
+  "components": [
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A spell of 3rd level or lower fails. A higher-level spell needs an ability check against 10 plus its level.",
+  "at_higher_levels": "The automatic cutoff rises to the slot level used.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

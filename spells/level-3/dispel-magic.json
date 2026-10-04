@@ -1,0 +1,27 @@
+{
+  "name": "Dispel Magic",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Paladin",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "End one spell on a creature, object, or effect. Spells of 3rd level or lower end automatically. Higher spells need an ability check.",
+  "at_higher_levels": "The automatic cutoff rises to the slot level used.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

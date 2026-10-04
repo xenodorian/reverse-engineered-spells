@@ -1,0 +1,23 @@
+{
+  "name": "Bestow Curse",
+  "level": 3,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "A creature you touch makes a Wisdom save or is cursed with one of several effects: disadvantage on one ability's checks and saves, disadvantage on attacks against you, a chance to lose its turn, or extra necrotic damage from you.",
+  "at_higher_levels": "A higher slot extends the duration, and a very high slot removes the need for concentration.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Beacon of Hope",
+  "level": 3,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Chosen creatures in range have advantage on Wisdom saves and death saves, and regain the maximum from any healing.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

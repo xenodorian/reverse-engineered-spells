@@ -1,0 +1,23 @@
+{
+  "name": "Haste",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A shaving of licorice root",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A willing creature moves at double speed, gains +2 AC, has advantage on Dexterity saves, and gets an extra limited action each turn. When the spell ends it cannot move or act for a turn.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

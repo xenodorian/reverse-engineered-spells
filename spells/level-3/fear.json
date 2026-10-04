@@ -1,0 +1,25 @@
+{
+  "name": "Fear",
+  "level": 3,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Self (30-foot cone)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A white feather or the heart of a hen",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Creatures in a 30-foot cone make a Wisdom save or drop what they hold and become frightened. A frightened creature must dash away from you each turn and can repeat the save when it is out of sight.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

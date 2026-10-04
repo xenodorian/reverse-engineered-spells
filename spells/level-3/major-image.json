@@ -1,0 +1,25 @@
+{
+  "name": "Major Image",
+  "level": 3,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A bit of fleece",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "An illusion in a 20-foot cube with sound, smell, and temperature as well as sight. You can move it as an action. Physical interaction reveals it.",
+  "at_higher_levels": "At 6th level or higher the spell lasts until dispelled with no concentration.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

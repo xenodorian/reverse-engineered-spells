@@ -1,0 +1,22 @@
+{
+  "name": "Create Food and Water",
+  "level": 3,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Paladin"
+  ],
+  "description": "Create 45 pounds of food and 30 gallons of water, enough to sustain fifteen humanoids or five steeds for a day.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Conjure Animals",
+  "level": 3,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Ranger"
+  ],
+  "description": "Fey spirits appear as beasts of your choice and fight for you. More numerous forms are weaker.",
+  "at_higher_levels": "Summon more beasts at slot levels 5, 7, and 9.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

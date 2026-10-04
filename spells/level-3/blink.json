@@ -1,0 +1,22 @@
+{
+  "name": "Blink",
+  "level": 3,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "At the end of each of your turns, roll a d20. On 11 or higher you vanish to the Ethereal Plane and return at the start of your next turn.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "Phantom Steed",
+  "level": 3,
+  "school": "Illusion",
+  "casting_time": "1 minute",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "A Large quasi-real horse appears. It rides at 100 feet per round, ignores difficult terrain, and has 13 hit points.",
+  "at_higher_levels": "A higher slot raises its speed and lets it cross water or air.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 3 list), text reimplemented"
+}
