@@ -1,0 +1,25 @@
+{
+  "name": "Enlarge/Reduce",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of powdered iron",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A creature or object changes size. An enlarged creature has advantage on Strength checks and saves and deals an extra 1d4 weapon damage. A reduced one has disadvantage and deals 1d4 less. An unwilling creature resists with a Constitution save.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

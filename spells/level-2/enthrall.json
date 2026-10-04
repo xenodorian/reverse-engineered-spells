@@ -1,0 +1,22 @@
+{
+  "name": "Enthrall",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Warlock"
+  ],
+  "description": "Creatures that can hear you make a Wisdom save or have disadvantage on Perception checks to notice anyone but you.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

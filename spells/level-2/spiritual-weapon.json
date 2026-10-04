@@ -1,0 +1,21 @@
+{
+  "name": "Spiritual Weapon",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 bonus action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "A floating spectral weapon appears. When you cast and as a bonus action on later turns, you can attack with it for 1d8 plus your spellcasting modifier force damage.",
+  "at_higher_levels": "Damage rises by 1d8 for every two slot levels above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

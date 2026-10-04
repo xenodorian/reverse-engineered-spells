@@ -1,0 +1,23 @@
+{
+  "name": "Flaming Sphere",
+  "level": 2,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Tallow, a pinch of brimstone, and powdered phosphorus",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Wizard"
+  ],
+  "description": "A 5-foot sphere of fire rolls on the ground. Creatures that end their turn next to it, or that it rams into, make a Dexterity save or take 2d6 fire damage. You can move it as a bonus action.",
+  "at_higher_levels": "Damage rises by 1d6 per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

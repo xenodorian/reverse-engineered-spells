@@ -1,0 +1,22 @@
+{
+  "name": "Calm Emotions",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric"
+  ],
+  "description": "Creatures in a 20-foot radius make a Charisma save. Willing creatures are not affected by it. On a failure you either suppress charm and fear or make hostile creatures indifferent to chosen targets.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

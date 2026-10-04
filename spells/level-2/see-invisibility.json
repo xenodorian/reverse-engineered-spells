@@ -1,0 +1,24 @@
+{
+  "name": "See Invisibility",
+  "level": 2,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of talc and powdered silver",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "You see invisible creatures and objects, and see into the Ethereal Plane.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

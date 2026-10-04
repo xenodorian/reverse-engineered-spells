@@ -1,0 +1,24 @@
+{
+  "name": "Protection from Poison",
+  "level": 2,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Paladin",
+    "Ranger"
+  ],
+  "description": "Neutralize one poison affecting a creature. For the duration it has advantage on saves against poison and resistance to poison damage.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

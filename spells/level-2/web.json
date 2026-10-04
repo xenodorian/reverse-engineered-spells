@@ -1,0 +1,23 @@
+{
+  "name": "Web",
+  "level": 2,
+  "school": "Conjuration",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Bits of spiderweb",
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Webs fill a 20-foot cube. It is difficult terrain, and creatures there make a Dexterity save or become restrained, with a Strength check to escape each turn. The webs burn.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

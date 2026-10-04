@@ -1,0 +1,22 @@
+{
+  "name": "Flame Blade",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 bonus action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A leaf of sumac",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid"
+  ],
+  "description": "A fiery blade forms in your hand. You can attack with it as a melee spell attack for 3d6 fire damage. It sheds light.",
+  "at_higher_levels": "Damage rises by 1d6 for every two slot levels above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

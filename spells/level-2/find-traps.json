@@ -1,0 +1,23 @@
+{
+  "name": "Find Traps",
+  "level": 2,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "Sense whether a trap is present in line of sight within range. You learn its presence but not its exact location or nature.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Gentle Repose",
+  "level": 2,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A pinch of salt and a copper piece on each eye",
+  "duration": "10 days",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "A corpse is protected from decay and cannot become undead. The time limit on raising it does not run.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

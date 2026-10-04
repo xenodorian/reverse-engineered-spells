@@ -1,0 +1,22 @@
+{
+  "name": "Knock",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Open a stuck, barred, locked, or arcane-locked object. It is noisy: a knock is heard 300 feet away.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

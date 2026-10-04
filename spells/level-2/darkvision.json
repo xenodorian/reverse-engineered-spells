@@ -1,0 +1,25 @@
+{
+  "name": "Darkvision",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A dried carrot or an agate",
+  "duration": "8 hours",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Ranger",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A willing creature gains darkvision out to 60 feet.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

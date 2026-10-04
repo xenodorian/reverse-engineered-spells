@@ -1,0 +1,24 @@
+{
+  "name": "Suggestion",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "M"
+  ],
+  "material": "A snake's tongue and a bit of honeycomb or sweet oil",
+  "duration": "8 hours",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "One creature that understands you makes a Wisdom save or follows a reasonable course of action you suggest. It ends early if the task is done or you or your allies harm it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

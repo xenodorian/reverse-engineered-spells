@@ -1,0 +1,24 @@
+{
+  "name": "Detect Thoughts",
+  "level": 2,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A copper piece",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Read surface thoughts of creatures within 30 feet. You can probe one creature's mind deeper, and it makes a Wisdom save to resist.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

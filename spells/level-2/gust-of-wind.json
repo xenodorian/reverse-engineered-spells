@@ -1,0 +1,24 @@
+{
+  "name": "Gust of Wind",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Self (60-foot line)",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A legume seed",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A 60-foot line of strong wind. Creatures in it make a Strength save or are pushed 15 feet. It scatters gas, snuffs small flames, and makes movement against it difficult terrain. You can redirect it as a bonus action.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

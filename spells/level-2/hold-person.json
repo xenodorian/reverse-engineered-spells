@@ -1,0 +1,27 @@
+{
+  "name": "Hold Person",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small straight piece of iron",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "One humanoid makes a Wisdom save or is paralyzed. It repeats the save at the end of each of its turns.",
+  "at_higher_levels": "Target one more humanoid per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

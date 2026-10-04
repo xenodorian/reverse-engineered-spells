@@ -1,0 +1,22 @@
+{
+  "name": "Alter Self",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Change your form in one of three ways: gain water breathing and a swim speed, change your appearance, or grow natural weapons that deal 1d6 damage and count as magical.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

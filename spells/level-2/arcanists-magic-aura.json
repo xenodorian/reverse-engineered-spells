@@ -1,0 +1,22 @@
+{
+  "name": "Arcanist's Magic Aura",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small square of silk",
+  "duration": "24 hours",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "Change how detection magic reads an object, creature, or place. You can mask magic or make a mundane object seem magical.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

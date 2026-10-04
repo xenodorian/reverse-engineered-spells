@@ -1,0 +1,24 @@
+{
+  "name": "Animal Messenger",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A morsel of food",
+  "duration": "24 hours",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "A Tiny beast carries a short message to a place you describe and a recipient you name, within 24 hours of travel.",
+  "at_higher_levels": "The duration grows by 48 hours per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

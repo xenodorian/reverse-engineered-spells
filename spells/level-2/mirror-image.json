@@ -1,0 +1,23 @@
+{
+  "name": "Mirror Image",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Three illusory duplicates appear. Attacks that target you may hit a duplicate instead and destroy it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Magic Weapon",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 bonus action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Paladin",
+    "Wizard"
+  ],
+  "description": "A nonmagical weapon becomes magical with a +1 bonus to attack and damage rolls.",
+  "at_higher_levels": "The bonus becomes +2 at slot level 4 and +3 at level 6.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

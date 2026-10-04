@@ -1,0 +1,23 @@
+{
+  "name": "Blindness/Deafness",
+  "level": 2,
+  "school": "Necromancy",
+  "casting_time": "1 action",
+  "range": "30 feet",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "One creature makes a Constitution save or is blinded or deafened, your choice. It repeats the save at the end of each of its turns.",
+  "at_higher_levels": "Target one more creature per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Zone of Truth",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Paladin"
+  ],
+  "description": "Creatures in a 15-foot radius make a Charisma save or cannot speak a deliberate lie while inside. You know who failed.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

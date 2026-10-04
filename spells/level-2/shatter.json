@@ -1,0 +1,25 @@
+{
+  "name": "Shatter",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A chip of mica",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A sudden ringing noise in a 10-foot radius. Creatures make a Constitution save or take 3d8 thunder damage, half on a success. Crystal and inorganic creatures save with disadvantage.",
+  "at_higher_levels": "Damage rises by 1d8 per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

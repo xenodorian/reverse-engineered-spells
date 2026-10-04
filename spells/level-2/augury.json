@@ -1,0 +1,22 @@
+{
+  "name": "Augury",
+  "level": 2,
+  "school": "Divination",
+  "casting_time": "1 minute",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Marked sticks, bones, or similar tokens worth at least 25 gp",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Cleric"
+  ],
+  "description": "Learn whether a planned action in the next 30 minutes will bring weal, woe, both, or nothing.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

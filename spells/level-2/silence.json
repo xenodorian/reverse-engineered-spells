@@ -1,0 +1,23 @@
+{
+  "name": "Silence",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Ranger"
+  ],
+  "description": "No sound passes through or exists in a 20-foot radius. Creatures inside are deafened and immune to thunder damage, and spells with a verbal component fail.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Arcane Lock",
+  "level": 2,
+  "school": "Abjuration",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Gold dust worth at least 25 gp, consumed",
+  "duration": "Until dispelled",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "A door, window, gate, or container is locked. You and chosen creatures can open it. Others need a hard Strength or lockpicking check, or dispel magic.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

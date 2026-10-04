@@ -1,0 +1,23 @@
+{
+  "name": "Continual Flame",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Ruby dust worth 50 gp, consumed",
+  "duration": "Until dispelled",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Cleric",
+    "Wizard"
+  ],
+  "description": "A torch-bright flame that gives no heat and uses no fuel springs from an object you touch.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

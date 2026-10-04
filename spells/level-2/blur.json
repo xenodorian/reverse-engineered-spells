@@ -1,0 +1,21 @@
+{
+  "name": "Blur",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "Your outline blurs. Creatures that rely on sight have disadvantage on attack rolls against you. Blindsight and truesight ignore it.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

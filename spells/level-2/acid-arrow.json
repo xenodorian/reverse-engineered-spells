@@ -1,0 +1,22 @@
+{
+  "name": "Acid Arrow",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "90 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Powdered rhubarb leaf and an adder's stomach",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "Make a ranged spell attack. On a hit the target takes 4d4 acid damage now and 2d4 more at the end of its next turn. On a miss it takes half the initial damage and nothing later.",
+  "at_higher_levels": "Both damage amounts rise by 1d4 per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "Enhance Ability",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Fur or a feather from a beast",
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Cleric",
+    "Druid",
+    "Sorcerer"
+  ],
+  "description": "A creature gains advantage on checks with one ability score, plus a related bonus such as extra carrying capacity or reduced fall damage.",
+  "at_higher_levels": "Target one more creature per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

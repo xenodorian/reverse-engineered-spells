@@ -1,0 +1,25 @@
+{
+  "name": "Invisibility",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "An eyelash in gum arabic",
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "A creature becomes invisible until the spell ends. It ends for that creature if it attacks or casts a spell.",
+  "at_higher_levels": "Target one more creature per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

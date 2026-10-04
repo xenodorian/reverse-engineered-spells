@@ -1,0 +1,22 @@
+{
+  "name": "Misty Step",
+  "level": 2,
+  "school": "Conjuration",
+  "casting_time": "1 bonus action",
+  "range": "Self",
+  "components": [
+    "V"
+  ],
+  "material": null,
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Teleport up to 30 feet to a space you can see.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

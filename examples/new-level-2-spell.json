@@ -1,20 +1,19 @@
 {
-  "name": "Ember Lash",
-  "level": 1,
+  "name": "Searing Chain",
+  "level": 2,
   "casting_time": "1 action",
   "range": "60 feet",
-  "duration": "1 round",
+  "duration": "1 minute",
   "components": [
     "V",
-    "S",
-    "M"
+    "S"
   ],
   "material_gp": 0,
   "consumed": false,
-  "concentration": false,
+  "concentration": true,
   "ritual": false,
   "scaling": true,
-  "class_count": 2,
+  "class_count": 1,
   "upcast": [
     "dmg",
     3.5
@@ -22,13 +21,20 @@
   "lines": [
     [
       "dmg",
-      9
+      10.5
     ],
     [
-      "rel_attack"
+      "rel_save_half"
     ],
     [
-      "advantage_next"
+      "dmg_recurring",
+      10.5
+    ],
+    [
+      "cond_restrained"
+    ],
+    [
+      "lim_escape_check"
     ]
   ]
 }

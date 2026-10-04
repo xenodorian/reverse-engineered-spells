@@ -1,0 +1,24 @@
+{
+  "name": "Locate Animals or Plants",
+  "level": 2,
+  "school": "Divination",
+  "casting_time": "1 action",
+  "range": "Self",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A bit of fur from a bloodhound",
+  "duration": "Instantaneous",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Druid",
+    "Ranger"
+  ],
+  "description": "Learn the direction and distance of the closest animal or plant of a kind you name, within 5 miles.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,22 @@
+{
+  "name": "Rope Trick",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Powdered corn extract and a twisted loop of parchment",
+  "duration": "1 hour",
+  "concentration": false,
+  "ritual": false,
+  "classes": [
+    "Wizard"
+  ],
+  "description": "A rope rises into an extradimensional space that holds up to eight creatures and is hidden from outside view.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

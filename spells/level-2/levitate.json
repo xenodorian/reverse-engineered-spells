@@ -1,0 +1,23 @@
+{
+  "name": "Levitate",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A small leather loop or golden wire bent into a cup",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Wizard"
+  ],
+  "description": "A creature or loose object of up to 500 pounds rises 20 feet and floats. You can move it up or down 20 feet each turn. An unwilling creature resists with a Constitution save.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

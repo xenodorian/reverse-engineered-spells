@@ -1,0 +1,24 @@
+{
+  "name": "Crown of Madness",
+  "level": 2,
+  "school": "Enchantment",
+  "casting_time": "1 action",
+  "range": "120 feet",
+  "components": [
+    "V",
+    "S"
+  ],
+  "material": null,
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "One humanoid makes a Wisdom save or is charmed and forced to attack a creature you choose within its reach. It repeats the save each turn, and you must spend your action to keep control.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

@@ -1,0 +1,23 @@
+{
+  "name": "Barkskin",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "Touch",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A handful of oak bark",
+  "duration": "1 hour",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Druid",
+    "Ranger"
+  ],
+  "description": "A willing creature's skin becomes bark. Its AC cannot be lower than 16 while the spell lasts.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

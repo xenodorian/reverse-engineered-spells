@@ -1,0 +1,23 @@
+{
+  "name": "Heat Metal",
+  "level": 2,
+  "school": "Transmutation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "A piece of iron and a flame",
+  "duration": "1 minute",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Bard",
+    "Druid"
+  ],
+  "description": "A metal object glows red hot. A creature touching it takes 2d8 fire damage and may drop it. You can repeat the damage as a bonus action each turn.",
+  "at_higher_levels": "Damage rises by 1d8 per slot level above 2.",
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

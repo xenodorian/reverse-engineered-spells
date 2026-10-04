@@ -1,0 +1,23 @@
+{
+  "name": "Darkness",
+  "level": 2,
+  "school": "Evocation",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "components": [
+    "V",
+    "M"
+  ],
+  "material": "Bat fur and a drop of pitch or coal",
+  "duration": "10 minutes",
+  "concentration": true,
+  "ritual": false,
+  "classes": [
+    "Sorcerer",
+    "Warlock",
+    "Wizard"
+  ],
+  "description": "Magical darkness fills a 15-foot radius. Darkvision cannot see through it, and it blocks nonmagical light and lower-level light spells.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}

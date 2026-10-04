@@ -1,0 +1,23 @@
+{
+  "name": "Magic Mouth",
+  "level": 2,
+  "school": "Illusion",
+  "casting_time": "1 minute",
+  "range": "30 feet",
+  "components": [
+    "V",
+    "S",
+    "M"
+  ],
+  "material": "Honeycomb and jade dust worth 10 gp, consumed",
+  "duration": "Until dispelled",
+  "concentration": false,
+  "ritual": true,
+  "classes": [
+    "Bard",
+    "Wizard"
+  ],
+  "description": "Place a spoken message of up to 25 words on an object. It speaks when a trigger you set is met.",
+  "at_higher_levels": null,
+  "source": "D&D 5e 2014 (SRD 5.1 level 2 list), text reimplemented"
+}
