@@ -51,6 +51,7 @@ Unseen Servant,1,63,100,37,42,False,VSM,3
 Charm Person,1,62,100,38,31,False,VS,5
 Entangle,1,62,100,38,69,True,VS,1
 Healing Word,1,62.0,100,38.0,27.5,False,V,3
+Identify,1,61,100,39,90,False,VSM,2
 Disguise Self,1,60,100,40,47,False,VS,3
 Shield of Faith,1,60,100,40,32,True,VSM,2
 Detect Poison and Disease,1,58,100,42,57,True,VSM,4
@@ -71,4 +72,3 @@ Protection from Evil and Good,1,46,100,54,47,True,VSM,4
 Goodberry,1,45,100,55,63,False,VSM,2
 Purify Food and Drink,1,45,100,55,10,False,VS,3
 Create or Destroy Water,1,43,100,57,36,False,VSM,2
-Identify,1,21,100,79,42,False,VSM,2

@@ -16,7 +16,7 @@ Two rules keep a firm gap between the tiers. "Effects" means the capability line
 | Cantrip damage cap | Cantrips | Cantrip damage tops out at an average of 6.5 (1d12). Level 1 damage starts at about 10. |
 | Limit refund cap | Both | Refunds from limits cannot exceed 50% of the effect cost. This stops a trivial effect from being bought for free by stacking caveats. |
 
-Result on the current spells: the highest cantrip effect total is 21.5. 25 of the 49 level 1 spells needed the floor top-up: Alarm, Animal Friendship, Charm Person, Command, Comprehend Languages, Create or Destroy Water, Cure Wounds, Disguise Self, Divine Favor, Expeditious Retreat, False Life, Grease, Healing Word, Heroism, Identify, Illusory Script, Jump, Longstrider, Mage Armor, Protection from Evil and Good, Purify Food and Drink, Sanctuary, Shield of Faith, Speak with Animals, Unseen Servant.
+Result on the current spells: the highest cantrip effect total is 21.5. 24 of the 49 level 1 spells needed the floor top-up: Alarm, Animal Friendship, Charm Person, Command, Comprehend Languages, Create or Destroy Water, Cure Wounds, Disguise Self, Divine Favor, Expeditious Retreat, False Life, Grease, Healing Word, Heroism, Illusory Script, Jump, Longstrider, Mage Armor, Protection from Evil and Good, Purify Food and Drink, Sanctuary, Shield of Faith, Speak with Animals, Unseen Servant.
 
 ## How to build a spell in six steps
 
@@ -61,8 +61,8 @@ Counted from the spell files, and used to set the refund sizes below.
 | Average classes per spell | 2.4 | 2.6 |
 | Spells on exactly one class list | 8 of 24 | 9 of 49 |
 | Average net cost, concentration spells | 6 | 65 |
-| Average net cost, other spells | 17 | 63 |
-| Average net cost, spells with a material | 13 | 62 |
+| Average net cost, other spells | 17 | 65 |
+| Average net cost, spells with a material | 13 | 64 |
 | Average net cost, spells with no material | 16 | 66 |
 
 Takeaways: nearly every spell has a verbal component, most have a somatic one, and about half have a material. Materials are common, so a mundane material refunds little. Gold-cost materials are rare (3 level 1 spells, no cantrips), so they refund heavily. Spells with materials do not score higher than spells without in this set, so the data does not by itself show that materials mark stronger spells. The larger refund for gold-cost materials follows the design rule that costly components limit power, not a trend in these files. Concentration spells are the long-duration ones, so the concentration refund offsets part of the duration cost. Cantrips never use rituals and rarely use concentration. About half of damage cantrips scale with character level, which is why scaling has its own cantrip price.
@@ -133,7 +133,7 @@ These are level 1 only, except the items marked shared, which cantrips may also 
 |---|---|---|---|
 | Sense a category within 30 ft | 26 | flat | no |
 | Learn aura or school of what you sense | 10 | flat | no |
-| Reveal properties or lore | 21 | per item | no |
+| Reveal properties or lore | 45 | per item | no |
 | Understand any language | 26 | flat | no |
 | Speak with a creature type | 23 | flat | no |
 | Create or destroy water | 13 | flat | no |
@@ -429,6 +429,7 @@ Concentration refunds 10 points. Use it only if the spell lasts a minute or more
 | Charm Person | 62 | 38 | 31 |  | VS | 5 |
 | Entangle | 62 | 38 | 69 | yes | VS | 1 |
 | Healing Word | 62 | 38 | 27.5 |  | V | 3 |
+| Identify | 61 | 39 | 90 |  | VSM | 2 |
 | Disguise Self | 60 | 40 | 47 |  | VS | 3 |
 | Shield of Faith | 60 | 40 | 32 | yes | VSM | 2 |
 | Detect Poison and Disease | 58 | 42 | 57 | yes | VSM | 4 |
@@ -449,7 +450,6 @@ Concentration refunds 10 points. Use it only if the spell lasts a minute or more
 | Goodberry | 45 | 55 | 63 |  | VSM | 2 |
 | Purify Food and Drink | 45 | 55 | 10 |  | VS | 3 |
 | Create or Destroy Water | 43 | 57 | 36 |  | VSM | 2 |
-| Identify | 21 | 79 | 42 |  | VSM | 2 |
 
 Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>`, for example `score fire-bolt`. The same data is in `data/spell-scores.csv` and `data/point-buy.json`.
 
@@ -461,5 +461,5 @@ Full line items for any spell: `python tools/pointbuy.py score <spell-file-name>
 - Cantrip scaling is flat priced. A cantrip that scales much harder than the standard dice steps should pay extra.
 - Spell level beyond 1 is not modeled.
 - A limit only refunds points if it matters. DMs should reject a limit that never comes up.
-- Utility spells such as Identify score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version.
+- Utility spells score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version. Identify's lore effect was raised to 45 per item so a ritual that fully reveals a magic item, with a 100 gp pearl and no combat use, lands near other utility spells like Comprehend Languages.
 

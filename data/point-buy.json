@@ -225,7 +225,7 @@
     },
     "util_lore": {
       "label": "Reveal properties or lore",
-      "points": 21,
+      "points": 45,
       "unit": "per item",
       "tier": "level_1"
     },

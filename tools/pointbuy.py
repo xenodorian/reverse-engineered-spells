@@ -60,7 +60,7 @@ EFFECTS = {
     # utility
     "util_detect":     ("Sense a category within 30 ft", 26, "flat"),
     "util_detect_aura": ("Learn aura or school of what you sense", 10, "flat"),
-    "util_lore":       ("Reveal properties or lore", 21, "per item"),
+    "util_lore":       ("Reveal properties or lore", 45, "per item"),
     "util_language":   ("Understand any language", 26, "flat"),
     "util_speak":      ("Speak with a creature type", 23, "flat"),
     "util_create_water": ("Create or destroy water", 13, "flat"),

@@ -185,5 +185,5 @@ def write(sp):
     A("- Cantrip scaling is flat priced. A cantrip that scales much harder than the standard dice steps should pay extra.")
     A("- Spell level beyond 1 is not modeled.")
     A("- A limit only refunds points if it matters. DMs should reject a limit that never comes up.")
-    A("- Utility spells such as Identify score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version.\n")
+    A("- Utility spells score low because they have little combat value. That is not a mistake. Raise their duration or area for a stronger version. Identify's lore effect was raised to 45 per item so a ritual that fully reveals a magic item, with a 100 gp pearl and no combat use, lands near other utility spells like Comprehend Languages.\n")
     open(os.path.join(P.ROOT, "docs", "spell-point-buy.md"), "w").write("\n".join(L) + "\n")
