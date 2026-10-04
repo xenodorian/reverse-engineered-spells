@@ -1,0 +1,492 @@
+{
+  "budget": 100,
+  "effects": {
+    "dmg": {
+      "label": "Damage dealt",
+      "points": 5,
+      "unit": "per avg damage"
+    },
+    "dmg_rider": {
+      "label": "Extra damage on each weapon hit",
+      "points": 16,
+      "unit": "per avg damage"
+    },
+    "dmg_recurring": {
+      "label": "Repeat damage on later turns",
+      "points": 5,
+      "unit": "per avg damage"
+    },
+    "heal": {
+      "label": "Hit points restored (modifier assumed +3)",
+      "points": 5,
+      "unit": "per avg HP"
+    },
+    "temp_hp": {
+      "label": "Temporary hit points",
+      "points": 4,
+      "unit": "per HP"
+    },
+    "temp_hp_recurring": {
+      "label": "Temporary hit points renewed each turn",
+      "points": 8,
+      "unit": "per HP per turn"
+    },
+    "rel_attack": {
+      "label": "Delivered by attack roll",
+      "points": 0,
+      "unit": "flat"
+    },
+    "rel_save_half": {
+      "label": "Delivered by save, half on success",
+      "points": 5,
+      "unit": "flat"
+    },
+    "rel_auto": {
+      "label": "Hits automatically",
+      "points": 12,
+      "unit": "flat"
+    },
+    "no_save": {
+      "label": "Condition with no save or roll",
+      "points": 15,
+      "unit": "flat"
+    },
+    "ac_bonus": {
+      "label": "Armor Class bonus",
+      "points": 16,
+      "unit": "per +1 AC"
+    },
+    "die_bonus": {
+      "label": "d4 bonus to attacks and saves",
+      "points": 34,
+      "unit": "per target"
+    },
+    "advantage_vs_target": {
+      "label": "Attacks against target have advantage",
+      "points": 29,
+      "unit": "flat"
+    },
+    "advantage_next": {
+      "label": "Advantage on one next attack",
+      "points": 21,
+      "unit": "flat"
+    },
+    "protect_types": {
+      "label": "Disadvantage vs six creature types plus charm and fear immunity",
+      "points": 47,
+      "unit": "flat"
+    },
+    "immune_frightened": {
+      "label": "Immune to frightened",
+      "points": 10,
+      "unit": "flat"
+    },
+    "speed_bonus": {
+      "label": "Walking speed bonus",
+      "points": 2,
+      "unit": "per foot"
+    },
+    "extra_dash": {
+      "label": "Dash as bonus action each turn",
+      "points": 34,
+      "unit": "flat"
+    },
+    "jump_triple": {
+      "label": "Triple jump distance",
+      "points": 8,
+      "unit": "flat"
+    },
+    "fall_immunity": {
+      "label": "Negate falling damage and slow fall",
+      "points": 16,
+      "unit": "flat"
+    },
+    "magic_missile_immune": {
+      "label": "Immune to one named spell",
+      "points": 5,
+      "unit": "flat"
+    },
+    "cond_prone": {
+      "label": "Prone",
+      "points": 10,
+      "unit": "flat"
+    },
+    "cond_charmed": {
+      "label": "Charmed",
+      "points": 31,
+      "unit": "flat"
+    },
+    "cond_frightened": {
+      "label": "Frightened",
+      "points": 31,
+      "unit": "flat"
+    },
+    "cond_blinded": {
+      "label": "Blinded",
+      "points": 31,
+      "unit": "flat"
+    },
+    "cond_restrained": {
+      "label": "Restrained",
+      "points": 36,
+      "unit": "flat"
+    },
+    "cond_incapacitated": {
+      "label": "Incapacitated",
+      "points": 42,
+      "unit": "flat"
+    },
+    "cond_unconscious": {
+      "label": "Unconscious",
+      "points": 52,
+      "unit": "flat"
+    },
+    "cond_command": {
+      "label": "Forced to obey a one word order",
+      "points": 29,
+      "unit": "flat"
+    },
+    "forced_move": {
+      "label": "Forced movement up to 10 ft",
+      "points": 5,
+      "unit": "flat"
+    },
+    "difficult_terrain": {
+      "label": "Difficult terrain",
+      "points": 10,
+      "unit": "flat"
+    },
+    "heavy_obscure": {
+      "label": "Heavily obscured area",
+      "points": 26,
+      "unit": "flat"
+    },
+    "util_outline": {
+      "label": "Outlines target, negates invisibility",
+      "points": 10,
+      "unit": "flat"
+    },
+    "util_ignite": {
+      "label": "Ignites loose flammables",
+      "points": 3,
+      "unit": "flat"
+    },
+    "util_detect": {
+      "label": "Sense a category within 30 ft",
+      "points": 26,
+      "unit": "flat"
+    },
+    "util_detect_aura": {
+      "label": "Learn aura or school of what you sense",
+      "points": 10,
+      "unit": "flat"
+    },
+    "util_lore": {
+      "label": "Reveal properties or lore",
+      "points": 21,
+      "unit": "per item"
+    },
+    "util_language": {
+      "label": "Understand any language",
+      "points": 26,
+      "unit": "flat"
+    },
+    "util_speak": {
+      "label": "Speak with a creature type",
+      "points": 23,
+      "unit": "flat"
+    },
+    "util_create_water": {
+      "label": "Create or destroy water",
+      "points": 13,
+      "unit": "flat"
+    },
+    "util_purify": {
+      "label": "Purify food and drink",
+      "points": 10,
+      "unit": "flat"
+    },
+    "util_food": {
+      "label": "Day of food",
+      "points": 13,
+      "unit": "flat"
+    },
+    "util_alarm": {
+      "label": "Alert when an area is entered",
+      "points": 18,
+      "unit": "flat"
+    },
+    "util_ward": {
+      "label": "Ward that redirects attackers",
+      "points": 47,
+      "unit": "flat"
+    },
+    "util_illusion_image": {
+      "label": "Create a visual illusion",
+      "points": 47,
+      "unit": "flat"
+    },
+    "util_disguise": {
+      "label": "Change your appearance",
+      "points": 47,
+      "unit": "flat"
+    },
+    "util_script": {
+      "label": "Hidden writing",
+      "points": 26,
+      "unit": "flat"
+    },
+    "util_servant": {
+      "label": "Invisible helper that does chores",
+      "points": 42,
+      "unit": "flat"
+    },
+    "util_familiar": {
+      "label": "Summon a loyal scout and helper",
+      "points": 73,
+      "unit": "flat"
+    },
+    "util_mark_track": {
+      "label": "Advantage to track a marked target",
+      "points": 8,
+      "unit": "flat"
+    },
+    "util_mark_move": {
+      "label": "Move effect to a new target",
+      "points": 5,
+      "unit": "flat"
+    },
+    "persist": {
+      "label": "Effect lasts until dismissed",
+      "points": 21,
+      "unit": "flat"
+    },
+    "target_extra": {
+      "label": "Each additional target",
+      "points": 10,
+      "unit": "per target"
+    },
+    "split_targets": {
+      "label": "Split effect among several targets",
+      "points": 10,
+      "unit": "flat"
+    },
+    "area_square10": {
+      "label": "10 ft square",
+      "points": 13,
+      "unit": "flat"
+    },
+    "area_square20": {
+      "label": "20 ft square",
+      "points": 23,
+      "unit": "flat"
+    },
+    "area_cone15": {
+      "label": "15 ft cone",
+      "points": 18,
+      "unit": "flat"
+    },
+    "area_cube15": {
+      "label": "15 ft cube",
+      "points": 18,
+      "unit": "flat"
+    },
+    "area_cube20": {
+      "label": "20 ft cube",
+      "points": 23,
+      "unit": "flat"
+    },
+    "area_radius20": {
+      "label": "20 ft radius",
+      "points": 26,
+      "unit": "flat"
+    },
+    "area_radius30": {
+      "label": "30 ft radius",
+      "points": 31,
+      "unit": "flat"
+    }
+  },
+  "limits": {
+    "lim_willing": {
+      "label": "Willing target only",
+      "points": -3
+    },
+    "lim_type": {
+      "label": "Restricted to a creature type or trait",
+      "points": -6
+    },
+    "lim_exclude": {
+      "label": "Excludes a creature type (undead, constructs, low Int)",
+      "points": -2
+    },
+    "lim_end_on_harm": {
+      "label": "Ends if you or allies harm the target",
+      "points": -8
+    },
+    "lim_ends_on_attack": {
+      "label": "Ends if the target attacks or casts",
+      "points": -8
+    },
+    "lim_wake_on_damage": {
+      "label": "Ends on damage or a shake",
+      "points": -6
+    },
+    "lim_repeat_save": {
+      "label": "Target repeats the save",
+      "points": -6
+    },
+    "lim_save_adv": {
+      "label": "Target gets advantage on the save in some cases",
+      "points": -4
+    },
+    "lim_aware": {
+      "label": "Target knows it was affected afterward",
+      "points": -4
+    },
+    "lim_escape_check": {
+      "label": "Target can use an action to escape",
+      "points": -6
+    },
+    "lim_hp_pool": {
+      "label": "Effect capped by a hit point pool",
+      "points": -10
+    },
+    "lim_harmless_only": {
+      "label": "Target refuses harmful orders",
+      "points": -4
+    },
+    "lim_trigger": {
+      "label": "Narrow reaction trigger",
+      "points": -6
+    },
+    "lim_fragile": {
+      "label": "Effect is easy to kill or dispel",
+      "points": -4
+    },
+    "lim_decay": {
+      "label": "Effect decays or expires early",
+      "points": -3
+    },
+    "lim_slow_heal": {
+      "label": "Benefit delivered one piece at a time",
+      "points": -6
+    },
+    "lim_no_combat": {
+      "label": "No direct combat use",
+      "points": -6
+    },
+    "lim_physical_reveal": {
+      "label": "Revealed by touch or an Investigation check",
+      "points": -6
+    },
+    "lim_armor": {
+      "label": "Ends if armor is worn",
+      "points": -3
+    },
+    "lim_sensory": {
+      "label": "Limited to one sense",
+      "points": -3
+    },
+    "lim_save_negates": {
+      "label": "Save negates the whole effect",
+      "points": -4
+    },
+    "lim_maintain_action": {
+      "label": "Action each turn to keep it going",
+      "points": -8
+    },
+    "lim_barrier": {
+      "label": "Blocked by thin barriers",
+      "points": -3
+    },
+    "lim_dm": {
+      "label": "Result depends on creature reactions",
+      "points": -4
+    },
+    "lim_loud": {
+      "label": "Loud, reveals your position",
+      "points": -2
+    },
+    "lim_range_break": {
+      "label": "Breaks if the target leaves range",
+      "points": -2
+    }
+  },
+  "casting_time": {
+    "1 action": 0,
+    "1 bonus action": 8,
+    "1 reaction": 10,
+    "1 minute": -4,
+    "10 minutes": -8,
+    "1 hour": -12
+  },
+  "range": {
+    "Self": 0,
+    "Touch": 0,
+    "10 feet": 2,
+    "30 feet": 3,
+    "60 feet": 5,
+    "90 feet": 7,
+    "120 feet": 8
+  },
+  "duration": {
+    "Instantaneous": 0,
+    "1 round": 3,
+    "1 minute": 10,
+    "10 minutes": 16,
+    "1 hour": 22,
+    "8 hours": 28,
+    "24 hours": 32,
+    "10 days": 36
+  },
+  "concentration": -10,
+  "ritual": 5,
+  "scaling": 5,
+  "components": {
+    "V": -2,
+    "S": -2,
+    "M": -3
+  },
+  "material_gp_tiers": [
+    {
+      "max_gp": 10,
+      "points": -8
+    },
+    {
+      "max_gp": 50,
+      "points": -12
+    },
+    {
+      "max_gp": 100,
+      "points": -18
+    },
+    {
+      "max_gp": 250,
+      "points": -22
+    },
+    {
+      "max_gp": 1000000000,
+      "points": -26
+    }
+  ],
+  "consumed_multiplier": 1.5,
+  "class_availability": [
+    {
+      "max_classes": 1,
+      "points": -4
+    },
+    {
+      "max_classes": 3,
+      "points": -2
+    },
+    {
+      "max_classes": 5,
+      "points": 0
+    },
+    {
+      "max_classes": 99,
+      "points": 3
+    }
+  ]
+}

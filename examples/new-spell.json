@@ -1,0 +1,14 @@
+{
+  "name": "Ember Lash",
+  "casting_time": "1 action",
+  "range": "60 feet",
+  "duration": "1 round",
+  "components": ["V", "S", "M"],
+  "material_gp": 0,
+  "consumed": false,
+  "concentration": false,
+  "ritual": false,
+  "scaling": true,
+  "class_count": 2,
+  "lines": [["dmg", 9], ["rel_attack"], ["advantage_next"]]
+}

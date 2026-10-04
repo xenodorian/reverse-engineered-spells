@@ -1,0 +1,50 @@
+spell,net_cost,points_left,concentration,components,classes
+Guiding Bolt,99,1,False,VS,1
+Bless,98,2,True,VSM,2
+Bane,97,3,True,VSM,2
+Hunter's Mark,95.0,5.0,True,V,1
+Sleep,90,10,False,VSM,3
+Shield,86,14,False,VS,2
+Magic Missile,81.5,18.5,False,VS,2
+Inflict Wounds,79.5,20.5,False,VS,1
+Burning Hands,77.5,22.5,False,VS,2
+Detect Magic,74,26,True,VS,7
+Fog Cloud,73,27,True,VS,4
+Thunderwave,72,28,False,VS,4
+Find Familiar,69,31,False,VSM,1
+Feather Fall,68,32,False,VM,3
+Hellish Rebuke,66,34,False,VS,1
+Faerie Fire,63,37,True,V,2
+Entangle,62,38,True,VS,1
+Mage Armor,61,39,False,VSM,2
+Alarm,58,42,False,VSM,2
+Detect Poison and Disease,58,42,True,VSM,4
+Silent Image,58,42,True,VSM,3
+Disguise Self,57,43,False,VS,3
+Unseen Servant,55,45,False,VSM,3
+Detect Evil and Good,54,46,True,VS,2
+Witch Bolt,54.0,46.0,True,VSM,3
+Color Spray,53,47,False,VSM,2
+Sanctuary,49,51,False,VSM,1
+Animal Friendship,48,52,False,VSM,3
+Goodberry,45,55,False,VSM,2
+Illusory Script,45,55,False,SM,3
+False Life,44.0,56.0,False,VSM,2
+Charm Person,43,57,False,VS,5
+Protection from Evil and Good,43,57,True,VSM,4
+Expeditious Retreat,42,58,True,VS,3
+Shield of Faith,42,58,True,VSM,2
+Comprehend Languages,40,60,False,VSM,4
+Divine Favor,40.0,60.0,True,VS,1
+Longstrider,40,60,False,VSM,4
+Healing Word,39.5,60.5,False,V,3
+Grease,37,63,False,VSM,1
+Cure Wounds,36.5,63.5,False,VS,5
+Hideous Laughter,34,66,True,VSM,2
+Command,32,68,False,V,2
+Heroism,30,70,True,VS,2
+Create or Destroy Water,29,71,False,VSM,2
+Speak with Animals,28,72,False,VS,3
+Identify,13,87,False,VSM,2
+Jump,11,89,False,VSM,4
+Purify Food and Drink,5,95,False,VS,3
