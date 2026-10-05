@@ -73,6 +73,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Repeat damage each turn | the die's price again + 20 |
 | Ritual | 10 |
 | +1 AC | 10 |
+| Base or minimum AC, per point above 10 | 10 |
 | Immunity to Magic Missile | 20 |
 
 ## Conditions and shared effects
@@ -200,6 +201,14 @@ Cantrips with a proposed effect price (not yet confirmed by the user):
 | Vicious Mockery | 30 | 65 | 95 |
 
 Cantrips are not given a separate budget. Cantrip-only discounts are not allowed.
+
+## Level 2 spells (priced from existing prices only, no level 2 budget set yet)
+| Spell | Build | Total |
+|---|---|---|
+| Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
+| Barkskin | 10 touch + 50 duration + 60 minimum AC 16 (+6) - 20 conc - 15 | 85 |
+
+Level 2 spells missing a single price: Shatter, Web, Moonbeam, Flame Blade, Spike Growth, Magic Weapon, Acid Arrow.
 
 ## Rules
 - No single effect may cost more than 90.
