@@ -91,7 +91,6 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Outline cancels invisibility (Faerie Fire) | 15 |
 | Bane effect | 50 |
 | Bless effect | 65 |
-| Base AC 13 (Mage Armor, +3 over 10) | 30 |
 
 No single effect may cost more than 90.
 
