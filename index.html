@@ -132,6 +132,7 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
         <div>
           <label class="check"><input type="checkbox" id="conc"> Concentration <small>refund 25, needs 1 minute or longer</small></label>
           <label class="check"><input type="checkbox" id="ritual"> Ritual <small>+10</small></label>
+          <label class="check"><input type="checkbox" id="endsOnUse"> Ends when used <small>priced as 1 round</small></label>
         </div>
       </div>
       <div class="grid" style="margin-top:6px">
@@ -155,7 +156,8 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
           <label class="check"><input type="checkbox" id="ignite"> Ignites flammable objects <small>free</small></label>
           <label for="push">Pushes targets</label><select id="push"></select>
           <label class="check"><input type="checkbox" id="advantage"> Grants advantage <small>+10</small></label>
-          <label class="check"><input type="checkbox" id="weapon"> Affects your weapon <small>+35</small></label>
+          <label class="check"><input type="checkbox" id="weapon"> Adds damage to your weapon <small>+35</small></label>
+          <label class="check"><input type="checkbox" id="weaponMagic"> Weapon becomes magical, uses your spellcasting ability <small>+5</small></label>
           <label class="check"><input type="checkbox" id="chosen"> Affects one chosen target <small>+15</small></label>
           <label class="check"><input type="checkbox" id="modifier"> Adds your spellcasting modifier <small>+50</small></label>
         </div>
@@ -231,7 +233,7 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
 var PRICES = {
   dice: { d4: 10, d6: 15, d8: 20, d10: 25, d12: 30 },
   flat: 5,
-  kinds: { damage: ['Damage', 1], heal: ['Healing (HP gain)', 2], pool: ['HP pool', 0.5] },
+  kinds: { damage: ['Damage', 1], heal: ['Healing (HP gain)', 2], pool: ['HP pool', 0.5], replace: ['Replaces your weapon die (no added damage)', 0] },
   repeatExtra: 20,
   casting: [['action', 'Action', 0], ['bonus', 'Bonus action', 20], ['reaction', 'Reaction', 30],
             ['1min', '1 minute', -10], ['10min', '10 minutes', -15], ['1hour', '1 hour', -20]],
@@ -240,7 +242,7 @@ var PRICES = {
   shapes: [['none', 'None', 0], ['cube', 'Cube', 2], ['square', 'Square', 2], ['cone', 'Cone', 2],
            ['radius', 'Radius', 2], ['line', 'Line', 1.5]],
   delivery: [['none', 'No attack or save', 0], ['attack', 'Attack roll', 15], ['savehalf', 'Save for half', 15],
-             ['saveneg', 'Save that negates', 15], ['auto', 'Automatic hit', 25]],
+             ['saveneg', 'Save that negates', 15], ['resist', 'Resist save for a minor side effect (free)', 0], ['auto', 'Automatic hit', 25]],
   split: 15,
   duration: [['instant', 'Instantaneous', 0], ['round', '1 round', 5], ['1min', '1 minute', 30], ['10min', '10 minutes', 40],
              ['1hour', '1 hour', 50], ['8hour', '8 hours', 60], ['24hour', '24 hours', 70], ['10day', '10 days', 80],
@@ -250,7 +252,7 @@ var PRICES = {
              ['250', '101 to 250 gp', 25], ['over', 'Over 250 gp', 30]],
   consumedExtra: 5,
   push: [['none', 'No push', 0], ['10', 'Push 10 ft', 10], ['15', 'Push 15 ft', 15]],
-  advantage: 10, weapon: 35, chosen: 15, modifier: 50,
+  advantage: 10, weapon: 35, weaponMagic: 5, chosen: 15, modifier: 50,
   conditions: { charmed: ['Charmed', 30], prone: ['Prone', 25], difficult: ['Difficult terrain', 10],
                 restrained: ['Restrained', 15], incapacitated: ['Incapacitated', 55] },
   acBonus: 10, baseAcFlat: 15, baseAcPer: 10, acArmor: 15, mmImmune: 20,
@@ -264,7 +266,7 @@ function defaultState() {
   return { name: '', level: '1', casting: 'action', range: 'self', shape: 'none', size: 15, damage: [], flat: 0,
     delivery: 'none', save: 'DEX', split: false, duration: 'instant', conc: false, ritual: false,
     v: true, s: true, m: false, matTier: 'none', consumed: false, matText: '',
-    ignite: false, push: 'none', advantage: false, weapon: false, chosen: false, modifier: false,
+    ignite: false, push: 'none', advantage: false, weapon: false, weaponMagic: false, endsOnUse: false, chosen: false, modifier: false,
     charmed: false, prone: false, difficult: false, restrained: false, incapacitated: false,
     acBonus: 0, baseAC: 0, acArmor: false, mmImmune: false,
     frightImm: false, tempHP: false, outline: false, bane: false, bless: false,
@@ -276,7 +278,7 @@ function lookup(table, id) {
   return table[0];
 }
 
-function concAllowed(st) { return st.duration !== 'instant' && st.duration !== 'round'; }
+function concAllowed(st) { return st.duration !== 'instant' && st.duration !== 'round' && !st.endsOnUse; }
 
 function priceSpell(st) {
   var lines = [];
@@ -302,12 +304,13 @@ function priceSpell(st) {
   var dl = lookup(PRICES.delivery, st.delivery);
   if (dl[2] !== 0) add('Delivery', dl[1], dl[2]);
   if (st.split) add('Delivery', 'Split among several targets', PRICES.split);
-  var du = lookup(PRICES.duration, st.duration);
-  if (du[2] !== 0) add('Duration', 'Duration: ' + du[1], du[2]);
+  var du = lookup(PRICES.duration, st.endsOnUse ? 'round' : st.duration);
+  if (du[2] !== 0) add('Duration', st.endsOnUse ? 'Ends when used (priced as 1 round)' : 'Duration: ' + du[1], du[2]);
   if (st.ritual) add('Duration', 'Ritual', PRICES.ritual);
   if (st.push !== 'none') { var p = lookup(PRICES.push, st.push); add('Effects', p[1], p[2]); }
   if (st.advantage) add('Effects', 'Grants advantage', PRICES.advantage);
   if (st.weapon) add('Effects', 'Affects your weapon', PRICES.weapon);
+  if (st.weaponMagic) add('Effects', 'Weapon becomes magical and uses your spellcasting ability', PRICES.weaponMagic);
   if (st.chosen) add('Effects', 'Affects one chosen target', PRICES.chosen);
   if (st.modifier) add('Effects', 'Adds your spellcasting modifier', PRICES.modifier);
   Object.keys(PRICES.conditions).forEach(function (k) {
@@ -378,7 +381,7 @@ var PRESETS = [
   preset('Fire Bolt (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
   preset('Eldritch Blast (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
   preset('Poison Spray (cantrip)', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
-  preset('Shillelagh (cantrip)', 'cantrip', 100, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8')], weapon: true, m: true })
+  preset('Shillelagh (cantrip)', 'cantrip', 50, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8', 'replace')], weaponMagic: true, m: true })
 ];
 /* PRICING_END */
 
@@ -442,7 +445,7 @@ function readState() {
   s.consumed = $('consumed').checked; s.matText = $('matText').value;
   s.ignite = $('ignite').checked; s.push = $('push').value; s.advantage = $('advantage').checked;
   s.weapon = $('weapon').checked; s.chosen = $('chosen').checked; s.modifier = $('modifier').checked;
-  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor']
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'weaponMagic', 'endsOnUse']
     .forEach(function (k) { s[k] = $(k).checked; });
   s.acBonus = Number($('acBonus').value) || 0; s.baseAC = Number($('baseAC').value) || 0; s.desc = $('desc').value;
   document.querySelectorAll('#damageRows .row').forEach(function (row, i) {
@@ -466,7 +469,7 @@ function writeState() {
   $('matTier').value = s.matTier; $('consumed').checked = s.consumed; $('matText').value = s.matText;
   $('ignite').checked = s.ignite; $('push').value = s.push; $('advantage').checked = s.advantage;
   $('weapon').checked = s.weapon; $('chosen').checked = s.chosen; $('modifier').checked = s.modifier;
-  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor']
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'weaponMagic', 'endsOnUse']
     .forEach(function (k) { $(k).checked = s[k]; });
   $('acBonus').value = s.acBonus; $('baseAC').value = String(s.baseAC); $('desc').value = s.desc;
   renderRows();
@@ -513,12 +516,12 @@ function cardData(s) {
   var comps = [];
   if (s.v) comps.push('V'); if (s.s) comps.push('S');
   if (s.m) comps.push('M' + (s.matText ? ' (' + s.matText + ')' : ''));
-  var dur = lookup(PRICES.duration, s.duration)[1];
+  var dur = s.endsOnUse ? 'Until used' : lookup(PRICES.duration, s.duration)[1];
   if (s.conc && concAllowed(s)) dur = 'Concentration, up to ' + dur.toLowerCase();
   var effects = [];
   s.damage.forEach(function (d) {
     var k = PRICES.kinds[d.kind];
-    var t = d.count + d.die + (d.type ? ' ' + d.type : '') + ' ' + (d.kind === 'heal' ? 'healing' : d.kind === 'pool' ? 'hit point pool' : 'damage');
+    var t = d.count + d.die + (d.type ? ' ' + d.type : '') + ' ' + (d.kind === 'heal' ? 'healing' : d.kind === 'pool' ? 'hit point pool' : d.kind === 'replace' ? 'weapon damage (replaces the weapon die)' : 'damage');
     effects.push(t + (d.repeat ? ', repeated each turn' : ''));
   });
   if (s.flat) effects.push('+' + s.flat + ' flat bonus total');
@@ -526,12 +529,14 @@ function cardData(s) {
   if (s.delivery === 'attack') effects.push('Spell attack roll');
   if (s.delivery === 'savehalf') effects.push(s.save + ' save for half damage');
   if (s.delivery === 'saveneg') effects.push(s.save + ' save negates');
+  if (s.delivery === 'resist') effects.push(s.save + ' save lets a creature resist a minor effect');
   if (s.delivery === 'auto') effects.push('Hits automatically');
   if (s.split) effects.push('Split among several targets');
   if (s.ignite) effects.push('Ignites flammable objects');
   if (s.push !== 'none') effects.push('Pushes targets ' + s.push + ' feet');
   if (s.advantage) effects.push('Grants advantage');
-  if (s.weapon) effects.push('Affects your weapon');
+  if (s.weapon) effects.push('Adds damage to your weapon');
+  if (s.weaponMagic) effects.push('Weapon becomes magical and uses your spellcasting ability');
   if (s.chosen) effects.push('Affects one chosen target');
   if (s.modifier) effects.push('Adds your spellcasting modifier');
   Object.keys(PRICES.conditions).forEach(function (k) { if (s[k]) effects.push(PRICES.conditions[k][0]); });
@@ -547,13 +552,13 @@ function cardData(s) {
 function render() {
   var s = state;
   var concOk = concAllowed(s);
-  $('conc').disabled = !concOk; if (!concOk) { s.conc = false; $('conc').checked = false; }
+  $('duration').disabled = s.endsOnUse; $('conc').disabled = !concOk; if (!concOk) { s.conc = false; $('conc').checked = false; }
   $('matBox').style.opacity = s.m ? 1 : .45;
   ['matTier', 'consumed', 'matText'].forEach(function (id) { $(id).disabled = !s.m; });
   if (s.matTier === 'none') { $('consumed').disabled = true; }
   $('baseAC').disabled = false; $('acArmor').disabled = !(s.baseAC > 10);
   $('size').disabled = s.shape === 'none';
-  var disSave = !(s.delivery === 'savehalf' || s.delivery === 'saveneg'); $('save').disabled = disSave;
+  var disSave = !(s.delivery === 'savehalf' || s.delivery === 'saveneg' || s.delivery === 'resist'); $('save').disabled = disSave;
   var rate = lookup(PRICES.shapes, s.shape)[2];
   $('areaHint').textContent = s.shape === 'none' ? 'Pick a shape to add an area. Cube, square, cone and radius cost 2 per foot. A line costs 1.5 per foot of length.'
     : sizeText(s) + ': ' + s.size + ' x ' + rate + ' = ' + fmt(s.size * rate) + ' points.';
