@@ -56,11 +56,11 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Instantaneous | 0 |
 | 1 round | 5 |
 | 1 minute | 30 |
-| 10 minutes | 35 |
-| 1 hour | 40 |
-| 8 hours | 45 |
-| 24 hours | 50 |
-| 10 days | 55 |
+| 10 minutes | 40 |
+| 1 hour | 50 |
+| 8 hours | 60 |
+| 24 hours | 70 |
+| 10 days | 80 |
 
 ## Extras
 | Extra | Points |
@@ -69,7 +69,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Pushes 10 ft | 10 |
 | Advantage | 10 |
 | Affects your weapon | 65 |
-| Affects one chosen target | 25 |
+| Affects one chosen target | 15 |
 | Repeat damage each turn | the die's price again + 20 |
 | Ritual | 10 |
 | +1 AC | 10 |
@@ -78,7 +78,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 ## Conditions and shared effects
 | Effect | Points |
 |---|---|
-| Charmed | 40 |
+| Charmed | 30 |
 | Prone | 25 |
 | Difficult terrain | 10 |
 | Restrained | 15 |
@@ -108,7 +108,7 @@ No single effect may cost more than 90.
 | Consumed material | extra -5 |
 
 ## Other unique effects (priced to fill the room left)
-Alarm 20, Animal Friendship (charmed) 40, Bane 50, Bless 65, Charm Person (charmed) 40, Command 70, Comprehend Languages 60, Create or Destroy Water 45, Cure Wounds 50, Detect Evil and Good 30, Detect Magic 20, Detect Poison and Disease 25, Disguise Self 65, Entangle 25, Expeditious Retreat 70, Faerie Fire 15, False Life 30, Feather Fall 35, Fog Cloud 25, Grease 35, Healing Word 50, Heroism 85, Hideous Laughter 80, Illusory Script 45, Jump 70, Longstrider 60, Protection from Evil and Good 85, Purify Food and Drink 80, Sanctuary 40, Silent Image 55, Speak with Animals 60, Unseen Servant 50.
+Alarm 5, Animal Friendship (charmed 30, less 5) 25, Bane 50, Bless 65, Charm Person (charmed) 30, Command 70, Comprehend Languages 50, Create or Destroy Water 45, Cure Wounds 50, Detect Evil and Good 25, Detect Magic 15, Detect Poison and Disease 20, Disguise Self 55, Entangle 25, Expeditious Retreat 65, Faerie Fire 15, False Life 20, Feather Fall 35, Fog Cloud 15, Grease 35, Healing Word 50, Heroism 85, Hideous Laughter 80, Illusory Script 20, Jump 70, Longstrider 50, Protection from Evil and Good 80, Purify Food and Drink 80, Sanctuary 40, Silent Image 50, Speak with Animals 55, Unseen Servant 40.
 
 Capped at 90 (totals fall below the window): Find Familiar 90, Identify 90, Goodberry 90.
 
@@ -118,5 +118,7 @@ Capped at 90 (totals fall below the window): Find Familiar 90, Identify 90, Good
 
 ## Still open
 - Thunderwave totals 85 (push at 20 would give 95).
-- Find Familiar (60), Identify (70), Goodberry (85), Shield of Faith (50) and Mage Armor (70) are below 90.
+- Find Familiar (60), Identify (70), Goodberry (85), Mage Armor (85) and Shield of Faith (55) are below 90.
+- Hunter's Mark totals 100 after the duration and target changes.
+- Charm Person totals 90 and Animal Friendship 100.
 - Cantrips are not yet in the system.
