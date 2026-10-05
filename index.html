@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spell Point-Buy Builder</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #f6f4ef; --card: #ffffff; --ink: #1f2430; --muted: #5d6475; --line: #dcd8cd;
+  --accent: #5b3fd1; --accent-ink: #ffffff; --good: #1d7a45; --warn: #a15c00; --bad: #b3261e;
+  --refund: #1d7a45; --chip: #ece8f8;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14161d; --card: #1d2029; --ink: #eceef5; --muted: #a2a8bb; --line: #333847;
+    --accent: #9b86ff; --accent-ink: #14161d; --good: #54c987; --warn: #f0b04d; --bad: #ff7b72;
+    --refund: #54c987; --chip: #2a2744;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14161d; --card: #1d2029; --ink: #eceef5; --muted: #a2a8bb; --line: #333847;
+  --accent: #9b86ff; --accent-ink: #14161d; --good: #54c987; --warn: #f0b04d; --bad: #ff7b72;
+  --refund: #54c987; --chip: #2a2744;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { padding: 20px 16px 8px; max-width: 1180px; margin: 0 auto; }
+h1 { font-size: 1.5rem; margin: 0 0 4px; }
+header p { margin: 0; color: var(--muted); }
+main { max-width: 1180px; margin: 0 auto; padding: 8px 16px 48px; display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); align-items: start; }
+@media (max-width: 860px) { main { grid-template-columns: minmax(0, 1fr); } }
+section.card, aside .card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+h2 { font-size: 1rem; margin: 0 0 10px; letter-spacing: .02em; }
+.grid { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+label { display: block; font-size: .85rem; color: var(--muted); margin-bottom: 3px; }
+.check { display: flex; gap: 8px; align-items: center; color: var(--ink); font-size: .95rem; margin: 4px 0; }
+.check input { width: 18px; height: 18px; }
+.check small, .hint { color: var(--muted); font-size: .8rem; }
+input[type=text], input[type=number], select, textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--ink); font: inherit; }
+textarea { min-height: 70px; resize: vertical; }
+button { font: inherit; border: 1px solid var(--line); background: var(--card); color: var(--ink); padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.row { display: grid; grid-template-columns: 70px 90px 1fr 1fr auto; gap: 8px; align-items: end; margin-bottom: 8px; }
+.row.custom { grid-template-columns: 1fr 100px auto; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr 1fr; } .row.custom { grid-template-columns: 1fr 90px auto; } }
+aside { position: sticky; top: 12px; }
+@media (max-width: 860px) { aside { position: static; } }
+.meter { height: 14px; background: var(--chip); border-radius: 8px; position: relative; overflow: hidden; margin: 8px 0 4px; }
+.meter .fill { height: 100%; background: var(--accent); width: 0; transition: width .15s; }
+.meter .zone { position: absolute; top: 0; bottom: 0; background: color-mix(in srgb, var(--good) 28%, transparent); }
+.total { font-size: 2rem; font-weight: 700; line-height: 1; }
+.status { font-weight: 600; margin-top: 4px; }
+.status.good { color: var(--good); } .status.warn { color: var(--warn); } .status.bad { color: var(--bad); }
+table.break { width: 100%; border-collapse: collapse; font-size: .9rem; }
+table.break td { padding: 3px 0; border-bottom: 1px dashed var(--line); }
+table.break td:last-child { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; padding-left: 10px; }
+.refund { color: var(--refund); }
+.groupname { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; padding-top: 8px; }
+.spellcard { border: 2px solid var(--accent); border-radius: 10px; padding: 12px 14px; }
+.spellcard h3 { margin: 0; font-size: 1.2rem; }
+.spellcard .sub { color: var(--muted); font-style: italic; margin-bottom: 6px; }
+.spellcard dl { margin: 6px 0; display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: .92rem; }
+.spellcard dt { font-weight: 700; } .spellcard dd { margin: 0; }
+.spellcard ul { margin: 6px 0 0; padding-left: 18px; font-size: .92rem; }
+.spellcard p { margin: 8px 0 0; white-space: pre-wrap; }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+details summary { cursor: pointer; font-weight: 600; }
+table.prices { border-collapse: collapse; font-size: .85rem; margin: 6px 0 12px; }
+table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8px; text-align: left; }
+.toast { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 8px 14px; border-radius: 8px; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.toast.show { opacity: 1; }
+@media print {
+  body { background: #fff; color: #000; }
+  header, section.card, .meter, .actions, #breakdownCard, #budgetCard, #priceRef { display: none !important; }
+  main { display: block; padding: 0; } aside { position: static; }
+  aside .card { border: 0; padding: 0; } .spellcard { border-color: #000; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>Spell Point-Buy Builder</h1>
+  <p>Build a spell from priced parts. Stay inside your level's point window to make a spell as strong as a canon spell of that level.</p>
+</header>
+<main>
+  <div>
+    <section class="card">
+      <h2>Basics</h2>
+      <div class="grid">
+        <div><label for="name">Spell name</label><input type="text" id="name" placeholder="My spell" maxlength="60"></div>
+        <div><label for="level">Spell level (sets the point window)</label><select id="level"></select></div>
+        <div><label for="preset">Load a canon build</label><select id="preset"></select></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Casting</h2>
+      <div class="grid">
+        <div><label for="casting">Casting time</label><select id="casting"></select></div>
+        <div><label for="range">Range</label><select id="range"></select></div>
+        <div><label for="shape">Area</label><select id="shape"></select></div>
+        <div><label for="size">Area size (feet, side, length or radius)</label><input type="number" id="size" min="5" max="300" step="5" value="15"></div>
+      </div>
+      <p class="hint" id="areaHint"></p>
+    </section>
+
+    <section class="card">
+      <h2>Dice</h2>
+      <div id="damageRows"></div>
+      <div class="grid" style="margin-top:6px">
+        <div><label for="flat">Flat +1 bonuses (5 each, total across the spell)</label><input type="number" id="flat" min="0" max="20" step="1" value="0"></div>
+        <div><button type="button" id="addDamage">Add dice</button></div>
+      </div>
+      <p class="hint">Price is per die size and die count. Healing dice (HP gain) cost 2x. HP pool dice cost half. Repeating each turn costs the dice again plus 20.</p>
+    </section>
+
+    <section class="card">
+      <h2>Delivery</h2>
+      <div class="grid">
+        <div><label for="delivery">How it reaches targets</label><select id="delivery"></select></div>
+        <div><label for="save">Save ability</label><select id="save"></select></div>
+      </div>
+      <label class="check"><input type="checkbox" id="split"> Split among several targets <small>+15</small></label>
+    </section>
+
+    <section class="card">
+      <h2>Duration, components</h2>
+      <div class="grid">
+        <div><label for="duration">Duration</label><select id="duration"></select></div>
+        <div>
+          <label class="check"><input type="checkbox" id="conc"> Concentration <small>refund 25, needs 1 minute or longer</small></label>
+          <label class="check"><input type="checkbox" id="ritual"> Ritual <small>+10</small></label>
+        </div>
+      </div>
+      <div class="grid" style="margin-top:6px">
+        <div>
+          <label class="check"><input type="checkbox" id="v"> Verbal <small>refund 5</small></label>
+          <label class="check"><input type="checkbox" id="s"> Somatic <small>refund 5</small></label>
+          <label class="check"><input type="checkbox" id="m"> Material</label>
+        </div>
+        <div id="matBox">
+          <label for="matTier">Material value</label><select id="matTier"></select>
+          <label class="check"><input type="checkbox" id="consumed"> Consumed <small>extra refund 5</small></label>
+          <label for="matText" style="margin-top:6px">Material description</label><input type="text" id="matText" maxlength="100">
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Effects</h2>
+      <div class="grid">
+        <div>
+          <label class="check"><input type="checkbox" id="ignite"> Ignites flammable objects <small>free</small></label>
+          <label for="push">Pushes targets</label><select id="push"></select>
+          <label class="check"><input type="checkbox" id="advantage"> Grants advantage <small>+10</small></label>
+          <label class="check"><input type="checkbox" id="weapon"> Affects your weapon <small>+35</small></label>
+          <label class="check"><input type="checkbox" id="chosen"> Affects one chosen target <small>+15</small></label>
+          <label class="check"><input type="checkbox" id="modifier"> Adds your spellcasting modifier <small>+50</small></label>
+        </div>
+        <div>
+          <div class="groupname" style="padding-top:0">Conditions</div>
+          <label class="check"><input type="checkbox" id="charmed"> Charmed <small>+30</small></label>
+          <label class="check"><input type="checkbox" id="prone"> Prone <small>+25</small></label>
+          <label class="check"><input type="checkbox" id="difficult"> Difficult terrain <small>+10</small></label>
+          <label class="check"><input type="checkbox" id="restrained"> Restrained <small>+15</small></label>
+          <label class="check"><input type="checkbox" id="incapacitated"> Incapacitated <small>+55</small></label>
+        </div>
+        <div>
+          <div class="groupname" style="padding-top:0">Armor class</div>
+          <label for="acBonus">+1 AC bonuses (10 each)</label><input type="number" id="acBonus" min="0" max="10" step="1" value="0">
+          <label for="baseAC" style="margin-top:6px">Base or minimum AC (15 + 10 per point above 10)</label><select id="baseAC"></select>
+          <label class="check"><input type="checkbox" id="acArmor"> Works while wearing armor <small>+15</small></label>
+          <label class="check"><input type="checkbox" id="mmImmune"> Immune to Magic Missile <small>+20</small></label>
+        </div>
+        <div>
+          <div class="groupname" style="padding-top:0">Effects from canon spells</div>
+          <label class="check"><input type="checkbox" id="frightImm"> Immune to frightened <small>+35</small></label>
+          <label class="check"><input type="checkbox" id="tempHP"> Temp HP each turn <small>+50</small></label>
+          <label class="check"><input type="checkbox" id="outline"> Outline cancels invisibility <small>+15</small></label>
+          <label class="check"><input type="checkbox" id="bane"> Bane style penalty <small>+50</small></label>
+          <label class="check"><input type="checkbox" id="bless"> Bless style bonus <small>+65</small></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Custom effects</h2>
+      <p class="hint">For anything the list does not cover. Agree the price with your group. No single effect may cost more than 90.</p>
+      <div id="customRows"></div>
+      <button type="button" id="addCustom">Add custom effect</button>
+    </section>
+
+    <section class="card">
+      <h2>Description</h2>
+      <label for="desc">Rules text for the spell card</label>
+      <textarea id="desc" maxlength="1500"></textarea>
+    </section>
+  </div>
+
+  <aside>
+    <div class="card" id="budgetCard">
+      <div class="total" id="total">0</div>
+      <div class="meter" aria-hidden="true"><div class="zone" id="zone"></div><div class="fill" id="fill"></div></div>
+      <div class="hint" id="windowText"></div>
+      <div class="status" id="status"></div>
+    </div>
+    <div class="card" id="breakdownCard">
+      <h2>Cost breakdown</h2>
+      <table class="break" id="breakdown"></table>
+    </div>
+    <div class="card">
+      <div class="spellcard" id="card"></div>
+      <div class="actions">
+        <button type="button" class="primary" id="share">Copy share link</button>
+        <button type="button" id="copyText">Copy as text</button>
+        <button type="button" id="print">Print card</button>
+        <button type="button" id="reset">Reset</button>
+      </div>
+    </div>
+  </aside>
+</main>
+<section class="card" style="max-width:1148px;margin:0 16px 40px;" id="priceRef">
+  <details><summary>Full price list</summary><div id="priceTables"></div></details>
+</section>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* PRICING_START */
+var PRICES = {
+  dice: { d4: 10, d6: 15, d8: 20, d10: 25, d12: 30 },
+  flat: 5,
+  kinds: { damage: ['Damage', 1], heal: ['Healing (HP gain)', 2], pool: ['HP pool', 0.5] },
+  repeatExtra: 20,
+  casting: [['action', 'Action', 0], ['bonus', 'Bonus action', 20], ['reaction', 'Reaction', 30],
+            ['1min', '1 minute', -10], ['10min', '10 minutes', -15], ['1hour', '1 hour', -20]],
+  range: [['self', 'Self', 0], ['touch', 'Touch', 10], ['5', '5 ft', 5], ['10', '10 ft', 5], ['30', '30 ft', 5],
+          ['60', '60 ft', 10], ['90', '90 ft', 15], ['120', '120 ft', 20], ['150', '150 ft', 25]],
+  shapes: [['none', 'None', 0], ['cube', 'Cube', 2], ['square', 'Square', 2], ['cone', 'Cone', 2],
+           ['radius', 'Radius', 2], ['line', 'Line', 1.5]],
+  delivery: [['none', 'No attack or save', 0], ['attack', 'Attack roll', 15], ['savehalf', 'Save for half', 15],
+             ['saveneg', 'Save that negates', 15], ['auto', 'Automatic hit', 25]],
+  split: 15,
+  duration: [['instant', 'Instantaneous', 0], ['round', '1 round', 5], ['1min', '1 minute', 30], ['10min', '10 minutes', 40],
+             ['1hour', '1 hour', 50], ['8hour', '8 hours', 60], ['24hour', '24 hours', 70], ['10day', '10 days', 80],
+             ['dispelled', 'Until dispelled', 0]],
+  concRefund: 25, ritual: 10, verbal: 5, somatic: 5,
+  material: [['none', 'No gold cost', 5], ['10', 'Up to 10 gp', 10], ['50', '11 to 50 gp', 15], ['100', '51 to 100 gp', 20],
+             ['250', '101 to 250 gp', 25], ['over', 'Over 250 gp', 30]],
+  consumedExtra: 5,
+  push: [['none', 'No push', 0], ['10', 'Push 10 ft', 10], ['15', 'Push 15 ft', 15]],
+  advantage: 10, weapon: 35, chosen: 15, modifier: 50,
+  conditions: { charmed: ['Charmed', 30], prone: ['Prone', 25], difficult: ['Difficult terrain', 10],
+                restrained: ['Restrained', 15], incapacitated: ['Incapacitated', 55] },
+  acBonus: 10, baseAcFlat: 15, baseAcPer: 10, acArmor: 15, mmImmune: 20,
+  canon: { frightImm: ['Immune to frightened', 35], tempHP: ['Temp HP each turn', 50],
+           outline: ['Outline cancels invisibility', 15], bane: ['Bane style penalty', 50], bless: ['Bless style bonus', 65] },
+  effectMax: 90,
+  windows: { '1': [90, 100], '2': [105, 150], '3': [155, 275] }
+};
+
+function defaultState() {
+  return { name: '', level: '1', casting: 'action', range: 'self', shape: 'none', size: 15, damage: [], flat: 0,
+    delivery: 'none', save: 'DEX', split: false, duration: 'instant', conc: false, ritual: false,
+    v: true, s: true, m: false, matTier: 'none', consumed: false, matText: '',
+    ignite: false, push: 'none', advantage: false, weapon: false, chosen: false, modifier: false,
+    charmed: false, prone: false, difficult: false, restrained: false, incapacitated: false,
+    acBonus: 0, baseAC: 0, acArmor: false, mmImmune: false,
+    frightImm: false, tempHP: false, outline: false, bane: false, bless: false,
+    custom: [], desc: '' };
+}
+
+function lookup(table, id) {
+  for (var i = 0; i < table.length; i++) if (table[i][0] === id) return table[i];
+  return table[0];
+}
+
+function concAllowed(st) { return st.duration !== 'instant' && st.duration !== 'round'; }
+
+function priceSpell(st) {
+  var lines = [];
+  function add(group, label, pts) { lines.push({ group: group, label: label, pts: pts }); }
+  var c = lookup(PRICES.casting, st.casting);
+  if (c[2] !== 0) add('Casting', 'Casting time: ' + c[1], c[2]);
+  var r = lookup(PRICES.range, st.range);
+  if (r[2] !== 0) add('Casting', 'Range: ' + r[1], r[2]);
+  if (st.shape !== 'none') {
+    var sh = lookup(PRICES.shapes, st.shape);
+    var size = Math.max(0, Number(st.size) || 0);
+    add('Casting', sh[1] + ' ' + size + ' ft', sh[2] * size);
+  }
+  st.damage.forEach(function (d) {
+    var count = Math.max(0, Number(d.count) || 0);
+    var k = PRICES.kinds[d.kind] || PRICES.kinds.damage;
+    var base = PRICES.dice[d.die] * count * k[1];
+    add('Dice', count + d.die + ' ' + k[0].toLowerCase() + (k[1] !== 1 ? ' (x' + k[1] + ')' : ''), base);
+    if (d.repeat) add('Dice', 'Repeats each turn (dice again + 20)', base + PRICES.repeatExtra);
+  });
+  var flat = Math.max(0, Number(st.flat) || 0);
+  if (flat) add('Dice', flat + ' flat +1 bonus' + (flat > 1 ? 'es' : ''), flat * PRICES.flat);
+  var dl = lookup(PRICES.delivery, st.delivery);
+  if (dl[2] !== 0) add('Delivery', dl[1], dl[2]);
+  if (st.split) add('Delivery', 'Split among several targets', PRICES.split);
+  var du = lookup(PRICES.duration, st.duration);
+  if (du[2] !== 0) add('Duration', 'Duration: ' + du[1], du[2]);
+  if (st.ritual) add('Duration', 'Ritual', PRICES.ritual);
+  if (st.push !== 'none') { var p = lookup(PRICES.push, st.push); add('Effects', p[1], p[2]); }
+  if (st.advantage) add('Effects', 'Grants advantage', PRICES.advantage);
+  if (st.weapon) add('Effects', 'Affects your weapon', PRICES.weapon);
+  if (st.chosen) add('Effects', 'Affects one chosen target', PRICES.chosen);
+  if (st.modifier) add('Effects', 'Adds your spellcasting modifier', PRICES.modifier);
+  Object.keys(PRICES.conditions).forEach(function (k) {
+    if (st[k]) add('Effects', PRICES.conditions[k][0], PRICES.conditions[k][1]);
+  });
+  var ac = Math.max(0, Number(st.acBonus) || 0);
+  if (ac) add('Armor class', '+' + ac + ' AC', ac * PRICES.acBonus);
+  var base = Number(st.baseAC) || 0;
+  if (base > 10) {
+    add('Armor class', 'Base or minimum AC ' + base, PRICES.baseAcFlat + (base - 10) * PRICES.baseAcPer);
+    if (st.acArmor) add('Armor class', 'Works while wearing armor', PRICES.acArmor);
+  }
+  if (st.mmImmune) add('Armor class', 'Immune to Magic Missile', PRICES.mmImmune);
+  Object.keys(PRICES.canon).forEach(function (k) {
+    if (st[k]) add('Effects', PRICES.canon[k][0], PRICES.canon[k][1]);
+  });
+  st.custom.forEach(function (e) {
+    var pts = Math.min(PRICES.effectMax, Math.max(0, Number(e.points) || 0));
+    add('Effects', 'Custom: ' + (e.name || 'unnamed effect'), pts);
+  });
+  if (st.conc && concAllowed(st)) add('Refunds', 'Concentration', -PRICES.concRefund);
+  if (st.v) add('Refunds', 'Verbal component', -PRICES.verbal);
+  if (st.s) add('Refunds', 'Somatic component', -PRICES.somatic);
+  if (st.m) {
+    var mt = lookup(PRICES.material, st.matTier);
+    add('Refunds', 'Material: ' + mt[1].toLowerCase(), -mt[2]);
+    if (st.consumed && st.matTier !== 'none') add('Refunds', 'Material is consumed', -PRICES.consumedExtra);
+  }
+  var total = 0;
+  lines.forEach(function (l) { total += l.pts; });
+  return { lines: lines, total: total };
+}
+
+function budgetStatus(level, total) {
+  var w = PRICES.windows[level];
+  if (!w) return { kind: 'free', text: 'Free build: no point window.' };
+  if (total > w[1]) return { kind: 'bad', text: 'Over the cap by ' + fmt(total - w[1]) + '.' };
+  if (total < w[0]) return { kind: 'warn', text: 'Below the minimum by ' + fmt(w[0] - total) + '. You can spend more.' };
+  return { kind: 'good', text: 'In range. ' + fmt(w[1] - total) + ' points left before the cap.' };
+}
+
+function fmt(n) { return (Math.round(n * 10) / 10).toString(); }
+
+function preset(name, level, expected, over) {
+  var st = defaultState(); for (var k in over) st[k] = over[k];
+  st.name = name; st.level = level;
+  return { name: name, level: level, expected: expected, state: st };
+}
+function dmg(count, die, kind, repeat) { return { count: count, die: die, kind: kind || 'damage', repeat: !!repeat, type: '' }; }
+
+var PRESETS = [
+  preset('Magic Missile', '1', 95, { range: '120', damage: [dmg(3, 'd4')], flat: 3, delivery: 'auto', split: true }),
+  preset('Burning Hands', '1', 80, { shape: 'cone', size: 15, damage: [dmg(3, 'd6')], delivery: 'savehalf', ignite: true }),
+  preset('Thunderwave', '1', 85, { shape: 'cube', size: 15, damage: [dmg(2, 'd8')], delivery: 'savehalf', push: '10' }),
+  preset('Hellish Rebuke', '1', 95, { casting: 'reaction', range: '60', damage: [dmg(2, 'd10')], delivery: 'savehalf' }),
+  preset('Guiding Bolt', '1', 100, { range: '120', damage: [dmg(4, 'd6')], delivery: 'attack', advantage: true, duration: 'round' }),
+  preset('Inflict Wounds', '1', 90, { range: 'touch', damage: [dmg(3, 'd10')], delivery: 'attack' }),
+  preset('Witch Bolt', '1', 90, { range: '30', damage: [dmg(1, 'd12', 'damage', true)], delivery: 'attack', duration: '1min', conc: true, m: true }),
+  preset('Divine Favor', '1', 60, { casting: 'bonus', damage: [dmg(1, 'd4')], weapon: true, duration: '1min', conc: true }),
+  preset("Hunter's Mark", '1', 95, { casting: 'bonus', range: '90', damage: [dmg(1, 'd6')], chosen: true, advantage: true, duration: '1hour', conc: true, s: false }),
+  preset('Shield', '1', 95, { casting: 'reaction', duration: 'round', acBonus: 5, mmImmune: true }),
+  preset('Shield of Faith', '1', 50, { casting: 'bonus', range: '60', duration: '10min', conc: true, acBonus: 2, m: true }),
+  preset('Mage Armor', '1', 100, { range: 'touch', duration: '8hour', baseAC: 13, m: true }),
+  preset('Scorching Ray', '2', 130, { range: '120', damage: [dmg(6, 'd6')], delivery: 'attack', split: true }),
+  preset('Barkskin', '2', 110, { range: 'touch', duration: '1hour', conc: true, baseAC: 16, acArmor: true, m: true }),
+  preset('Fireball', '3', 185, { range: '150', shape: 'radius', size: 20, damage: [dmg(8, 'd6')], delivery: 'savehalf', ignite: true, m: true }),
+  preset('Lightning Bolt', '3', 270, { shape: 'line', size: 100, damage: [dmg(8, 'd6')], delivery: 'savehalf', m: true }),
+  preset('Fire Bolt (cantrip)', 'free', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
+  preset('Eldritch Blast (cantrip)', 'free', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
+  preset('Poison Spray (cantrip)', 'free', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
+  preset('Shillelagh (cantrip)', 'free', 100, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8')], weapon: true, m: true })
+];
+/* PRICING_END */
+
+var $ = function (id) { return document.getElementById(id); };
+var state = defaultState();
+var saveTimer = null;
+
+function fillSelect(id, rows, withPoints) {
+  var el = $(id); el.innerHTML = '';
+  rows.forEach(function (r) {
+    var o = document.createElement('option'); o.value = r[0];
+    o.textContent = r[1] + (withPoints && r[2] !== undefined ? '  (' + (r[2] > 0 ? '+' : '') + r[2] + ')' : '');
+    el.appendChild(o);
+  });
+}
+
+function setup() {
+  fillSelect('level', [['1', 'Level 1 (90 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)'], ['free', 'Cantrip or free build (no window)']]);
+  var pr = $('preset'); pr.innerHTML = '<option value="">Start from scratch</option>';
+  PRESETS.forEach(function (p, i) { var o = document.createElement('option'); o.value = i; o.textContent = p.name + ' (' + p.expected + ')'; pr.appendChild(o); });
+  fillSelect('casting', PRICES.casting, true);
+  fillSelect('range', PRICES.range, true);
+  fillSelect('shape', PRICES.shapes.map(function (s) { return [s[0], s[1], undefined]; }));
+  fillSelect('delivery', PRICES.delivery, true);
+  fillSelect('save', [['STR', 'Strength'], ['DEX', 'Dexterity'], ['CON', 'Constitution'], ['INT', 'Intelligence'], ['WIS', 'Wisdom'], ['CHA', 'Charisma']]);
+  fillSelect('duration', PRICES.duration, true);
+  fillSelect('matTier', PRICES.material.map(function (m) { return [m[0], m[1] + '  (refund ' + m[2] + ')']; }));
+  fillSelect('push', PRICES.push, true);
+  var ac = [['0', 'None']]; for (var i = 11; i <= 22; i++) ac.push([String(i), 'AC ' + i + '  (+' + (PRICES.baseAcFlat + (i - 10) * PRICES.baseAcPer) + ')']);
+  fillSelect('baseAC', ac);
+  buildPriceTables();
+  document.querySelectorAll('main input, main select, main textarea').forEach(function (el) {
+    if (el.id === 'preset') return;
+    el.addEventListener('input', onInput); el.addEventListener('change', onInput);
+  });
+  $('preset').addEventListener('change', function () {
+    var v = $('preset').value; if (v === '') return;
+    var p = PRESETS[Number(v)];
+    state = JSON.parse(JSON.stringify(p.state)); writeState(); render(); $('preset').value = '';
+  });
+  $('addDamage').addEventListener('click', function () { state.damage.push(dmg(1, 'd6')); renderRows(); render(); });
+  $('addCustom').addEventListener('click', function () { state.custom.push({ name: '', points: 10 }); renderRows(); render(); });
+  $('share').addEventListener('click', function () { copy(shareUrl(), 'Link copied'); });
+  $('copyText').addEventListener('click', function () { copy(cardText(), 'Copied'); });
+  $('print').addEventListener('click', function () { window.print(); });
+  $('reset').addEventListener('click', function () { state = defaultState(); writeState(); render(); });
+  var fromUrl = readHash();
+  if (fromUrl) state = fromUrl; else { var saved = readSaved(); if (saved) state = saved; }
+  writeState(); render();
+}
+
+function onInput() { readState(); render(); }
+
+function readState() {
+  var s = state;
+  s.name = $('name').value; s.level = $('level').value; s.casting = $('casting').value; s.range = $('range').value;
+  s.shape = $('shape').value; s.size = Number($('size').value) || 0; s.flat = Number($('flat').value) || 0;
+  s.delivery = $('delivery').value; s.save = $('save').value; s.split = $('split').checked;
+  s.duration = $('duration').value; s.conc = $('conc').checked; s.ritual = $('ritual').checked;
+  s.v = $('v').checked; s.s = $('s').checked; s.m = $('m').checked; s.matTier = $('matTier').value;
+  s.consumed = $('consumed').checked; s.matText = $('matText').value;
+  s.ignite = $('ignite').checked; s.push = $('push').value; s.advantage = $('advantage').checked;
+  s.weapon = $('weapon').checked; s.chosen = $('chosen').checked; s.modifier = $('modifier').checked;
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor']
+    .forEach(function (k) { s[k] = $(k).checked; });
+  s.acBonus = Number($('acBonus').value) || 0; s.baseAC = Number($('baseAC').value) || 0; s.desc = $('desc').value;
+  document.querySelectorAll('#damageRows .row').forEach(function (row, i) {
+    var d = s.damage[i]; if (!d) return;
+    d.count = Number(row.querySelector('.dcount').value) || 0; d.die = row.querySelector('.ddie').value;
+    d.kind = row.querySelector('.dkind').value; d.type = row.querySelector('.dtype').value;
+    d.repeat = row.querySelector('.drepeat').checked;
+  });
+  document.querySelectorAll('#customRows .row').forEach(function (row, i) {
+    var e = s.custom[i]; if (!e) return;
+    e.name = row.querySelector('.cname').value; e.points = Number(row.querySelector('.cpts').value) || 0;
+  });
+}
+
+function writeState() {
+  var s = state;
+  $('name').value = s.name; $('level').value = s.level; $('casting').value = s.casting; $('range').value = s.range;
+  $('shape').value = s.shape; $('size').value = s.size; $('flat').value = s.flat; $('delivery').value = s.delivery;
+  $('save').value = s.save; $('split').checked = s.split; $('duration').value = s.duration; $('conc').checked = s.conc;
+  $('ritual').checked = s.ritual; $('v').checked = s.v; $('s').checked = s.s; $('m').checked = s.m;
+  $('matTier').value = s.matTier; $('consumed').checked = s.consumed; $('matText').value = s.matText;
+  $('ignite').checked = s.ignite; $('push').value = s.push; $('advantage').checked = s.advantage;
+  $('weapon').checked = s.weapon; $('chosen').checked = s.chosen; $('modifier').checked = s.modifier;
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor']
+    .forEach(function (k) { $(k).checked = s[k]; });
+  $('acBonus').value = s.acBonus; $('baseAC').value = String(s.baseAC); $('desc').value = s.desc;
+  renderRows();
+}
+
+function renderRows() {
+  var dr = $('damageRows'); dr.innerHTML = '';
+  state.damage.forEach(function (d, i) {
+    var row = document.createElement('div'); row.className = 'row';
+    row.innerHTML = '<div><label>Count</label><input type="number" class="dcount" min="1" max="30" value="' + d.count + '"></div>' +
+      '<div><label>Die</label><select class="ddie">' + Object.keys(PRICES.dice).map(function (k) { return '<option' + (k === d.die ? ' selected' : '') + '>' + k + '</option>'; }).join('') + '</select></div>' +
+      '<div><label>Kind</label><select class="dkind">' + Object.keys(PRICES.kinds).map(function (k) { return '<option value="' + k + '"' + (k === d.kind ? ' selected' : '') + '>' + PRICES.kinds[k][0] + '</option>'; }).join('') + '</select></div>' +
+      '<div><label>Type (fire, force...)</label><input type="text" class="dtype" maxlength="20" value=""></div>' +
+      '<div><label class="check"><input type="checkbox" class="drepeat"' + (d.repeat ? ' checked' : '') + '> Repeats</label><button type="button" class="rm">Remove</button></div>';
+    row.querySelector('.dtype').value = d.type || '';
+    row.querySelector('.rm').addEventListener('click', function () { readState(); state.damage.splice(i, 1); renderRows(); render(); });
+    row.querySelectorAll('input, select').forEach(function (el) { el.addEventListener('input', onInput); el.addEventListener('change', onInput); });
+    dr.appendChild(row);
+  });
+  var cr = $('customRows'); cr.innerHTML = '';
+  state.custom.forEach(function (e, i) {
+    var row = document.createElement('div'); row.className = 'row custom';
+    row.innerHTML = '<div><label>Effect name</label><input type="text" class="cname" maxlength="60"></div>' +
+      '<div><label>Points (0 to 90)</label><input type="number" class="cpts" min="0" max="90" step="5"></div>' +
+      '<div><button type="button" class="rm">Remove</button></div>';
+    row.querySelector('.cname').value = e.name; row.querySelector('.cpts').value = e.points;
+    row.querySelector('.rm').addEventListener('click', function () { readState(); state.custom.splice(i, 1); renderRows(); render(); });
+    row.querySelectorAll('input').forEach(function (el) { el.addEventListener('input', onInput); });
+    cr.appendChild(row);
+  });
+}
+
+function sizeText(s) {
+  if (s.shape === 'none') return '';
+  var sh = lookup(PRICES.shapes, s.shape)[1].toLowerCase();
+  var unit = (s.shape === 'radius') ? 'foot radius' : (s.shape === 'line') ? 'foot line' : (s.shape === 'cone') ? 'foot cone' : (s.shape === 'square') ? 'foot square' : 'foot cube';
+  return s.size + '-' + unit;
+}
+
+function cardData(s) {
+  var rng = lookup(PRICES.range, s.range)[1];
+  var area = sizeText(s);
+  var range = (s.range === 'self' && area) ? 'Self (' + area + ')' : rng + (area ? ' (' + area + ')' : '');
+  var comps = [];
+  if (s.v) comps.push('V'); if (s.s) comps.push('S');
+  if (s.m) comps.push('M' + (s.matText ? ' (' + s.matText + ')' : ''));
+  var dur = lookup(PRICES.duration, s.duration)[1];
+  if (s.conc && concAllowed(s)) dur = 'Concentration, up to ' + dur.toLowerCase();
+  var effects = [];
+  s.damage.forEach(function (d) {
+    var k = PRICES.kinds[d.kind];
+    var t = d.count + d.die + (d.type ? ' ' + d.type : '') + ' ' + (d.kind === 'heal' ? 'healing' : d.kind === 'pool' ? 'hit point pool' : 'damage');
+    effects.push(t + (d.repeat ? ', repeated each turn' : ''));
+  });
+  if (s.flat) effects.push('+' + s.flat + ' flat bonus total');
+  var dl = lookup(PRICES.delivery, s.delivery);
+  if (s.delivery === 'attack') effects.push('Spell attack roll');
+  if (s.delivery === 'savehalf') effects.push(s.save + ' save for half damage');
+  if (s.delivery === 'saveneg') effects.push(s.save + ' save negates');
+  if (s.delivery === 'auto') effects.push('Hits automatically');
+  if (s.split) effects.push('Split among several targets');
+  if (s.ignite) effects.push('Ignites flammable objects');
+  if (s.push !== 'none') effects.push('Pushes targets ' + s.push + ' feet');
+  if (s.advantage) effects.push('Grants advantage');
+  if (s.weapon) effects.push('Affects your weapon');
+  if (s.chosen) effects.push('Affects one chosen target');
+  if (s.modifier) effects.push('Adds your spellcasting modifier');
+  Object.keys(PRICES.conditions).forEach(function (k) { if (s[k]) effects.push(PRICES.conditions[k][0]); });
+  if (s.acBonus) effects.push('+' + s.acBonus + ' AC');
+  if (s.baseAC > 10) effects.push('Base or minimum AC ' + s.baseAC + (s.acArmor ? ', works while wearing armor' : ''));
+  if (s.mmImmune) effects.push('Immune to Magic Missile');
+  Object.keys(PRICES.canon).forEach(function (k) { if (s[k]) effects.push(PRICES.canon[k][0]); });
+  s.custom.forEach(function (e) { if (e.name) effects.push(e.name); });
+  return { casting: lookup(PRICES.casting, s.casting)[1] + (s.ritual ? ' or ritual' : ''), range: range,
+           comps: comps.join(', ') || 'None', duration: dur, effects: effects };
+}
+
+function render() {
+  var s = state;
+  var concOk = concAllowed(s);
+  $('conc').disabled = !concOk; if (!concOk) { s.conc = false; $('conc').checked = false; }
+  $('matBox').style.opacity = s.m ? 1 : .45;
+  ['matTier', 'consumed', 'matText'].forEach(function (id) { $(id).disabled = !s.m; });
+  if (s.matTier === 'none') { $('consumed').disabled = true; }
+  $('baseAC').disabled = false; $('acArmor').disabled = !(s.baseAC > 10);
+  $('size').disabled = s.shape === 'none';
+  var disSave = !(s.delivery === 'savehalf' || s.delivery === 'saveneg'); $('save').disabled = disSave;
+  var rate = lookup(PRICES.shapes, s.shape)[2];
+  $('areaHint').textContent = s.shape === 'none' ? 'Pick a shape to add an area. Cube, square, cone and radius cost 2 per foot. A line costs 1.5 per foot of length.'
+    : sizeText(s) + ': ' + s.size + ' x ' + rate + ' = ' + fmt(s.size * rate) + ' points.';
+  var res = priceSpell(s);
+  $('total').textContent = fmt(res.total);
+  var w = PRICES.windows[s.level];
+  var st = budgetStatus(s.level, res.total);
+  var statusEl = $('status'); statusEl.className = 'status ' + st.kind; statusEl.textContent = st.text;
+  var max = w ? Math.max(w[1] * 1.15, res.total) : Math.max(res.total, 100);
+  $('fill').style.width = Math.max(0, Math.min(100, res.total / max * 100)) + '%';
+  var zone = $('zone');
+  if (w) { zone.style.display = ''; zone.style.left = (w[0] / max * 100) + '%'; zone.style.width = ((w[1] - w[0]) / max * 100) + '%'; $('windowText').textContent = 'Target window for this level: ' + w[0] + ' to ' + w[1] + ' points.'; }
+  else { zone.style.display = 'none'; $('windowText').textContent = 'No point window for a free build.'; }
+  var tb = $('breakdown'); tb.innerHTML = ''; var last = '';
+  if (!res.lines.length) tb.innerHTML = '<tr><td colspan="2" class="hint">Choose options to see costs.</td></tr>';
+  res.lines.forEach(function (l) {
+    if (l.group !== last) { var g = document.createElement('tr'); g.innerHTML = '<td colspan="2" class="groupname">' + l.group + '</td>'; tb.appendChild(g); last = l.group; }
+    var tr = document.createElement('tr'); var td1 = document.createElement('td'); td1.textContent = l.label;
+    var td2 = document.createElement('td'); td2.textContent = (l.pts > 0 ? '+' : '') + fmt(l.pts); if (l.pts < 0) td2.className = 'refund';
+    tr.appendChild(td1); tr.appendChild(td2); tb.appendChild(tr);
+  });
+  var cd = cardData(s); var card = $('card'); card.innerHTML = '';
+  var h = document.createElement('h3'); h.textContent = s.name || 'Unnamed spell'; card.appendChild(h);
+  var sub = document.createElement('div'); sub.className = 'sub';
+  sub.textContent = (s.level === 'free' ? 'Custom spell' : 'Level ' + s.level + ' spell') + ', ' + fmt(res.total) + ' points'; card.appendChild(sub);
+  var dl = document.createElement('dl');
+  [['Casting time', cd.casting], ['Range', cd.range], ['Components', cd.comps], ['Duration', cd.duration]].forEach(function (r) {
+    var dt = document.createElement('dt'); dt.textContent = r[0]; var dd = document.createElement('dd'); dd.textContent = r[1]; dl.appendChild(dt); dl.appendChild(dd);
+  });
+  card.appendChild(dl);
+  if (cd.effects.length) { var ul = document.createElement('ul'); cd.effects.forEach(function (e) { var li = document.createElement('li'); li.textContent = e; ul.appendChild(li); }); card.appendChild(ul); }
+  if (s.desc) { var p = document.createElement('p'); p.textContent = s.desc; card.appendChild(p); }
+  clearTimeout(saveTimer); saveTimer = setTimeout(persist, 300);
+}
+
+function cardText() {
+  var s = state, res = priceSpell(s), cd = cardData(s);
+  var out = [(s.name || 'Unnamed spell') + ' (' + (s.level === 'free' ? 'custom' : 'level ' + s.level) + ', ' + fmt(res.total) + ' points)',
+    'Casting time: ' + cd.casting, 'Range: ' + cd.range, 'Components: ' + cd.comps, 'Duration: ' + cd.duration];
+  cd.effects.forEach(function (e) { out.push('- ' + e); });
+  if (s.desc) out.push('', s.desc);
+  out.push('', 'Cost breakdown:');
+  res.lines.forEach(function (l) { out.push('  ' + l.label + ': ' + (l.pts > 0 ? '+' : '') + fmt(l.pts)); });
+  return out.join('\n');
+}
+
+function shareUrl() {
+  try { return location.href.split('#')[0] + '#b=' + btoa(unescape(encodeURIComponent(JSON.stringify(state)))); } catch (e) { return location.href; }
+}
+function readHash() {
+  try {
+    var m = /#b=([^&]+)/.exec(location.hash); if (!m) return null;
+    return sanitize(JSON.parse(decodeURIComponent(escape(atob(m[1])))));
+  } catch (e) { return null; }
+}
+function readSaved() {
+  try { var raw = localStorage.getItem('spellBuilderState'); return raw ? sanitize(JSON.parse(raw)) : null; } catch (e) { return null; }
+}
+function persist() { try { localStorage.setItem('spellBuilderState', JSON.stringify(state)); } catch (e) { /* storage unavailable */ } }
+
+function sanitize(o) {
+  var d = defaultState();
+  if (!o || typeof o !== 'object') return d;
+  Object.keys(d).forEach(function (k) { if (k in o && typeof o[k] === typeof d[k]) d[k] = o[k]; });
+  d.damage = (Array.isArray(o.damage) ? o.damage : []).slice(0, 10).map(function (x) {
+    return { count: Math.max(0, Math.min(30, Number(x.count) || 0)), die: PRICES.dice[x.die] ? x.die : 'd6', kind: PRICES.kinds[x.kind] ? x.kind : 'damage', repeat: !!x.repeat, type: String(x.type || '').slice(0, 20) };
+  });
+  d.custom = (Array.isArray(o.custom) ? o.custom : []).slice(0, 12).map(function (x) {
+    return { name: String(x.name || '').slice(0, 60), points: Math.max(0, Math.min(PRICES.effectMax, Number(x.points) || 0)) };
+  });
+  if (!PRICES.windows[d.level] && d.level !== 'free') d.level = '1';
+  return d;
+}
+
+function copy(text, msg) {
+  function done() { toast(msg); }
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { fallback(text); done(); });
+  else { fallback(text); done(); }
+}
+function fallback(text) {
+  var t = document.createElement('textarea'); t.value = text; document.body.appendChild(t); t.select();
+  try { document.execCommand('copy'); } catch (e) { /* ignore */ } document.body.removeChild(t);
+}
+function toast(msg) { var t = $('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(function () { t.classList.remove('show'); }, 1600); }
+
+function buildPriceTables() {
+  function tbl(title, rows, cols) {
+    var h = '<h3 style="font-size:.9rem;margin:10px 0 2px">' + title + '</h3><table class="prices"><tr>' + cols.map(function (c) { return '<th>' + c + '</th>'; }).join('') + '</tr>';
+    rows.forEach(function (r) { h += '<tr>' + r.map(function (c) { return '<td>' + c + '</td>'; }).join('') + '</tr>'; });
+    return h + '</table>';
+  }
+  var diceRows = Object.keys(PRICES.dice).map(function (k) { return [k, PRICES.dice[k]]; });
+  var html = '';
+  html += tbl('Dice (per die)', diceRows, ['Die', 'Points']);
+  html += tbl('Casting time', PRICES.casting.map(function (r) { return [r[1], r[2]]; }), ['Time', 'Points']);
+  html += tbl('Range', PRICES.range.map(function (r) { return [r[1], r[2]]; }), ['Range', 'Points']);
+  html += tbl('Area (per foot)', PRICES.shapes.slice(1).map(function (r) { return [r[1], r[2]]; }), ['Shape', 'Points per foot']);
+  html += tbl('Duration', PRICES.duration.map(function (r) { return [r[1], r[2]]; }), ['Duration', 'Points']);
+  html += tbl('Material refunds', PRICES.material.map(function (r) { return [r[1], '-' + r[2]]; }), ['Value', 'Refund']);
+  html += tbl('Level windows', Object.keys(PRICES.windows).map(function (k) { return ['Level ' + k, PRICES.windows[k][0] + ' to ' + PRICES.windows[k][1]]; }), ['Level', 'Window']);
+  $('priceTables').innerHTML = html;
+}
+
+setup();
+</script>
+</body>
+</html>
