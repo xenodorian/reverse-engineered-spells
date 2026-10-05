@@ -211,19 +211,19 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
 | Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 20 conc - 15 | 115 |
 
-Proposed effect prices (not yet confirmed by the user). Target total is 105 to 150, with each effect at most 90 and at least 20 where room allows:
+Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 160. A level 2 effect may exceed 90 only by as much as needed to reach 105. The archived "until dispelled" and 10 minute casting time details are ignored (Prayer of Healing uses the 10 point casting refund):
 
 | Spell | Priced so far | Proposed effect | Total |
 |---|---|---|---|
-| Augury | -25 | 90 | 65 |
-| Arcane Lock | -10 | 90 | 80 |
-| Continual Flame | -10 | 90 | 80 |
-| Magic Mouth | -10 | 90 | 80 |
-| Locate Animals or Plants | -5 | 90 | 85 |
-| Lesser Restoration | 0 | 90 | 90 |
-| Blur | 5 | 90 | 95 |
-| Knock | 5 | 90 | 95 |
-| Locate Object | 5 | 90 | 95 |
+| Augury | -25 | 130 | 105 |
+| Arcane Lock | -10 | 115 | 105 |
+| Continual Flame | -10 | 115 | 105 |
+| Magic Mouth | -10 | 115 | 105 |
+| Locate Animals or Plants | -5 | 110 | 105 |
+| Lesser Restoration | 0 | 105 | 105 |
+| Blur | 5 | 100 | 105 |
+| Knock | 5 | 100 | 105 |
+| Locate Object | 5 | 100 | 105 |
 | Enlarge/Reduce | 15 | 90 | 105 |
 | Misty Step | 15 | 90 | 105 |
 | Alter Self | 20 | 90 | 110 |
@@ -264,9 +264,9 @@ Proposed effect prices (not yet confirmed by the user). Target total is 105 to 1
 | Web | 105 | 20 | 125 |
 | Spiritual Weapon | 120 | 20 | 140 |
 | Prayer of Healing | 120 | 20 | 140 |
-| Gust of Wind | 155 | 0 | 155 |
+| Gust of Wind | 155 | 5 (sensory effects) | 160 |
 
-Gust of Wind totals 155 from its priced parts alone (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds), so its unpriced effects are left at 0.
+Gust of Wind totals 155 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds), plus 5 for its sensory effects.
 
 ## Rules
 - No single effect may cost more than 90.
