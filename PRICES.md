@@ -65,7 +65,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 ## Extras
 | Extra | Points |
 |---|---|
-| Ignites objects | 10 |
+| Ignites objects (fire damage spells) | 0 |
 | Pushes 10 ft | 10 |
 | Advantage | 10 |
 | Affects your weapon | 65 |
@@ -118,6 +118,7 @@ Capped at 90 (totals fall below the window): Find Familiar 90, Identify 90, Good
 
 ## Still open
 - Thunderwave totals 85 (push at 20 would give 95).
+- Burning Hands totals 80 after ignition became free.
 - Find Familiar (60), Identify (70), Goodberry (85), Mage Armor (85) and Shield of Faith (55) are below 90.
 - Hunter's Mark totals 100 after the duration and target changes.
 - Charm Person totals 90 and Animal Friendship 100.
