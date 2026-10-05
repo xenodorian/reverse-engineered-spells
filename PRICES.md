@@ -73,6 +73,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Repeat damage each turn | the die's price again + 20 |
 | Ritual | 10 |
 | +1 AC | 10 |
+| Base or minimum AC: having a base AC of 10 | 15 |
 | Base or minimum AC, per point above 10 | 10 |
 | Immunity to Magic Missile | 20 |
 
@@ -161,7 +162,7 @@ Non-damaging spells:
 | Charm Person | 60 | 30 | 90 |
 | Cure Wounds | 40 | 50 | 90 |
 | Goodberry | -5 | 90 (capped) | 85 |
-| Mage Armor | 55 | 30 | 85 |
+| Mage Armor | 55 | 45 (base AC 15 + 3 x 10) | 100 |
 | Identify | -20 | 90 (capped) | 70 |
 | Shield of Faith | 35 | 20 (+2 AC) | 55 |
 | Find Familiar | -30 | 90 (capped) | 60 |
@@ -206,7 +207,7 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Spell | Build | Total |
 |---|---|---|
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
-| Barkskin | 10 touch + 50 duration + 60 minimum AC 16 (+6) - 20 conc - 15 | 85 |
+| Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) - 20 conc - 15 | 100 |
 
 Level 2 spells missing a single price: Shatter, Web, Moonbeam, Flame Blade, Spike Growth, Magic Weapon, Acid Arrow.
 
@@ -219,5 +220,5 @@ Level 2 spells missing a single price: Shatter, Web, Moonbeam, Flame Blade, Spik
 - Thunderwave's loud boom.
 
 ## Still open
-- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 65, Goodberry 85, Mage Armor 85, Identify 70, Shield of Faith 55, Find Familiar 60.
+- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 65, Goodberry 85, Identify 70, Shield of Faith 55, Find Familiar 60.
 - Capped cantrips below 90: Druidcraft 85, Mending 75.
