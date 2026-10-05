@@ -188,7 +188,7 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
 
     <section class="card">
       <h2>Custom effects</h2>
-      <p class="hint">For anything the list does not cover. Agree the price with your group. No single effect may cost more than 90.</p>
+      <p class="hint">For anything the list does not cover. Agree the price with your group. The most one effect can cost is 90 for cantrips and level 1, 130 at level 2 and 190 at level 3.</p>
       <div id="customRows"></div>
       <button type="button" id="addCustom">Add custom effect</button>
     </section>
@@ -257,7 +257,7 @@ var PRICES = {
   acBonus: 10, baseAcFlat: 15, baseAcPer: 10, acArmor: 15, mmImmune: 20,
   canon: { frightImm: ['Immune to frightened', 35], tempHP: ['Temp HP each turn', 50],
            outline: ['Outline cancels invisibility', 15], bane: ['Bane style penalty', 50], bless: ['Bless style bonus', 65] },
-  effectMax: 90,
+  effectMax: { cantrip: 90, '1': 90, '2': 130, '3': 190 },
   windows: { 'cantrip': [0, 50], '1': [55, 100], '2': [105, 150], '3': [155, 275] }
 };
 
@@ -271,6 +271,8 @@ function defaultState() {
     frightImm: false, tempHP: false, outline: false, bane: false, bless: false,
     custom: [], desc: '' };
 }
+
+function effectMax(level) { return PRICES.effectMax[level] || 90; }
 
 function lookup(table, id) {
   for (var i = 0; i < table.length; i++) if (table[i][0] === id) return table[i];
@@ -326,7 +328,7 @@ function priceSpell(st) {
     if (st[k]) add('Effects', PRICES.canon[k][0], PRICES.canon[k][1]);
   });
   st.custom.forEach(function (e) {
-    var pts = Math.min(PRICES.effectMax, Math.max(0, Number(e.points) || 0));
+    var pts = Math.min(effectMax(st.level), Math.max(0, Number(e.points) || 0));
     add('Effects', 'Custom: ' + (e.name || 'unnamed effect'), pts);
   });
   if (st.conc && concAllowed(st)) add('Refunds', 'Concentration', -PRICES.concRefund);
@@ -369,16 +371,164 @@ var PRESETS = [
   preset('Witch Bolt', '1', 90, { range: '30', damage: [dmg(1, 'd12', 'damage', true)], delivery: 'attack', duration: '1min', conc: true, m: true }),
   preset('Divine Favor', '1', 60, { casting: 'bonus', damage: [dmg(1, 'd4')], weapon: true, duration: '1min', conc: true }),
   preset("Hunter's Mark", '1', 95, { casting: 'bonus', range: '90', damage: [dmg(1, 'd6')], chosen: true, advantage: true, duration: '1hour', conc: true, s: false }),
-  preset('Shield', '1', 95, { casting: 'reaction', duration: 'round', acBonus: 5, mmImmune: true }),
-  preset('Shield of Faith', '1', 50, { casting: 'bonus', range: '60', duration: '10min', conc: true, acBonus: 2, m: true }),
-  preset('Mage Armor', '1', 100, { range: 'touch', duration: '8hour', baseAC: 13, m: true }),
   preset('Scorching Ray', '2', 130, { range: '120', damage: [dmg(6, 'd6')], delivery: 'attack', split: true }),
   preset('Barkskin', '2', 110, { range: 'touch', duration: '1hour', conc: true, baseAC: 16, acArmor: true, m: true }),
   preset('Fireball', '3', 185, { range: '150', shape: 'radius', size: 20, damage: [dmg(8, 'd6')], delivery: 'savehalf', ignite: true, m: true }),
   preset('Lightning Bolt', '3', 270, { shape: 'line', size: 100, damage: [dmg(8, 'd6')], delivery: 'savehalf', m: true }),
   preset('Fire Bolt', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
   preset('Eldritch Blast', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
-  preset('Poison Spray', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' })
+  preset('Poison Spray', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
+/* GENERATED_START */
+  preset("Acid Splash", 'cantrip', 50, {"range": "60", "damage": [{"count": 1, "die": "d6", "kind": "damage", "repeat": false, "type": "acid"}], "delivery": "saveneg", "custom": [{"name": "Second target within 5 ft", "points": 20}]}),
+  preset("Chill Touch", 'cantrip', 50, {"range": "120", "damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "necrotic"}], "delivery": "attack", "duration": "round"}),
+  preset("Dancing Lights", 'cantrip', 50, {"range": "120", "duration": "1min", "conc": true, "m": true, "matText": "A bit of phosphorus or wychwood, or a glowworm", "custom": [{"name": "Four movable lights", "points": 40}]}),
+  preset("Druidcraft", 'cantrip', 50, {"range": "30", "custom": [{"name": "Small nature tricks", "points": 55}]}),
+  preset("Guidance", 'cantrip', 50, {"damage": [{"count": 1, "die": "d4", "kind": "damage", "repeat": false, "type": "bonus"}], "duration": "1min", "conc": true, "custom": [{"name": "Add a die to an ability check", "points": 35}], "range": "touch"}),
+  preset("Light", 'cantrip', 50, {"delivery": "resist", "duration": "1hour", "s": false, "m": true, "matText": "A firefly or phosphorescent moss", "range": "touch"}),
+  preset("Mage Hand", 'cantrip', 50, {"range": "30", "duration": "1min", "custom": [{"name": "Spectral hand", "points": 25}]}),
+  preset("Mending", 'cantrip', 50, {"casting": "1min", "m": true, "matText": "Two lodestones", "custom": [{"name": "Repair a break", "points": 65}], "range": "touch"}),
+  preset("Message", 'cantrip', 50, {"range": "120", "duration": "round", "m": true, "matText": "A short piece of copper wire", "custom": [{"name": "Private whisper", "points": 40}]}),
+  preset("Minor Illusion", 'cantrip', 50, {"range": "30", "duration": "1min", "v": false, "m": true, "matText": "A bit of fleece", "custom": [{"name": "Sound or image", "points": 25}]}),
+  preset("Prestidigitation", 'cantrip', 50, {"range": "10", "duration": "1hour", "custom": [{"name": "Minor tricks", "points": 5}]}),
+  preset("Produce Flame", 'cantrip', 50, {"range": "30", "damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "fire"}], "delivery": "attack", "duration": "10min", "ignite": true, "endsOnUse": true, "custom": [{"name": "Sheds light", "points": 15}]}),
+  preset("Ray of Frost", 'cantrip', 50, {"range": "60", "damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "cold"}], "delivery": "attack", "custom": [{"name": "Speed drops 10 ft", "points": 15}]}),
+  preset("Resistance", 'cantrip', 45, {"damage": [{"count": 1, "die": "d4", "kind": "damage", "repeat": false, "type": "bonus"}], "duration": "1min", "conc": true, "m": true, "matText": "A miniature cloak", "custom": [{"name": "Add a die to a saving throw", "points": 35}], "range": "touch"}),
+  preset("Sacred Flame", 'cantrip', 50, {"range": "60", "damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "radiant"}], "delivery": "saveneg", "custom": [{"name": "Cover gives no bonus", "points": 15}]}),
+  preset("Shocking Grasp", 'cantrip', 50, {"damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "lightning"}], "delivery": "attack", "advantage": true, "custom": [{"name": "Target cannot take reactions", "points": 5}], "range": "touch"}),
+  preset("Spare the Dying", 'cantrip', 50, {"custom": [{"name": "Stabilize a dying creature", "points": 50}], "range": "touch"}),
+  preset("Thaumaturgy", 'cantrip', 50, {"range": "30", "duration": "1min", "s": false, "custom": [{"name": "Minor wonders", "points": 20}]}),
+  preset("Vicious Mockery", 'cantrip', 50, {"range": "60", "damage": [{"count": 1, "die": "d4", "kind": "damage", "repeat": false, "type": "psychic"}], "delivery": "saveneg", "s": false, "custom": [{"name": "Disadvantage on next attack", "points": 20}]}),
+  preset("Alarm", '1', 95, {"casting": "1min", "range": "30", "shape": "cube", "size": 20, "duration": "8hour", "ritual": true, "m": true, "matText": "A tiny bell and a piece of silver wire", "custom": [{"name": "Ward that alerts you", "points": 5}]}),
+  preset("Animal Friendship", '1', 100, {"range": "30", "delivery": "saveneg", "duration": "24hour", "m": true, "matText": "A morsel of food", "custom": [{"name": "Charms a beast (charmed 30, less 5)", "points": 25}]}),
+  preset("Bane", '1', 90, {"range": "30", "damage": [{"count": 3, "die": "d4", "kind": "damage", "repeat": false, "type": "penalty"}], "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "bane": true, "matText": "A drop of blood"}),
+  preset("Bless", '1', 90, {"range": "30", "damage": [{"count": 3, "die": "d4", "kind": "damage", "repeat": false, "type": "bonus"}], "duration": "1min", "conc": true, "m": true, "bless": true, "matText": "A sprinkling of holy water"}),
+  preset("Charm Person", '1', 90, {"range": "30", "delivery": "saveneg", "duration": "1hour", "charmed": true}),
+  preset("Command", '1', 95, {"range": "60", "delivery": "saveneg", "duration": "round", "s": false, "custom": [{"name": "Forced one-word order", "points": 70}]}),
+  preset("Comprehend Languages", '1', 95, {"range": "self", "duration": "1hour", "ritual": true, "m": true, "matText": "A pinch of soot and salt", "custom": [{"name": "Understand any language", "points": 50}]}),
+  preset("Create or Destroy Water", '1', 95, {"range": "30", "shape": "cube", "size": 30, "m": true, "matText": "A drop of water to create, or a few grains of sand to destroy", "custom": [{"name": "Create or remove water", "points": 45}]}),
+  preset("Cure Wounds", '1', 90, {"damage": [{"count": 1, "die": "d8", "kind": "heal", "repeat": false, "type": ""}], "modifier": true, "range": "touch"}),
+  preset("Detect Evil and Good", '1', 90, {"range": "self", "shape": "radius", "size": 30, "duration": "10min", "conc": true, "custom": [{"name": "Sense six creature types", "points": 25}]}),
+  preset("Detect Magic", '1', 90, {"range": "self", "shape": "radius", "size": 30, "duration": "10min", "conc": true, "ritual": true, "custom": [{"name": "Sense magic and learn its school", "points": 15}]}),
+  preset("Detect Poison and Disease", '1', 90, {"range": "self", "shape": "radius", "size": 30, "duration": "10min", "conc": true, "ritual": true, "m": true, "matText": "A yew leaf", "custom": [{"name": "Sense poison and disease", "points": 20}]}),
+  preset("Disguise Self", '1', 95, {"range": "self", "duration": "1hour", "custom": [{"name": "Illusion of appearance", "points": 55}]}),
+  preset("Entangle", '1', 90, {"range": "90", "shape": "square", "size": 20, "delivery": "saveneg", "duration": "1min", "conc": true, "difficult": true, "restrained": true}),
+  preset("Expeditious Retreat", '1', 90, {"casting": "bonus", "range": "self", "duration": "10min", "conc": true, "custom": [{"name": "Dash as a bonus action each turn", "points": 65}]}),
+  preset("Faerie Fire", '1', 90, {"range": "60", "shape": "cube", "size": 20, "delivery": "saveneg", "duration": "1min", "conc": true, "s": false, "advantage": true, "outline": true}),
+  preset("False Life", '1', 95, {"range": "self", "damage": [{"count": 1, "die": "d4", "kind": "heal", "repeat": false, "type": ""}], "flat": 4, "duration": "1hour", "m": true, "matText": "A small amount of alcohol or distilled spirits", "custom": [{"name": "Temporary hit points", "points": 20}]}),
+  preset("Feather Fall", '1', 95, {"casting": "reaction", "range": "60", "duration": "1min", "s": false, "m": true, "matText": "A small feather or piece of down", "custom": [{"name": "Slow fall for up to five creatures", "points": 35}]}),
+  preset("Find Familiar", '1', 60, {"casting": "1hour", "range": "10", "ritual": true, "m": true, "matTier": "10", "consumed": true, "matText": "10 gp of charcoal, incense, and herbs burned in a brass brazier", "custom": [{"name": "Summoned spirit familiar", "points": 90}]}),
+  preset("Fog Cloud", '1', 90, {"range": "120", "shape": "radius", "size": 20, "duration": "1hour", "conc": true, "custom": [{"name": "Heavy obscurement", "points": 15}]}),
+  preset("Goodberry", '1', 85, {"m": true, "matText": "A sprig of mistletoe", "custom": [{"name": "Ten berries, 1 HP and food each", "points": 90}], "range": "touch"}),
+  preset("Grease", '1', 95, {"range": "60", "shape": "square", "size": 10, "delivery": "saveneg", "duration": "1min", "m": true, "prone": true, "difficult": true, "matText": "A bit of pork rind or butter"}),
+  preset("Healing Word", '1', 95, {"casting": "bonus", "range": "60", "damage": [{"count": 1, "die": "d4", "kind": "heal", "repeat": false, "type": ""}], "s": false, "modifier": true}),
+  preset("Heroism", '1', 90, {"duration": "1min", "conc": true, "frightImm": true, "tempHP": true, "range": "touch"}),
+  preset("Hideous Laughter", '1', 90, {"range": "30", "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "prone": true, "incapacitated": true, "matText": "Tiny tarts and a feather waved in the air"}),
+  preset("Identify", '1', 70, {"casting": "1min", "ritual": true, "m": true, "matTier": "100", "matText": "A pearl worth at least 100 gp and an owl feather", "custom": [{"name": "Item lore", "points": 90}], "range": "touch"}),
+  preset("Illusory Script", '1', 95, {"casting": "1min", "duration": "10day", "ritual": true, "v": false, "m": true, "matTier": "10", "matText": "Lead-based ink worth at least 10 gp", "custom": [{"name": "Hidden writing", "points": 20}], "range": "touch"}),
+  preset("Jump", '1', 95, {"duration": "1min", "m": true, "matText": "A grasshopper's hind leg", "custom": [{"name": "Triple jump distance", "points": 70}], "range": "touch"}),
+  preset("Longstrider", '1', 95, {"duration": "1hour", "m": true, "matText": "A pinch of dirt", "custom": [{"name": "Speed +10 ft", "points": 50}], "range": "touch"}),
+  preset("Mage Armor", '1', 100, {"duration": "8hour", "m": true, "baseAC": 13, "matText": "A piece of cured leather", "range": "touch"}),
+  preset("Protection from Evil and Good", '1', 90, {"duration": "10min", "conc": true, "m": true, "matText": "Holy water or powdered silver and iron", "custom": [{"name": "Protection from six creature types", "points": 80}], "range": "touch"}),
+  preset("Purify Food and Drink", '1', 95, {"range": "10", "shape": "radius", "size": 5, "ritual": true, "custom": [{"name": "Remove poison and disease", "points": 80}]}),
+  preset("Sanctuary", '1', 95, {"casting": "bonus", "range": "30", "delivery": "saveneg", "duration": "1min", "m": true, "matText": "A small silver mirror", "custom": [{"name": "Attackers must pass a save or pick a new target", "points": 40}]}),
+  preset("Shield", '1', 95, {"casting": "reaction", "range": "self", "duration": "round", "acBonus": 5, "mmImmune": true}),
+  preset("Shield of Faith", '1', 50, {"casting": "bonus", "range": "60", "duration": "10min", "conc": true, "m": true, "acBonus": 2, "matText": "A small parchment with holy text"}),
+  preset("Silent Image", '1', 90, {"range": "60", "shape": "cube", "duration": "10min", "conc": true, "m": true, "matText": "A bit of fleece", "custom": [{"name": "Visual illusion", "points": 50}]}),
+  preset("Speak with Animals", '1', 95, {"range": "self", "duration": "10min", "ritual": true, "custom": [{"name": "Talk with beasts", "points": 55}]}),
+  preset("Unseen Servant", '1', 95, {"range": "60", "duration": "1hour", "ritual": true, "m": true, "matText": "A piece of string and a bit of wood", "custom": [{"name": "Invisible helper", "points": 40}]}),
+  preset("Acid Arrow", '2', 125, {"range": "90", "damage": [{"count": 4, "die": "d4", "kind": "damage", "repeat": false, "type": "acid"}, {"count": 2, "die": "d4", "kind": "damage", "repeat": false, "type": "acid"}], "delivery": "attack", "m": true, "matText": "Powdered rhubarb leaf and an adder's stomach", "custom": [{"name": "Second damage at the end of its next turn (repeat damage rule)", "points": 20}, {"name": "Half damage on a miss", "points": 30}]}),
+  preset("Aid", '2', 125, {"range": "30", "duration": "8hour", "m": true, "matText": "A strip of white cloth", "custom": [{"name": "+5 maximum HP for three creatures", "points": 75}]}),
+  preset("Alter Self", '2', 105, {"range": "self", "duration": "1hour", "conc": true, "custom": [{"name": "Change your form", "points": 90}]}),
+  preset("Animal Messenger", '2', 125, {"range": "30", "duration": "24hour", "ritual": true, "m": true, "matText": "A morsel of food", "custom": [{"name": "Tiny beast carries a message", "points": 55}]}),
+  preset("Arcane Lock", '2', 105, {"duration": "dispelled", "m": true, "matTier": "50", "consumed": true, "matText": "Gold dust worth at least 25 gp, consumed", "custom": [{"name": "Locks a door, window or container", "points": 125}], "range": "touch"}),
+  preset("Arcanist's Magic Aura", '2', 125, {"duration": "24hour", "m": true, "matText": "A small square of silk", "custom": [{"name": "Alter detection magic", "points": 60}], "range": "touch"}),
+  preset("Augury", '2', 105, {"casting": "1min", "range": "self", "ritual": true, "m": true, "matTier": "50", "matText": "Marked sticks, bones, or similar tokens worth at least 25 gp", "custom": [{"name": "Learn weal or woe of a planned action", "points": 130}]}),
+  preset("Blindness/Deafness", '2', 125, {"range": "30", "delivery": "saveneg", "duration": "1min", "s": false, "custom": [{"name": "Blinded or deafened", "points": 80}]}),
+  preset("Blur", '2', 105, {"range": "self", "duration": "1min", "conc": true, "s": false, "custom": [{"name": "Disadvantage on attacks against you", "points": 105}]}),
+  preset("Calm Emotions", '2', 120, {"range": "60", "shape": "radius", "size": 20, "delivery": "saveneg", "duration": "1min", "conc": true, "custom": [{"name": "Suppress charm and fear", "points": 60}]}),
+  preset("Continual Flame", '2', 105, {"duration": "dispelled", "m": true, "matTier": "50", "consumed": true, "matText": "Ruby dust worth 50 gp, consumed", "custom": [{"name": "Flame that gives no heat", "points": 125}], "range": "touch"}),
+  preset("Crown of Madness", '2', 120, {"range": "120", "delivery": "saveneg", "duration": "1min", "conc": true, "charmed": true, "custom": [{"name": "Forced attack on a chosen creature", "points": 60}]}),
+  preset("Darkness", '2', 120, {"range": "60", "shape": "radius", "duration": "10min", "conc": true, "s": false, "m": true, "matText": "Bat fur and a drop of pitch or coal", "custom": [{"name": "Magical darkness", "points": 75}]}),
+  preset("Darkvision", '2', 125, {"duration": "8hour", "m": true, "matText": "A dried carrot or an agate", "custom": [{"name": "Darkvision 60 feet", "points": 70}], "range": "touch"}),
+  preset("Detect Thoughts", '2', 120, {"range": "self", "shape": "radius", "size": 30, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A copper piece", "custom": [{"name": "Read surface thoughts", "points": 55}]}),
+  preset("Enhance Ability", '2', 120, {"duration": "1hour", "conc": true, "m": true, "advantage": true, "matText": "Fur or a feather from a beast", "custom": [{"name": "Related bonus to one ability", "points": 90}], "range": "touch"}),
+  preset("Enlarge/Reduce", '2', 105, {"range": "30", "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A pinch of powdered iron", "custom": [{"name": "Change a creature size", "points": 95}]}),
+  preset("Enthrall", '2', 125, {"range": "60", "delivery": "saveneg", "duration": "1min", "custom": [{"name": "Disadvantage on Perception checks", "points": 80}]}),
+  preset("Find Traps", '2', 105, {"range": "120", "custom": [{"name": "Sense traps in line of sight", "points": 95}]}),
+  preset("Flame Blade", '2', 120, {"casting": "bonus", "range": "self", "damage": [{"count": 3, "die": "d6", "kind": "damage", "repeat": false, "type": "fire"}], "delivery": "attack", "duration": "10min", "conc": true, "m": true, "matText": "A leaf of sumac", "custom": [{"name": "Attack with the blade each turn, sheds light", "points": 40}]}),
+  preset("Flaming Sphere", '2', 120, {"range": "60", "shape": "radius", "size": 5, "damage": [{"count": 2, "die": "d6", "kind": "damage", "repeat": false, "type": "fire"}], "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "Tallow, a pinch of brimstone, and powdered phosphorus", "custom": [{"name": "Rolling sphere of fire", "points": 65}]}),
+  preset("Gentle Repose", '2', 125, {"duration": "10day", "ritual": true, "m": true, "matText": "A pinch of salt and a copper piece on each eye", "custom": [{"name": "Corpse protected from decay", "points": 40}], "range": "touch"}),
+  preset("Gust of Wind", '2', 120, {"range": "self", "shape": "line", "size": 60, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "push": "15", "difficult": true, "matText": "A legume seed"}),
+  preset("Heat Metal", '2', 120, {"range": "60", "damage": [{"count": 2, "die": "d8", "kind": "damage", "repeat": true, "type": "fire"}], "duration": "1min", "conc": true, "m": true, "matText": "A piece of iron and a flame", "custom": [{"name": "Heats a metal object", "points": 20}]}),
+  preset("Hold Person", '2', 105, {"range": "60", "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A small straight piece of iron", "custom": [{"name": "Paralyzed", "points": 90}]}),
+  preset("Invisibility", '2', 110, {"duration": "1hour", "conc": true, "m": true, "matText": "An eyelash in gum arabic", "custom": [{"name": "Invisible", "points": 90}], "range": "touch"}),
+  preset("Knock", '2', 105, {"range": "60", "s": false, "custom": [{"name": "Open a locked object", "points": 100}]}),
+  preset("Lesser Restoration", '2', 105, {"custom": [{"name": "End a disease or condition", "points": 105}], "range": "touch"}),
+  preset("Levitate", '2', 115, {"range": "60", "delivery": "saveneg", "duration": "10min", "conc": true, "m": true, "matText": "A small leather loop or golden wire bent into a cup", "custom": [{"name": "Float a creature or object", "points": 90}]}),
+  preset("Locate Animals or Plants", '2', 105, {"range": "self", "ritual": true, "m": true, "matText": "A bit of fur from a bloodhound", "custom": [{"name": "Locate the nearest animal or plant", "points": 110}]}),
+  preset("Locate Object", '2', 105, {"range": "self", "duration": "10min", "conc": true, "m": true, "matText": "A forked twig", "custom": [{"name": "Sense direction to an object", "points": 105}]}),
+  preset("Magic Mouth", '2', 105, {"casting": "1min", "range": "30", "duration": "dispelled", "ritual": true, "m": true, "matTier": "10", "consumed": true, "matText": "Honeycomb and jade dust worth 10 gp, consumed", "custom": [{"name": "Spoken message with a trigger", "points": 125}]}),
+  preset("Magic Weapon", '2', 120, {"casting": "bonus", "duration": "1hour", "conc": true, "custom": [{"name": "Magical +1 weapon", "points": 75}], "range": "touch"}),
+  preset("Mirror Image", '2', 110, {"range": "self", "duration": "1min", "custom": [{"name": "Three illusory duplicates", "points": 90}]}),
+  preset("Misty Step", '2', 105, {"casting": "bonus", "range": "self", "s": false, "custom": [{"name": "Teleport 30 feet", "points": 90}]}),
+  preset("Moonbeam", '2', 120, {"range": "120", "shape": "radius", "size": 5, "damage": [{"count": 2, "die": "d10", "kind": "damage", "repeat": false, "type": "radiant"}], "delivery": "savehalf", "duration": "1min", "conc": true, "m": true, "matText": "Moonseed and a piece of opalescent feldspar", "custom": [{"name": "Column of light, move as an action", "points": 35}]}),
+  preset("Pass without Trace", '2', 120, {"range": "self", "shape": "radius", "size": 30, "duration": "1hour", "conc": true, "m": true, "matText": "Ashes of mistletoe and a sprig of spruce", "custom": [{"name": "+10 Stealth and untrackable", "points": 50}]}),
+  preset("Prayer of Healing", '2', 135, {"casting": "10min", "range": "30", "damage": [{"count": 2, "die": "d8", "kind": "heal", "repeat": false, "type": ""}], "s": false, "modifier": true, "custom": [{"name": "Up to six creatures", "points": 20}]}),
+  preset("Protection from Poison", '2', 125, {"duration": "1hour", "custom": [{"name": "Neutralize poison, resistance", "points": 75}], "range": "touch"}),
+  preset("Ray of Enfeeblement", '2', 110, {"range": "60", "delivery": "attack", "duration": "1min", "conc": true, "custom": [{"name": "Halves Strength weapon damage", "points": 90}]}),
+  preset("Rope Trick", '2', 125, {"duration": "1hour", "m": true, "matText": "Powdered corn extract and a twisted loop of parchment", "custom": [{"name": "Extradimensional space", "points": 80}], "range": "touch"}),
+  preset("See Invisibility", '2', 125, {"range": "self", "duration": "1hour", "m": true, "matText": "A pinch of talc and powdered silver", "custom": [{"name": "See invisible creatures", "points": 90}]}),
+  preset("Shatter", '2', 125, {"range": "60", "shape": "radius", "size": 10, "damage": [{"count": 3, "die": "d8", "kind": "damage", "repeat": false, "type": "thunder"}], "delivery": "savehalf", "m": true, "matText": "A chip of mica", "custom": [{"name": "Crystal creatures save with disadvantage", "points": 35}]}),
+  preset("Silence", '2', 120, {"range": "120", "shape": "radius", "size": 20, "duration": "10min", "conc": true, "ritual": true, "custom": [{"name": "No sound in the area", "points": 45}]}),
+  preset("Spider Climb", '2', 110, {"duration": "1hour", "conc": true, "m": true, "matText": "A drop of bitumen and a spider", "custom": [{"name": "Climb walls and ceilings", "points": 90}], "range": "touch"}),
+  preset("Spike Growth", '2', 145, {"range": "150", "shape": "radius", "size": 20, "duration": "10min", "conc": true, "m": true, "difficult": true, "matText": "Seven thorns or twigs", "custom": [{"name": "Hidden spikes that damage movement", "points": 70}]}),
+  preset("Spiritual Weapon", '2', 140, {"casting": "bonus", "range": "60", "damage": [{"count": 1, "die": "d8", "kind": "damage", "repeat": false, "type": "force"}], "duration": "1min", "modifier": true, "custom": [{"name": "Floating weapon, attack each turn", "points": 20}]}),
+  preset("Suggestion", '2', 120, {"range": "30", "delivery": "saveneg", "duration": "8hour", "conc": true, "s": false, "m": true, "matText": "A snake's tongue and a bit of honeycomb or sweet oil", "custom": [{"name": "Follow a suggested course", "points": 75}]}),
+  preset("Warding Bond", '2', 125, {"duration": "1hour", "m": true, "matTier": "100", "acBonus": 1, "matText": "Two platinum rings worth at least 50 gp each", "custom": [{"name": "Saves bonus, damage resistance, shared damage", "points": 85}], "range": "touch"}),
+  preset("Web", '2', 120, {"range": "60", "shape": "cube", "size": 20, "delivery": "saveneg", "duration": "1hour", "conc": true, "m": true, "difficult": true, "restrained": true, "matText": "Bits of spiderweb", "custom": [{"name": "Webs burn, escape by Strength check", "points": 20}]}),
+  preset("Zone of Truth", '2', 125, {"range": "60", "shape": "radius", "delivery": "saveneg", "duration": "10min", "custom": [{"name": "Cannot speak a deliberate lie", "points": 40}]}),
+  preset("Animate Dead", '3', 155, {"casting": "1min", "range": "10", "m": true, "matText": "A drop of blood, a piece of flesh, and a pinch of bone dust", "custom": [{"name": "Raise a skeleton or zombie", "points": 175}]}),
+  preset("Beacon of Hope", '3', 155, {"range": "30", "duration": "1min", "conc": true, "custom": [{"name": "Advantage on Wisdom and death saves, max healing", "points": 155}]}),
+  preset("Bestow Curse", '3', 155, {"delivery": "saveneg", "duration": "1min", "conc": true, "custom": [{"name": "Curse with several effects", "points": 135}], "range": "touch"}),
+  preset("Blink", '3', 155, {"range": "self", "duration": "1min", "custom": [{"name": "Vanish to the Ethereal Plane", "points": 135}]}),
+  preset("Call Lightning", '3', 250, {"range": "120", "shape": "radius", "size": 5, "damage": [{"count": 3, "die": "d10", "kind": "damage", "repeat": true, "type": "lightning"}], "delivery": "savehalf", "duration": "10min", "conc": true, "custom": [{"name": "Storm cloud needing open sky", "points": 30}]}),
+  preset("Clairvoyance", '3', 155, {"casting": "10min", "range": "self", "duration": "10min", "conc": true, "m": true, "matTier": "100", "matText": "A jeweled horn or a glass eye worth at least 100 gp", "custom": [{"name": "Invisible sensor within 1 mile", "points": 185}]}),
+  preset("Conjure Animals", '3', 155, {"range": "60", "duration": "1hour", "conc": true, "custom": [{"name": "Summon fey beasts", "points": 130}]}),
+  preset("Counterspell", '3', 155, {"casting": "reaction", "range": "60", "v": false, "custom": [{"name": "Make a spell fail", "points": 120}]}),
+  preset("Create Food and Water", '3', 155, {"range": "30", "custom": [{"name": "Food and water for fifteen", "points": 160}]}),
+  preset("Daylight", '3', 250, {"range": "60", "shape": "radius", "size": 60, "duration": "1hour", "custom": [{"name": "Bright light, ends darkness", "points": 80}]}),
+  preset("Dispel Magic", '3', 155, {"range": "120", "custom": [{"name": "End a spell", "points": 145}]}),
+  preset("Fear", '3', 155, {"range": "self", "shape": "cone", "size": 30, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A white feather or the heart of a hen", "custom": [{"name": "Frightened and dashes away", "points": 90}]}),
+  preset("Feign Death", '3', 155, {"duration": "1hour", "ritual": true, "m": true, "matText": "A pinch of graveyard dirt", "custom": [{"name": "Appears dead, resistance to damage", "points": 100}], "range": "touch"}),
+  preset("Fly", '3', 155, {"duration": "10min", "conc": true, "m": true, "matText": "A wing feather from any bird", "custom": [{"name": "Flying speed 60 ft", "points": 145}], "range": "touch"}),
+  preset("Gaseous Form", '3', 155, {"duration": "1hour", "conc": true, "m": true, "matText": "A bit of gauze and a wisp of smoke", "custom": [{"name": "Misty cloud form", "points": 135}], "range": "touch"}),
+  preset("Glyph of Warding", '3', 195, {"casting": "1hour", "shape": "radius", "size": 20, "damage": [{"count": 5, "die": "d8", "kind": "damage", "repeat": false, "type": ""}], "delivery": "savehalf", "duration": "dispelled", "m": true, "matTier": "250", "consumed": true, "matText": "Incense and powdered diamond worth at least 200 gp, consumed", "custom": [{"name": "Hidden glyph, can store a spell", "points": 90}], "range": "touch"}),
+  preset("Haste", '3', 155, {"range": "30", "duration": "1min", "conc": true, "m": true, "advantage": true, "acBonus": 2, "matText": "A shaving of licorice root", "custom": [{"name": "Double speed, extra action", "points": 130}]}),
+  preset("Hypnotic Pattern", '3', 250, {"range": "120", "shape": "cube", "size": 30, "delivery": "saveneg", "duration": "1min", "conc": true, "v": false, "m": true, "charmed": true, "incapacitated": true, "matText": "A glowing stick of incense or a vial of phosphorescent material", "custom": [{"name": "Stops moving, ends if damaged", "points": 75}]}),
+  preset("Leomund's Tiny Hut", '3', 155, {"casting": "1min", "range": "self", "shape": "radius", "size": 10, "duration": "8hour", "ritual": true, "m": true, "matText": "A small crystal bead", "custom": [{"name": "Dome of force", "points": 90}]}),
+  preset("Magic Circle", '3', 155, {"casting": "1min", "range": "10", "shape": "radius", "size": 10, "duration": "1hour", "m": true, "matTier": "100", "consumed": true, "matText": "Holy water or powdered silver and iron worth at least 100 gp, consumed", "custom": [{"name": "Keeps out a creature type", "points": 125}]}),
+  preset("Major Image", '3', 155, {"range": "120", "shape": "cube", "size": 20, "duration": "10min", "conc": true, "m": true, "matText": "A bit of fleece", "custom": [{"name": "Full sensory illusion", "points": 95}]}),
+  preset("Mass Healing Word", '3', 185, {"casting": "bonus", "range": "60", "damage": [{"count": 1, "die": "d4", "kind": "heal", "repeat": false, "type": ""}], "s": false, "modifier": true, "custom": [{"name": "Up to six creatures", "points": 90}]}),
+  preset("Meld into Stone", '3', 160, {"duration": "8hour", "ritual": true, "custom": [{"name": "Merge into stone", "points": 90}], "range": "touch"}),
+  preset("Nondetection", '3', 155, {"duration": "8hour", "m": true, "matTier": "50", "consumed": true, "matText": "A pinch of diamond dust worth 25 gp, consumed", "custom": [{"name": "Hidden from divination", "points": 115}], "range": "touch"}),
+  preset("Phantom Steed", '3', 155, {"casting": "1min", "range": "30", "duration": "1hour", "ritual": true, "custom": [{"name": "Quasi-real horse", "points": 110}]}),
+  preset("Plant Growth", '3', 250, {"range": "150", "shape": "radius", "size": 100, "custom": [{"name": "Thicket slows movement", "points": 35}]}),
+  preset("Protection from Energy", '3', 155, {"duration": "1hour", "conc": true, "custom": [{"name": "Resistance to one energy type", "points": 130}], "range": "touch"}),
+  preset("Remove Curse", '3', 155, {"custom": [{"name": "End all curses", "points": 155}], "range": "touch"}),
+  preset("Revivify", '3', 155, {"m": true, "matTier": "over", "consumed": true, "matText": "Diamonds worth 300 gp, consumed", "custom": [{"name": "Return the recently dead to life", "points": 190}], "range": "touch"}),
+  preset("Sending", '3', 155, {"range": "self", "duration": "round", "m": true, "matText": "A short piece of fine copper wire", "custom": [{"name": "Message across any distance", "points": 165}]}),
+  preset("Sleet Storm", '3', 235, {"range": "150", "shape": "radius", "size": 40, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "prone": true, "difficult": true, "matText": "A pinch of dust and a few drops of water", "custom": [{"name": "Heavy obscurement, douses flames", "points": 90}]}),
+  preset("Slow", '3', 195, {"range": "120", "shape": "cube", "size": 40, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A drop of molasses", "custom": [{"name": "Slowed creatures", "points": 90}]}),
+  preset("Speak with Dead", '3', 155, {"range": "10", "duration": "10min", "m": true, "matText": "Burning incense", "custom": [{"name": "Corpse answers questions", "points": 125}]}),
+  preset("Speak with Plants", '3', 180, {"range": "self", "shape": "radius", "size": 30, "duration": "10min", "custom": [{"name": "Plants talk to you", "points": 90}]}),
+  preset("Spirit Guardians", '3', 195, {"range": "self", "shape": "radius", "damage": [{"count": 3, "die": "d8", "kind": "damage", "repeat": false, "type": ""}], "delivery": "savehalf", "duration": "10min", "conc": true, "m": true, "matText": "A holy symbol", "custom": [{"name": "Half speed for enemies", "points": 90}]}),
+  preset("Stinking Cloud", '3', 155, {"range": "90", "shape": "radius", "size": 20, "delivery": "saveneg", "duration": "1min", "conc": true, "m": true, "matText": "A rotten egg or several skunk cabbage leaves", "custom": [{"name": "Heavy obscurement, retching", "points": 95}]}),
+  preset("Tongues", '3', 155, {"duration": "1hour", "s": false, "m": true, "matText": "A small clay model of a ziggurat", "custom": [{"name": "Understand any spoken language", "points": 105}], "range": "touch"}),
+  preset("Vampiric Touch", '3', 210, {"range": "self", "damage": [{"count": 3, "die": "d6", "kind": "damage", "repeat": true, "type": "necrotic"}], "delivery": "attack", "duration": "1min", "conc": true, "custom": [{"name": "Regain half the damage dealt", "points": 90}]}),
+  preset("Water Breathing", '3', 160, {"range": "30", "duration": "24hour", "ritual": true, "m": true, "matText": "A short reed or piece of straw", "custom": [{"name": "Breathe underwater", "points": 90}]}),
+  preset("Water Walk", '3', 155, {"range": "30", "duration": "1hour", "ritual": true, "m": true, "matText": "A piece of cork", "custom": [{"name": "Walk on liquids", "points": 105}]}),
+  preset("Wind Wall", '3', 155, {"range": "120", "duration": "1min", "conc": true, "m": true, "matText": "A tiny fan and a feather of exotic origin", "custom": [{"name": "Wall of wind", "points": 145}]})
+/* GENERATED_END */
 ];
 /* PRICING_END */
 
@@ -436,6 +586,7 @@ function refreshPresets() {
   var pr = $('preset'); pr.innerHTML = '';
   var list = [];
   PRESETS.forEach(function (p, i) { if (p.level === level) list.push([i, p]); });
+  list.sort(function (a, b) { return a[1].name < b[1].name ? -1 : a[1].name > b[1].name ? 1 : 0; });
   var first = document.createElement('option'); first.value = '';
   first.textContent = list.length ? 'Choose a canon build' : 'No canon builds for this level';
   pr.appendChild(first);
@@ -504,7 +655,7 @@ function renderRows() {
   state.custom.forEach(function (e, i) {
     var row = document.createElement('div'); row.className = 'row custom';
     row.innerHTML = '<div><label>Effect name</label><input type="text" class="cname" maxlength="60"></div>' +
-      '<div><label>Points (0 to 90)</label><input type="number" class="cpts" min="0" max="90" step="5"></div>' +
+      '<div><label>Points</label><input type="number" class="cpts" min="0" max="190" step="5"></div>' +
       '<div><button type="button" class="rm">Remove</button></div>';
     row.querySelector('.cname').value = e.name; row.querySelector('.cpts').value = e.points;
     row.querySelector('.rm').addEventListener('click', function () { readState(); state.custom.splice(i, 1); renderRows(); render(); });
@@ -637,11 +788,11 @@ function sanitize(o) {
   d.damage = (Array.isArray(o.damage) ? o.damage : []).slice(0, 10).map(function (x) {
     return { count: Math.max(0, Math.min(30, Number(x.count) || 0)), die: PRICES.dice[x.die] ? x.die : 'd6', kind: PRICES.kinds[x.kind] ? x.kind : 'damage', repeat: !!x.repeat, type: String(x.type || '').slice(0, 20) };
   });
-  d.custom = (Array.isArray(o.custom) ? o.custom : []).slice(0, 12).map(function (x) {
-    return { name: String(x.name || '').slice(0, 60), points: Math.max(0, Math.min(PRICES.effectMax, Number(x.points) || 0)) };
-  });
   if (d.level === 'free') d.level = 'cantrip';
   if (!PRICES.windows[d.level]) d.level = '1';
+  d.custom = (Array.isArray(o.custom) ? o.custom : []).slice(0, 12).map(function (x) {
+    return { name: String(x.name || '').slice(0, 60), points: Math.max(0, Math.min(effectMax(d.level), Number(x.points) || 0)) };
+  });
   return d;
 }
 

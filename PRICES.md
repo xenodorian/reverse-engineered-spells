@@ -181,9 +181,9 @@ Fully priced from confirmed prices (no unpriced effect):
 | Eldritch Blast | 25 dice + 15 attack + 20 range - 10 | 50 |
 | Poison Spray | 30 dice + 15 save + 5 range - 10 | 40 |
 
-Cantrips with a proposed effect price (not yet confirmed by the user). Cantrips are capped at 50, so each effect is priced to land at 50 where room allows. Guidance and Resistance share one effect price (35):
+Cantrips with an effect price (confirmed). Cantrips are capped at 50, so each effect is priced to land at 50 where room allows. Guidance and Resistance share one effect price (35):
 
-| Cantrip | Priced so far | Proposed effect | Total |
+| Cantrip | Priced so far | Effect | Total |
 |---|---|---|---|
 | Produce Flame | 35 | 15 | 50 |
 | Light | 50 | 0 | 50 |
@@ -207,22 +207,23 @@ Cantrips with a proposed effect price (not yet confirmed by the user). Cantrips 
 
 Cantrips are not given a separate budget. Cantrip-only discounts are not allowed.
 
-## Level 2 spells (priced from existing prices only, no level 2 budget set yet)
+## Level 2 spells
 | Spell | Build | Total |
 |---|---|---|
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
 | Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 25 conc - 15 | 110 |
 
-Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 150. A level 2 effect may exceed 90 only by as much as needed to reach 105. "Until dispelled" duration is always free. Casting time refunds scale with how long the spell takes (1 minute -10, 10 minutes -15, 1 hour -20):
+Effect prices (confirmed). Level 2 totals run from 105 to 150. A level 2 effect may exceed 90 only by as much as needed to reach 105. "Until dispelled" duration is always free. Casting time refunds scale with how long the spell takes (1 minute -10, 10 minutes -15, 1 hour -20):
 
-| Spell | Priced so far | Proposed effect | Total |
+| Spell | Priced so far | Effect | Total |
 |---|---|---|---|
 | Augury | -25 | 130 | 105 |
-| Arcane Lock | -10 | 115 | 105 |
-| Continual Flame | -10 | 115 | 105 |
-| Magic Mouth | -10 | 115 | 105 |
+| Arcane Lock | -20 | 125 | 105 |
+| Continual Flame | -20 | 125 | 105 |
+| Magic Mouth | -20 | 125 | 105 |
 | Locate Animals or Plants | -5 | 110 | 105 |
 | Lesser Restoration | 0 | 105 | 105 |
+| Find Traps | 10 | 95 | 105 |
 | Blur | 0 | 105 | 105 |
 | Knock | 5 | 100 | 105 |
 | Locate Object | 0 | 105 | 105 |
@@ -247,7 +248,7 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Protection from Poison | 50 | 75 | 125 |
 | Suggestion | 45 | 75 | 120 |
 | Darkvision | 55 | 70 | 125 |
-| Spike Growth | 50 | 70 | 120 |
+| Spike Growth | 75 | 70 | 145 |
 | Flaming Sphere | 55 | 65 | 120 |
 | Arcanist's Magic Aura | 65 | 60 | 125 |
 | Calm Emotions | 60 | 60 | 120 |
@@ -271,7 +272,7 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 Gust of Wind totals 120 from its priced parts (60 ft line 90, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
 
 ## Level 3 spells
-Totals run from 155 to 275. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are proposed, not yet confirmed by the user. The 150 ft range is priced at 25 to continue the range ladder.
+Totals run from 155 to 275. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are confirmed. The 150 ft range is priced at 25 to continue the range ladder.
 
 Fully priced from existing prices:
 
@@ -280,9 +281,9 @@ Fully priced from existing prices:
 | Fireball | 25 range + 40 radius + 15 save + 120 dice + 0 ignite - 15 | 185 |
 | Lightning Bolt | 150 line + 120 dice + 15 save + 0 ignite - 15 | 270 |
 
-Proposed effect prices:
+Effect prices:
 
-| Spell | Priced so far | Proposed effect | Total |
+| Spell | Priced so far | Effect | Total |
 |---|---|---|---|
 | Animate Dead | -20 | 175 | 155 |
 | Beacon of Hope | 0 | 155 | 155 |
@@ -335,7 +336,7 @@ Proposed effect prices:
 | Level 3 | 155 to 275 |
 
 ## Rules
-- No single effect may cost more than 90.
+- No single effect may cost more than 90, except where a level's minimum needs more: level 2 effects up to 130 and level 3 effects up to 190.
 - Update this file with every price change.
 
 ## Still unpriced
