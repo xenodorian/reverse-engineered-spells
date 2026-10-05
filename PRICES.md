@@ -68,7 +68,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Ignites objects (fire damage spells) | 0 |
 | Pushes 10 ft | 10 |
 | Advantage | 10 |
-| Affects your weapon | 65 |
+| Affects your weapon | 35 |
 | Affects one chosen target | 15 |
 | Repeat damage each turn | the die's price again + 20 |
 | Ritual | 10 |
@@ -121,5 +121,7 @@ Capped at 90 (totals fall below the window): Find Familiar 90, Identify 90, Good
 - Burning Hands totals 80 after ignition became free.
 - Find Familiar (60), Identify (70), Goodberry (85), Mage Armor (85) and Shield of Faith (55) are below 90.
 - Hunter's Mark totals 100 after the duration and target changes.
+- Divine Favor totals 65 after the weapon price change.
+- Shillelagh totals 100 with the new weapon price (its spellcasting ability effect is priced at 0).
 - Charm Person totals 90 and Animal Friendship 100.
 - Cantrips are not yet in the system.
