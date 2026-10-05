@@ -376,9 +376,9 @@ var PRESETS = [
   preset('Barkskin', '2', 110, { range: 'touch', duration: '1hour', conc: true, baseAC: 16, acArmor: true, m: true }),
   preset('Fireball', '3', 185, { range: '150', shape: 'radius', size: 20, damage: [dmg(8, 'd6')], delivery: 'savehalf', ignite: true, m: true }),
   preset('Lightning Bolt', '3', 270, { shape: 'line', size: 100, damage: [dmg(8, 'd6')], delivery: 'savehalf', m: true }),
-  preset('Fire Bolt (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
-  preset('Eldritch Blast (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
-  preset('Poison Spray (cantrip)', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' })
+  preset('Fire Bolt', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
+  preset('Eldritch Blast', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
+  preset('Poison Spray', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' })
 ];
 /* PRICING_END */
 
@@ -397,8 +397,6 @@ function fillSelect(id, rows, withPoints) {
 
 function setup() {
   fillSelect('level', [['cantrip', 'Cantrip (up to 50)'], ['1', 'Level 1 (55 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)']]);
-  var pr = $('preset'); pr.innerHTML = '<option value="">Start from scratch</option>';
-  PRESETS.forEach(function (p, i) { var o = document.createElement('option'); o.value = i; o.textContent = p.name + ' (' + p.expected + ')'; pr.appendChild(o); });
   fillSelect('casting', PRICES.casting, true);
   fillSelect('range', PRICES.range, true);
   fillSelect('shape', PRICES.shapes.map(function (s) { return [s[0], s[1], undefined]; }));
@@ -428,6 +426,22 @@ function setup() {
   var fromUrl = readHash();
   if (fromUrl) state = fromUrl; else { var saved = readSaved(); if (saved) state = saved; }
   writeState(); render();
+}
+
+var presetLevel = null;
+function refreshPresets() {
+  var level = $('level').value;
+  if (level === presetLevel) return;
+  presetLevel = level;
+  var pr = $('preset'); pr.innerHTML = '';
+  var list = [];
+  PRESETS.forEach(function (p, i) { if (p.level === level) list.push([i, p]); });
+  var first = document.createElement('option'); first.value = '';
+  first.textContent = list.length ? 'Choose a canon build' : 'No canon builds for this level';
+  pr.appendChild(first);
+  list.forEach(function (e) {
+    var o = document.createElement('option'); o.value = e[0]; o.textContent = e[1].name + ' (' + e[1].expected + ')'; pr.appendChild(o);
+  });
 }
 
 function onInput() { readState(); render(); }
@@ -547,6 +561,7 @@ function cardData(s) {
 
 function render() {
   var s = state;
+  refreshPresets();
   var concOk = concAllowed(s);
   $('duration').disabled = s.endsOnUse; $('conc').disabled = !concOk; if (!concOk) { s.conc = false; $('conc').checked = false; }
   $('matBox').style.opacity = s.m ? 1 : .45;
