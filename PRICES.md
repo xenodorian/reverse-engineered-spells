@@ -24,7 +24,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Bonus action | 20 |
 | Reaction | 30 |
 | 1 minute | -10 |
-| 10 minutes (Prayer of Healing) | -10 |
+| 10 minutes | -15 |
 | 1 hour | -20 |
 
 ## Range
@@ -211,7 +211,7 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
 | Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 20 conc - 15 | 115 |
 
-Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 160. A level 2 effect may exceed 90 only by as much as needed to reach 105. The archived "until dispelled" and 10 minute casting time details are ignored (Prayer of Healing uses the 10 point casting refund):
+Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 160. A level 2 effect may exceed 90 only by as much as needed to reach 105. "Until dispelled" duration is always free. Casting time refunds scale with how long the spell takes (1 minute -10, 10 minutes -15, 1 hour -20):
 
 | Spell | Priced so far | Proposed effect | Total |
 |---|---|---|---|
@@ -263,7 +263,7 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Heat Metal | 105 | 20 | 125 |
 | Web | 105 | 20 | 125 |
 | Spiritual Weapon | 120 | 20 | 140 |
-| Prayer of Healing | 120 | 20 | 140 |
+| Prayer of Healing | 115 | 20 | 135 |
 | Gust of Wind | 155 | 5 (sensory effects) | 160 |
 
 Gust of Wind totals 155 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds), plus 5 for its sensory effects.
