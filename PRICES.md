@@ -180,29 +180,29 @@ Fully priced from confirmed prices (no unpriced effect):
 | Poison Spray | 30 dice + 15 save + 5 range - 10 | 40 |
 | Shillelagh | 20 bonus action + 10 touch + 30 duration + 20 dice + 35 weapon - 15 (spellcasting ability effect priced at 0) | 100 |
 
-Cantrips with a proposed effect price (not yet confirmed by the user):
+Cantrips with a proposed effect price (not yet confirmed by the user). Cantrips are capped at 50, so each effect is priced to land at 50 where room allows. Guidance and Resistance share one effect price (35):
 
 | Cantrip | Priced so far | Proposed effect | Total |
 |---|---|---|---|
-| Acid Splash (second target) | 30 | 65 | 95 |
-| Chill Touch | 50 | 45 | 95 |
-| Dancing Lights | 10 | 80 | 90 |
-| Druidcraft | -5 | 90 (capped) | 85 |
-| Guidance (add die to check) | 15 | 75 | 90 |
-| Light | 65 | 30 | 95 |
-| Mage Hand | 25 | 70 | 95 |
-| Mending | -15 | 90 (capped) | 75 |
-| Message | 10 | 85 | 95 |
-| Minor Illusion | 25 | 70 | 95 |
-| Prestidigitation | 45 | 50 | 95 |
-| Produce Flame | 70 | 25 | 95 |
-| Ray of Frost | 35 | 60 | 95 |
-| Resistance (add die to save) | 10 | 75 | 85 |
-| Sacred Flame | 35 | 60 | 95 |
-| Shocking Grasp | 45 | 50 | 95 |
-| Spare the Dying | 0 | 90 | 90 |
-| Thaumaturgy | 30 | 65 | 95 |
-| Vicious Mockery | 30 | 65 | 95 |
+| Produce Flame | 70 | 0 | 70 |
+| Light | 65 | 0 | 65 |
+| Acid Splash (second target) | 30 | 20 | 50 |
+| Chill Touch | 50 | 0 | 50 |
+| Dancing Lights | 10 | 40 | 50 |
+| Druidcraft | -5 | 55 | 50 |
+| Guidance (add die to check) | 15 | 35 | 50 |
+| Mage Hand | 25 | 25 | 50 |
+| Mending | -15 | 65 | 50 |
+| Message | 10 | 40 | 50 |
+| Minor Illusion | 25 | 25 | 50 |
+| Prestidigitation | 45 | 5 | 50 |
+| Ray of Frost | 35 | 15 | 50 |
+| Sacred Flame | 35 | 15 | 50 |
+| Shocking Grasp | 45 | 5 | 50 |
+| Spare the Dying | 0 | 50 | 50 |
+| Thaumaturgy | 30 | 20 | 50 |
+| Vicious Mockery | 30 | 20 | 50 |
+| Resistance (add die to save) | 10 | 35 | 45 |
 
 Cantrips are not given a separate budget. Cantrip-only discounts are not allowed.
 
@@ -328,7 +328,7 @@ Proposed effect prices:
 ## Point windows
 | Spell level | Window |
 |---|---|
-| Cantrip | Up to 100 |
+| Cantrip | Up to 50 |
 | Level 1 | 55 to 100 |
 | Level 2 | 105 to 150 |
 | Level 3 | 155 to 275 |
@@ -343,4 +343,4 @@ Proposed effect prices:
 
 ## Still open
 - Level 1 spells below the 55 minimum: Shield of Faith 50.
-- Cantrips above the 100 cap: none.
+- Cantrips above the 50 cap: Shillelagh 100 (fully priced), Produce Flame 70 and Light 65 (their priced parts already exceed 50).

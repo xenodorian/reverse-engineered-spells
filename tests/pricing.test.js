@@ -13,7 +13,7 @@ api.PRESETS.forEach(function (p) {
 });
 const st = api.budgetStatus('1', 95);
 if (st.kind !== 'good') { failed++; console.log('FAIL budget status'); }
-const checks = [['cantrip', 100, 'good'], ['cantrip', 101, 'bad'], ['1', 54, 'warn'], ['1', 55, 'good'], ['1', 101, 'bad'], ['2', 104, 'warn'], ['3', 275, 'good'], ['3', 276, 'bad']];
+const checks = [['cantrip', 50, 'good'], ['cantrip', 51, 'bad'], ['1', 54, 'warn'], ['1', 55, 'good'], ['1', 101, 'bad'], ['2', 104, 'warn'], ['3', 275, 'good'], ['3', 276, 'bad']];
 checks.forEach(function (c) {
   const k = api.budgetStatus(c[0], c[1]).kind;
   if (k !== c[2]) { failed++; console.log('FAIL window ' + c[0] + ' at ' + c[1] + ': ' + k); }

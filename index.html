@@ -257,7 +257,7 @@ var PRICES = {
   canon: { frightImm: ['Immune to frightened', 35], tempHP: ['Temp HP each turn', 50],
            outline: ['Outline cancels invisibility', 15], bane: ['Bane style penalty', 50], bless: ['Bless style bonus', 65] },
   effectMax: 90,
-  windows: { 'cantrip': [0, 100], '1': [55, 100], '2': [105, 150], '3': [155, 275] }
+  windows: { 'cantrip': [0, 50], '1': [55, 100], '2': [105, 150], '3': [155, 275] }
 };
 
 function defaultState() {
@@ -396,7 +396,7 @@ function fillSelect(id, rows, withPoints) {
 }
 
 function setup() {
-  fillSelect('level', [['cantrip', 'Cantrip (up to 100)'], ['1', 'Level 1 (55 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)']]);
+  fillSelect('level', [['cantrip', 'Cantrip (up to 50)'], ['1', 'Level 1 (55 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)']]);
   var pr = $('preset'); pr.innerHTML = '<option value="">Start from scratch</option>';
   PRESETS.forEach(function (p, i) { var o = document.createElement('option'); o.value = i; o.textContent = p.name + ' (' + p.expected + ')'; pr.appendChild(o); });
   fillSelect('casting', PRICES.casting, true);
