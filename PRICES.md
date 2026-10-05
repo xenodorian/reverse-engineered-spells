@@ -41,7 +41,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | 150 ft | 25 |
 
 ## Area
-2 points per foot (side, length or radius) for cube, square, cone and radius.
+2 points per foot (side or radius) for cube, square, cone and radius. A line costs 10 flat, regardless of length.
 
 ## Delivery
 | Delivery | Points |
@@ -67,7 +67,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 ## Extras
 | Extra | Points |
 |---|---|
-| Ignites objects (fire damage spells) | 0 |
+| Ignites objects | 0 |
 | Pushes 10 ft | 10 |
 | Pushes 15 ft | 15 |
 | Advantage | 10 |
@@ -265,9 +265,9 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Web | 100 | 20 | 120 |
 | Spiritual Weapon | 120 | 20 | 140 |
 | Prayer of Healing | 115 | 20 | 135 |
-| Gust of Wind | 150 | 0 (sensory effects free) | 150 |
+| Gust of Wind | 40 | 0 (sensory effects free) | 40 |
 
-Gust of Wind totals 150 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
+Gust of Wind totals 40 from its priced parts (60 ft line 10, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
 
 ## Level 3 spells
 Totals run from 155 to 350. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are proposed, not yet confirmed by the user. The 150 ft range is priced at 25 to continue the range ladder.
@@ -277,7 +277,7 @@ Fully priced from existing prices:
 | Spell | Build | Total |
 |---|---|---|
 | Fireball | 25 range + 40 radius + 15 save + 120 dice + 0 ignite - 15 | 185 |
-| Lightning Bolt | 200 line + 120 dice + 15 save + 10 ignite - 15 | 330 |
+| Lightning Bolt | 10 line + 120 dice + 15 save + 0 ignite - 15 | 130 |
 
 Proposed effect prices:
 
@@ -337,3 +337,5 @@ Proposed effect prices:
 - Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 60, Goodberry 85, Identify 70, Shield of Faith 50, Find Familiar 60.
 - Cantrips below 90: Druidcraft 85, Mending 75, Resistance 85.
 - Level 2 spells below 105: none.
+- Gust of Wind totals 40, below the level 2 floor of 105.
+- Lightning Bolt totals 130, below the level 3 floor of 155.
