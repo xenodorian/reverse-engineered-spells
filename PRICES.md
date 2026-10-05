@@ -1,6 +1,6 @@
 # Canonical Prices (Level 1)
 
-Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices are simple point values. Damage is priced per die size and die count, never per point of average damage.
+Level 1 budget is 100. Point windows by level are listed under Point windows below. All prices are simple point values. Damage is priced per die size and die count, never per point of average damage.
 
 ## Dice
 | Die | Price per die |
@@ -325,6 +325,14 @@ Proposed effect prices:
 | Hypnotic Pattern | 175 | 75 | 250 |
 | Plant Growth | 215 | 35 | 250 |
 
+## Point windows
+| Spell level | Window |
+|---|---|
+| Cantrip | Up to 100 |
+| Level 1 | 55 to 100 |
+| Level 2 | 105 to 150 |
+| Level 3 | 155 to 275 |
+
 ## Rules
 - No single effect may cost more than 90.
 - Update this file with every price change.
@@ -334,6 +342,5 @@ Proposed effect prices:
 - Thunderwave's loud boom.
 
 ## Still open
-- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 60, Goodberry 85, Identify 70, Shield of Faith 50, Find Familiar 60.
-- Cantrips below 90: Druidcraft 85, Mending 75, Resistance 85.
-- Level 2 spells below 105: none.
+- Level 1 spells below the 55 minimum: Shield of Faith 50.
+- Cantrips above the 100 cap: none.
