@@ -100,7 +100,7 @@ No single effect may cost more than 90.
 ## Refunds
 | Refund | Points |
 |---|---|
-| Concentration | -20 |
+| Concentration | -25 |
 | Verbal | -5 |
 | Somatic | -5 |
 | Material with no cost | -5 |
@@ -117,14 +117,14 @@ Damaging spells (full builds):
 | Spell | Build | Total |
 |---|---|---|
 | Guiding Bolt | 60 dice + 15 attack + 20 range + 10 advantage + 5 duration - 10 (V, S) | 100 |
-| Hunter's Mark | 15 dice + 20 bonus action + 15 target + 15 range + 50 duration + 10 advantage - 20 conc - 5 (V) | 100 |
+| Hunter's Mark | 15 dice + 20 bonus action + 15 target + 15 range + 50 duration + 10 advantage - 25 conc - 5 (V) | 95 |
 | Magic Missile | 45 dice + 20 range + 25 auto-hit + 15 split - 10 | 95 |
 | Hellish Rebuke | 50 dice + 10 range + 15 save + 30 reaction - 10 | 95 |
-| Witch Bolt | 30 dice + 50 repeat + 15 attack + 5 range + 30 duration - 20 conc - 15 (V, S, M) | 95 |
+| Witch Bolt | 30 dice + 50 repeat + 15 attack + 5 range + 30 duration - 25 conc - 15 (V, S, M) | 90 |
 | Inflict Wounds | 75 dice + 15 attack + 10 touch - 10 | 90 |
 | Thunderwave | 40 dice + 30 cube + 15 save + 10 push - 10 | 85 |
 | Burning Hands | 45 dice + 30 cone + 15 save + 0 ignite - 10 | 80 |
-| Divine Favor | 10 dice + 20 bonus action + 35 weapon + 30 duration - 20 conc - 10 | 65 |
+| Divine Favor | 10 dice + 20 bonus action + 35 weapon + 30 duration - 25 conc - 10 | 60 |
 
 Non-damaging spells:
 
@@ -132,33 +132,33 @@ Non-damaging spells:
 |---|---|---|---|
 | Animal Friendship | 75 | 25 | 100 |
 | Alarm | 90 | 5 | 95 |
-| Bane | 45 | 50 | 95 |
-| Bless | 30 | 65 | 95 |
+| Bane | 40 | 50 | 90 |
+| Bless | 25 | 65 | 90 |
 | Command | 25 | 70 | 95 |
 | Comprehend Languages | 45 | 50 | 95 |
 | Create or Destroy Water | 50 | 45 | 95 |
-| Detect Evil and Good | 70 | 25 | 95 |
-| Detect Magic | 80 | 15 | 95 |
-| Detect Poison and Disease | 75 | 20 | 95 |
+| Detect Evil and Good | 65 | 25 | 90 |
+| Detect Magic | 75 | 15 | 90 |
+| Detect Poison and Disease | 70 | 20 | 90 |
 | Disguise Self | 40 | 55 | 95 |
-| Entangle | 70 | 25 | 95 |
-| Expeditious Retreat | 30 | 65 | 95 |
-| Faerie Fire | 80 | 15 | 95 |
+| Entangle | 65 | 25 | 90 |
+| Expeditious Retreat | 25 | 65 | 90 |
+| Faerie Fire | 75 | 15 | 90 |
 | False Life | 75 | 20 | 95 |
 | Feather Fall | 60 | 35 | 95 |
-| Fog Cloud | 80 | 15 | 95 |
+| Fog Cloud | 75 | 15 | 90 |
 | Grease | 60 | 35 | 95 |
 | Healing Word | 45 | 50 | 95 |
-| Heroism | 10 | 85 | 95 |
-| Hideous Laughter | 15 | 80 | 95 |
+| Heroism | 5 | 85 | 90 |
+| Hideous Laughter | 10 | 80 | 90 |
 | Illusory Script | 75 | 20 | 95 |
 | Jump | 25 | 70 | 95 |
 | Longstrider | 45 | 50 | 95 |
-| Protection from Evil and Good | 15 | 80 | 95 |
+| Protection from Evil and Good | 10 | 80 | 90 |
 | Purify Food and Drink | 15 | 80 | 95 |
 | Sanctuary | 55 | 40 | 95 |
 | Shield | 25 | 70 (+5 AC 50, Magic Missile immunity 20) | 95 |
-| Silent Image | 45 | 50 | 95 |
+| Silent Image | 40 | 50 | 90 |
 | Speak with Animals | 40 | 55 | 95 |
 | Unseen Servant | 55 | 40 | 95 |
 | Charm Person | 60 | 30 | 90 |
@@ -166,7 +166,7 @@ Non-damaging spells:
 | Goodberry | -5 | 90 (capped) | 85 |
 | Mage Armor | 55 | 45 (base AC 15 + 3 x 10) | 100 |
 | Identify | -20 | 90 (capped) | 70 |
-| Shield of Faith | 35 | 20 (+2 AC) | 55 |
+| Shield of Faith | 30 | 20 (+2 AC) | 50 |
 | Find Familiar | -30 | 90 (capped) | 60 |
 
 ## Cantrips
@@ -185,9 +185,9 @@ Cantrips with a proposed effect price (not yet confirmed by the user):
 |---|---|---|---|
 | Acid Splash (second target) | 30 | 65 | 95 |
 | Chill Touch | 50 | 45 | 95 |
-| Dancing Lights | 15 | 80 | 95 |
+| Dancing Lights | 10 | 80 | 90 |
 | Druidcraft | -5 | 90 (capped) | 85 |
-| Guidance (add die to check) | 20 | 75 | 95 |
+| Guidance (add die to check) | 15 | 75 | 90 |
 | Light | 65 | 30 | 95 |
 | Mage Hand | 25 | 70 | 95 |
 | Mending | -15 | 90 (capped) | 75 |
@@ -196,7 +196,7 @@ Cantrips with a proposed effect price (not yet confirmed by the user):
 | Prestidigitation | 45 | 50 | 95 |
 | Produce Flame | 70 | 25 | 95 |
 | Ray of Frost | 35 | 60 | 95 |
-| Resistance (add die to save) | 15 | 75 | 90 |
+| Resistance (add die to save) | 10 | 75 | 85 |
 | Sacred Flame | 35 | 60 | 95 |
 | Shocking Grasp | 45 | 50 | 95 |
 | Spare the Dying | 0 | 90 | 90 |
@@ -209,9 +209,9 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Spell | Build | Total |
 |---|---|---|
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
-| Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 20 conc - 15 | 115 |
+| Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 25 conc - 15 | 110 |
 
-Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 160. A level 2 effect may exceed 90 only by as much as needed to reach 105. "Until dispelled" duration is always free. Casting time refunds scale with how long the spell takes (1 minute -10, 10 minutes -15, 1 hour -20):
+Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 105 to 150. A level 2 effect may exceed 90 only by as much as needed to reach 105. "Until dispelled" duration is always free. Casting time refunds scale with how long the spell takes (1 minute -10, 10 minutes -15, 1 hour -20):
 
 | Spell | Priced so far | Proposed effect | Total |
 |---|---|---|---|
@@ -221,52 +221,52 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Magic Mouth | -10 | 115 | 105 |
 | Locate Animals or Plants | -5 | 110 | 105 |
 | Lesser Restoration | 0 | 105 | 105 |
-| Blur | 5 | 100 | 105 |
+| Blur | 0 | 100 | 100 |
 | Knock | 5 | 100 | 105 |
-| Locate Object | 5 | 100 | 105 |
-| Enlarge/Reduce | 15 | 90 | 105 |
+| Locate Object | 0 | 100 | 100 |
+| Enlarge/Reduce | 10 | 90 | 100 |
 | Misty Step | 15 | 90 | 105 |
-| Alter Self | 20 | 90 | 110 |
-| Hold Person | 20 | 90 | 110 |
+| Alter Self | 15 | 90 | 105 |
+| Hold Person | 15 | 90 | 105 |
 | Mirror Image | 20 | 90 | 110 |
-| Invisibility | 25 | 90 | 115 |
-| Ray of Enfeeblement | 25 | 90 | 115 |
-| Spider Climb | 25 | 90 | 115 |
-| Levitate | 30 | 90 | 120 |
-| Enhance Ability | 35 | 90 | 125 |
+| Invisibility | 20 | 90 | 110 |
+| Ray of Enfeeblement | 20 | 90 | 110 |
+| Spider Climb | 20 | 90 | 110 |
+| Levitate | 25 | 90 | 115 |
+| Enhance Ability | 30 | 90 | 120 |
 | See Invisibility | 35 | 90 | 125 |
 | Warding Bond | 40 | 85 | 125 |
 | Blindness/Deafness | 45 | 80 | 125 |
 | Enthrall | 45 | 80 | 125 |
 | Rope Trick | 45 | 80 | 125 |
 | Aid | 50 | 75 | 125 |
-| Darkness | 50 | 75 | 125 |
-| Magic Weapon | 50 | 75 | 125 |
+| Darkness | 45 | 75 | 120 |
+| Magic Weapon | 45 | 75 | 120 |
 | Protection from Poison | 50 | 75 | 125 |
-| Suggestion | 50 | 75 | 125 |
+| Suggestion | 45 | 75 | 120 |
 | Darkvision | 55 | 70 | 125 |
-| Spike Growth | 55 | 70 | 125 |
-| Flaming Sphere | 60 | 65 | 125 |
+| Spike Growth | 50 | 70 | 120 |
+| Flaming Sphere | 55 | 65 | 120 |
 | Arcanist's Magic Aura | 65 | 60 | 125 |
-| Calm Emotions | 65 | 60 | 125 |
-| Crown of Madness | 65 | 60 | 125 |
+| Calm Emotions | 60 | 60 | 120 |
+| Crown of Madness | 60 | 60 | 120 |
 | Animal Messenger | 70 | 55 | 125 |
-| Detect Thoughts | 70 | 55 | 125 |
-| Pass without Trace | 75 | 50 | 125 |
-| Silence | 80 | 45 | 125 |
-| Flame Blade | 85 | 40 | 125 |
+| Detect Thoughts | 65 | 55 | 120 |
+| Pass without Trace | 70 | 50 | 120 |
+| Silence | 75 | 45 | 120 |
+| Flame Blade | 80 | 40 | 120 |
 | Gentle Repose | 85 | 40 | 125 |
 | Zone of Truth | 85 | 40 | 125 |
-| Moonbeam | 90 | 35 | 125 |
+| Moonbeam | 85 | 35 | 120 |
 | Shatter | 90 | 35 | 125 |
 | Acid Arrow | 95 | 30 | 125 |
-| Heat Metal | 105 | 20 | 125 |
-| Web | 105 | 20 | 125 |
+| Heat Metal | 100 | 20 | 120 |
+| Web | 100 | 20 | 120 |
 | Spiritual Weapon | 120 | 20 | 140 |
 | Prayer of Healing | 115 | 20 | 135 |
-| Gust of Wind | 155 | 5 (sensory effects) | 160 |
+| Gust of Wind | 150 | 0 (sensory effects free) | 150 |
 
-Gust of Wind totals 155 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds), plus 5 for its sensory effects.
+Gust of Wind totals 150 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
 
 ## Rules
 - No single effect may cost more than 90.
@@ -277,5 +277,6 @@ Gust of Wind totals 155 from its priced parts (60 ft line 120, difficult terrain
 - Thunderwave's loud boom.
 
 ## Still open
-- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 65, Goodberry 85, Identify 70, Shield of Faith 55, Find Familiar 60.
-- Capped cantrips below 90: Druidcraft 85, Mending 75.
+- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 60, Goodberry 85, Identify 70, Shield of Faith 50, Find Familiar 60.
+- Cantrips below 90: Druidcraft 85, Mending 75, Resistance 85.
+- Level 2 spells below 105 after the concentration change: Blur 100, Locate Object 100, Enlarge/Reduce 100.
