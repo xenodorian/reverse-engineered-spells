@@ -156,8 +156,7 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
           <label class="check"><input type="checkbox" id="ignite"> Ignites flammable objects <small>free</small></label>
           <label for="push">Pushes targets</label><select id="push"></select>
           <label class="check"><input type="checkbox" id="advantage"> Grants advantage <small>+10</small></label>
-          <label class="check"><input type="checkbox" id="weapon"> Adds damage to your weapon <small>+35</small></label>
-          <label class="check"><input type="checkbox" id="weaponMagic"> Weapon becomes magical, uses your spellcasting ability <small>+5</small></label>
+          <label class="check"><input type="checkbox" id="weapon"> Affects your weapon <small>+35</small></label>
           <label class="check"><input type="checkbox" id="chosen"> Affects one chosen target <small>+15</small></label>
           <label class="check"><input type="checkbox" id="modifier"> Adds your spellcasting modifier <small>+50</small></label>
         </div>
@@ -233,7 +232,7 @@ table.prices td, table.prices th { border: 1px solid var(--line); padding: 3px 8
 var PRICES = {
   dice: { d4: 10, d6: 15, d8: 20, d10: 25, d12: 30 },
   flat: 5,
-  kinds: { damage: ['Damage', 1], heal: ['Healing (HP gain)', 2], pool: ['HP pool', 0.5], replace: ['Replaces your weapon die (no added damage)', 0] },
+  kinds: { damage: ['Damage', 1], heal: ['Healing (HP gain)', 2], pool: ['HP pool', 0.5] },
   repeatExtra: 20,
   casting: [['action', 'Action', 0], ['bonus', 'Bonus action', 20], ['reaction', 'Reaction', 30],
             ['1min', '1 minute', -10], ['10min', '10 minutes', -15], ['1hour', '1 hour', -20]],
@@ -252,7 +251,7 @@ var PRICES = {
              ['250', '101 to 250 gp', 25], ['over', 'Over 250 gp', 30]],
   consumedExtra: 5,
   push: [['none', 'No push', 0], ['10', 'Push 10 ft', 10], ['15', 'Push 15 ft', 15]],
-  advantage: 10, weapon: 35, weaponMagic: 5, chosen: 15, modifier: 50,
+  advantage: 10, weapon: 35, chosen: 15, modifier: 50,
   conditions: { charmed: ['Charmed', 30], prone: ['Prone', 25], difficult: ['Difficult terrain', 10],
                 restrained: ['Restrained', 15], incapacitated: ['Incapacitated', 55] },
   acBonus: 10, baseAcFlat: 15, baseAcPer: 10, acArmor: 15, mmImmune: 20,
@@ -266,7 +265,7 @@ function defaultState() {
   return { name: '', level: '1', casting: 'action', range: 'self', shape: 'none', size: 15, damage: [], flat: 0,
     delivery: 'none', save: 'DEX', split: false, duration: 'instant', conc: false, ritual: false,
     v: true, s: true, m: false, matTier: 'none', consumed: false, matText: '',
-    ignite: false, push: 'none', advantage: false, weapon: false, weaponMagic: false, endsOnUse: false, chosen: false, modifier: false,
+    ignite: false, push: 'none', advantage: false, weapon: false, endsOnUse: false, chosen: false, modifier: false,
     charmed: false, prone: false, difficult: false, restrained: false, incapacitated: false,
     acBonus: 0, baseAC: 0, acArmor: false, mmImmune: false,
     frightImm: false, tempHP: false, outline: false, bane: false, bless: false,
@@ -310,7 +309,6 @@ function priceSpell(st) {
   if (st.push !== 'none') { var p = lookup(PRICES.push, st.push); add('Effects', p[1], p[2]); }
   if (st.advantage) add('Effects', 'Grants advantage', PRICES.advantage);
   if (st.weapon) add('Effects', 'Affects your weapon', PRICES.weapon);
-  if (st.weaponMagic) add('Effects', 'Weapon becomes magical and uses your spellcasting ability', PRICES.weaponMagic);
   if (st.chosen) add('Effects', 'Affects one chosen target', PRICES.chosen);
   if (st.modifier) add('Effects', 'Adds your spellcasting modifier', PRICES.modifier);
   Object.keys(PRICES.conditions).forEach(function (k) {
@@ -380,8 +378,7 @@ var PRESETS = [
   preset('Lightning Bolt', '3', 270, { shape: 'line', size: 100, damage: [dmg(8, 'd6')], delivery: 'savehalf', m: true }),
   preset('Fire Bolt (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
   preset('Eldritch Blast (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
-  preset('Poison Spray (cantrip)', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
-  preset('Shillelagh (cantrip)', 'cantrip', 50, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8', 'replace')], weaponMagic: true, m: true })
+  preset('Poison Spray (cantrip)', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' })
 ];
 /* PRICING_END */
 
@@ -445,7 +442,7 @@ function readState() {
   s.consumed = $('consumed').checked; s.matText = $('matText').value;
   s.ignite = $('ignite').checked; s.push = $('push').value; s.advantage = $('advantage').checked;
   s.weapon = $('weapon').checked; s.chosen = $('chosen').checked; s.modifier = $('modifier').checked;
-  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'weaponMagic', 'endsOnUse']
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'endsOnUse']
     .forEach(function (k) { s[k] = $(k).checked; });
   s.acBonus = Number($('acBonus').value) || 0; s.baseAC = Number($('baseAC').value) || 0; s.desc = $('desc').value;
   document.querySelectorAll('#damageRows .row').forEach(function (row, i) {
@@ -469,7 +466,7 @@ function writeState() {
   $('matTier').value = s.matTier; $('consumed').checked = s.consumed; $('matText').value = s.matText;
   $('ignite').checked = s.ignite; $('push').value = s.push; $('advantage').checked = s.advantage;
   $('weapon').checked = s.weapon; $('chosen').checked = s.chosen; $('modifier').checked = s.modifier;
-  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'weaponMagic', 'endsOnUse']
+  ['charmed', 'prone', 'difficult', 'restrained', 'incapacitated', 'frightImm', 'tempHP', 'outline', 'bane', 'bless', 'mmImmune', 'acArmor', 'endsOnUse']
     .forEach(function (k) { $(k).checked = s[k]; });
   $('acBonus').value = s.acBonus; $('baseAC').value = String(s.baseAC); $('desc').value = s.desc;
   renderRows();
@@ -521,7 +518,7 @@ function cardData(s) {
   var effects = [];
   s.damage.forEach(function (d) {
     var k = PRICES.kinds[d.kind];
-    var t = d.count + d.die + (d.type ? ' ' + d.type : '') + ' ' + (d.kind === 'heal' ? 'healing' : d.kind === 'pool' ? 'hit point pool' : d.kind === 'replace' ? 'weapon damage (replaces the weapon die)' : 'damage');
+    var t = d.count + d.die + (d.type ? ' ' + d.type : '') + ' ' + (d.kind === 'heal' ? 'healing' : d.kind === 'pool' ? 'hit point pool' : 'damage');
     effects.push(t + (d.repeat ? ', repeated each turn' : ''));
   });
   if (s.flat) effects.push('+' + s.flat + ' flat bonus total');
@@ -535,8 +532,7 @@ function cardData(s) {
   if (s.ignite) effects.push('Ignites flammable objects');
   if (s.push !== 'none') effects.push('Pushes targets ' + s.push + ' feet');
   if (s.advantage) effects.push('Grants advantage');
-  if (s.weapon) effects.push('Adds damage to your weapon');
-  if (s.weaponMagic) effects.push('Weapon becomes magical and uses your spellcasting ability');
+  if (s.weapon) effects.push('Affects your weapon');
   if (s.chosen) effects.push('Affects one chosen target');
   if (s.modifier) effects.push('Adds your spellcasting modifier');
   Object.keys(PRICES.conditions).forEach(function (k) { if (s[k]) effects.push(PRICES.conditions[k][0]); });

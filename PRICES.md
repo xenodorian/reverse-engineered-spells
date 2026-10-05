@@ -71,9 +71,7 @@ Level 1 budget is 100. Point windows by level are listed under Point windows bel
 | Pushes 10 ft | 10 |
 | Pushes 15 ft | 15 |
 | Advantage | 10 |
-| Adds damage to your weapon | 35 |
-| Weapon becomes magical and uses your spellcasting ability | 5 |
-| Dice that replace your weapon's own die (no added damage) | 0 |
+| Affects your weapon | 35 |
 | Duration that ends when the spell is used | priced as 1 round (5) |
 | Resist save for a minor side effect only | 0 |
 | Affects one chosen target | 15 |
@@ -182,7 +180,6 @@ Fully priced from confirmed prices (no unpriced effect):
 | Fire Bolt | 25 dice + 15 attack + 20 range + 0 ignite - 10 | 50 |
 | Eldritch Blast | 25 dice + 15 attack + 20 range - 10 | 50 |
 | Poison Spray | 30 dice + 15 save + 5 range - 10 | 40 |
-| Shillelagh | 20 bonus action + 10 touch + 30 duration + 0 dice (d8 replaces the weapon die) + 5 magical weapon using spellcasting ability - 15 | 50 |
 
 Cantrips with a proposed effect price (not yet confirmed by the user). Cantrips are capped at 50, so each effect is priced to land at 50 where room allows. Guidance and Resistance share one effect price (35):
 
