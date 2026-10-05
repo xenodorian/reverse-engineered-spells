@@ -262,7 +262,7 @@ var PRICES = {
 };
 
 function defaultState() {
-  return { name: '', level: '1', casting: 'action', range: 'self', shape: 'none', size: 15, damage: [], flat: 0,
+  return { name: '', level: '1', casting: 'action', range: 'touch', shape: 'none', size: 15, damage: [], flat: 0,
     delivery: 'none', save: 'DEX', split: false, duration: 'instant', conc: false, ritual: false,
     v: true, s: true, m: false, matTier: 'none', consumed: false, matText: '',
     ignite: false, push: 'none', advantage: false, weapon: false, endsOnUse: false, chosen: false, modifier: false,
@@ -353,7 +353,7 @@ function budgetStatus(level, total) {
 function fmt(n) { return (Math.round(n * 10) / 10).toString(); }
 
 function preset(name, level, expected, over) {
-  var st = defaultState(); for (var k in over) st[k] = over[k];
+  var st = defaultState(); st.range = 'self'; for (var k in over) st[k] = over[k];
   st.name = name; st.level = level;
   return { name: name, level: level, expected: expected, state: st };
 }
