@@ -75,6 +75,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | +1 AC | 10 |
 | Base or minimum AC: having a base AC of 10 | 15 |
 | Base or minimum AC, per point above 10 | 10 |
+| AC effect works while wearing armor | 15 |
 | Immunity to Magic Missile | 20 |
 
 ## Conditions and shared effects
@@ -206,7 +207,7 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Spell | Build | Total |
 |---|---|---|
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
-| Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) - 20 conc - 15 | 100 |
+| Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 20 conc - 15 | 115 |
 
 Level 2 spells missing a single price: Shatter, Web, Moonbeam, Flame Blade, Spike Growth, Magic Weapon, Acid Arrow.
 
