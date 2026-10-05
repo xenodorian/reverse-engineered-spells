@@ -343,7 +343,7 @@ function priceSpell(st) {
 
 function budgetStatus(level, total) {
   var w = PRICES.windows[level];
-  if (!w) return { kind: 'free', text: 'Free build: no point window.' };
+  if (!w) return { kind: 'free', text: 'Cantrip: no point window is set.' };
   if (total > w[1]) return { kind: 'bad', text: 'Over the cap by ' + fmt(total - w[1]) + '.' };
   if (total < w[0]) return { kind: 'warn', text: 'Below the minimum by ' + fmt(w[0] - total) + '. You can spend more.' };
   return { kind: 'good', text: 'In range. ' + fmt(w[1] - total) + ' points left before the cap.' };
@@ -375,10 +375,10 @@ var PRESETS = [
   preset('Barkskin', '2', 110, { range: 'touch', duration: '1hour', conc: true, baseAC: 16, acArmor: true, m: true }),
   preset('Fireball', '3', 185, { range: '150', shape: 'radius', size: 20, damage: [dmg(8, 'd6')], delivery: 'savehalf', ignite: true, m: true }),
   preset('Lightning Bolt', '3', 270, { shape: 'line', size: 100, damage: [dmg(8, 'd6')], delivery: 'savehalf', m: true }),
-  preset('Fire Bolt (cantrip)', 'free', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
-  preset('Eldritch Blast (cantrip)', 'free', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
-  preset('Poison Spray (cantrip)', 'free', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
-  preset('Shillelagh (cantrip)', 'free', 100, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8')], weapon: true, m: true })
+  preset('Fire Bolt (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack', ignite: true }),
+  preset('Eldritch Blast (cantrip)', 'cantrip', 50, { range: '120', damage: [dmg(1, 'd10')], delivery: 'attack' }),
+  preset('Poison Spray (cantrip)', 'cantrip', 40, { range: '10', damage: [dmg(1, 'd12')], delivery: 'saveneg' }),
+  preset('Shillelagh (cantrip)', 'cantrip', 100, { casting: 'bonus', range: 'touch', duration: '1min', damage: [dmg(1, 'd8')], weapon: true, m: true })
 ];
 /* PRICING_END */
 
@@ -396,7 +396,7 @@ function fillSelect(id, rows, withPoints) {
 }
 
 function setup() {
-  fillSelect('level', [['1', 'Level 1 (90 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)'], ['free', 'Cantrip or free build (no window)']]);
+  fillSelect('level', [['cantrip', 'Cantrip (no point window)'], ['1', 'Level 1 (90 to 100)'], ['2', 'Level 2 (105 to 150)'], ['3', 'Level 3 (155 to 275)']]);
   var pr = $('preset'); pr.innerHTML = '<option value="">Start from scratch</option>';
   PRESETS.forEach(function (p, i) { var o = document.createElement('option'); o.value = i; o.textContent = p.name + ' (' + p.expected + ')'; pr.appendChild(o); });
   fillSelect('casting', PRICES.casting, true);
@@ -566,7 +566,7 @@ function render() {
   $('fill').style.width = Math.max(0, Math.min(100, res.total / max * 100)) + '%';
   var zone = $('zone');
   if (w) { zone.style.display = ''; zone.style.left = (w[0] / max * 100) + '%'; zone.style.width = ((w[1] - w[0]) / max * 100) + '%'; $('windowText').textContent = 'Target window for this level: ' + w[0] + ' to ' + w[1] + ' points.'; }
-  else { zone.style.display = 'none'; $('windowText').textContent = 'No point window for a free build.'; }
+  else { zone.style.display = 'none'; $('windowText').textContent = 'No point window is set for cantrips.'; }
   var tb = $('breakdown'); tb.innerHTML = ''; var last = '';
   if (!res.lines.length) tb.innerHTML = '<tr><td colspan="2" class="hint">Choose options to see costs.</td></tr>';
   res.lines.forEach(function (l) {
@@ -578,7 +578,7 @@ function render() {
   var cd = cardData(s); var card = $('card'); card.innerHTML = '';
   var h = document.createElement('h3'); h.textContent = s.name || 'Unnamed spell'; card.appendChild(h);
   var sub = document.createElement('div'); sub.className = 'sub';
-  sub.textContent = (s.level === 'free' ? 'Custom spell' : 'Level ' + s.level + ' spell') + ', ' + fmt(res.total) + ' points'; card.appendChild(sub);
+  sub.textContent = (s.level === 'cantrip' ? 'Cantrip' : 'Level ' + s.level + ' spell') + ', ' + fmt(res.total) + ' points'; card.appendChild(sub);
   var dl = document.createElement('dl');
   [['Casting time', cd.casting], ['Range', cd.range], ['Components', cd.comps], ['Duration', cd.duration]].forEach(function (r) {
     var dt = document.createElement('dt'); dt.textContent = r[0]; var dd = document.createElement('dd'); dd.textContent = r[1]; dl.appendChild(dt); dl.appendChild(dd);
@@ -591,7 +591,7 @@ function render() {
 
 function cardText() {
   var s = state, res = priceSpell(s), cd = cardData(s);
-  var out = [(s.name || 'Unnamed spell') + ' (' + (s.level === 'free' ? 'custom' : 'level ' + s.level) + ', ' + fmt(res.total) + ' points)',
+  var out = [(s.name || 'Unnamed spell') + ' (' + (s.level === 'cantrip' ? 'cantrip' : 'level ' + s.level) + ', ' + fmt(res.total) + ' points)',
     'Casting time: ' + cd.casting, 'Range: ' + cd.range, 'Components: ' + cd.comps, 'Duration: ' + cd.duration];
   cd.effects.forEach(function (e) { out.push('- ' + e); });
   if (s.desc) out.push('', s.desc);
@@ -624,7 +624,8 @@ function sanitize(o) {
   d.custom = (Array.isArray(o.custom) ? o.custom : []).slice(0, 12).map(function (x) {
     return { name: String(x.name || '').slice(0, 60), points: Math.max(0, Math.min(PRICES.effectMax, Number(x.points) || 0)) };
   });
-  if (!PRICES.windows[d.level] && d.level !== 'free') d.level = '1';
+  if (d.level === 'free') d.level = 'cantrip';
+  if (!PRICES.windows[d.level] && d.level !== 'cantrip') d.level = '1';
   return d;
 }
 
@@ -653,7 +654,7 @@ function buildPriceTables() {
   html += tbl('Area (per foot)', PRICES.shapes.slice(1).map(function (r) { return [r[1], r[2]]; }), ['Shape', 'Points per foot']);
   html += tbl('Duration', PRICES.duration.map(function (r) { return [r[1], r[2]]; }), ['Duration', 'Points']);
   html += tbl('Material refunds', PRICES.material.map(function (r) { return [r[1], '-' + r[2]]; }), ['Value', 'Refund']);
-  html += tbl('Level windows', Object.keys(PRICES.windows).map(function (k) { return ['Level ' + k, PRICES.windows[k][0] + ' to ' + PRICES.windows[k][1]]; }), ['Level', 'Window']);
+  html += tbl('Level windows', [['Cantrip', 'No window set']].concat(Object.keys(PRICES.windows).map(function (k) { return ['Level ' + k, PRICES.windows[k][0] + ' to ' + PRICES.windows[k][1]]; })), ['Level', 'Window']);
   $('priceTables').innerHTML = html;
 }
 
