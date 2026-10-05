@@ -24,6 +24,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | Bonus action | 20 |
 | Reaction | 30 |
 | 1 minute | -10 |
+| 10 minutes (Prayer of Healing) | -10 |
 | 1 hour | -20 |
 
 ## Range
@@ -67,6 +68,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 |---|---|
 | Ignites objects (fire damage spells) | 0 |
 | Pushes 10 ft | 10 |
+| Pushes 15 ft | 15 |
 | Advantage | 10 |
 | Affects your weapon | 35 |
 | Affects one chosen target | 15 |
@@ -209,7 +211,62 @@ Cantrips are not given a separate budget. Cantrip-only discounts are not allowed
 | Scorching Ray | 90 dice (six d6) + 15 attack + 20 range + 15 split - 10 | 130 |
 | Barkskin | 10 touch + 50 duration + 75 minimum AC 16 (15 + 6 x 10) + 15 works while wearing armor - 20 conc - 15 | 115 |
 
-Level 2 spells missing a single price: Shatter, Web, Moonbeam, Flame Blade, Spike Growth, Magic Weapon, Acid Arrow.
+Proposed effect prices (not yet confirmed by the user). Target total is 105 to 150, with each effect at most 90 and at least 20 where room allows:
+
+| Spell | Priced so far | Proposed effect | Total |
+|---|---|---|---|
+| Augury | -25 | 90 | 65 |
+| Arcane Lock | -10 | 90 | 80 |
+| Continual Flame | -10 | 90 | 80 |
+| Magic Mouth | -10 | 90 | 80 |
+| Locate Animals or Plants | -5 | 90 | 85 |
+| Lesser Restoration | 0 | 90 | 90 |
+| Blur | 5 | 90 | 95 |
+| Knock | 5 | 90 | 95 |
+| Locate Object | 5 | 90 | 95 |
+| Enlarge/Reduce | 15 | 90 | 105 |
+| Misty Step | 15 | 90 | 105 |
+| Alter Self | 20 | 90 | 110 |
+| Hold Person | 20 | 90 | 110 |
+| Mirror Image | 20 | 90 | 110 |
+| Invisibility | 25 | 90 | 115 |
+| Ray of Enfeeblement | 25 | 90 | 115 |
+| Spider Climb | 25 | 90 | 115 |
+| Levitate | 30 | 90 | 120 |
+| Enhance Ability | 35 | 90 | 125 |
+| See Invisibility | 35 | 90 | 125 |
+| Warding Bond | 40 | 85 | 125 |
+| Blindness/Deafness | 45 | 80 | 125 |
+| Enthrall | 45 | 80 | 125 |
+| Rope Trick | 45 | 80 | 125 |
+| Aid | 50 | 75 | 125 |
+| Darkness | 50 | 75 | 125 |
+| Magic Weapon | 50 | 75 | 125 |
+| Protection from Poison | 50 | 75 | 125 |
+| Suggestion | 50 | 75 | 125 |
+| Darkvision | 55 | 70 | 125 |
+| Spike Growth | 55 | 70 | 125 |
+| Flaming Sphere | 60 | 65 | 125 |
+| Arcanist's Magic Aura | 65 | 60 | 125 |
+| Calm Emotions | 65 | 60 | 125 |
+| Crown of Madness | 65 | 60 | 125 |
+| Animal Messenger | 70 | 55 | 125 |
+| Detect Thoughts | 70 | 55 | 125 |
+| Pass without Trace | 75 | 50 | 125 |
+| Silence | 80 | 45 | 125 |
+| Flame Blade | 85 | 40 | 125 |
+| Gentle Repose | 85 | 40 | 125 |
+| Zone of Truth | 85 | 40 | 125 |
+| Moonbeam | 90 | 35 | 125 |
+| Shatter | 90 | 35 | 125 |
+| Acid Arrow | 95 | 30 | 125 |
+| Heat Metal | 105 | 20 | 125 |
+| Web | 105 | 20 | 125 |
+| Spiritual Weapon | 120 | 20 | 140 |
+| Prayer of Healing | 120 | 20 | 140 |
+| Gust of Wind | 155 | 0 | 155 |
+
+Gust of Wind totals 155 from its priced parts alone (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds), so its unpriced effects are left at 0.
 
 ## Rules
 - No single effect may cost more than 90.
