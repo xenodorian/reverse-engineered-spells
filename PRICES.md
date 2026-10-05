@@ -270,7 +270,7 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 Gust of Wind totals 120 from its priced parts (60 ft line 90, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
 
 ## Level 3 spells
-Totals run from 155 to 350. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are proposed, not yet confirmed by the user. The 150 ft range is priced at 25 to continue the range ladder.
+Totals run from 155 to 275. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are proposed, not yet confirmed by the user. The 150 ft range is priced at 25 to continue the range ladder.
 
 Fully priced from existing prices:
 
