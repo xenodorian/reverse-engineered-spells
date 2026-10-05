@@ -107,21 +107,108 @@ No single effect may cost more than 90.
 | Material over 250 gp | -30 |
 | Consumed material | extra -5 |
 
-## Other unique effects (priced to fill the room left)
-Alarm 5, Animal Friendship (charmed 30, less 5) 25, Bane 50, Bless 65, Charm Person (charmed) 30, Command 70, Comprehend Languages 50, Create or Destroy Water 45, Cure Wounds 50, Detect Evil and Good 25, Detect Magic 15, Detect Poison and Disease 20, Disguise Self 55, Entangle 25, Expeditious Retreat 65, Faerie Fire 15, False Life 20, Feather Fall 35, Fog Cloud 15, Grease 35, Healing Word 50, Heroism 85, Hideous Laughter 80, Illusory Script 20, Jump 70, Longstrider 50, Protection from Evil and Good 80, Purify Food and Drink 80, Sanctuary 40, Silent Image 50, Speak with Animals 55, Unseen Servant 40.
+## Level 1 spells (all totals, highest to lowest)
+Damaging spells (full builds):
 
-Capped at 90 (totals fall below the window): Find Familiar 90, Identify 90, Goodberry 90.
+| Spell | Build | Total |
+|---|---|---|
+| Guiding Bolt | 60 dice + 15 attack + 20 range + 10 advantage + 5 duration - 10 (V, S) | 100 |
+| Hunter's Mark | 15 dice + 20 bonus action + 15 target + 15 range + 50 duration + 10 advantage - 20 conc - 5 (V) | 100 |
+| Magic Missile | 45 dice + 20 range + 25 auto-hit + 15 split - 10 | 95 |
+| Hellish Rebuke | 50 dice + 10 range + 15 save + 30 reaction - 10 | 95 |
+| Witch Bolt | 30 dice + 50 repeat + 15 attack + 5 range + 30 duration - 20 conc - 15 (V, S, M) | 95 |
+| Inflict Wounds | 75 dice + 15 attack + 10 touch - 10 | 90 |
+| Thunderwave | 40 dice + 30 cube + 15 save + 10 push - 10 | 85 |
+| Burning Hands | 45 dice + 30 cone + 15 save + 0 ignite - 10 | 80 |
+| Divine Favor | 10 dice + 20 bonus action + 35 weapon + 30 duration - 20 conc - 10 | 65 |
+
+Non-damaging spells:
+
+| Spell | Priced so far | Unique effect | Total |
+|---|---|---|---|
+| Animal Friendship | 75 | 25 | 100 |
+| Alarm | 90 | 5 | 95 |
+| Bane | 45 | 50 | 95 |
+| Bless | 30 | 65 | 95 |
+| Command | 25 | 70 | 95 |
+| Comprehend Languages | 45 | 50 | 95 |
+| Create or Destroy Water | 50 | 45 | 95 |
+| Detect Evil and Good | 70 | 25 | 95 |
+| Detect Magic | 80 | 15 | 95 |
+| Detect Poison and Disease | 75 | 20 | 95 |
+| Disguise Self | 40 | 55 | 95 |
+| Entangle | 70 | 25 | 95 |
+| Expeditious Retreat | 30 | 65 | 95 |
+| Faerie Fire | 80 | 15 | 95 |
+| False Life | 75 | 20 | 95 |
+| Feather Fall | 60 | 35 | 95 |
+| Fog Cloud | 80 | 15 | 95 |
+| Grease | 60 | 35 | 95 |
+| Healing Word | 45 | 50 | 95 |
+| Heroism | 10 | 85 | 95 |
+| Hideous Laughter | 15 | 80 | 95 |
+| Illusory Script | 75 | 20 | 95 |
+| Jump | 25 | 70 | 95 |
+| Longstrider | 45 | 50 | 95 |
+| Protection from Evil and Good | 15 | 80 | 95 |
+| Purify Food and Drink | 15 | 80 | 95 |
+| Sanctuary | 55 | 40 | 95 |
+| Shield | 25 | 70 (+5 AC 50, Magic Missile immunity 20) | 95 |
+| Silent Image | 45 | 50 | 95 |
+| Speak with Animals | 40 | 55 | 95 |
+| Unseen Servant | 55 | 40 | 95 |
+| Charm Person | 60 | 30 | 90 |
+| Cure Wounds | 40 | 50 | 90 |
+| Goodberry | -5 | 90 (capped) | 85 |
+| Mage Armor | 55 | 30 | 85 |
+| Identify | -20 | 90 (capped) | 70 |
+| Shield of Faith | 35 | 20 (+2 AC) | 55 |
+| Find Familiar | -30 | 90 (capped) | 60 |
+
+## Cantrips
+Fully priced from confirmed prices (no unpriced effect):
+
+| Cantrip | Build | Total |
+|---|---|---|
+| Fire Bolt | 25 dice + 15 attack + 20 range + 0 ignite - 10 | 50 |
+| Eldritch Blast | 25 dice + 15 attack + 20 range - 10 | 50 |
+| Poison Spray | 30 dice + 15 save + 5 range - 10 | 40 |
+| Shillelagh | 20 bonus action + 10 touch + 30 duration + 20 dice + 35 weapon - 15 (spellcasting ability effect priced at 0) | 100 |
+
+Cantrips with a proposed effect price (not yet confirmed by the user):
+
+| Cantrip | Priced so far | Proposed effect | Total |
+|---|---|---|---|
+| Acid Splash (second target) | 30 | 65 | 95 |
+| Chill Touch | 50 | 45 | 95 |
+| Dancing Lights | 15 | 80 | 95 |
+| Druidcraft | -5 | 90 (capped) | 85 |
+| Guidance (add die to check) | 20 | 75 | 95 |
+| Light | 65 | 30 | 95 |
+| Mage Hand | 25 | 70 | 95 |
+| Mending | -15 | 90 (capped) | 75 |
+| Message | 10 | 85 | 95 |
+| Minor Illusion | 25 | 70 | 95 |
+| Prestidigitation | 45 | 50 | 95 |
+| Produce Flame | 70 | 25 | 95 |
+| Ray of Frost | 35 | 60 | 95 |
+| Resistance (add die to save) | 15 | 75 | 90 |
+| Sacred Flame | 35 | 60 | 95 |
+| Shocking Grasp | 45 | 50 | 95 |
+| Spare the Dying | 0 | 90 | 90 |
+| Thaumaturgy | 30 | 65 | 95 |
+| Vicious Mockery | 30 | 65 | 95 |
+
+Cantrips are not given a separate budget. Cantrip-only discounts are not allowed.
+
+## Rules
+- No single effect may cost more than 90.
+- Update this file with every price change.
 
 ## Still unpriced
 - Hunter's Mark's mark transfer.
 - Thunderwave's loud boom.
 
 ## Still open
-- Thunderwave totals 85 (push at 20 would give 95).
-- Burning Hands totals 80 after ignition became free.
-- Find Familiar (60), Identify (70), Goodberry (85), Mage Armor (85) and Shield of Faith (55) are below 90.
-- Hunter's Mark totals 100 after the duration and target changes.
-- Divine Favor totals 65 after the weapon price change.
-- Shillelagh totals 100 with the new weapon price (its spellcasting ability effect is priced at 0).
-- Charm Person totals 90 and Animal Friendship 100.
-- Cantrips are not yet in the system.
+- Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 65, Goodberry 85, Mage Armor 85, Identify 70, Shield of Faith 55, Find Familiar 60.
+- Capped cantrips below 90: Druidcraft 85, Mending 75.
