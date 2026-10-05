@@ -38,6 +38,7 @@ Level 1 budget is 100. Target window for a built spell is 90 to 100. All prices 
 | 60 ft | 10 |
 | 90 ft | 15 |
 | 120 ft | 20 |
+| 150 ft | 25 |
 
 ## Area
 2 points per foot (side, length or radius) for cube, square, cone and radius.
@@ -267,6 +268,62 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Gust of Wind | 150 | 0 (sensory effects free) | 150 |
 
 Gust of Wind totals 150 from its priced parts (60 ft line 120, difficult terrain 10, push 15 ft 15, save 15, duration 30, less refunds). Its sensory effects are free.
+
+## Level 3 spells
+Totals run from 155 to 350. A level 3 effect may exceed 90 only by as much as needed to reach 155. Effect prices are proposed, not yet confirmed by the user. The 150 ft range is priced at 25 to continue the range ladder.
+
+Fully priced from existing prices:
+
+| Spell | Build | Total |
+|---|---|---|
+| Fireball | 25 range + 40 radius + 15 save + 120 dice + 0 ignite - 15 | 185 |
+| Lightning Bolt | 200 line + 120 dice + 15 save + 10 ignite - 15 | 330 |
+
+Proposed effect prices:
+
+| Spell | Priced so far | Proposed effect | Total |
+|---|---|---|---|
+| Animate Dead | -20 | 175 | 155 |
+| Beacon of Hope | 0 | 155 | 155 |
+| Bestow Curse | 20 | 135 | 155 |
+| Blink | 20 | 135 | 155 |
+| Clairvoyance (1 mile range folded into effect) | -30 | 185 | 155 |
+| Conjure Animals | 25 | 130 | 155 |
+| Counterspell | 35 | 120 | 155 |
+| Create Food and Water | -5 | 160 | 155 |
+| Dispel Magic | 10 | 145 | 155 |
+| Fear | 65 | 90 | 155 |
+| Feign Death | 55 | 100 | 155 |
+| Fly | 10 | 145 | 155 |
+| Gaseous Form | 20 | 135 | 155 |
+| Haste | 25 | 130 | 155 |
+| Leomund's Tiny Hut | 65 | 90 | 155 |
+| Magic Circle | 30 | 125 | 155 |
+| Major Image | 60 | 95 | 155 |
+| Nondetection | 40 | 115 | 155 |
+| Phantom Steed | 45 | 110 | 155 |
+| Protection from Energy | 25 | 130 | 155 |
+| Remove Curse | 0 | 155 | 155 |
+| Revivify | -35 | 190 | 155 |
+| Sending (unlimited range folded into effect) | -10 | 165 | 155 |
+| Speak with Dead | 30 | 125 | 155 |
+| Stinking Cloud | 60 | 95 | 155 |
+| Tongues | 50 | 105 | 155 |
+| Water Walk | 50 | 105 | 155 |
+| Wind Wall | 10 | 145 | 155 |
+| Meld into Stone | 70 | 90 | 160 |
+| Water Breathing | 70 | 90 | 160 |
+| Speak with Plants | 90 | 90 | 180 |
+| Mass Healing Word | 95 | 90 | 185 |
+| Glyph of Warding | 105 | 90 | 195 |
+| Slow | 105 | 90 | 195 |
+| Spirit Guardians | 105 | 90 | 195 |
+| Vampiric Touch | 120 | 90 | 210 |
+| Sleet Storm | 145 | 90 | 235 |
+| Call Lightning | 220 | 30 | 250 |
+| Daylight | 170 | 80 | 250 |
+| Hypnotic Pattern | 175 | 75 | 250 |
+| Plant Growth | 215 | 35 | 250 |
 
 ## Rules
 - No single effect may cost more than 90.
