@@ -221,10 +221,10 @@ Proposed effect prices (not yet confirmed by the user). Level 2 totals run from 
 | Magic Mouth | -10 | 115 | 105 |
 | Locate Animals or Plants | -5 | 110 | 105 |
 | Lesser Restoration | 0 | 105 | 105 |
-| Blur | 0 | 100 | 100 |
+| Blur | 0 | 105 | 105 |
 | Knock | 5 | 100 | 105 |
-| Locate Object | 0 | 100 | 100 |
-| Enlarge/Reduce | 10 | 90 | 100 |
+| Locate Object | 0 | 105 | 105 |
+| Enlarge/Reduce | 10 | 95 | 105 |
 | Misty Step | 15 | 90 | 105 |
 | Alter Self | 15 | 90 | 105 |
 | Hold Person | 15 | 90 | 105 |
@@ -279,4 +279,4 @@ Gust of Wind totals 150 from its priced parts (60 ft line 120, difficult terrain
 ## Still open
 - Level 1 spells outside 90 to 100: Thunderwave 85, Burning Hands 80, Divine Favor 60, Goodberry 85, Identify 70, Shield of Faith 50, Find Familiar 60.
 - Cantrips below 90: Druidcraft 85, Mending 75, Resistance 85.
-- Level 2 spells below 105 after the concentration change: Blur 100, Locate Object 100, Enlarge/Reduce 100.
+- Level 2 spells below 105: none.
